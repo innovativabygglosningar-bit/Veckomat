@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Varje hushåll har ett slumpat 32-teckens id som bara finns i inbjudningslänken.
+    // Man kommer bara åt ett hushåll om man känner till id:t; det går inte att lista hushåll.
+    match /households/{hid}/{document=**} {
+      allow read, write: if request.auth != null && hid.size() == 32;
+    }
+  }
+}
