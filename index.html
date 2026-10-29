@@ -615,7 +615,7 @@ function renderSheet(){
     <div class="sec">Du</div>
     <div class="row"><input type="text" id="me-name" value="${esc(S.uid||"")}" style="flex:1;min-width:0" aria-label="Ditt namn"><button class="btn small" data-act="save-name">Spara namn</button></div>
     <p class="muted" style="font-size:13px">Namnet visas vid dina betyg.</p>
-    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-10-29 22:01</p>`}
+    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-10-29 22:07</p>`}
   else if(s.type==="edit"){inner=editorHtml()}
   $("#sheet-root").innerHTML=wrapSheet(inner)}
 function wrapSheet(inner){return `<div class="scrim" data-act="scrim"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>${inner}</div></div>`}
@@ -822,11 +822,20 @@ function showOnboard(join){
     <button class="btn primary block" id="ob-go">${join?"Gå med":"Skapa vårt hushåll"}</button>
     <p style="font-size:13px">Lägg appen på hemskärmen: tryck på Dela-knappen i Safari och välj "Lägg till på hemskärmen".</p>`;
   $("#ob-go").onclick=()=>{const n=($("#ob-name").value||"").trim();if(!n){$("#ob-name").focus();return}
-    lsSet("vm_name",n);lsSet("vm_hid",join||newHid());history.replaceState(null,"",location.pathname);location.reload()};
+    lsSet("vm_name",n);lsSet("vm_hid",join||newHid());if(!join)lsSet("vm_import","1");history.replaceState(null,"",location.pathname);location.reload()};
 }
 function showConfigMissing(){
   const ob=hideApp();
   ob.innerHTML=`<img src="icons/icon-192.png" alt=""><h1>Nästan klart</h1><p>Appen saknar koppling till databasen. Firebase-uppgifterna behöver läggas in i config.js.</p>`}
+async function runImport(){
+  // Engångsimport av veckoplan, handlingslista, inställningar och betyg från Claude-versionen.
+  let imp;try{const r=await fetch("import.json",{cache:"no-cache"});if(!r.ok)return;imp=await r.json()}catch(e){return}
+  const tasks=[];
+  for(const [w,d] of Object.entries(imp.weeks||{}))tasks.push(()=>S.db.doc("weeks/"+w).set({...d,updatedAt:Date.now()}));
+  for(const [w,items] of Object.entries(imp.shop||{}))for(const [id,it] of Object.entries(items))tasks.push(()=>S.db.doc("shop/"+w+"/items/"+id).set(it));
+  if(imp.settings)tasks.push(()=>S.db.doc("config/settings").set(imp.settings));
+  for(const [rid,v] of Object.entries(imp.myRatings||{}))tasks.push(()=>S.db.doc("ratings/"+rid).set({[S.uid]:v},{merge:true}));
+  await pool(tasks,8);toast("Er plan och lista är överförda")}
 async function init(){
   const now=new Date();S.monday=mondayOf(now);if(now.getDay()===0)S.monday=addDays(S.monday,7);
   const cfg=window.FIREBASE_CONFIG;
@@ -844,6 +853,7 @@ async function init(){
   const base="households/"+hid+"/";
   S.db={doc:p=>fs.doc(base+p),collection:p=>fs.collection(base+p)};
   S.ready=true;
+  if(lsGet("vm_import")==="1"){try{await runImport();lsSet("vm_import","0")}catch(e){console.error(e)}}
   S.offline=!navigator.onLine;
   window.addEventListener("online",()=>{S.offline=false;renderNotice()});
   window.addEventListener("offline",()=>{S.offline=true;renderNotice()});
