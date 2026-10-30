@@ -202,6 +202,18 @@ textarea{min-height:110px;resize:vertical;line-height:1.4}
 .smart li{display:flex;gap:8px;align-items:baseline}
 .smart li b{font-weight:600}
 .smart li span{color:var(--muted)}
+.prep{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;margin-bottom:14px;display:flex;flex-direction:column;gap:10px}
+.prep summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.prep summary::-webkit-details-marker{display:none}
+.prep summary .muted{font-weight:500;font-size:13.5px}
+.prep .chipsrow{display:flex;flex-wrap:wrap;gap:6px}
+.prep .chip{min-height:32px;font-size:14px}
+.prep form{display:flex;gap:8px}
+.prep form input{flex:1;min-width:0;min-height:40px}
+.wish{display:grid;grid-template-columns:1fr auto 34px;gap:8px;align-items:center;font-size:15px}
+.wish select{min-height:38px;padding:6px 8px;font-size:14px;width:auto}
+.wish .x{border:none;background:none;color:var(--muted)}
+.blocked{color:var(--warn);font-size:13px;font-weight:600}
 .leftnote{font-size:14.5px;background:var(--soft);border-radius:12px;padding:10px 12px;margin-bottom:14px}
 .toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;font-weight:500;max-width:calc(100% - 32px);box-shadow:0 6px 24px rgba(0,0,0,.2)}
 .stars{display:flex;gap:2px}
@@ -298,7 +310,7 @@ const DEF_STAPLES=[{n:"Mjölk",c:"mejeri"},{n:"Filmjölk",c:"mejeri"},{n:"Yoghur
 
 const S={db:null,sample:null,canWrite:true,ready:false,recipes:new Map(),recLoaded:false,
   week:null,weekLoaded:false,items:new Map(),itemsLoaded:false,
-  settings:{servings:4,helg:[4,5,6]},staples:DEF_STAPLES,stapleEdit:false,
+  settings:{servings:4,helg:[4,5,6],allergens:[],avoid:[]},plan:{have:[],wishes:[]},staples:DEF_STAPLES,stapleEdit:false,
   tab:"week",monday:null,uid:null,user:null,names:{},ratings:{},base:new Map(),over:new Map(),hid:null,all:new Map(),hidden:new Set(),cid:null,pool:null,offline:false,sheet:null,edit:null,recFilter:"alla",showDone:false,busy:false,unsub:[]};
 
 /* ---------- utils ---------- */
@@ -404,6 +416,46 @@ function leftNote(r,d){
   return `<div class="leftnote">`+S2.map(x=>{const u=getR(days[x.e].r);const g=srcIng(r,x.type);const f=f0/(u.servings||4);
     return `Koka ${esc(fmtQU(scaleQ((u.uses.q||0)*f,g.u,1),g.u))} extra ${LEFT[x.type].label} idag och spara i kylen till ${esc(u.name.toLowerCase())} på ${DAYS[x.e].toLowerCase()}.`}).join(" ")+`</div>`}
 
+/* ---------- har hemma, önskerätter, allergier ---------- */
+const ALLERGENS={
+  notter:{label:"Nötter",re:/nötter|cashew|mandel|valnöt|pinjenöt|hasselnöt|pistage|jordnöt|pekannöt/},
+  skaldjur:{label:"Skaldjur",re:/räk|mussl|kräft|vongole|gambas|hummer|krabba|(?<!vegansk )scampi/},
+  fisk:{label:"Fisk",re:/fisk|lax|torsk|sej|kummel|strömming|tonfisk|rödspätta|abborre|ansjovis|sill|makrill/},
+  mjolk:{label:"Mjölk/laktos",re:/(?<!kokos)mjölk|grädde|(?<!jordnöts)smör|ost$|ost |parmesan|mozzarella|feta|halloumi|ricotta|crème|creme|yoghurt|kvarg|filmjölk|gräddfil|tzatziki|bearnaise|cheddar|getost|ädelost|gorgonzola|västerbotten|färskost|pepparrotskräm|vitlökssås/},
+  gluten:{label:"Gluten",re:/vetemjöl|mjöl$|pasta|spaghetti|penne|fusilli|farfalle|rigatoni|linguine|tagliatelle|pappardelle|makaroner|lasagne|cannelloni|orzo|ströbröd|panko|bröd|tortilla|pita|naan|baguette|ciabatta|couscous|bulgur|äggnudlar|udonnudlar|gnocchi|smördeg|filodeg|dumpling|lättöl|rågmjöl/},
+  agg:{label:"Ägg",re:/ägg|majonnäs|aioli|bearnaise|remoulad/},
+  selleri:{label:"Selleri",re:/selleri/},
+  sesam:{label:"Sesam",re:/sesam|tahini/},
+  senap:{label:"Senap",re:/senap/}};
+const SYN={svamp:/svamp|champinjon|kantarell|shiitake|karljohan/,lök:/lök/,koriander:/koriander/,chili:/chili|sambal|sriracha|jalapeñ/};
+function ingNames(r){return (r.ing||[]).filter(g=>g&&g.n&&g.c!=="rest").map(g=>g.n.toLowerCase())}
+function blockedBy(r){
+  const names=ingNames(r);const hits=[];
+  for(const k of (S.settings.allergens||[])){const A=ALLERGENS[k];if(A&&names.some(n=>A.re.test(n)))hits.push(A.label)}
+  for(const w of (S.settings.avoid||[])){const lw=w.toLowerCase();const re=SYN[lw];if(names.some(n=>re?re.test(n):n.includes(lw)))hits.push(w)}
+  return hits}
+function isBlocked(r){return blockedBy(r).length>0}
+function usesHave(r,w){const lw=w.toLowerCase();const re=SYN[lw];return ingNames(r).some(n=>re?re.test(n):(n.includes(lw)||lw.includes(normIng(n))&&normIng(n).length>2))}
+function haveScore(days){const have=(S.plan&&S.plan.have)||[];if(!have.length)return 0;const rs=weekRecs(days).filter(Boolean);
+  let s=0;for(const w of have){const n=rs.filter(r=>usesHave(r,w)).length;if(n)s+=10+Math.min(n-1,1)*2}return s}
+function isHome(name){const have=(S.plan&&S.plan.have)||[];const n=name.toLowerCase();return have.some(w=>{const lw=w.toLowerCase();const re=SYN[lw];if(re)return re.test(n);const e=lw.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");return new RegExp("(^|\\s)"+e).test(n)||normIng(n)===lw})}
+async function savePlan(p){if(!guardWrite())return;S.plan={have:[],wishes:[],...S.plan,...p};render();
+  try{await S.db.doc("plans/"+wid()).set({have:S.plan.have||[],wishes:S.plan.wishes||[],updatedAt:Date.now()})}catch(e){handleErr(e)}}
+function planSub(){const id=wid();S.plan={have:[],wishes:[]};
+  return S.db.doc("plans/"+id).onSnapshot(s=>{if(id!==wid())return;const d=s.exists?s.data():{};S.plan={have:d.have||[],wishes:d.wishes||[]};render()},e=>console.error(e))}
+function prepBox(open){
+  const p=S.plan||{have:[],wishes:[]};const have=p.have||[],wishes=(p.wishes||[]).filter(w=>getR(w.r));
+  const sum=[have.length?`${have.length} hemma`:"",wishes.length?`${wishes.length} önskad${wishes.length>1?"e":""}`:""].filter(Boolean).join(" · ")||"Valfritt";
+  return `<details class="prep" ${open?"open":""}><summary><span>Inför slumpningen</span><span class="muted">${sum}</span></summary>
+    <div><div class="eyebrow" style="margin-bottom:6px">Har hemma</div>
+    <div class="chipsrow">${have.map((w,i)=>`<button class="chip on" data-act="have-del" data-i="${i}" aria-label="Ta bort ${esc(w)}">${esc(w)} ✕</button>`).join("")}</div>
+    <form id="have-form" style="margin-top:6px"><input type="text" id="have-input" placeholder="t.ex. koriander, potatis, grädde" autocomplete="off" enterkeyhint="done"><button class="btn small" type="submit">Lägg till</button></form>
+    <p class="muted" style="font-size:13px;margin:6px 0 0">Slumpningen väljer gärna rätter som använder det ni har, och det bockas av direkt på handlingslistan.</p></div>
+    <div><div class="eyebrow" style="margin-bottom:6px">Önskerätter</div>
+    ${wishes.map((w,i)=>`<div class="wish"><span>${esc(getR(w.r).name)}</span><select data-act="wish-day" data-i="${i}" id="wish-day-${i}" aria-label="Dag"><option value="">Valfri dag</option>${DS.map((n,d)=>`<option value="${d}"${w.d===d?" selected":""}>${n}</option>`).join("")}</select><button class="x" data-act="wish-del" data-i="${i}" aria-label="Ta bort önskerätt">${IC.x.replace('<svg','<svg width="16" height="16"')}</button></div>`).join("")}
+    <button class="btn small" data-act="wish-add" style="margin-top:6px">+ Välj en rätt ni är sugna på</button></div>
+  </details>`}
+
 /* ---------- rules ---------- */
 function weekRecs(days){return (days||[]).map(x=>x&&getR(x.r))}
 function basClash(rs,d){const b=rs[d]?.bas;if(!b||b==="ovrigt")return false;return rs[d-1]?.bas===b||rs[d+1]?.bas===b}
@@ -415,20 +467,30 @@ function scoreWeek(days){const rs=weekRecs(days);let s=0,perfect=true;
     if(a.protein===b.protein){s-=6;perfect=false}}
   rs.forEach((r,d)=>{if(r&&r.cat!==dayCat(d)){s-=20;perfect=false}});
   s+=new Set(rs.filter(Boolean).map(r=>r.protein)).size*3;
-  s+=smartScore(days);
+  s+=smartScore(days)+haveScore(days);
   return {s,perfect}}
 async function randomize(){
-  const all=[...S.recipes.values()];
+  const all=[...S.recipes.values()].filter(r=>!isBlocked(r));
   if(all.length<7){toast("Lägg till minst 7 recept först.");return}
-  const cur=(S.week&&S.week.days)||Array(7).fill(null);
+  const cur0=(S.week&&S.week.days)||Array(7).fill(null);
+  const wishes=((S.plan&&S.plan.wishes)||[]).filter(w=>getR(w.r));
+  const fixedW=wishes.filter(w=>w.d!=null&&w.d!=="");const freeW=wishes.filter(w=>w.d==null||w.d==="");
   let prevIds=new Set();
   try{const pw=await S.db.doc("weeks/"+weekId(addDays(S.monday,-7))).get();if(pw.exists)(pw.data().days||[]).forEach(x=>x&&x.r&&prevIds.add(x.r))}catch(e){}
   let best=null,bestS=-1e9;
   for(let a=0;a<500;a++){
+    const cur=cur0.map(x=>x&&x.lock?{...x}:null);
+    for(const w of fixedW)cur[+w.d]={r:w.r,lock:true,wish:true};
+    let wok=true;
+    for(const w of freeW){if(cur.some(x=>x&&x.r===w.r))continue;const wr=getR(w.r);
+      const free=[0,1,2,3,4,5,6].filter(d=>!cur[d]);const pref=free.filter(d=>dayCat(d)===wr.cat);
+      const pool2=pref.length?pref:free;if(!pool2.length){wok=false;break}
+      cur[pool2[Math.floor(Math.random()*pool2.length)]]={r:w.r,lock:true,wish:true}}
+    if(!wok)continue;
     const days=[],used=new Set(cur.filter(x=>x&&x.lock&&x.r).map(x=>x.r));let ok=true;
     for(let d=0;d<7;d++){
       const c=cur[d];
-      if(c&&c.lock&&c.r){days.push({r:c.r,lock:true});continue}
+      if(c&&c.lock&&c.r){days.push(c.wish?{r:c.r,lock:!!(cur0[d]&&cur0[d].lock&&cur0[d].r===c.r),wish:true}:{r:c.r,lock:true});continue}
       const prev=days[d-1]?getR(days[d-1].r):null;
       const nx=cur[d+1]&&cur[d+1].lock?getR(cur[d+1].r):null;
       const nb=[prev&&prev.bas,nx&&nx.bas].filter(b=>b&&b!=="ovrigt");
@@ -448,7 +510,7 @@ async function randomize(){
   await saveWeek(best,"Ny vecka slumpad");
 }
 function candidatesFor(d,days,{strict=true}={}){
-  const all=[...S.recipes.values()];const rs=weekRecs(days);
+  const all=[...S.recipes.values()].filter(r=>!isBlocked(r));const rs=weekRecs(days);
   const used=new Set(days.map(x=>x&&x.r).filter(Boolean));
   const nb=[rs[d-1]&&rs[d-1].bas,rs[d+1]&&rs[d+1].bas].filter(b=>b&&b!=="ovrigt");
   const cur=rs[d];
@@ -506,7 +568,7 @@ async function syncList(days,id){
   const want=desiredItems(days);const tasks=[];
   for(const [k,v] of existing) if(v.source==="recipe"&&!want.has(k)) tasks.push(()=>col.doc(k).delete());
   for(const [k,v] of want){const ex=existing.get(k);
-    if(!ex) tasks.push(()=>col.doc(k).set({...v,source:"recipe",checked:false,at:Date.now()}));
+    if(!ex){const home=isHome(v.n);tasks.push(()=>col.doc(k).set({...v,source:"recipe",checked:home,home,at:Date.now()}))}
     else if(ex.q!==v.q||ex.n!==v.n||ex.c!==v.c||(ex.from||[]).join("|")!==v.from.join("|")) tasks.push(()=>col.doc(k).update({q:v.q,n:v.n,u:v.u,c:v.c,from:v.from}));}
   await pool(tasks,6)}
 async function addManual(name,cat){
@@ -545,10 +607,11 @@ function renderWeek(){
   if(!S.ready||!S.weekLoaded||!S.recLoaded){v.innerHTML=Array(5).fill('<div class="skel"></div>').join("");return}
   const days=S.week&&S.week.days;
   if(!days||!days.some(x=>x&&x.r)){
-    v.innerHTML=`<div class="empty"><span class="eyebrow">${S.recipes.size} recept i banken</span><h2>Ingen plan för den här veckan än</h2><p>Slumpa fram sju middagar. Enklare rätter i veckorna, lite mer ambitiöst ${helgText()}. Aldrig samma tillbehör två dagar i rad, och minst en kött- och en fiskrätt.</p><button class="btn primary" data-act="shuffle">${IC.dice}Slumpa veckan</button></div>`;return}
+    v.innerHTML=`<div class="empty"><span class="eyebrow">${S.recipes.size} recept i banken</span><h2>Ingen plan för den här veckan än</h2><p>Slumpa fram sju middagar. Enklare rätter i veckorna, lite mer ambitiöst ${helgText()}. Aldrig samma tillbehör två dagar i rad, och minst en kött- och en fiskrätt.</p><button class="btn primary" data-act="shuffle">${IC.dice}Slumpa veckan</button></div>`;
+    v.innerHTML=prepBox(true)+v.innerHTML;return}
   const rs=weekRecs(days);const today=new Date();
   const counts={};rs.forEach(r=>{if(r)counts[r.protein]=(counts[r.protein]||0)+1});
-  let h=`<div class="rhythm" aria-label="Veckans variation">`+rs.map((r,d)=>`<div class="rh${basClash(rs,d)?" clash":""}"><b>${DS[d]}</b><span class="dot ${r?"p"+PCLS[r.protein]:""}"></span><span class="bas">${r?BAS[r.bas]:"–"}</span></div>`).join("")+`</div>`;
+  let h=prepBox(false)+`<div class="rhythm" aria-label="Veckans variation">`+rs.map((r,d)=>`<div class="rh${basClash(rs,d)?" clash":""}"><b>${DS[d]}</b><span class="dot ${r?"p"+PCLS[r.protein]:""}"></span><span class="bas">${r?BAS[r.bas]:"–"}</span></div>`).join("")+`</div>`;
   h+=`<div class="legend">`+Object.keys(PROT).map(p=>`<span><i class="p${PCLS[p]}"></i>${PROT[p]} ${counts[p]||0}</span>`).join("")+`</div>`;
   const LL=leftLinks(days);
   h+=`<div class="days">`;
@@ -558,7 +621,7 @@ function renderWeek(){
       <div class="dname"><b>${DS[d]}</b><span class="num">${date.getDate()}/${date.getMonth()+1}</span></div>
       <button class="dish" data-act="open-day" data-d="${d}">
         <span class="t">${r?esc(r.name):'<span class="muted">Recept saknas</span>'}</span>
-        ${r?`<span class="chips"><span class="p t${PCLS[r.protein]}"><i class="p${PCLS[r.protein]}"></i>${PROT[r.protein]}</span><span${basClash(rs,d)?' class="warn"':""}>${BAS[r.bas]}</span><span class="num">${r.time} min</span>${miniStar(r)}${restChip(d,LL,r)}${wk?'<span class="tag">Helg</span>':""}</span>`:""}
+        ${r?`<span class="chips"><span class="p t${PCLS[r.protein]}"><i class="p${PCLS[r.protein]}"></i>${PROT[r.protein]}</span><span${basClash(rs,d)?' class="warn"':""}>${BAS[r.bas]}</span><span class="num">${r.time} min</span>${miniStar(r)}${restChip(d,LL,r)}${x.wish?'<span class="tag">Önskad</span>':""}${wk?'<span class="tag">Helg</span>':""}</span>`:""}
       </button>
       <div class="dact">
         <button class="iconbtn" data-act="swap" data-d="${d}" aria-label="Byt rätt på ${DAYS[d]}" ${x.lock?"disabled":""}>${IC.swap}</button>
@@ -590,7 +653,7 @@ function itemHtml(i){
   const q=fmtQU(i.q,i.u);
   return `<div class="item${i.checked?" done":""}">
     <button class="check" data-act="tog" data-id="${esc(i.id)}" aria-label="${i.checked?"Avmarkera":"Bocka av"} ${esc(i.n)}" aria-pressed="${!!i.checked}">${IC.check}</button>
-    <button class="body" data-act="tog" data-id="${esc(i.id)}"><div><span class="n">${esc(i.n)}</span>${q?`<span class="q">${esc(q)}</span>`:""}</div>${i.from&&i.from.length?`<div class="from">till ${esc(i.from.join(", "))}</div>`:""}</button>
+    <button class="body" data-act="tog" data-id="${esc(i.id)}"><div><span class="n">${esc(i.n)}</span>${q?`<span class="q">${esc(q)}</span>`:""}</div>${i.home?`<div class="from">Finns hemma</div>`:i.from&&i.from.length?`<div class="from">till ${esc(i.from.join(", "))}</div>`:""}</button>
     ${i.source==="manual"?`<button class="x" data-act="del-item" data-id="${esc(i.id)}" aria-label="Ta bort ${esc(i.n)}">${IC.x}</button>`:""}
   </div>`}
 function renderStaples(){
@@ -640,6 +703,7 @@ function recDetail(r,d){
   let h=`<div class="shead"><div>${d!=null?`<div class="eyebrow">${DAYS[d]} ${addDays(S.monday,d).getDate()}/${addDays(S.monday,d).getMonth()+1}</div>`:""}<h2>${esc(r.name)}</h2></div><button class="iconbtn" data-act="close-sheet" aria-label="Stäng">${IC.x}</button></div>
   <div class="meta"><span class="t${PCLS[r.protein]}" style="font-weight:600">${PROT[r.protein]}</span><span>${BAS[r.bas]}</span><span class="num">${r.time} min</span><span>${r.cat==="helg"?"Helgrätt":"Vardagsrätt"}</span></div>`;
   if(d!=null){const x=S.week.days[d]||{};h+=`<div class="row" style="margin-bottom:16px"><button class="btn small" data-act="swap" data-d="${d}" ${x.lock?"disabled":""}>${IC.swap}Slumpa ny</button><button class="btn small" data-act="pick" data-d="${d}">${IC.list}Välj själv</button><button class="btn small" data-act="lock" data-d="${d}">${x.lock?IC.lock+"Låst":IC.unlock+"Lås"}</button></div>`}
+  {const b=blockedBy(r);if(b.length)h+=`<p class="blocked">Innehåller ${esc(b.join(", "))}</p>`}
   h+=leftNote(r,d);
   h+=rateBox(r);
   h+=`<div class="sec">Ingredienser · <span class="num">${S.settings.servings}</span> portioner</div><ul class="ing">${ing||'<li><span></span><span class="muted">Inga ingredienser angivna</span></li>'}</ul>`;
@@ -664,7 +728,7 @@ function renderSheet(){
   else if(s.type==="rec"){const r=getR(s.id);if(!r){closeSheet();return}inner=recDetail(r,null)}
   else if(s.type==="pick"){
     if($("#pick-q")){renderPickList();return}
-    inner=`<div class="shead"><div><div class="eyebrow">${DAYS[s.d]}</div><h2>Välj rätt</h2></div><button class="iconbtn" data-act="close-sheet" aria-label="Stäng">${IC.x}</button></div>
+    inner=`<div class="shead"><div><div class="eyebrow">${s.wish?"Önskerätt":DAYS[s.d]}</div><h2>${s.wish?"Vad är ni sugna på?":"Välj rätt"}</h2></div><button class="iconbtn" data-act="close-sheet" aria-label="Stäng">${IC.x}</button></div>
       <input type="search" id="pick-q" placeholder="Sök recept" style="margin-bottom:10px"><div id="pick-list"></div>`;
     $("#sheet-root").innerHTML=wrapSheet(inner);renderPickList();return}
   else if(s.type==="settings"){
@@ -674,6 +738,12 @@ function renderSheet(){
     <div class="sec">Dagar med helgrätter</div>
     <div class="daysel">${DS.map((n,d)=>`<button data-act="helg" data-d="${d}" class="${S.settings.helg.includes(d)?"on":""}" aria-pressed="${S.settings.helg.includes(d)}">${n}</button>`).join("")}</div>
     <p class="muted" style="font-size:14px">Övriga dagar får enklare vardagsrätter.</p>
+    <div class="sec">Allergier</div>
+    <div class="chipsrow" style="display:flex;flex-wrap:wrap;gap:6px">${Object.entries(ALLERGENS).map(([k,A])=>`<button class="chip${(S.settings.allergens||[]).includes(k)?" on":""}" data-act="allergen" data-k="${k}" aria-pressed="${(S.settings.allergens||[]).includes(k)}">${A.label}</button>`).join("")}</div>
+    <div class="sec">Ingredienser vi inte vill ha</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px">${(S.settings.avoid||[]).map((w,i)=>`<button class="chip on" data-act="avoid-del" data-i="${i}" aria-label="Ta bort ${esc(w)}">${esc(w)} ✕</button>`).join("")}</div>
+    <form id="avoid-form" class="row" style="margin-top:6px"><input type="text" id="avoid-input" placeholder="t.ex. koriander, svamp, oliver" style="flex:1;min-width:0" autocomplete="off"><button class="btn small" type="submit">Lägg till</button></form>
+    <p class="muted" style="font-size:13px">Rätter med detta kommer inte med i slumpningen. Matchningen sker på ingrediensnamn och är ungefärlig, så kontrollera alltid vid allvarlig allergi.</p>
     <div class="sec">Bjud in till ert hushåll</div>
     <p style="margin:0 0 8px;font-size:15px">För den du bor med. Ni delar matsedel, handlingslista, betyg och dolda rätter.</p>
     <input type="text" id="inv-link-hh" readonly value="${esc(inviteLink("hh"))}" style="font-size:14px">
@@ -685,18 +755,18 @@ function renderSheet(){
     <div class="sec">Du</div>
     <div class="row"><input type="text" id="me-name" value="${esc(S.uid||"")}" style="flex:1;min-width:0" aria-label="Ditt namn"><button class="btn small" data-act="save-name">Spara namn</button></div>
     <p class="muted" style="font-size:13px">Namnet visas vid dina betyg.</p>
-    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-10-30 11:28</p>`}
+    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-10-30 12:48</p>`}
   else if(s.type==="edit"){inner=editorHtml()}
   $("#sheet-root").innerHTML=wrapSheet(inner)}
 function wrapSheet(inner){return `<div class="scrim" data-act="scrim"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>${inner}</div></div>`}
 function renderPickList(){
-  const s=S.sheet;const q=$("#pick-q").value;const days=S.week.days;const rs=weekRecs(days);
+  const s=S.sheet;const q=$("#pick-q").value;const days=(S.week&&S.week.days)||Array(7).fill(null);const rs=weekRecs(days);
   const nb=[rs[s.d-1]&&rs[s.d-1].bas,rs[s.d+1]&&rs[s.d+1].bas].filter(b=>b&&b!=="ovrigt");
   const inWeek=new Set(days.map(x=>x&&x.r));
   let list=filteredRecipes(q,"alla");
   const cat=dayCat(s.d);list.sort((a,b)=>(a.cat===cat?0:1)-(b.cat===cat?0:1));
   $("#pick-list").innerHTML=`<div class="list">`+list.map(r=>{
-    const warn=nb.includes(r.bas)?`Samma tillbehör som dagen intill`:inWeek.has(r.id)?"Redan i veckan":"";
+    const bl=blockedBy(r);const warn=bl.length?"Innehåller "+bl.join(", "):s.wish?"":nb.includes(r.bas)?`Samma tillbehör som dagen intill`:inWeek.has(r.id)?"Redan i veckan":"";
     return recRow(r,"pick-choose").replace("</span></span></button>",`</span>${warn?`<span class="warn" style="display:block;font-size:12.5px">${warn}</span>`:""}</span></button>`)}).join("")+`</div>`}
 
 /* ---------- editor ---------- */
@@ -813,7 +883,9 @@ document.addEventListener("click",async ev=>{
     case"open-day":if(getR(S.week.days[d]&&S.week.days[d].r))openSheet({type:"day",d});break;
     case"open-rec":openSheet({type:"rec",id});break;
     case"pick":openSheet({type:"pick",d});break;
-    case"pick-choose":{if(!guardWrite())return;const dd=S.sheet.d;const days=clone(S.week.days);
+    case"pick-choose":{if(!guardWrite())return;
+      if(S.sheet.wish){const ws=((S.plan&&S.plan.wishes)||[]).filter(w=>w.r!==id);ws.push({r:id,d:null});closeSheet();await savePlan({wishes:ws});toast("Önskerätt tillagd. Slumpa veckan så kommer den med.");break}
+      const dd=S.sheet.d;const days=clone(S.week.days);
       const ex=days.findIndex((x,i)=>i!==dd&&x&&x.r===id);if(ex>=0)days[ex]={r:days[dd].r,lock:false};
       days[dd]={r:id,lock:days[dd]&&days[dd].lock||false};closeSheet();await saveWeek(days,DAYS[dd]+": "+getR(id).name);break}
     case"tog":{if(!guardWrite())return;const it=S.items.get(id);if(!it)return;const v=!it.checked;S.items.set(id,{...it,checked:v});renderShop();
@@ -826,6 +898,11 @@ document.addEventListener("click",async ev=>{
     case"staple-edit":S.stapleEdit=!S.stapleEdit;renderStaples();if(S.stapleEdit){const i=$("#staple-input");if(i)i.focus()}break;
     case"staple-del":{if(!guardWrite())return;const list=S.staples.slice();list.splice(+el.dataset.i,1);S.staples=list;renderStaples();
       try{await S.db.doc("config/staples").set({items:list})}catch(e){handleErr(e)}break}
+    case"wish-add":openSheet({type:"pick",wish:true});break;
+    case"wish-del":{const ws=[...((S.plan&&S.plan.wishes)||[])];ws.splice(+el.dataset.i,1);await savePlan({wishes:ws});break}
+    case"have-del":{const hv=[...((S.plan&&S.plan.have)||[])];hv.splice(+el.dataset.i,1);await savePlan({have:hv});break}
+    case"allergen":{if(!guardWrite())return;const k=el.dataset.k;const a=new Set(S.settings.allergens||[]);a.has(k)?a.delete(k):a.add(k);S.settings={...S.settings,allergens:[...a]};renderSheet();render();await saveSettings(false);break}
+    case"avoid-del":{if(!guardWrite())return;const a=[...(S.settings.avoid||[])];a.splice(+el.dataset.i,1);S.settings={...S.settings,avoid:a};renderSheet();render();await saveSettings(false);break}
     case"share-inv":{const k=el.dataset.k||"hh";const url=inviteLink(k);
       try{if(navigator.share){await navigator.share({title:"Middagar",text:"Gå med i vår matsedel",url});break}}catch(e){if(e&&e.name==="AbortError")break}
       try{await navigator.clipboard.writeText(url);toast("Länken är kopierad")}catch(e){$("#inv-link-"+k).select();toast("Markera och kopiera länken")}break}
@@ -864,7 +941,16 @@ document.addEventListener("submit",async ev=>{
     const list=[...S.staples,{n:n.charAt(0).toUpperCase()+n.slice(1),c:guessCat(n)}];S.staples=list;renderStaples();const ni=$("#staple-input");if(ni)ni.focus();
     try{await S.db.doc("config/staples").set({items:list})}catch(e){handleErr(e)}}
   else if(ev.target.id==="rec-form")await saveRecipe();
+  else if(ev.target.id==="have-form"){const v=($("#have-input").value||"").trim().toLowerCase();if(!v)return;
+    const hv=[...((S.plan&&S.plan.have)||[])];v.split(",").map(x=>x.trim()).filter(Boolean).forEach(x=>{if(!hv.includes(x))hv.push(x)});await savePlan({have:hv});
+    const i=$("#have-input");if(i)i.focus()}
+  else if(ev.target.id==="avoid-form"){if(!guardWrite())return;const v=($("#avoid-input").value||"").trim().toLowerCase();if(!v)return;
+    const a=[...(S.settings.avoid||[])];v.split(",").map(x=>x.trim()).filter(Boolean).forEach(x=>{if(!a.includes(x))a.push(x)});S.settings={...S.settings,avoid:a};renderSheet();render();await saveSettings(false);
+    const i=$("#avoid-input");if(i)i.focus()}
 });
+document.addEventListener("change",async ev=>{
+  const el=ev.target;if(el.dataset&&el.dataset.act==="wish-day"){const ws=[...((S.plan&&S.plan.wishes)||[])];const i=+el.dataset.i;if(!ws[i])return;
+    ws[i]={...ws[i],d:el.value===""?null:+el.value};await savePlan({wishes:ws})}});
 document.addEventListener("input",ev=>{
   if(ev.target.id==="rec-q")renderRecList();
   if(ev.target.id==="pick-q")renderPickList();
@@ -891,6 +977,7 @@ function subscribeWeek(){
   S.week=null;S.weekLoaded=false;S.items=new Map();S.itemsLoaded=false;
   if(!S.db)return;const id=wid();
   S.unsub.push(S.db.doc("weeks/"+id).onSnapshot(s=>{if(id!==wid())return;S.week=s.exists?s.data():null;S.weekLoaded=true;render()},e=>{console.error(e);S.weekLoaded=true;render()}));
+  S.unsub.push(planSub());
   S.unsub.push(S.db.collection("shop/"+id+"/items").onSnapshot(s=>{if(id!==wid())return;const m=new Map();s.docs.forEach(d=>m.set(d.id,d.data()));S.items=m;S.itemsLoaded=true;
     if(S.tab==="shop")renderShop();else renderHeader()},e=>{console.error(e);S.itemsLoaded=true;render()}));
 }
@@ -961,7 +1048,7 @@ async function init(){
   S.pool.collection("recipes").onSnapshot(s=>{const m=new Map();s.docs.forEach(d=>m.set(d.id,d.data()));S.over=m;mergeRecipes();S.recLoaded=true;render()},e=>{console.error(e);S.recLoaded=true;render()});
   S.db.collection("hidden").onSnapshot(s=>{S.hidden=new Set(s.docs.map(d=>d.id));mergeRecipes();render()},e=>console.error(e));
   S.db.collection("ratings").onSnapshot(s=>{const m={};s.docs.forEach(d=>m[d.id]=d.data());S.ratings=m;render()},e=>console.error(e));
-  S.db.doc("config/settings").onSnapshot(s=>{if(s.exists){const d=s.data();S.settings={servings:+d.servings||4,helg:Array.isArray(d.helg)?d.helg:[4,5,6]};render()}});
+  S.db.doc("config/settings").onSnapshot(s=>{if(s.exists){const d=s.data();S.settings={servings:+d.servings||4,helg:Array.isArray(d.helg)?d.helg:[4,5,6],allergens:Array.isArray(d.allergens)?d.allergens:[],avoid:Array.isArray(d.avoid)?d.avoid:[]};render()}});
   S.db.doc("config/staples").onSnapshot(s=>{if(s.exists&&Array.isArray(s.data().items))S.staples=s.data().items;if(S.tab==="shop")renderStaples()});
   subscribeWeek();render();
   if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(()=>{})}
