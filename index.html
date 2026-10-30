@@ -374,7 +374,7 @@ async function resolveNames(ids){
 /* ---------- smart planering: rester och gemensamma färskvaror ---------- */
 const LEFT={ris:{label:"ris",re:/^(ris|jasminris|basmatiris|långkornigt ris|fullkornsris)$/,units:["dl"]},
   potatis:{label:"potatis",re:/^(fast |mjölig )?potatis$/,units:["g","kg"]}};
-function srcIng(r,type){if(!r||r.uses||!LEFT[type]||r.bas!==type)return null;const L=LEFT[type];
+function srcIng(r,type){if(!r||r.uses||r.onepot||!LEFT[type]||r.bas!==type)return null;const L=LEFT[type];
   return (r.ing||[]).find(g=>g&&L.re.test((g.n||"").toLowerCase().trim())&&L.units.includes(g.u))||null}
 function findSrc(rs,e,type){for(let d=e-1;d>=Math.max(0,e-4);d--)if(srcIng(rs[d],type))return d;return -1}
 function leftLinks(days){const rs=weekRecs(days);const byUser={},bySrc={};
@@ -666,7 +666,7 @@ function renderStaples(){
   $("#staple-edit-btn").textContent=S.stapleEdit?"Klar":"Redigera"}
 
 /* ---------- render: recipes ---------- */
-const FILTERS=[["alla","Alla"],["andra","Från andra"],["dolda","Dolda"],["fav","Favoriter"],["top","Högst betyg"],["obetyg","Ej betygsatta"],["vardag","Vardag"],["helg","Helg"],["kott","Kött"],["fisk","Fisk"],["fagel","Fågel"],["vego","Vego"]];
+const FILTERS=[["alla","Alla"],["andra","Från andra"],["dolda","Dolda"],["fav","Favoriter"],["top","Högst betyg"],["obetyg","Ej betygsatta"],["onepot","One pot"],["vardag","Vardag"],["helg","Helg"],["kott","Kött"],["fisk","Fisk"],["fagel","Fågel"],["vego","Vego"]];
 function filteredRecipes(q,f){q=(q||"").toLowerCase().trim();
   const src=f==="dolda"?[...S.all.values()].filter(r=>S.hidden.has(r.id)):[...S.recipes.values()];
   return src.filter(r=>{
@@ -675,13 +675,14 @@ function filteredRecipes(q,f){q=(q||"").toLowerCase().trim();
     if(f==="fav"&&!(ra.avg>=4))return false;
     if(f==="top"&&!ra.avg)return false;
     if(f==="obetyg"&&ra.mine)return false;
-    if(f&&!["alla","fav","top","obetyg","andra","dolda"].includes(f)&&r.cat!==f&&r.protein!==f)return false;
+    if(f==="onepot"&&!r.onepot)return false;
+    if(f&&!["alla","fav","top","obetyg","onepot","andra","dolda"].includes(f)&&r.cat!==f&&r.protein!==f)return false;
     if(!q)return true;
     return r.name.toLowerCase().includes(q)||(r.ing||[]).some(g=>(g.n||"").toLowerCase().includes(q))}).sort((a,b)=>(f==="top"||f==="fav")?((rating(b).avg||0)-(rating(a).avg||0)||a.name.localeCompare(b.name,"sv")):a.name.localeCompare(b.name,"sv"))}
 function renderRecipes(){
   $("#rec-filters").innerHTML=FILTERS.map(([k,l])=>`<button class="chip${S.recFilter===k?" on":""}" data-act="filter" data-f="${k}">${l}</button>`).join("");
   renderRecList()}
-function recRow(r,act,extra=""){return `<button class="${act==="pick-choose"?"pick":"rec"}" data-act="${act}" data-id="${esc(r.id)}" ${extra}><span class="stripe p${PCLS[r.protein]}" style="width:4px;align-self:stretch;border-radius:4px;flex:none"></span><span style="min-width:0;flex:1"><span class="t" style="font-weight:600;display:block">${esc(r.name)}</span><span class="m" style="font-size:13px;color:var(--muted)">${r.by&&r.hh!==S.hid?esc(r.by)+" · ":""}${r.cat==="helg"?"Helg":"Vardag"} · ${PROT[r.protein]} · ${BAS[r.bas]} · <span class="num">${r.time} min</span>${rating(r).avg?" · "+miniStar(r):""}</span></span></button>`}
+function recRow(r,act,extra=""){return `<button class="${act==="pick-choose"?"pick":"rec"}" data-act="${act}" data-id="${esc(r.id)}" ${extra}><span class="stripe p${PCLS[r.protein]}" style="width:4px;align-self:stretch;border-radius:4px;flex:none"></span><span style="min-width:0;flex:1"><span class="t" style="font-weight:600;display:block">${esc(r.name)}</span><span class="m" style="font-size:13px;color:var(--muted)">${r.by&&r.hh!==S.hid?esc(r.by)+" · ":""}${r.cat==="helg"?"Helg":"Vardag"} · ${PROT[r.protein]} · ${BAS[r.bas]} · <span class="num">${r.time} min</span>${rating(r).avg?" · "+miniStar(r):""}${r.onepot?" · One pot":""}</span></span></button>`}
 function renderRecList(){
   const el=$("#rec-list");
   if(!S.recLoaded){el.innerHTML='<div class="skel"></div><div class="skel"></div>';return}
@@ -701,7 +702,7 @@ function recDetail(r,d){
   const ing=(r.ing||[]).map(g=>`<li><span class="q">${esc(fmtQU(g.q!=null&&g.q!==""?scaleQ(+g.q,g.u,f):null,g.u))}</span><span>${esc(g.n)}</span></li>`).join("");
   const steps=(r.steps||[]).map(s=>`<li>${esc(s)}</li>`).join("");
   let h=`<div class="shead"><div>${d!=null?`<div class="eyebrow">${DAYS[d]} ${addDays(S.monday,d).getDate()}/${addDays(S.monday,d).getMonth()+1}</div>`:""}<h2>${esc(r.name)}</h2></div><button class="iconbtn" data-act="close-sheet" aria-label="Stäng">${IC.x}</button></div>
-  <div class="meta"><span class="t${PCLS[r.protein]}" style="font-weight:600">${PROT[r.protein]}</span><span>${BAS[r.bas]}</span><span class="num">${r.time} min</span><span>${r.cat==="helg"?"Helgrätt":"Vardagsrätt"}</span></div>`;
+  <div class="meta"><span class="t${PCLS[r.protein]}" style="font-weight:600">${PROT[r.protein]}</span><span>${BAS[r.bas]}</span><span class="num">${r.time} min</span><span>${r.cat==="helg"?"Helgrätt":"Vardagsrätt"}</span>${r.onepot?"<span>One pot</span>":""}</div>`;
   if(d!=null){const x=S.week.days[d]||{};h+=`<div class="row" style="margin-bottom:16px"><button class="btn small" data-act="swap" data-d="${d}" ${x.lock?"disabled":""}>${IC.swap}Slumpa ny</button><button class="btn small" data-act="pick" data-d="${d}">${IC.list}Välj själv</button><button class="btn small" data-act="lock" data-d="${d}">${x.lock?IC.lock+"Låst":IC.unlock+"Lås"}</button></div>`}
   {const b=blockedBy(r);if(b.length)h+=`<p class="blocked">Innehåller ${esc(b.join(", "))}</p>`}
   h+=leftNote(r,d);
@@ -755,7 +756,7 @@ function renderSheet(){
     <div class="sec">Du</div>
     <div class="row"><input type="text" id="me-name" value="${esc(S.uid||"")}" style="flex:1;min-width:0" aria-label="Ditt namn"><button class="btn small" data-act="save-name">Spara namn</button></div>
     <p class="muted" style="font-size:13px">Namnet visas vid dina betyg.</p>
-    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-10-30 12:48</p>`}
+    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-10-30 17:43</p>`}
   else if(s.type==="edit"){inner=editorHtml()}
   $("#sheet-root").innerHTML=wrapSheet(inner)}
 function wrapSheet(inner){return `<div class="scrim" data-act="scrim"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>${inner}</div></div>`}
@@ -861,6 +862,7 @@ async function saveRecipe(){
   const doc={name:r.name,cat:r.cat,protein:r.protein,bas:r.bas,time:r.time,servings:r.servings,url:r.url,ing:r.ing,steps:r.steps,updatedAt:Date.now(),
     by:(prev&&prev.by)||(prev&&S.base.has(prev.id)?"":S.uid),hh:(prev&&prev.hh)||(prev&&S.base.has(prev.id)?"":S.hid),editedBy:S.uid};
   if(prev&&prev.uses)doc.uses=prev.uses;
+  if(prev&&prev.onepot)doc.onepot=true;
   const btn=$("#save-btn");if(btn)btn.disabled=true;
   try{await S.pool.doc("recipes/"+id).set(doc);S.over.set(id,doc);mergeRecipes();closeSheet();toast("Receptet är sparat");render();
     if(S.week&&S.week.days&&S.week.days.some(x=>x&&x.r===id))await syncList(S.week.days,wid())}
