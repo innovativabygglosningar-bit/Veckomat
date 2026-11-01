@@ -581,7 +581,7 @@ async function addManual(name,cat){
   S.items.set(id,doc);renderShop();
   try{await S.db.doc("shop/"+wid()+"/items/"+id).set(doc)}catch(e){handleErr(e)}
 }
-function handleErr(e){console.error(e);const c=e&&e.code;
+function handleErr(e){console.error(e);const c=e&&e.code;S.lastErr=(c||"")+" "+((e&&e.message)||"").slice(0,120);
   if(c==="permission-denied")toast("Ingen åtkomst till hushållet. Kontrollera inbjudningslänken.");
   else if(c==="resource-exhausted")toast("Gratiskvoten för idag är slut. Försök igen i morgon.");
   else toast("Kunde inte spara. Försök igen om en stund.")}
@@ -756,7 +756,10 @@ function renderSheet(){
     <div class="sec">Du</div>
     <div class="row"><input type="text" id="me-name" value="${esc(S.uid||"")}" style="flex:1;min-width:0" aria-label="Ditt namn"><button class="btn small" data-act="save-name">Spara namn</button></div>
     <p class="muted" style="font-size:13px">Namnet visas vid dina betyg.</p>
-    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-01 13:08</p>`}
+    <div class="sec">Synk</div>
+    <div class="note" style="font-size:13.5px;line-height:1.6">Hushåll: <b class="num">${esc((S.hid||"").slice(0,6))}</b><br>Inloggning: ${S.authOk?"OK":"<b class=\"warn\">misslyckades</b>"}<br>Senaste sparning: ${S.lastSync?new Date(S.lastSync).toLocaleTimeString("sv-SE"):"–"}${S.lastErr?`<br><b class="warn">Fel: ${esc(S.lastErr)}</b>`:""}</div>
+    <button class="btn small" data-act="sync-test">Testa synk</button>
+    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-01 14:55</p>`}
   else if(s.type==="edit"){inner=editorHtml()}
   $("#sheet-root").innerHTML=wrapSheet(inner)}
 function wrapSheet(inner){return `<div class="scrim" data-act="scrim"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>${inner}</div></div>`}
@@ -905,6 +908,7 @@ document.addEventListener("click",async ev=>{
     case"have-del":{const hv=[...((S.plan&&S.plan.have)||[])];hv.splice(+el.dataset.i,1);await savePlan({have:hv});break}
     case"allergen":{if(!guardWrite())return;const k=el.dataset.k;const a=new Set(S.settings.allergens||[]);a.has(k)?a.delete(k):a.add(k);S.settings={...S.settings,allergens:[...a]};renderSheet();render();await saveSettings(false);break}
     case"avoid-del":{if(!guardWrite())return;const a=[...(S.settings.avoid||[])];a.splice(+el.dataset.i,1);S.settings={...S.settings,avoid:a};renderSheet();render();await saveSettings(false);break}
+    case"sync-test":{try{await S.db.doc("config/ping").set({by:S.uid,at:Date.now()});S.lastSync=Date.now();S.lastErr="";toast("Synken fungerar")}catch(e){handleErr(e)}renderSheet();break}
     case"share-inv":{const k=el.dataset.k||"hh";const url=inviteLink(k);
       try{if(navigator.share){await navigator.share({title:"Middagar",text:"Gå med i vår matsedel",url});break}}catch(e){if(e&&e.name==="AbortError")break}
       try{await navigator.clipboard.writeText(url);toast("Länken är kopierad")}catch(e){$("#inv-link-"+k).select();toast("Markera och kopiera länken")}break}
@@ -1034,7 +1038,7 @@ async function init(){
   firebase.initializeApp(cfg);
   const fs=firebase.firestore();
   try{await fs.enablePersistence({synchronizeTabs:true})}catch(e){}
-  try{await firebase.auth().signInAnonymously()}catch(e){console.error(e);toast("Kunde inte ansluta. Kontrollera nätet.")}
+  try{await firebase.auth().signInAnonymously();S.authOk=true}catch(e){console.error(e);S.authOk=false;S.lastErr="Inloggning: "+((e&&e.code)||"")+" "+((e&&e.message)||"").slice(0,120);toast("Kunde inte ansluta till databasen. Se Synk under inställningar.")}
   const hhRef=fs.doc("households/"+hid);
   if(lsGet("vm_new")==="1"){try{await hhRef.set({cid,createdAt:Date.now()},{merge:true});lsSet("vm_new","0")}catch(e){console.error(e)}}
   if(!cid){try{const d=await hhRef.get();cid=d.exists&&d.data().cid||""}catch(e){}
