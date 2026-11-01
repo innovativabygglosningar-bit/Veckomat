@@ -756,7 +756,7 @@ function renderSheet(){
     <div class="sec">Du</div>
     <div class="row"><input type="text" id="me-name" value="${esc(S.uid||"")}" style="flex:1;min-width:0" aria-label="Ditt namn"><button class="btn small" data-act="save-name">Spara namn</button></div>
     <p class="muted" style="font-size:13px">Namnet visas vid dina betyg.</p>
-    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-10-30 17:43</p>`}
+    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-01 13:08</p>`}
   else if(s.type==="edit"){inner=editorHtml()}
   $("#sheet-root").innerHTML=wrapSheet(inner)}
 function wrapSheet(inner){return `<div class="scrim" data-act="scrim"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>${inner}</div></div>`}
@@ -1021,6 +1021,10 @@ async function init(){
   const now=new Date();S.monday=mondayOf(now);if(now.getDay()===0)S.monday=addDays(S.monday,7);
   const cfg=window.FIREBASE_CONFIG;
   if(!cfg||!cfg.apiKey){showConfigMissing();return}
+  // Hemskärmsappen på iPhone har eget minne, skilt från Safari. Därför bär adressen med sig
+  // hushållet (#app=...) så att ikonen hittar rätt hushåll första gången den öppnas.
+  const am=location.hash.match(/^#app=([0-9a-f]{32})\.([0-9a-f]{32})?\.(.*)$/);
+  if(am&&!lsGet("vm_hid")){lsSet("vm_hid",am[1]);if(am[2])lsSet("vm_cid",am[2]);try{lsSet("vm_name",decodeURIComponent(am[3])||"")}catch(e){}}
   const inv=parseInvite();
   const hid=lsGet("vm_hid"),name=lsGet("vm_name");let cid=lsGet("vm_cid");
   if(inv&&!(inv.type==="hh"&&inv.hid===hid)&&!(inv.type==="fam"&&inv.cid===cid)){showOnboard(inv);return}
@@ -1037,6 +1041,7 @@ async function init(){
     if(!cid){cid=newId();try{await hhRef.set({cid},{merge:true})}catch(e){}}
     lsSet("vm_cid",cid)}
   S.cid=cid;
+  {const tag="#app="+hid+"."+(cid||"")+"."+encodeURIComponent(name);if(location.hash!==tag)history.replaceState(null,"",location.pathname+tag)}
   const base="households/"+hid+"/",cbase="circles/"+cid+"/";
   S.db={doc:p=>fs.doc(base+p),collection:p=>fs.collection(base+p)};
   S.pool={doc:p=>fs.doc(cbase+p),collection:p=>fs.collection(cbase+p)};
