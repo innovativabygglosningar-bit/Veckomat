@@ -476,6 +476,18 @@ function prepBox(open){
     <button class="btn small" data-act="wish-add" style="margin-top:6px">+ Välj en rätt ni är sugna på</button></div>
   </details>`}
 
+/* ---------- Willys-erbjudanden ---------- */
+// deals.json hämtas varje morgon av GitHub Actions (scripts/willys.mjs). Finns den inte är listan tom.
+const DEAL_SKIP=/^(salt|peppar|olja|olivolja|vatten|socker|smör|mjölk|vetemjöl)$/;
+function dealKey(n){return normIng(n).replace(/^(färsk|fryst|frysta|riven|kokt|hel|små|stora|gul|röd|vit)\s+/,"").trim()}
+function dealsFor(r){const ds=(S.deals&&S.deals.deals)||[];if(!ds.length||!r)return [];const out=[];
+  for(const g of (r.ing||[])){if(!g||!g.n||g.c==="rest"||g.c==="skafferi")continue;const k=dealKey(g.n);if(k.length<4||DEAL_SKIP.test(k))continue;
+    const d=ds.find(d=>(d.name||"").toLowerCase().includes(k));if(d&&!out.some(o=>o.deal===d))out.push({ing:g.n,deal:d})}
+  return out}
+function dealFor(name){const ds=(S.deals&&S.deals.deals)||[];const k=dealKey(name);if(!ds.length||k.length<4||DEAL_SKIP.test(k))return null;return ds.find(d=>(d.name||"").toLowerCase().includes(k))||null}
+function dealScore(days){if(!S.deals)return 0;let s=0;weekRecs(days).forEach(r=>{if(r)s+=Math.min(dealsFor(r).length,3)*3});return s}
+function dealText(d){return [d.offer,d.member?"med Willys Plus":""].filter(Boolean).join(" ")}
+
 /* ---------- rules ---------- */
 function weekRecs(days){return (days||[]).map(x=>x&&getR(x.r))}
 function basClash(rs,d){const b=rs[d]?.bas;if(!b||b==="ovrigt")return false;return rs[d-1]?.bas===b||rs[d+1]?.bas===b}
@@ -487,7 +499,7 @@ function scoreWeek(days){const rs=weekRecs(days);let s=0,perfect=true;
     if(a.protein===b.protein){s-=6;perfect=false}}
   rs.forEach((r,d)=>{if(r&&r.cat!==dayCat(d)){s-=20;perfect=false}});
   s+=new Set(rs.filter(Boolean).map(r=>r.protein)).size*3;
-  s+=smartScore(days)+haveScore(days);
+  s+=smartScore(days)+haveScore(days)+dealScore(days);
   return {s,perfect}}
 async function randomize(){
   const all=[...S.recipes.values()].filter(r=>!isBlocked(r));
@@ -641,7 +653,7 @@ function renderWeek(){
       <div class="dname"><b>${DS[d]}</b><span class="num">${date.getDate()}/${date.getMonth()+1}</span></div>
       <button class="dish" data-act="open-day" data-d="${d}">
         <span class="t">${r?esc(r.name):'<span class="muted">Recept saknas</span>'}</span>
-        ${r?`<span class="chips"><span class="p t${PCLS[r.protein]}"><i class="p${PCLS[r.protein]}"></i>${PROT[r.protein]}</span><span${basClash(rs,d)?' class="warn"':""}>${BAS[r.bas]}</span><span class="num">${r.time} min</span>${miniStar(r)}${restChip(d,LL,r)}${x.wish?'<span class="tag">Önskad</span>':""}${wk?'<span class="tag">Helg</span>':""}</span>`:""}
+        ${r?`<span class="chips"><span class="p t${PCLS[r.protein]}"><i class="p${PCLS[r.protein]}"></i>${PROT[r.protein]}</span><span${basClash(rs,d)?' class="warn"':""}>${BAS[r.bas]}</span><span class="num">${r.time} min</span>${miniStar(r)}${restChip(d,LL,r)}${x.wish?'<span class="tag">Önskad</span>':""}${dealsFor(r).length?'<span class="tag">Erbjudande</span>':""}${wk?'<span class="tag">Helg</span>':""}</span>`:""}
       </button>
       <div class="dact">
         <button class="iconbtn" data-act="swap" data-d="${d}" aria-label="Byt rätt på ${DAYS[d]}" ${x.lock?"disabled":""}>${IC.swap}</button>
@@ -673,7 +685,7 @@ function itemHtml(i){
   const q=fmtQU(i.q,i.u);
   return `<div class="item${i.checked?" done":""}">
     <button class="check" data-act="tog" data-id="${esc(i.id)}" aria-label="${i.checked?"Avmarkera":"Bocka av"} ${esc(i.n)}" aria-pressed="${!!i.checked}">${IC.check}</button>
-    <button class="body" data-act="tog" data-id="${esc(i.id)}"><div><span class="n">${esc(i.n)}</span>${q?`<span class="q">${esc(q)}</span>`:""}</div>${i.home?`<div class="from">Finns hemma</div>`:i.from&&i.from.length?`<div class="from">till ${esc(i.from.join(", "))}</div>`:""}</button>
+    <button class="body" data-act="tog" data-id="${esc(i.id)}"><div><span class="n">${esc(i.n)}</span>${q?`<span class="q">${esc(q)}</span>`:""}</div>${i.home?`<div class="from">Finns hemma</div>`:dealFor(i.n)?`<div class="from" style="color:var(--accent);font-weight:600">Willys: ${esc(dealText(dealFor(i.n)))}</div>`:i.from&&i.from.length?`<div class="from">till ${esc(i.from.join(", "))}</div>`:""}</button>
     ${i.source==="manual"?`<button class="x" data-act="del-item" data-id="${esc(i.id)}" aria-label="Ta bort ${esc(i.n)}">${IC.x}</button>`:""}
   </div>`}
 function renderStaples(){
@@ -724,6 +736,7 @@ function recDetail(r,d){
   let h=`<div class="shead"><div>${d!=null?`<div class="eyebrow">${DAYS[d]} ${addDays(S.monday,d).getDate()}/${addDays(S.monday,d).getMonth()+1}</div>`:""}<h2>${esc(r.name)}</h2></div><button class="iconbtn" data-act="close-sheet" aria-label="Stäng">${IC.x}</button></div>
   <div class="meta"><span class="t${PCLS[r.protein]}" style="font-weight:600">${PROT[r.protein]}</span><span>${BAS[r.bas]}</span><span class="num">${r.time} min</span><span>${r.cat==="helg"?"Helgrätt":"Vardagsrätt"}</span>${r.onepot?"<span>One pot</span>":""}</div>`;
   if(d!=null){const x=S.week.days[d]||{};h+=`<div class="row" style="margin-bottom:16px"><button class="btn small" data-act="swap" data-d="${d}" ${x.lock?"disabled":""}>${IC.swap}Slumpa ny</button><button class="btn small" data-act="pick" data-d="${d}">${IC.list}Välj själv</button><button class="btn small" data-act="lock" data-d="${d}">${x.lock?IC.lock+"Låst":IC.unlock+"Lås"}</button></div>`}
+  {const dl=dealsFor(r);if(dl.length)h+=`<div class="leftnote"><b>På erbjudande hos Willys:</b> ${dl.map(o=>`${esc(o.deal.name)} – ${esc(dealText(o.deal))}`).join("; ")}</div>`}
   {const b=blockedBy(r);if(b.length)h+=`<p class="blocked">Innehåller ${esc(b.join(", "))}</p>`}
   if(d!=null&&S.canWrite)h+=`<div class="sec" style="margin-top:0">Flytta till</div><div class="daysel" style="margin-bottom:16px">${DS.map((n,k)=>`<button data-act="move" data-from="${d}" data-to="${k}" class="${k===d?"on":""}" ${k===d?"disabled":""} aria-label="Flytta till ${DAYS[k]}">${n}</button>`).join("")}</div>`;
   h+=leftNote(r,d);
@@ -783,7 +796,7 @@ function renderSheet(){
     <div class="sec">Synk</div>
     <div class="note" style="font-size:13.5px;line-height:1.6">Hushåll: <b class="num">${esc((S.hid||"").slice(0,6))}</b><br>Inloggning: ${S.authOk?"OK":"<b class=\"warn\">misslyckades</b>"}<br>Senaste sparning: ${S.lastSync?new Date(S.lastSync).toLocaleTimeString("sv-SE"):"–"}${S.lastErr?`<br><b class="warn">Fel: ${esc(S.lastErr)}</b>`:""}</div>
     <button class="btn small" data-act="sync-test">Testa synk</button>
-    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-02 07:41</p>`}
+    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-02 07:42</p>`}
   else if(s.type==="edit"){inner=editorHtml()}
   $("#sheet-root").innerHTML=wrapSheet(inner)}
 function wrapSheet(inner){return `<div class="scrim" data-act="scrim"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>${inner}</div></div>`}
@@ -1084,6 +1097,7 @@ async function init(){
   window.addEventListener("offline",()=>{S.offline=true;renderNotice()});
   try{const res=await fetch("recipes.json",{cache:"no-cache"});const arr=await res.json();S.base=new Map(arr.map(r=>[r.id,r]))}catch(e){console.error(e)}
   mergeRecipes();
+  try{const r=await fetch("deals.json",{cache:"no-cache"});if(r.ok){S.deals=await r.json()}}catch(e){}
   S.pool.collection("recipes").onSnapshot(s=>{const m=new Map();s.docs.forEach(d=>m.set(d.id,d.data()));S.over=m;mergeRecipes();S.recLoaded=true;render()},e=>{console.error(e);S.recLoaded=true;render()});
   S.db.collection("hidden").onSnapshot(s=>{S.hidden=new Set(s.docs.map(d=>d.id));mergeRecipes();render()},e=>console.error(e));
   S.db.collection("ratings").onSnapshot(s=>{const m={};s.docs.forEach(d=>m[d.id]=d.data());S.ratings=m;render()},e=>console.error(e));

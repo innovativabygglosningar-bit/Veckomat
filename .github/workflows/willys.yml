@@ -1,0 +1,23 @@
+name: Willys-erbjudanden
+on:
+  schedule:
+    - cron: "17 4 * * *"   # varje morgon ca 05–06 svensk tid
+  workflow_dispatch:
+  push:
+    paths: ["willys-store.json", "scripts/willys.mjs", ".github/workflows/willys.yml"]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: node scripts/willys.mjs
+      - name: Spara om något ändrats
+        run: |
+          git config user.name "willys-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add deals.json willys/
+          git diff --cached --quiet || (git commit -m "Uppdatera Willys-erbjudanden" && git push)
