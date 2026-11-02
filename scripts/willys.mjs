@@ -19,14 +19,32 @@ function findArray(o, test, depth = 0) {
   return null;
 }
 let storeId = cfg.storeId, storeName = "";
+async function tryJson(url) {
+  try { const r = await fetch(url, { headers: H }); const t = await r.text();
+    console.log("Probe", r.status, url, t.slice(0, 200).replace(/\s+/g, " "));
+    if (!r.ok) return null; return JSON.parse(t); } catch (e) { console.log("Probe fel", url, e.message); return null; }
+}
 if (!storeId) {
-  const s = await getJson(`${BASE}/axfood/rest/search/store?q=${encodeURIComponent(cfg.search)}`);
-  fs.writeFileSync("willys/raw-store.json", JSON.stringify(s, null, 1));
-  const arr = findArray(s, x => x && (x.storeId || x.id) && (x.name || x.displayName)) || [];
-  const st = arr.find(x => !x.onlineStore && !/online|e-handel/i.test(x.name || "")) || arr[0];
-  if (!st) throw new Error("Hittade ingen butik för " + cfg.search);
-  storeId = String(st.storeId || st.id); storeName = st.name || st.displayName || "";
-  await sleep(3000);
+  const q = encodeURIComponent(cfg.search), want = cfg.search.toLowerCase();
+  const urls = [
+    `${BASE}/axfood/rest/store?online=false`,
+    `${BASE}/axfood/rest/store`,
+    `${BASE}/axfood/rest/search/store?q=${q}&online=false`,
+    `${BASE}/axfood/rest/store/search?q=${q}`,
+  ];
+  let pick = null;
+  for (const u of urls) {
+    const s = await tryJson(u); if (!s) { await sleep(1500); continue; }
+    const arr = findArray(s, x => x && (x.storeId || x.id) && (x.name || x.displayName)) || [];
+    const hay = x => JSON.stringify([x.name, x.displayName, x.address, x.town, x.city]).toLowerCase();
+    const hits = arr.filter(x => hay(x).includes(want) && !x.onlineStore);
+    console.log(`  ${arr.length} butiker, ${hits.length} träffar för ${cfg.search}:`, hits.map(x => (x.storeId || x.id) + " " + (x.name || x.displayName)).join(" | "));
+    if (hits.length) { fs.writeFileSync("willys/raw-store.json", JSON.stringify(hits, null, 1)); pick = hits[0]; break; }
+    await sleep(1500);
+  }
+  if (!pick) throw new Error("Hittade ingen butik för " + cfg.search);
+  storeId = String(pick.storeId || pick.id); storeName = pick.name || pick.displayName || "";
+  await sleep(2000);
 }
 const all = [];
 for (let page = 0; page < 10; page++) {
