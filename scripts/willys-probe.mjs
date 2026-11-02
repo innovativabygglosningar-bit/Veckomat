@@ -1,4 +1,0 @@
-const UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36";
-const sets={plain:{"Accept":"application/json"},browser:{"Accept":"application/json, text/plain, */*","Accept-Language":"sv-SE,sv;q=0.9","User-Agent":UA,"Referer":"https://www.willys.se/erbjudanden/butik","Origin":"https://www.willys.se"}};
-const urls=["https://www.willys.se/search/campaigns/offline?q=2110&type=PERSONAL_GENERAL&page=0&size=5","https://www.willys.se/axfood/rest/store?online=false","https://www.willys.se/","https://www.willys.se/erbjudanden/butik"];
-for(const [k,h] of Object.entries(sets))for(const u of urls){try{const r=await fetch(u,{headers:h});const t=await r.text();console.log("PROBE",k,r.status,u,t.slice(0,160).replace(/\s+/g," "))}catch(e){console.log("PROBE",k,"ERR",u,e.message)}await new Promise(r=>setTimeout(r,1500))}

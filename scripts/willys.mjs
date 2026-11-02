@@ -3,7 +3,7 @@
 // detta är samma JSON som willys.se själv läser in på sin erbjudandesida.
 import fs from "node:fs";
 const BASE = "https://www.willys.se";
-const H = { "Accept": "application/json", "User-Agent": "Mozilla/5.0 (veckomat; hushållets matsedel)" };
+const H = { "Accept": "application/json, text/plain, */*", "Accept-Language": "sv-SE,sv;q=0.9", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36", "Referer": "https://www.willys.se/erbjudanden/butik" };
 const cfg = JSON.parse(fs.readFileSync("willys-store.json", "utf8"));
 fs.mkdirSync("willys", { recursive: true });
 const sleep = ms => new Promise(r => setTimeout(r, ms));
