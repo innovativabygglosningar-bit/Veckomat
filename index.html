@@ -297,8 +297,10 @@ textarea{min-height:110px;resize:vertical;line-height:1.4}
 <script>
 (() => {
 "use strict";
-const DAYS=["Måndag","Tisdag","Onsdag","Torsdag","Fredag","Lördag","Söndag"];
-const DS=["Mån","Tis","Ons","Tor","Fre","Lör","Sön"];
+const BASE_DAYS=["Måndag","Tisdag","Onsdag","Torsdag","Fredag","Lördag","Söndag"];
+const BASE_DS=["Mån","Tis","Ons","Tor","Fre","Lör","Sön"];
+// DAYS/DS följer veckans startdag; position 0 är veckans första dag.
+let DAYS=BASE_DAYS.slice(),DS=BASE_DS.slice();
 const MON=["jan","feb","mar","apr","maj","jun","jul","aug","sep","okt","nov","dec"];
 const PROT={kott:"Kött",fisk:"Fisk",fagel:"Fågel",vego:"Vego"};
 const PCLS={kott:"k",fisk:"f",fagel:"g",vego:"v"};
@@ -310,7 +312,7 @@ const DEF_STAPLES=[{n:"Mjölk",c:"mejeri"},{n:"Filmjölk",c:"mejeri"},{n:"Yoghur
 
 const S={db:null,sample:null,canWrite:true,ready:false,recipes:new Map(),recLoaded:false,
   week:null,weekLoaded:false,items:new Map(),itemsLoaded:false,
-  settings:{servings:4,helg:[4,5,6],allergens:[],avoid:[]},plan:{have:[],wishes:[]},staples:DEF_STAPLES,stapleEdit:false,
+  settings:{servings:4,helg:[4,5,6],allergens:[],avoid:[],weekStart:0},plan:{have:[],wishes:[]},staples:DEF_STAPLES,stapleEdit:false,
   tab:"week",monday:null,uid:null,user:null,names:{},ratings:{},base:new Map(),over:new Map(),hid:null,all:new Map(),hidden:new Set(),cid:null,pool:null,offline:false,sheet:null,edit:null,recFilter:"alla",showDone:false,busy:false,unsub:[]};
 
 /* ---------- utils ---------- */
@@ -318,9 +320,27 @@ const $=s=>document.querySelector(s);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const rnd=a=>a[Math.floor(Math.random()*a.length)];
 function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return x}
-function mondayOf(d){const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());x.setDate(x.getDate()-((x.getDay()+6)%7));return x}
+function wsJs(){return (typeof S!=="undefined"&&S.settings&&S.settings.weekStart!=null)?S.settings.weekStart:0}
+function startOff(){return (wsJs()+6)%7}
+function mondayOf(d){const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());x.setDate(x.getDate()-((x.getDay()-wsJs()+7)%7));return x}
+function applyWeekStart(){const o=startOff();DAYS=BASE_DAYS.slice(o).concat(BASE_DAYS.slice(0,o));DS=BASE_DS.slice(o).concat(BASE_DS.slice(0,o))}
+function syncWeekStart(){const js=wsJs();if(S._ws===js)return;S._ws=js;applyWeekStart();
+  const now=new Date();let st=mondayOf(now);if(sameDay(addDays(st,6),now))st=addDays(st,7);
+  S.monday=st;if(S.db){subscribeWeek();render()}}
+async function maybeMigrateWeek(id){
+  // Flyttar en befintlig plan när veckan börjar på en annan dag än måndag.
+  if(!S.db||!S.canWrite||/-W\d+$/.test(id))return;S._mig=S._mig||{};if(S._mig[id])return;S._mig[id]=1;
+  try{const st=new Date(S.monday);const mid=addDays(st,3);const oldMon=new Date(mid.getFullYear(),mid.getMonth(),mid.getDate()-((mid.getDay()+6)%7));
+    const oldId=weekId(oldMon);const cur=await S.db.doc("weeks/"+id).get();if(cur.exists)return;
+    const od=await S.db.doc("weeks/"+oldId).get();if(!od.exists)return;const old=od.data().days||[];
+    const days=Array(7).fill(null);old.forEach((x,i)=>{const ni=Math.round((addDays(oldMon,i)-st)/864e5);if(ni>=0&&ni<7)days[ni]=x});
+    if(!days.some(Boolean))return;
+    await S.db.doc("weeks/"+id).set({days,updatedAt:Date.now(),migratedFrom:oldId});
+    const items=await S.db.collection("shop/"+oldId+"/items").get();const tasks=[];
+    items.docs.forEach(d=>tasks.push(()=>S.db.doc("shop/"+id+"/items/"+d.id).set(d.data())));await pool(tasks,6);
+  }catch(e){console.error(e)}}
 function isoWeek(d){const t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate()));const day=t.getUTCDay()||7;t.setUTCDate(t.getUTCDate()+4-day);const y=t.getUTCFullYear();const w=Math.ceil(((t-Date.UTC(y,0,1))/864e5+1)/7);return{y,w}}
-function weekId(mon){const {y,w}=isoWeek(mon);return y+"-W"+String(w).padStart(2,"0")}
+function weekId(mon){if(mon.getDay()===1){const {y,w}=isoWeek(mon);return y+"-W"+String(w).padStart(2,"0")}return "d"+mon.getFullYear()+"-"+String(mon.getMonth()+1).padStart(2,"0")+"-"+String(mon.getDate()).padStart(2,"0")}
 const wid=()=>weekId(S.monday);
 function sameDay(a,b){return a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate()}
 function fmtNum(q){if(q==null||q==="")return"";let v=+q;if(!isFinite(v))return"";const r=Math.round(v*10)/10;return String(r).replace(".",",")}
@@ -331,7 +351,7 @@ function scaleQ(q,u,f){if(q==null||q==="")return null;let v=q*f;
   return v}
 function fmtQU(q,u){const n=fmtNum(q);if(!n)return u&&u!=="st"?u:"";return u&&u!=="st"?n+" "+u:n+(u==="st"?" st":"")}
 function slug(s){return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9|]+/g,"-").replace(/\|/g,"~").replace(/^-+|-+$/g,"").slice(0,150)||"x"}
-function dayCat(d){return S.settings.helg.includes(d)?"helg":"vardag"}
+function dayCat(d){return S.settings.helg.includes((d+startOff())%7)?"helg":"vardag"}
 function getR(id){return id?(S.all.get(id)||S.recipes.get(id)):null}
 function guessCat(n){const s=n.toLowerCase();
   const m=[["mejeri",/mjölk|fil|yoghurt|grädde|smör|ost|ägg|kvarg|crème|creme|gräddfil|juice/],["brod",/bröd|knäcke|tortilla|pita|bulle|fralla|baguette/],["gront",/äpple|banan|apelsin|päron|druv|citron|lime|lök|tomat|gurka|sallad|paprika|morot|potatis|avokado|frukt|bär|kiwi|melon|spenat|broccoli|svamp|vitlök|ingefära|örter|persilja|dill/],["kott",/kött|färs|kyckling|korv|bacon|skinka|pålägg|lax|torsk|fisk|räk|fläsk|biff/],["frys",/fryst|glass|frys/],["hushall",/toa|papper|disk|tvätt|tvål|schampo|blöj|soppåse|folie|batteri/],["torr",/pasta|ris|mjöl|socker|gryn|müsli|flingor|kaffe|te$|bönor|linser|konserv|krossade|buljong/]];
@@ -588,7 +608,7 @@ function handleErr(e){console.error(e);const c=e&&e.code;S.lastErr=(c||"")+" "+(
 
 /* ---------- render: header + week ---------- */
 function renderHeader(){
-  const {w}=isoWeek(S.monday);const sun=addDays(S.monday,6);
+  const {w}=isoWeek(addDays(S.monday,3));const sun=addDays(S.monday,6);
   $("#wk").textContent="Vecka "+w;
   const a=S.monday,b=sun;
   $("#dates").textContent=a.getMonth()===b.getMonth()?`${a.getDate()}–${b.getDate()} ${MON[b.getMonth()]}`:`${a.getDate()} ${MON[a.getMonth()]} – ${b.getDate()} ${MON[b.getMonth()]}`;
@@ -629,7 +649,7 @@ function renderWeek(){
       </div></div>`}
   h+=`</div>`+smartBox(days,LL)+`<div class="actions"><button class="btn" data-act="shuffle">${IC.dice}Slumpa om olåsta</button><button class="btn primary" data-act="tab" data-tab="shop">${IC.cart}Handlingslista</button></div>`;
   v.innerHTML=h}
-function helgText(){const h=S.settings.helg.slice().sort();return h.length?"på "+h.map(d=>DAYS[d].toLowerCase()).join(", ").replace(/, ([^,]*)$/," och $1"):"på helgen"}
+function helgText(){const h=S.settings.helg.slice().sort();return h.length?"på "+h.map(d=>BASE_DAYS[d].toLowerCase()).join(", ").replace(/, ([^,]*)$/," och $1"):"på helgen"}
 
 /* ---------- render: shop ---------- */
 function renderShop(){
@@ -705,6 +725,7 @@ function recDetail(r,d){
   <div class="meta"><span class="t${PCLS[r.protein]}" style="font-weight:600">${PROT[r.protein]}</span><span>${BAS[r.bas]}</span><span class="num">${r.time} min</span><span>${r.cat==="helg"?"Helgrätt":"Vardagsrätt"}</span>${r.onepot?"<span>One pot</span>":""}</div>`;
   if(d!=null){const x=S.week.days[d]||{};h+=`<div class="row" style="margin-bottom:16px"><button class="btn small" data-act="swap" data-d="${d}" ${x.lock?"disabled":""}>${IC.swap}Slumpa ny</button><button class="btn small" data-act="pick" data-d="${d}">${IC.list}Välj själv</button><button class="btn small" data-act="lock" data-d="${d}">${x.lock?IC.lock+"Låst":IC.unlock+"Lås"}</button></div>`}
   {const b=blockedBy(r);if(b.length)h+=`<p class="blocked">Innehåller ${esc(b.join(", "))}</p>`}
+  if(d!=null&&S.canWrite)h+=`<div class="sec" style="margin-top:0">Flytta till</div><div class="daysel" style="margin-bottom:16px">${DS.map((n,k)=>`<button data-act="move" data-from="${d}" data-to="${k}" class="${k===d?"on":""}" ${k===d?"disabled":""} aria-label="Flytta till ${DAYS[k]}">${n}</button>`).join("")}</div>`;
   h+=leftNote(r,d);
   h+=rateBox(r);
   h+=`<div class="sec">Ingredienser · <span class="num">${S.settings.servings}</span> portioner</div><ul class="ing">${ing||'<li><span></span><span class="muted">Inga ingredienser angivna</span></li>'}</ul>`;
@@ -736,8 +757,11 @@ function renderSheet(){
     inner=`<div class="shead"><h2>Inställningar</h2><button class="iconbtn" data-act="close-sheet" aria-label="Stäng">${IC.x}</button></div>
     <div class="sec">Portioner per middag</div>
     <div class="stepper"><button class="iconbtn" data-act="serv" data-v="-1" aria-label="Färre">−</button><b class="num">${S.settings.servings}</b><button class="iconbtn" data-act="serv" data-v="1" aria-label="Fler">+</button></div>
+    <div class="sec">Veckan börjar på</div>
+    <div class="daysel">${BASE_DS.map((n,i)=>{const js=(i+1)%7;return `<button data-act="wstart" data-v="${js}" class="${wsJs()===js?"on":""}" aria-pressed="${wsJs()===js}">${n}</button>`}).join("")}</div>
+    <p class="muted" style="font-size:14px">T.ex. dagen ni storhandlar.</p>
     <div class="sec">Dagar med helgrätter</div>
-    <div class="daysel">${DS.map((n,d)=>`<button data-act="helg" data-d="${d}" class="${S.settings.helg.includes(d)?"on":""}" aria-pressed="${S.settings.helg.includes(d)}">${n}</button>`).join("")}</div>
+    <div class="daysel">${BASE_DS.map((n,d)=>`<button data-act="helg" data-d="${d}" class="${S.settings.helg.includes(d)?"on":""}" aria-pressed="${S.settings.helg.includes(d)}">${n}</button>`).join("")}</div>
     <p class="muted" style="font-size:14px">Övriga dagar får enklare vardagsrätter.</p>
     <div class="sec">Allergier</div>
     <div class="chipsrow" style="display:flex;flex-wrap:wrap;gap:6px">${Object.entries(ALLERGENS).map(([k,A])=>`<button class="chip${(S.settings.allergens||[]).includes(k)?" on":""}" data-act="allergen" data-k="${k}" aria-pressed="${(S.settings.allergens||[]).includes(k)}">${A.label}</button>`).join("")}</div>
@@ -759,7 +783,7 @@ function renderSheet(){
     <div class="sec">Synk</div>
     <div class="note" style="font-size:13.5px;line-height:1.6">Hushåll: <b class="num">${esc((S.hid||"").slice(0,6))}</b><br>Inloggning: ${S.authOk?"OK":"<b class=\"warn\">misslyckades</b>"}<br>Senaste sparning: ${S.lastSync?new Date(S.lastSync).toLocaleTimeString("sv-SE"):"–"}${S.lastErr?`<br><b class="warn">Fel: ${esc(S.lastErr)}</b>`:""}</div>
     <button class="btn small" data-act="sync-test">Testa synk</button>
-    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-01 14:55</p>`}
+    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-02 07:41</p>`}
   else if(s.type==="edit"){inner=editorHtml()}
   $("#sheet-root").innerHTML=wrapSheet(inner)}
 function wrapSheet(inner){return `<div class="scrim" data-act="scrim"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>${inner}</div></div>`}
@@ -908,6 +932,10 @@ document.addEventListener("click",async ev=>{
     case"have-del":{const hv=[...((S.plan&&S.plan.have)||[])];hv.splice(+el.dataset.i,1);await savePlan({have:hv});break}
     case"allergen":{if(!guardWrite())return;const k=el.dataset.k;const a=new Set(S.settings.allergens||[]);a.has(k)?a.delete(k):a.add(k);S.settings={...S.settings,allergens:[...a]};renderSheet();render();await saveSettings(false);break}
     case"avoid-del":{if(!guardWrite())return;const a=[...(S.settings.avoid||[])];a.splice(+el.dataset.i,1);S.settings={...S.settings,avoid:a};renderSheet();render();await saveSettings(false);break}
+    case"move":{if(!guardWrite())return;const a=+el.dataset.from,b2=+el.dataset.to;const days=clone(S.week.days);const t=days[a],o=days[b2];
+      days[a]=o?{...o,lock:false}:null;days[b2]=t?{...t,lock:false}:null;closeSheet();
+      const on=o&&getR(o.r);await saveWeek(days,`${getR(t.r).name} flyttad till ${DAYS[b2].toLowerCase()}`+(on?`, ${on.name.toLowerCase()} till ${DAYS[a].toLowerCase()}`:""));break}
+    case"wstart":{if(!guardWrite())return;S.settings={...S.settings,weekStart:+el.dataset.v};syncWeekStart();renderSheet();render();await saveSettings(false);break}
     case"sync-test":{try{await S.db.doc("config/ping").set({by:S.uid,at:Date.now()});S.lastSync=Date.now();S.lastErr="";toast("Synken fungerar")}catch(e){handleErr(e)}renderSheet();break}
     case"share-inv":{const k=el.dataset.k||"hh";const url=inviteLink(k);
       try{if(navigator.share){await navigator.share({title:"Middagar",text:"Gå med i vår matsedel",url});break}}catch(e){if(e&&e.name==="AbortError")break}
@@ -982,7 +1010,7 @@ function subscribeWeek(){
   S.unsub.forEach(u=>u());S.unsub=[];
   S.week=null;S.weekLoaded=false;S.items=new Map();S.itemsLoaded=false;
   if(!S.db)return;const id=wid();
-  S.unsub.push(S.db.doc("weeks/"+id).onSnapshot(s=>{if(id!==wid())return;S.week=s.exists?s.data():null;S.weekLoaded=true;render()},e=>{console.error(e);S.weekLoaded=true;render()}));
+  S.unsub.push(S.db.doc("weeks/"+id).onSnapshot(s=>{if(id!==wid())return;S.week=s.exists?s.data():null;S.weekLoaded=true;if(!s.exists)maybeMigrateWeek(id);render()},e=>{console.error(e);S.weekLoaded=true;render()}));
   S.unsub.push(planSub());
   S.unsub.push(S.db.collection("shop/"+id+"/items").onSnapshot(s=>{if(id!==wid())return;const m=new Map();s.docs.forEach(d=>m.set(d.id,d.data()));S.items=m;S.itemsLoaded=true;
     if(S.tab==="shop")renderShop();else renderHeader()},e=>{console.error(e);S.itemsLoaded=true;render()}));
@@ -1022,7 +1050,7 @@ function parseInvite(){
   m=location.hash.match(/^#family=([0-9a-f]{32})$/);if(m)return{type:"fam",cid:m[1]};
   return null}
 async function init(){
-  const now=new Date();S.monday=mondayOf(now);if(now.getDay()===0)S.monday=addDays(S.monday,7);
+  syncWeekStart();
   const cfg=window.FIREBASE_CONFIG;
   if(!cfg||!cfg.apiKey){showConfigMissing();return}
   // Hemskärmsappen på iPhone har eget minne, skilt från Safari. Därför bär adressen med sig
@@ -1059,7 +1087,7 @@ async function init(){
   S.pool.collection("recipes").onSnapshot(s=>{const m=new Map();s.docs.forEach(d=>m.set(d.id,d.data()));S.over=m;mergeRecipes();S.recLoaded=true;render()},e=>{console.error(e);S.recLoaded=true;render()});
   S.db.collection("hidden").onSnapshot(s=>{S.hidden=new Set(s.docs.map(d=>d.id));mergeRecipes();render()},e=>console.error(e));
   S.db.collection("ratings").onSnapshot(s=>{const m={};s.docs.forEach(d=>m[d.id]=d.data());S.ratings=m;render()},e=>console.error(e));
-  S.db.doc("config/settings").onSnapshot(s=>{if(s.exists){const d=s.data();S.settings={servings:+d.servings||4,helg:Array.isArray(d.helg)?d.helg:[4,5,6],allergens:Array.isArray(d.allergens)?d.allergens:[],avoid:Array.isArray(d.avoid)?d.avoid:[]};render()}});
+  S.db.doc("config/settings").onSnapshot(s=>{if(s.exists){const d=s.data();S.settings={servings:+d.servings||4,helg:Array.isArray(d.helg)?d.helg:[4,5,6],allergens:Array.isArray(d.allergens)?d.allergens:[],avoid:Array.isArray(d.avoid)?d.avoid:[],weekStart:d.weekStart!=null?+d.weekStart:0};syncWeekStart();render()}});
   S.db.doc("config/staples").onSnapshot(s=>{if(s.exists&&Array.isArray(s.data().items))S.staples=s.data().items;if(S.tab==="shop")renderStaples()});
   subscribeWeek();render();
   if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(()=>{})}
