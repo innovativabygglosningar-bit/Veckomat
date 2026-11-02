@@ -1,0 +1,45 @@
+[
+ {
+  "specialOpeningHours": [
+   "2026-12-24 (Julafton) 08:00-14:00",
+   "2026-12-25 (Juldagen) 08:00-21:00",
+   "2026-12-26 (Annandag jul) 08:00-21:00",
+   "2026-12-31 (Nyårsafton) 08:00-19:00",
+   "2027-01-01 (Nyårsdagen) 08:00-21:00",
+   "2027-01-06 (Trettondagen) 08:00-21:00"
+  ],
+  "franchise": false,
+  "openingHoursMessageKey": "store.openMessage.open",
+  "scanAndGo": false,
+  "clickAndCollect": true,
+  "b2bClickAndCollect": true,
+  "openingStoreMessageValue": "8:00-21:00",
+  "displayName": "Willys Piteå",
+  "openingHours": [
+   "Mån 08:00-21:00",
+   "Tis 08:00-21:00",
+   "Ons 08:00-21:00",
+   "Tors 08:00-21:00",
+   "Fre 08:00-21:00",
+   "Lör 08:00-21:00",
+   "Sön 09:00-21:00"
+  ],
+  "externalPickupLocation": false,
+  "geoPoint": {
+   "latitude": 65.3242,
+   "longitude": 21.4393
+  },
+  "storeId": "2227",
+  "todaysOpeningHours": "8:00-21:00",
+  "name": "Willys Piteå",
+  "open": true,
+  "address": {
+   "line1": "Fläktgatan 20",
+   "line2": null,
+   "postalCode": "94147",
+   "town": "Piteå",
+   "phoneNumber": "0911-226360",
+   "phone": "0911-226360"
+  }
+ }
+]
