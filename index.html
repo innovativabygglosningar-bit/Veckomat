@@ -480,12 +480,14 @@ function prepBox(open){
 // deals.json hämtas varje morgon av GitHub Actions (scripts/willys.mjs). Finns den inte är listan tom.
 const DEAL_SKIP=/^(salt|peppar|olja|olivolja|vatten|socker|smör|mjölk|vetemjöl)$/;
 function dealKey(n){return normIng(n).replace(/^(färsk|fryst|frysta|riven|kokt|hel|små|stora|gul|röd|vit)\s+/,"").trim()}
+const DEAL_PRE="(?:(?:ekologisk|ekologiska|svensk|svenska|färsk|färska|hel|hela|fryst|frysta)\\s+)?";
+function dealMatch(name,k){const e=k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");return new RegExp("^"+DEAL_PRE+e+"(er|ar|or|n|na|en|s)?([^a-zåäöéü]|$)").test((name||"").toLowerCase())}
 function dealsFor(r){const ds=(S.deals&&S.deals.deals)||[];if(!ds.length||!r)return [];const out=[];
   for(const g of (r.ing||[])){if(!g||!g.n||g.c==="rest"||g.c==="skafferi")continue;const k=dealKey(g.n);if(k.length<4||DEAL_SKIP.test(k))continue;
-    const d=ds.find(d=>(d.name||"").toLowerCase().includes(k));if(d&&!out.some(o=>o.deal===d))out.push({ing:g.n,deal:d})}
+    const d=ds.find(d=>dealMatch(d.name,k));if(d&&!out.some(o=>o.deal===d))out.push({ing:g.n,c:g.c,deal:d})}
   return out}
-function dealFor(name){const ds=(S.deals&&S.deals.deals)||[];const k=dealKey(name);if(!ds.length||k.length<4||DEAL_SKIP.test(k))return null;return ds.find(d=>(d.name||"").toLowerCase().includes(k))||null}
-function dealScore(days){if(!S.deals)return 0;let s=0;weekRecs(days).forEach(r=>{if(r)s+=Math.min(dealsFor(r).length,3)*3});return s}
+function dealFor(name){const ds=(S.deals&&S.deals.deals)||[];const k=dealKey(name);if(!ds.length||k.length<4||DEAL_SKIP.test(k))return null;return ds.find(d=>dealMatch(d.name,k))||null}
+function dealScore(days){if(!S.deals)return 0;let s=0;weekRecs(days).forEach(r=>{if(r)s+=Math.min(dealsFor(r).reduce((t,o)=>t+(o.c==="kott"?5:2),0),8)});return s}
 function dealText(d){return [d.offer,d.member?"med Willys Plus":""].filter(Boolean).join(" ")}
 
 /* ---------- rules ---------- */
@@ -796,7 +798,7 @@ function renderSheet(){
     <div class="sec">Synk</div>
     <div class="note" style="font-size:13.5px;line-height:1.6">Hushåll: <b class="num">${esc((S.hid||"").slice(0,6))}</b><br>Inloggning: ${S.authOk?"OK":"<b class=\"warn\">misslyckades</b>"}<br>Senaste sparning: ${S.lastSync?new Date(S.lastSync).toLocaleTimeString("sv-SE"):"–"}${S.lastErr?`<br><b class="warn">Fel: ${esc(S.lastErr)}</b>`:""}</div>
     <button class="btn small" data-act="sync-test">Testa synk</button>
-    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-02 07:42</p>`}
+    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-02 07:48</p>`}
   else if(s.type==="edit"){inner=editorHtml()}
   $("#sheet-root").innerHTML=wrapSheet(inner)}
 function wrapSheet(inner){return `<div class="scrim" data-act="scrim"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>${inner}</div></div>`}

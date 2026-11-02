@@ -57,17 +57,19 @@ for (let page = 0; page < 10; page++) {
   await sleep(3000);
 }
 const fmt = v => v == null ? "" : typeof v === "object" ? (v.formattedValue || v.value || "") : String(v);
+const kr = v => { v = String(v || "").trim(); if (!v) return ""; const m = v.match(/^([\d.,]+)\/(\w+)$/); if (m) return `${m[1]} kr/${m[2]}`; return /^[\d.,]+$/.test(v) ? v + " kr" : v; };
 const deals = all.map(r => {
   const p = (r.potentialPromotions || [])[0] || {};
+  const offer = p.conditionLabel ? `${p.conditionLabel} ${kr(p.rewardLabel)}` : kr(p.rewardLabel) || kr(fmt(p.price)) || r.price || "";
   return {
     name: r.name || "",
-    brand: r.manufacturer || r.brand || "",
-    size: r.displayVolume || r.productLine2 || "",
-    offer: p.rewardLabel || p.conditionLabel || p.textLabel || fmt(p.price) || fmt(r.price),
-    price: fmt(p.price) || fmt(r.price),
-    compare: p.comparePrice || r.comparePrice || "",
-    member: p.campaignType === "LOYALTY" || /stamm|kort|medlem/i.test(p.redeemLimitLabel || p.conditionLabel || ""),
-    until: p.validUntil || p.endDate || "",
+    brand: r.manufacturer || "",
+    size: r.displayVolume || "",
+    offer,
+    ordinary: r.price || "",
+    compare: p.comparePrice || "",
+    member: p.campaignType === "LOYALTY",
+    until: p.endDate || "",
   };
 }).filter(d => d.name);
 const out = { store: storeName || cfg.search, storeId, fetched: new Date().toISOString(), count: deals.length, deals };
