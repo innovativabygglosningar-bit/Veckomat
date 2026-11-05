@@ -273,6 +273,12 @@ textarea{min-height:110px;resize:vertical;line-height:1.4}
       <h2 style="font-size:26px">Recept</h2>
       <button class="btn small primary" data-act="new-rec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Nytt recept</button>
     </div>
+    <div class="helper" id="imp-box" style="margin-top:12px" hidden>
+      <span class="eyebrow">Hämta recept från länk</span>
+      <form id="imp-form" class="row"><input type="url" id="imp-link" placeholder="Klistra in länk till ett recept" style="flex:1;min-width:0" autocomplete="off"><button class="btn small primary" type="submit">Hämta</button></form>
+      <p>Fungerar med t.ex. Köket, Zeta, Lina's Matkasse och många andra sajter. ICA släpper inte in automatiska hämtningar. Det tar oftast 5–15 minuter innan receptet dyker upp.</p>
+      <div id="imp-rows"></div>
+    </div>
     <div style="margin-top:12px"><input type="search" id="rec-q" placeholder="Sök recept eller ingrediens"></div>
     <div class="filters" id="rec-filters"></div>
     <div id="rec-list"></div>
@@ -713,7 +719,25 @@ function filteredRecipes(q,f){q=(q||"").toLowerCase().trim();
     if(f&&!["alla","fav","top","obetyg","onepot","andra","dolda"].includes(f)&&r.cat!==f&&r.protein!==f)return false;
     if(!q)return true;
     return r.name.toLowerCase().includes(q)||(r.ing||[]).some(g=>(g.n||"").toLowerCase().includes(q))}).sort((a,b)=>(f==="top"||f==="fav")?((rating(b).avg||0)-(rating(a).avg||0)||a.name.localeCompare(b.name,"sv")):a.name.localeCompare(b.name,"sv"))}
+function impRows(){const m=S.imports||new Map();const rows=[];
+  for(const [id,v] of m){const age=Date.now()-(v.doneAt||v.at||0);
+    if(v.status==="pending")rows.push(`<div class="row" style="font-size:14px;gap:6px"><b>Hämtar:</b><span class="muted" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0">${esc(v.url)}</span></div>`);
+    else if(v.status==="failed")rows.push(`<div style="font-size:14px"><b class="warn">Kunde inte hämta</b> <span class="muted">${esc(v.url)}</span><br>${esc(v.error||"")} <button class="btn small" data-act="imp-del" data-id="${esc(id)}">Ta bort</button></div>`);
+    else if(v.status==="done"&&age<2*864e5&&getR(v.recipeId))rows.push(`<div class="row" style="font-size:14px;gap:6px"><b>Tillagt:</b><span style="flex:1;min-width:0">${esc(v.name||"")}</span><button class="btn small" data-act="open-rec" data-id="${esc(v.recipeId)}">Visa</button></div>`)}
+  return rows.join("")}
+async function startImport(url){if(!guardWrite())return;url=(url||"").trim();
+  if(!/^https?:\/\//.test(url)){toast("Klistra in en hel länk som börjar med https://");return}
+  if(/(^|\.)ica\.se\//.test(url.replace(/^https?:\/\//,""))){toast("ICA släpper tyvärr inte in automatiska hämtningar.");return}
+  const ref=S.fs.collection("imports").doc();const at=Date.now();
+  try{await ref.set({url,status:"pending",at});await S.db.doc("imports/"+ref.id).set({url,status:"pending",at,by:S.uid});toast("Receptet hämtas. Det tar oftast 5–15 minuter.")}catch(e){handleErr(e)}}
+async function finishImport(id,d){if(!d.exists)return;const x=d.data();const hh=S.imports&&S.imports.get(id);if(!hh||hh.status!=="pending")return;
+  const stop=()=>{if(S.watch&&S.watch[id]){S.watch[id]();delete S.watch[id]}};
+  if(x.status==="done"&&x.result){const rid="w-"+id;const r=x.result;
+    try{await S.pool.doc("recipes/"+rid).set({...r,by:S.uid,hh:S.hid,editedBy:S.uid,updatedAt:Date.now()});
+      await S.db.doc("imports/"+id).set({...hh,status:"done",recipeId:rid,name:r.name,doneAt:Date.now()});toast(r.name+" är tillagt bland recepten")}catch(e){handleErr(e)}stop()}
+  else if(x.status==="failed"){try{await S.db.doc("imports/"+id).set({...hh,status:"failed",error:x.error||"Okänt fel",doneAt:Date.now()})}catch(e){}stop()}}
 function renderRecipes(){
+  {const b=$("#imp-box");if(b){b.hidden=!S.fs;if(S.fs)$("#imp-rows").innerHTML=impRows()}}
   $("#rec-filters").innerHTML=FILTERS.map(([k,l])=>`<button class="chip${S.recFilter===k?" on":""}" data-act="filter" data-f="${k}">${l}</button>`).join("");
   renderRecList()}
 function recRow(r,act,extra=""){return `<button class="${act==="pick-choose"?"pick":"rec"}" data-act="${act}" data-id="${esc(r.id)}" ${extra}><span class="stripe p${PCLS[r.protein]}" style="width:4px;align-self:stretch;border-radius:4px;flex:none"></span><span style="min-width:0;flex:1"><span class="t" style="font-weight:600;display:block">${esc(r.name)}</span><span class="m" style="font-size:13px;color:var(--muted)">${r.by&&r.hh!==S.hid?esc(r.by)+" · ":""}${r.cat==="helg"?"Helg":"Vardag"} · ${PROT[r.protein]} · ${BAS[r.bas]} · <span class="num">${r.time} min</span>${rating(r).avg?" · "+miniStar(r):""}${r.onepot?" · One pot":""}</span></span></button>`}
@@ -798,7 +822,7 @@ function renderSheet(){
     <div class="sec">Synk</div>
     <div class="note" style="font-size:13.5px;line-height:1.6">Hushåll: <b class="num">${esc((S.hid||"").slice(0,6))}</b><br>Inloggning: ${S.authOk?"OK":"<b class=\"warn\">misslyckades</b>"}<br>Senaste sparning: ${S.lastSync?new Date(S.lastSync).toLocaleTimeString("sv-SE"):"–"}${S.lastErr?`<br><b class="warn">Fel: ${esc(S.lastErr)}</b>`:""}</div>
     <button class="btn small" data-act="sync-test">Testa synk</button>
-    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-02 07:48</p>`}
+    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-05 17:36</p>`}
   else if(s.type==="edit"){inner=editorHtml()}
   $("#sheet-root").innerHTML=wrapSheet(inner)}
 function wrapSheet(inner){return `<div class="scrim" data-act="scrim"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>${inner}</div></div>`}
@@ -951,6 +975,7 @@ document.addEventListener("click",async ev=>{
       days[a]=o?{...o,lock:false}:null;days[b2]=t?{...t,lock:false}:null;closeSheet();
       const on=o&&getR(o.r);await saveWeek(days,`${getR(t.r).name} flyttad till ${DAYS[b2].toLowerCase()}`+(on?`, ${on.name.toLowerCase()} till ${DAYS[a].toLowerCase()}`:""));break}
     case"wstart":{if(!guardWrite())return;S.settings={...S.settings,weekStart:+el.dataset.v};syncWeekStart();renderSheet();render();await saveSettings(false);break}
+    case"imp-del":{try{await S.db.doc("imports/"+id).delete()}catch(e){handleErr(e)}break}
     case"sync-test":{try{await S.db.doc("config/ping").set({by:S.uid,at:Date.now()});S.lastSync=Date.now();S.lastErr="";toast("Synken fungerar")}catch(e){handleErr(e)}renderSheet();break}
     case"share-inv":{const k=el.dataset.k||"hh";const url=inviteLink(k);
       try{if(navigator.share){await navigator.share({title:"Middagar",text:"Gå med i vår matsedel",url});break}}catch(e){if(e&&e.name==="AbortError")break}
@@ -990,6 +1015,7 @@ document.addEventListener("submit",async ev=>{
     const list=[...S.staples,{n:n.charAt(0).toUpperCase()+n.slice(1),c:guessCat(n)}];S.staples=list;renderStaples();const ni=$("#staple-input");if(ni)ni.focus();
     try{await S.db.doc("config/staples").set({items:list})}catch(e){handleErr(e)}}
   else if(ev.target.id==="rec-form")await saveRecipe();
+  else if(ev.target.id==="imp-form"){const i=$("#imp-link");const v=i.value;i.value="";await startImport(v)}
   else if(ev.target.id==="have-form"){const v=($("#have-input").value||"").trim().toLowerCase();if(!v)return;
     const hv=[...((S.plan&&S.plan.have)||[])];v.split(",").map(x=>x.trim()).filter(Boolean).forEach(x=>{if(!hv.includes(x))hv.push(x)});await savePlan({have:hv});
     const i=$("#have-input");if(i)i.focus()}
@@ -1093,6 +1119,10 @@ async function init(){
   S.db={doc:p=>fs.doc(base+p),collection:p=>fs.collection(base+p)};
   S.pool={doc:p=>fs.doc(cbase+p),collection:p=>fs.collection(cbase+p)};
   S.ready=true;
+  S.fs=fs;S.watch={};
+  S.db.collection("imports").onSnapshot(s=>{const m=new Map();s.docs.forEach(x=>m.set(x.id,x.data()));S.imports=m;
+    for(const [id,v] of m)if(v.status==="pending"&&!S.watch[id])S.watch[id]=fs.doc("imports/"+id).onSnapshot(x=>finishImport(id,x),e=>console.error(e));
+    if(S.tab==="rec")renderRecipes()},e=>console.error(e));
   if(lsGet("vm_import")==="1"){try{await runImport();lsSet("vm_import","0")}catch(e){console.error(e)}}
   S.offline=!navigator.onLine;
   window.addEventListener("online",()=>{S.offline=false;renderNotice()});

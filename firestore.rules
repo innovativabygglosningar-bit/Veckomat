@@ -2,12 +2,16 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     // Hushåll och receptkretsar har slumpade 32-teckens id som bara finns i inbjudningslänkarna.
-    // Man kommer bara åt dem om man känner till id:t; det går inte att lista dem.
     match /households/{hid}/{document=**} {
       allow read, write: if request.auth != null && hid.size() == 32;
     }
     match /circles/{cid}/{document=**} {
       allow read, write: if request.auth != null && cid.size() == 32;
+    }
+    // Importkö för recept från länkar. Innehåller bara länken och det hämtade receptet.
+    match /imports/{id} {
+      allow create: if request.auth != null && request.resource.data.status == "pending";
+      allow read, update: if request.auth != null;
     }
   }
 }

@@ -1,0 +1,17 @@
+name: Hämta recept från länkar
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+  push:
+    paths: ["scripts/import-queue.mjs", "scripts/recipe-lib.mjs", ".github/workflows/imports.yml"]
+concurrency: { group: imports, cancel-in-progress: false }
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: node scripts/import-queue.mjs
