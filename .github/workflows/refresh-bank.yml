@@ -3,6 +3,8 @@ on:
   push:
     paths: ["bank-targets.json", "scripts/refresh-bank.mjs", ".github/workflows/refresh-bank.yml"]
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   fetch:
     runs-on: ubuntu-latest
@@ -12,5 +14,14 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 20 }
       - run: node scripts/refresh-bank.mjs
-      - uses: actions/upload-artifact@v4
-        with: { name: bank-raw, path: bank-raw.json, retention-days: 7 }
+      - name: Kryptera och spara på grenen data
+        run: |
+          openssl rand -hex 32 > k.txt
+          openssl enc -aes-256-cbc -pbkdf2 -salt -in bank-raw.json -out /tmp/bank-raw.enc -pass file:k.txt
+          openssl pkeyutl -encrypt -pubin -inkey scripts/bank-pub.pem -in k.txt -out /tmp/bank-raw.key.enc
+          rm k.txt bank-raw.json
+          git config user.name "bank-bot"; git config user.email "actions@users.noreply.github.com"
+          git checkout --orphan data
+          git rm -rq --cached . && rm -rf -- * .github .nojekyll 2>/dev/null || true
+          cp /tmp/bank-raw.enc /tmp/bank-raw.key.enc .
+          git add bank-raw.enc bank-raw.key.enc && git commit -qm "Krypterad receptdata" && git push -f origin data

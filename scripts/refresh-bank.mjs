@@ -24,17 +24,21 @@ for (const [base, filt] of [["https://www.koket.se", u => !/\/(kockar|artiklar|t
 }
 console.log("Kandidater totalt:", pool.length);
 const sim = (a, b) => { const A = new Set(a), B = new Set(b); let i = 0; A.forEach(x => B.has(x) && i++); return i / (A.size + B.size - i || 1) + (i === A.size && A.size ? 0.25 : 0); };
+// Huvudrätten (orden före "med", "i", "och", komma) måste finnas i det hittade receptets namn.
+const head = n => toks(n.toLowerCase().split(/ med | i | på | samt |,| och /)[0]);
+const has = (hs, ts) => hs.every(h => ts.some(t => t === h || (h.length >= 5 && (t.startsWith(h) || h.startsWith(t) && t.length >= 5)) || (t.length >= 6 && h.includes(t))));
 const out = [];
 for (const t of targets) {
-  let cands = t.url ? [{ u: t.url, s: 9 }] : pool.map(p => ({ u: p.u, s: sim(toks(t.name), p.t) })).filter(c => c.s >= 0.3).sort((a, b) => b.s - a.s).slice(0, 3);
+  const hd = head(t.name);
+  let cands = t.url ? [{ u: t.url, s: 9 }] : pool.filter(p => has(hd, p.t)).map(p => ({ u: p.u, s: sim(toks(t.name), p.t) })).sort((a, b) => b.s - a.s).slice(0, 4);
   let best = null;
   for (const c of cands) {
     try { const { status, text, url } = await getText(c.u); const r = status === 200 ? parseRecipe(text, url) : null;
-      if (r && r.ingredients.length) { const s2 = t.url ? 9 : sim(toks(t.name), toks(r.name)); const score = s2 + (r.rating ? Math.min(r.rating.count, 500) / 5000 : 0);
+      if (r && r.ingredients.length >= 3 && (t.url || has(hd, toks(r.name)))) { const s2 = t.url ? 9 : sim(toks(t.name), toks(r.name)); const score = s2 + (r.rating ? Math.min(r.rating.count, 500) / 2500 : 0);
         if (!best || score > best.score) best = { ...r, score, slugScore: c.s }; } } catch (e) { console.log("fel", c.u, e.message); }
-    await sleep(700);
+    await sleep(600);
   }
-  console.log(best ? `OK  ${t.name}  =>  ${best.name}  (${best.score.toFixed(2)}) ${best.url}` : `--  ${t.name}  (ingen träff)`);
+  console.log(best ? `OK  ${t.name}  =>  ${best.name}  (${best.score.toFixed(2)})` : `--  ${t.name}  (ingen träff)`);
   out.push({ id: t.id, myName: t.name, match: best });
 }
 fs.writeFileSync("bank-raw.json", JSON.stringify(out));
