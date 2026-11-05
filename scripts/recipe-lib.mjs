@@ -38,17 +38,18 @@ export function parseIngredient(s) {
   if (u === "ml" || u === "cl") u = "dl"; if (u === "hg") u = "g";
   let n = t.split(/,|\(| till | att /)[0].trim() || t.trim();
   if (q != null && !u) u = "st";
+  n = n.replace(/:$/, "").trim();
+  if (q == null && /^(till |för |att )?(servering|tillbehör|topping|toppning|garnering|garnityr|sås|dressing|fyllning|marinad|deg|pajdeg|smet|glasyr|kräm|röra|sallad|gremolata|ugnsrostade grönsaker)( till .*)?$/i.test(n)) return { q: null, u: "", n: "", c: "ovrigt" };
   return { q: q == null ? null : Math.round(q * 100) / 100, u, n: n.charAt(0).toLowerCase() + n.slice(1), c: guessCat(n) };
 }
 export function guessCat(n) { const s = n.toLowerCase();
-  const m = [["skafferi", /olja$|^(salt|peppar|svartpeppar|vitpeppar|olja|olivolja|rapsolja|smör och olja|socker|vetemjöl|mjöl|majsstärkelse|maizena|vinäger|ättika)|kryddor|^(oregano|timjan torkad|paprikapulver|spiskummin|kanel|curry|chiliflakes|lagerblad|kardemumma)/],
-    ["kott", /kött|färs|kyckling|kalkon|korv|bacon|skinka|fläsk|biff|lax|torsk|sej|fisk|räk|lamm|entrecote|högrev|chorizo|pancetta|salsiccia|ankbröst|musslor|tonfisk/],
-    ["torr", /krossade|passerade|konserv|kokosmjölk|buljong|fond|tomatpuré|soja|sweet chili|ostronsås|fisksås|currypasta|pesto/],
-    ["mejeri", /mjölk|filmjölk|yoghurt|grädde|smör|ost|ägg|kvarg|crème|creme|gräddfil|parmesan|mozzarella|feta|halloumi|ricotta/],
-    ["brod", /bröd|knäcke|tortilla|pita|naan|bulle|baguette|ciabatta/],
+  const m = [["skafferi", /(^|\s)(salt|flingsalt|havssalt|peppar|svartpeppar|vitpeppar|socker|strösocker|farinsocker|vatten|kallt vatten|ljummet vatten|olja|olivolja|rapsolja|neutral olja|vetemjöl|mjöl|majsstärkelse|maizena|bakpulver|bikarbonat)$|olja$|vinäger|ättika|kryddpeppar|pepparkorn|lagerblad|kanel|kardemumma|spiskummin|paprikapulver|chiliflakes|chilipulver|oregano|curry$|currypulver|gurkmeja|garam masala|muskot|torkad timjan|torkad rosmarin|torkad basilika|nejlika|stjärnanis|kryddblandning|taco ?krydda|fajitakrydda|cayenne|saffran|sambal|tabasco|sriracha|hoisin|rörsocker|jäst/],
+    ["kott", /kött|färs|kyckling|kalkon|korv|bacon|skinka|fläsk|biff|lax|torsk|sej|fisk|räk|lamm|entrecote|entrecôte|högrev|chorizo|pancetta|salsiccia|ankbröst|musslor|tonfisk|kummel|rödspätta|strömming|kassler|oxfilé|kalv/],
+    ["torr", /nudlar|pasta|spaghetti|penne|fusilli|tagliatelle|linguine|makaroner|lasagne|ris$|^ris|jasminris|basmatiris|arborio|krossade|passerade|konserv|kokosmjölk|buljong|fond|tomatpuré|soja|sweet chili|ostronsås|fisksås|currypasta|pesto|couscous|bulgur|quinoa|linser|kikärt|bönor på burk|honung|senap|ketchup|majonnäs|sirap|tahini|nötter|frön|mandel/],
+    ["mejeri", /mjölk|filmjölk|yoghurt|grädde|smör|ost$|ost |parmesan|mozzarella|feta|halloumi|ricotta|kvarg|crème|creme|gräddfil|(^|\s)ägg(\s|$)|äggul|äggvit|^ägg/],
+    ["brod", /bröd|knäcke|tortilla|pita|naan|bulle|baguette|ciabatta|hamburgerbröd|wraps/],
     ["frys", /fryst|frysta|glass/],
-    ["gront", /äpple|banan|apelsin|citron|lime|lök|tomat|gurka|sallad|paprika|morot|morötter|potatis|avokado|spenat|broccoli|svamp|champinjon|vitlök|ingefära|persilja|dill|koriander|basilika|chili|zucchini|aubergine|kål|purjo|selleri|sparris|bönor|ärtor|mango|rödbet|palsternack|örter|mynta|timjan|rosmarin|gräslök|ruccola/],
-    ["torr", /pasta|spaghetti|penne|fusilli|nudlar|ris|mjöl|socker|gryn|müsli|kaffe|bönor|linser|kikärt|konserv|krossade|buljong|fond|soja|sås|pesto|kokosmjölk|tomatpuré|couscous|bulgur|quinoa|nötter|frön|honung|senap|ketchup|majonnäs/]];
+    ["gront", /äpple|banan|apelsin|citron|lime|lök|tomat|gurka|sallad|paprika|morot|morötter|potatis|avokado|spenat|broccoli|svamp|champinjon|kantarell|vitlök|ingefära|persilja|dill|koriander|basilika|chili|zucchini|aubergine|kål|purjo|selleri|sparris|bönor|ärtor|mango|rödbet|palsternack|örter|mynta|timjan|rosmarin|gräslök|ruccola|blomkål|pumpa|majs|bladselleri|fänkål|rädis|squash|päron|granatäpple|salvia|dragon|paprik|haricots|lingon|krasse|jalapeñ|oliver/]];
   for (const [c, re] of m) if (re.test(s)) return c; return "ovrigt"; }
 function minutes(iso) { const m = String(iso || "").match(/P(?:T)?(?:(\d+)H)?(?:(\d+)M)?/i); if (!m) return 0; return (+(m[1] || 0)) * 60 + (+(m[2] || 0)); }
 export function toAppRecipe(raw) {

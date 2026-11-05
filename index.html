@@ -758,7 +758,9 @@ function closeSheet(){S.sheet=null;S.edit=null;$("#sheet-root").innerHTML=""}
 function recDetail(r,d){
   const f=(S.settings.servings||4)/(r.servings||4);
   const ing=(r.ing||[]).map(g=>`<li><span class="q">${esc(fmtQU(g.q!=null&&g.q!==""?scaleQ(+g.q,g.u,f):null,g.u))}</span><span>${esc(g.n)}</span></li>`).join("");
-  const steps=(r.steps||[]).map(s=>`<li>${esc(s)}</li>`).join("");
+  let stepArr=r.steps&&r.steps.length?r.steps:((S.bankSteps&&S.bankSteps[r.id])||[]);
+  if(!stepArr.length&&r.src&&S.fs)loadBankSteps(r.id);
+  const steps=stepArr.map(s=>`<li>${esc(s)}</li>`).join("");
   let h=`<div class="shead"><div>${d!=null?`<div class="eyebrow">${DAYS[d]} ${addDays(S.monday,d).getDate()}/${addDays(S.monday,d).getMonth()+1}</div>`:""}<h2>${esc(r.name)}</h2></div><button class="iconbtn" data-act="close-sheet" aria-label="Stäng">${IC.x}</button></div>
   <div class="meta"><span class="t${PCLS[r.protein]}" style="font-weight:600">${PROT[r.protein]}</span><span>${BAS[r.bas]}</span><span class="num">${r.time} min</span><span>${r.cat==="helg"?"Helgrätt":"Vardagsrätt"}</span>${r.onepot?"<span>One pot</span>":""}</div>`;
   if(d!=null){const x=S.week.days[d]||{};h+=`<div class="row" style="margin-bottom:16px"><button class="btn small" data-act="swap" data-d="${d}" ${x.lock?"disabled":""}>${IC.swap}Slumpa ny</button><button class="btn small" data-act="pick" data-d="${d}">${IC.list}Välj själv</button><button class="btn small" data-act="lock" data-d="${d}">${x.lock?IC.lock+"Låst":IC.unlock+"Lås"}</button></div>`}
@@ -769,12 +771,15 @@ function recDetail(r,d){
   h+=rateBox(r);
   h+=`<div class="sec">Ingredienser · <span class="num">${S.settings.servings}</span> portioner</div><ul class="ing">${ing||'<li><span></span><span class="muted">Inga ingredienser angivna</span></li>'}</ul>`;
   if(steps)h+=`<div class="sec">Gör så här</div><ol class="steps">${steps}</ol>`;
+  else if(r.src)h+=`<div class="sec">Gör så här</div><p class="muted" style="font-size:14px">Stegen hämtas från ${esc(r.src)}. Under tiden finns de i originalreceptet.</p>`;
   if(r.url)h+=`<p><a href="${esc(r.url)}" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;display:inline-flex;gap:6px;align-items:center">${IC.link.replace('<svg','<svg width="18" height="18"')}Originalrecept</a></p>`;
   if(r.by)h+=`<p class="muted" style="font-size:14px">Tillagd av ${esc(r.by)}${r.hh===S.hid?"":" i ett annat hushåll"}.</p>`;
   if(d==null){const hid=S.hidden.has(r.id);const mine=r.hh===S.hid&&!S.base.has(r.id);
     h+=`<div class="row" style="margin-top:8px"><button class="btn small" data-act="edit-rec" data-id="${esc(r.id)}">Redigera</button>${hid?`<button class="btn small" data-act="unhide-rec" data-id="${esc(r.id)}">Visa igen</button>`:`<button class="btn small" data-act="hide-rec" data-id="${esc(r.id)}">Dölj för oss</button>`}${mine?`<button class="btn small danger" data-act="del-rec" data-id="${esc(r.id)}">Ta bort för alla</button>`:""}</div>
     <p class="muted" style="font-size:13px">${hid?"Rätten är dold för ert hushåll och kommer inte med i slumpningen.":"Dölj tar bort rätten bara för ert hushåll. Andra hushåll som ni delar recept med behåller den."}</p>`}
   return h}
+function loadBankSteps(id){S.bankSteps=S.bankSteps||{};S._bsLoading=S._bsLoading||{};if(S._bsLoading[id])return;S._bsLoading[id]=1;
+  S.fs.doc("bankSteps/"+id).get().then(d=>{if(d.exists){S.bankSteps[id]=d.data().steps||[];if(S.sheet)renderSheet()}}).catch(()=>{})}
 function rateBox(r){
   const ra=rating(r);
   const stars=[1,2,3,4,5].map(v=>`<button data-act="rate" data-id="${esc(r.id)}" data-v="${v}" class="${v<=ra.mine?"on":""}" aria-label="${v} av 5 stjärnor" ${S.canWrite&&S.uid?"":"disabled"}>${IC.star}</button>`).join("");
@@ -822,7 +827,7 @@ function renderSheet(){
     <div class="sec">Synk</div>
     <div class="note" style="font-size:13.5px;line-height:1.6">Hushåll: <b class="num">${esc((S.hid||"").slice(0,6))}</b><br>Inloggning: ${S.authOk?"OK":"<b class=\"warn\">misslyckades</b>"}<br>Senaste sparning: ${S.lastSync?new Date(S.lastSync).toLocaleTimeString("sv-SE"):"–"}${S.lastErr?`<br><b class="warn">Fel: ${esc(S.lastErr)}</b>`:""}</div>
     <button class="btn small" data-act="sync-test">Testa synk</button>
-    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-05 17:36</p>`}
+    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-05 18:24</p>`}
   else if(s.type==="edit"){inner=editorHtml()}
   $("#sheet-root").innerHTML=wrapSheet(inner)}
 function wrapSheet(inner){return `<div class="scrim" data-act="scrim"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>${inner}</div></div>`}
