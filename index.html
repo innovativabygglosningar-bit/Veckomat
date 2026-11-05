@@ -728,7 +728,7 @@ function impRows(){const m=S.imports||new Map();const rows=[];
 async function startImport(url){if(!guardWrite())return;url=(url||"").trim();
   if(!/^https?:\/\//.test(url)){toast("Klistra in en hel länk som börjar med https://");return}
   if(/(^|\.)ica\.se\//.test(url.replace(/^https?:\/\//,""))){toast("ICA släpper tyvärr inte in automatiska hämtningar.");return}
-  const ref=S.fs.collection("imports").doc();const at=Date.now();
+  const ref=S.fs.collection("circles/veckomatgemensam0000000000000000/imports").doc();const at=Date.now();
   try{await ref.set({url,status:"pending",at});await S.db.doc("imports/"+ref.id).set({url,status:"pending",at,by:S.uid});toast("Receptet hämtas. Det tar oftast 5–15 minuter.")}catch(e){handleErr(e)}}
 async function finishImport(id,d){if(!d.exists)return;const x=d.data();const hh=S.imports&&S.imports.get(id);if(!hh||hh.status!=="pending")return;
   const stop=()=>{if(S.watch&&S.watch[id]){S.watch[id]();delete S.watch[id]}};
@@ -779,7 +779,7 @@ function recDetail(r,d){
     <p class="muted" style="font-size:13px">${hid?"Rätten är dold för ert hushåll och kommer inte med i slumpningen.":"Dölj tar bort rätten bara för ert hushåll. Andra hushåll som ni delar recept med behåller den."}</p>`}
   return h}
 function loadBankSteps(id){S.bankSteps=S.bankSteps||{};S._bsLoading=S._bsLoading||{};if(S._bsLoading[id])return;S._bsLoading[id]=1;
-  S.fs.doc("bankSteps/"+id).get().then(d=>{if(d.exists){S.bankSteps[id]=d.data().steps||[];if(S.sheet)renderSheet()}}).catch(()=>{})}
+  S.fs.doc("circles/veckomatgemensam0000000000000000/bankSteps/"+id).get().then(d=>{if(d.exists){S.bankSteps[id]=d.data().steps||[];if(S.sheet)renderSheet()}}).catch(()=>{})}
 function rateBox(r){
   const ra=rating(r);
   const stars=[1,2,3,4,5].map(v=>`<button data-act="rate" data-id="${esc(r.id)}" data-v="${v}" class="${v<=ra.mine?"on":""}" aria-label="${v} av 5 stjärnor" ${S.canWrite&&S.uid?"":"disabled"}>${IC.star}</button>`).join("");
@@ -827,7 +827,7 @@ function renderSheet(){
     <div class="sec">Synk</div>
     <div class="note" style="font-size:13.5px;line-height:1.6">Hushåll: <b class="num">${esc((S.hid||"").slice(0,6))}</b><br>Inloggning: ${S.authOk?"OK":"<b class=\"warn\">misslyckades</b>"}<br>Senaste sparning: ${S.lastSync?new Date(S.lastSync).toLocaleTimeString("sv-SE"):"–"}${S.lastErr?`<br><b class="warn">Fel: ${esc(S.lastErr)}</b>`:""}</div>
     <button class="btn small" data-act="sync-test">Testa synk</button>
-    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-05 18:24</p>`}
+    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-05 21:14</p>`}
   else if(s.type==="edit"){inner=editorHtml()}
   $("#sheet-root").innerHTML=wrapSheet(inner)}
 function wrapSheet(inner){return `<div class="scrim" data-act="scrim"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>${inner}</div></div>`}
@@ -1126,7 +1126,7 @@ async function init(){
   S.ready=true;
   S.fs=fs;S.watch={};
   S.db.collection("imports").onSnapshot(s=>{const m=new Map();s.docs.forEach(x=>m.set(x.id,x.data()));S.imports=m;
-    for(const [id,v] of m)if(v.status==="pending"&&!S.watch[id])S.watch[id]=fs.doc("imports/"+id).onSnapshot(x=>finishImport(id,x),e=>console.error(e));
+    for(const [id,v] of m)if(v.status==="pending"&&!S.watch[id])S.watch[id]=fs.doc("circles/veckomatgemensam0000000000000000/imports/"+id).onSnapshot(x=>finishImport(id,x),e=>console.error(e));
     if(S.tab==="rec")renderRecipes()},e=>console.error(e));
   if(lsGet("vm_import")==="1"){try{await runImport();lsSet("vm_import","0")}catch(e){console.error(e)}}
   S.offline=!navigator.onLine;

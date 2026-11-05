@@ -10,7 +10,7 @@ const AH = { "Authorization": "Bearer " + auth.idToken, "Content-Type": "applica
 const DB = `https://firestore.googleapis.com/v1/projects/${PROJECT}/databases/(default)/documents`;
 const val = v => v === null || v === undefined ? { nullValue: null } : typeof v === "boolean" ? { booleanValue: v } : typeof v === "number" ? (Number.isInteger(v) ? { integerValue: String(v) } : { doubleValue: v })
   : typeof v === "string" ? { stringValue: v } : Array.isArray(v) ? { arrayValue: { values: v.map(val) } } : { mapValue: { fields: Object.fromEntries(Object.entries(v).map(([k, x]) => [k, val(x)])) } };
-const q = await (await fetch(`${DB}:runQuery`, { method: "POST", headers: AH, body: JSON.stringify({ structuredQuery: { from: [{ collectionId: "imports" }],
+const q = await (await fetch(`${DB}/circles/veckomatgemensam0000000000000000:runQuery`, { method: "POST", headers: AH, body: JSON.stringify({ structuredQuery: { from: [{ collectionId: "imports" }],
   where: { fieldFilter: { field: { fieldPath: "status" }, op: "EQUAL", value: { stringValue: "pending" } } }, limit: 25 } }) })).json();
 const docs = (Array.isArray(q) ? q : []).filter(x => x.document).map(x => x.document);
 console.log("Väntande importer:", docs.length, Array.isArray(q) ? "" : JSON.stringify(q).slice(0, 300));

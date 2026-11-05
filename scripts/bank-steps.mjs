@@ -10,14 +10,14 @@ const DB = `https://firestore.googleapis.com/v1/projects/${cfg.projectId}/databa
 const recs = JSON.parse(fs.readFileSync("recipes.json", "utf8")).filter(r => r.src && r.url);
 let done = 0, skip = 0, fail = 0;
 for (const r of recs) {
-  const ex = await fetch(`${DB}/bankSteps/${encodeURIComponent(r.id)}`, { headers: AH });
+  const ex = await fetch(`${DB}/circles/veckomatgemensam0000000000000000/bankSteps/${encodeURIComponent(r.id)}`, { headers: AH });
   if (ex.status === 200) { const j = await ex.json(); if (j.fields?.url?.stringValue === r.url) { skip++; continue; } }
-  else if (ex.status === 403) { console.log("Saknar behörighet till bankSteps. Uppdatera reglerna i Firebase."); process.exit(0); }
+  else if (ex.status === 403) { console.log("Saknar behörighet."); process.exit(0); }
   try {
     const { status, text, url } = await getText(r.url); const p = status === 200 ? parseRecipe(text, url) : null;
     if (!p || !p.steps.length) throw new Error("inga steg (" + status + ")");
     const body = { fields: { url: { stringValue: r.url }, steps: { arrayValue: { values: p.steps.slice(0, 20).map(s => ({ stringValue: s })) } }, at: { integerValue: String(Date.now()) } } };
-    const w = await fetch(`${DB}/bankSteps/${encodeURIComponent(r.id)}`, { method: "PATCH", headers: AH, body: JSON.stringify(body) });
+    const w = await fetch(`${DB}/circles/veckomatgemensam0000000000000000/bankSteps/${encodeURIComponent(r.id)}`, { method: "PATCH", headers: AH, body: JSON.stringify(body) });
     if (!w.ok) throw new Error("kunde inte spara " + w.status); done++;
   } catch (e) { fail++; console.log("FEL", r.id, e.message); }
   await sleep(600);
