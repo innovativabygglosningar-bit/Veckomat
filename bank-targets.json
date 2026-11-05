@@ -1,0 +1,1011 @@
+[
+{
+"id": "ankbrost-apelsin",
+"name": "Ankbröst med apelsinsås och potatisgratäng"
+},
+{
+"id": "aubergine-parmigiana",
+"name": "Aubergine parmigiana"
+},
+{
+"id": "ica-aubergine-tomatgryta",
+"name": "Aubergine- och tomatgryta"
+},
+{
+"id": "bakpotatis-broccoli",
+"name": "Bakad potatis med broccoli och ost"
+},
+{
+"id": "bakpotatis-rakrora",
+"name": "Bakad potatis med räkröra"
+},
+{
+"id": "arla-bakad-torsk-smorsas",
+"name": "Bakad torsk med smörsås"
+},
+{
+"id": "biff-rydberg",
+"name": "Biff Rydberg"
+},
+{
+"id": "biff-stroganoff",
+"name": "Biff stroganoff med ris"
+},
+{
+"id": "biffwok-nudlar",
+"name": "Biffwok med nudlar och broccoli"
+},
+{
+"id": "blomkalscurry",
+"name": "Blomkålscurry med ris"
+},
+{
+"id": "boeuf-bourguignon",
+"name": "Boeuf bourguignon"
+},
+{
+"id": "burrito-bowl",
+"name": "Burrito bowl med köttfärs"
+},
+{
+"id": "butter-chicken",
+"name": "Butter chicken med naan och ris"
+},
+{
+"id": "cannelloni",
+"name": "Cannelloni med spenat och ricotta"
+},
+{
+"id": "carnitas",
+"name": "Carnitas-tacos med pico de gallo"
+},
+{
+"id": "chili-con-carne",
+"name": "Chili con carne"
+},
+{
+"id": "chili-sin-carne",
+"name": "Chili sin carne"
+},
+{
+"id": "citronkyckling-orzo",
+"name": "Citronkyckling med orzo och spenat"
+},
+{
+"id": "coq-au-vin",
+"name": "Coq au vin"
+},
+{
+"id": "dhal-naan",
+"name": "Dhal med naan och yoghurt"
+},
+{
+"id": "tv4-pasta-kallrokt-lax",
+"name": "Enkel och krämig pasta med kallrökt lax"
+},
+{
+"id": "op-koket-lasagne",
+"name": "Enkel one pot lasagne"
+},
+{
+"id": "entrecote-bearnaise",
+"name": "Entrecôte med bearnaise och klyftpotatis"
+},
+{
+"id": "falafel-pita",
+"name": "Falafel i pitabröd"
+},
+{
+"id": "falukorv-ugn",
+"name": "Falukorv i ugn med potatismos"
+},
+{
+"id": "tv4-falukorvspanna-dragon",
+"name": "Falukorvspanna med grönsaker och dragon"
+},
+{
+"id": "fish-and-chips",
+"name": "Fish and chips med ärtmos"
+},
+{
+"id": "arla-fisk-i-folie",
+"name": "Fisk i folie"
+},
+{
+"id": "fiskgryta-aioli",
+"name": "Fisk- och skaldjursgryta med aioli"
+},
+{
+"id": "fiskbullar-hummersas",
+"name": "Fiskbullar i hummersås med ris"
+},
+{
+"id": "fiskgratang-rakor",
+"name": "Fiskgratäng med räkor och potatismos"
+},
+{
+"id": "ica-fiskgratang-vardag",
+"name": "Fiskgratäng till vardags"
+},
+{
+"id": "ica-fiskgryta-dill",
+"name": "Fiskgryta med dill och sockerärtor"
+},
+{
+"id": "fiskpinnar-mos",
+"name": "Fiskpinnar med potatismos och ärtor"
+},
+{
+"id": "fisktacos",
+"name": "Fisktacos med limecrème och mangosalsa"
+},
+{
+"id": "flygande-jacob",
+"name": "Flygande Jacob"
+},
+{
+"id": "flaskfile-champinjon",
+"name": "Fläskfilé med champinjonsås och potatis"
+},
+{
+"id": "tv4-flaskfilegryta-gorgonzola",
+"name": "Fläskfilégryta med svamp, gorgonzola och grönpeppar"
+},
+{
+"id": "flaskfile-wok",
+"name": "Fläskfiléwok med ingefära och nudlar"
+},
+{
+"id": "flaskkotlett-appel",
+"name": "Fläskkotlett med stekta äpplen och potatis"
+},
+{
+"id": "fyllda-paprikor",
+"name": "Fyllda paprikor med ris och fetaost"
+},
+{
+"id": "gambas-ajillo",
+"name": "Gambas al ajillo med bröd och sallad"
+},
+{
+"id": "gnocchi-tomat-spenat",
+"name": "Gnocchi med tomat, spenat och mozzarella"
+},
+{
+"id": "gravlax-dillstuvad",
+"name": "Gravad lax med dillstuvad potatis"
+},
+{
+"id": "tv4-grekisk-tomatsoppa",
+"name": "Grekisk tomatsoppa med fetaost"
+},
+{
+"id": "grekiska-biffar",
+"name": "Grekiska biffar med tzatziki och potatis"
+},
+{
+"id": "grillkorv-potatissallad",
+"name": "Grillkorv med potatissallad"
+},
+{
+"id": "gronsakslasagne",
+"name": "Grönsakslasagne med spenat och ricotta"
+},
+{
+"id": "gulaschsoppa",
+"name": "Gulaschsoppa med bröd"
+},
+{
+"id": "gyros-pita",
+"name": "Gyros i pitabröd"
+},
+{
+"id": "halloumi-bulgur",
+"name": "Halloumi med bulgur och tzatziki"
+},
+{
+"id": "halloumispett",
+"name": "Halloumi- och grönsaksspett med bulgursallad"
+},
+{
+"id": "halloumiburgare",
+"name": "Halloumiburgare med sötpotatispommes"
+},
+{
+"id": "tonfisk-sesam",
+"name": "Halstrad tonfisk med sesam och nudelsallad"
+},
+{
+"id": "arla-hel-kyckling-vitlokssmor",
+"name": "Hel kyckling i ugn med vitlökssmör"
+},
+{
+"id": "blomkal-tahini",
+"name": "Helrostad blomkål med tahini och couscous"
+},
+{
+"id": "helstekt-kyckling",
+"name": "Helstekt kyckling med rotfrukter"
+},
+{
+"id": "hemgjord-gnocchi",
+"name": "Hemgjord gnocchi med brynt smör och salvia"
+},
+{
+"id": "pizza-hemgjord",
+"name": "Hemgjord pizza med skinka och svamp"
+},
+{
+"id": "vego-dumplings",
+"name": "Hemgjorda grönsaksdumplings"
+},
+{
+"id": "hamburgare-klyftpotatis",
+"name": "Hemgjorda hamburgare med klyftpotatis"
+},
+{
+"id": "honungssenap-kyckling",
+"name": "Honungs- och senapskyckling med ugnspotatis"
+},
+{
+"id": "tv4-hogrevsgryta-kantareller",
+"name": "Högrevsgryta med kantareller och potatispuré"
+},
+{
+"id": "hogrevsgryta",
+"name": "Högrevsgryta med potatismos"
+},
+{
+"id": "op-ica-sotpotatisgryta",
+"name": "Indisk sötpotatisgryta med kikärtor och chili"
+},
+{
+"id": "ica-ingefara-kottfarsbiffar",
+"name": "Ingefärskryddade köttfärsbiffar från ugnen"
+},
+{
+"id": "jambalaya",
+"name": "Jambalaya med kyckling och korv"
+},
+{
+"id": "kalkonbiffar",
+"name": "Kalkonbiffar med potatis och gräddsås"
+},
+{
+"id": "kalops",
+"name": "Kalops med rödbetor och potatis"
+},
+{
+"id": "kassler-ananas",
+"name": "Kassler med ananas och currysås"
+},
+{
+"id": "ica-kebab-langpanna",
+"name": "Kebab i långpanna med gömda grönsaker"
+},
+{
+"id": "kebabgryta",
+"name": "Kebabgryta med ris"
+},
+{
+"id": "kikartscurry",
+"name": "Kikärtscurry med spenat och ris"
+},
+{
+"id": "koket-kinesisk-hogrevsgryta",
+"name": "Kinesisk högrevsgryta"
+},
+{
+"id": "bulgogi-bowl",
+"name": "Koreansk bulgogi-bowl med ris"
+},
+{
+"id": "korv-stroganoff",
+"name": "Korv stroganoff med ris"
+},
+{
+"id": "kycklingburgare",
+"name": "Krispig kycklingburgare med coleslaw"
+},
+{
+"id": "op-ica-kryddig-kyckling-ris",
+"name": "Kryddig one pot kyckling med ris"
+},
+{
+"id": "kycklinggryta-curry",
+"name": "Krämig currygryta med kyckling och ris"
+},
+{
+"id": "tv4-kramig-falukorvsgryta",
+"name": "Krämig falukorvsgryta"
+},
+{
+"id": "kramig-fisksoppa",
+"name": "Krämig fisksoppa med bröd"
+},
+{
+"id": "ica-kramig-kyckling-paprika",
+"name": "Krämig kyckling med paprika"
+},
+{
+"id": "tv4-kycklinggryta-pepparrot",
+"name": "Krämig kycklinggryta med pepparrot och dill"
+},
+{
+"id": "kramig-kycklingpasta",
+"name": "Krämig kycklingpasta med champinjoner"
+},
+{
+"id": "op-ica-tomat-valnot",
+"name": "Krämig one pot pasta med tomat, vitlök och valnötter"
+},
+{
+"id": "ica-pasta-citronkyckling",
+"name": "Krämig pasta med citronkyckling"
+},
+{
+"id": "tv4-pastagratang-feta-broccoli",
+"name": "Krämig pastagratäng med fetaost och broccoli"
+},
+{
+"id": "skaldjurspasta",
+"name": "Krämig skaldjurspasta"
+},
+{
+"id": "tv4-kramig-adelostpasta",
+"name": "Krämig ädelostpasta"
+},
+{
+"id": "kummel-couscous",
+"name": "Kummel med citron, oliver och couscous"
+},
+{
+"id": "cacciatore",
+"name": "Kyckling cacciatore med polenta"
+},
+{
+"id": "ica-kyckling-kramig-sas",
+"name": "Kyckling i krämig sås"
+},
+{
+"id": "fetakyckling-ugn",
+"name": "Kyckling i ugn med fetaost och potatis"
+},
+{
+"id": "arla-kyckling-rotfrukter-salvia",
+"name": "Kyckling i ugn med rotfrukter och salvia"
+},
+{
+"id": "kyckling-couscous",
+"name": "Kyckling med couscous och rostade grönsaker"
+},
+{
+"id": "kyckling-parmigiana",
+"name": "Kyckling parmigiana med spaghetti"
+},
+{
+"id": "kycklingbullar-bulgur",
+"name": "Kycklingbullar med tzatziki och bulgur"
+},
+{
+"id": "kyckling-caesar",
+"name": "Kycklingcaesar med krutonger"
+},
+{
+"id": "kycklingenchiladas",
+"name": "Kycklingenchiladas"
+},
+{
+"id": "kycklingfajitas",
+"name": "Kycklingfajitas"
+},
+{
+"id": "tv4-kycklingfars-bulgursallad",
+"name": "Kycklingfärs med örter och vitlök samt bulgursallad"
+},
+{
+"id": "arla-kycklinggratang",
+"name": "Kycklinggratäng"
+},
+{
+"id": "arla-kycklinggratang-bacon",
+"name": "Kycklinggratäng med bacon"
+},
+{
+"id": "arla-kycklinggratang-cashew",
+"name": "Kycklinggratäng med cashewnötter"
+},
+{
+"id": "kycklingklubbor-coleslaw",
+"name": "Kycklingklubbor med klyftpotatis och coleslaw"
+},
+{
+"id": "kycklinglasagne",
+"name": "Kycklinglasagne med spenat"
+},
+{
+"id": "kycklingnudelsoppa",
+"name": "Kycklingnudelsoppa"
+},
+{
+"id": "kycklingpaj",
+"name": "Kycklingpaj med purjolök och ost"
+},
+{
+"id": "kyckling-quinoasallad",
+"name": "Kycklingsallad med quinoa och avokado"
+},
+{
+"id": "saltimbocca",
+"name": "Kycklingsaltimbocca med citronrisotto"
+},
+{
+"id": "kycklingshawarma",
+"name": "Kycklingshawarma med vitlökssås"
+},
+{
+"id": "kyckling-souvlaki",
+"name": "Kycklingsouvlaki med pitabröd"
+},
+{
+"id": "kyckling-satay",
+"name": "Kycklingspett satay med jordnötssås och ris"
+},
+{
+"id": "kyckling-teriyaki-nudlar",
+"name": "Kycklingteriyaki med nudlar"
+},
+{
+"id": "kycklingwok-nudlar",
+"name": "Kycklingwok med nudlar"
+},
+{
+"id": "kalpudding",
+"name": "Kålpudding med gräddsås och lingon"
+},
+{
+"id": "kottbullar-tomatsas",
+"name": "Köttbullar i tomatsås med spaghetti"
+},
+{
+"id": "kottbullar-mos",
+"name": "Köttbullar med potatismos och lingon"
+},
+{
+"id": "ica-kottfars-broccoligratang",
+"name": "Köttfärs- och broccoligratäng"
+},
+{
+"id": "ica-kottfars-pastagratang",
+"name": "Köttfärs- och pastagratäng"
+},
+{
+"id": "op-arla-kottfarsgryta-potatis",
+"name": "Köttfärsgryta med potatis"
+},
+{
+"id": "op-ica-kottfarsgulasch",
+"name": "Köttfärsgulasch med potatis"
+},
+{
+"id": "ica-kottfarsjarpar-farfalle",
+"name": "Köttfärsjärpar med tomatsås och farfalle"
+},
+{
+"id": "kottfarslimpa",
+"name": "Köttfärslimpa med gräddsås och potatis"
+},
+{
+"id": "op-koket-kottfarssoppa",
+"name": "Köttfärssoppa med morot och potatis"
+},
+{
+"id": "lammkotletter",
+"name": "Lammkotletter med rostade grönsaker och tzatziki"
+},
+{
+"id": "lammtagine",
+"name": "Lammtagine med aprikoser och couscous"
+},
+{
+"id": "lasagne",
+"name": "Lasagne"
+},
+{
+"id": "lata-kaldolmar",
+"name": "Lata kåldolmar med potatis och lingon"
+},
+{
+"id": "laxwellington",
+"name": "Lax i smördeg med spenat"
+},
+{
+"id": "arla-lax-rotfrukter",
+"name": "Lax i ugn med rotfrukter"
+},
+{
+"id": "arla-lax-citronsas",
+"name": "Lax med citronsås"
+},
+{
+"id": "lax-sotpotatis",
+"name": "Lax med sötpotatis och avokadosalsa"
+},
+{
+"id": "laxburgare",
+"name": "Laxburgare med limemajonnäs"
+},
+{
+"id": "laxpaj",
+"name": "Laxpaj med spenat och fetaost"
+},
+{
+"id": "op-ica-laxpasta",
+"name": "Laxpasta one pot wonder"
+},
+{
+"id": "laxpudding",
+"name": "Laxpudding med smält smör"
+},
+{
+"id": "laxsoppa-kokos",
+"name": "Laxsoppa med kokos och nudlar"
+},
+{
+"id": "linguine-vongole",
+"name": "Linguine med vongole"
+},
+{
+"id": "linsbolognese",
+"name": "Linsbolognese"
+},
+{
+"id": "koket-langkok-kyckling-tomat",
+"name": "Långkok på kyckling och tomat"
+},
+{
+"id": "ragu-pappardelle",
+"name": "Långkokt ragù med pappardelle"
+},
+{
+"id": "mac-and-cheese",
+"name": "Mac and cheese med broccoli"
+},
+{
+"id": "makaroner-korv",
+"name": "Makaroner och prinskorv"
+},
+{
+"id": "op-koket-marockansk-linssoppa",
+"name": "Marockansk linssoppa"
+},
+{
+"id": "mexikansk-kycklingsoppa",
+"name": "Mexikansk kycklingsoppa med tortillachips"
+},
+{
+"id": "minestrone",
+"name": "Minestrone med pasta och bönor"
+},
+{
+"id": "moussaka",
+"name": "Moussaka"
+},
+{
+"id": "moules-frites",
+"name": "Musslor i vitvin med pommes frites"
+},
+{
+"id": "op-koket-enchiladas",
+"name": "One pot enchiladas"
+},
+{
+"id": "op-koket-kyckling-risoni",
+"name": "One pot gratäng med kyckling och risoni"
+},
+{
+"id": "op-ica-lasagne-linser-svamp",
+"name": "One pot lasagne med linser och svamp"
+},
+{
+"id": "op-ica-tortellini-pancetta",
+"name": "One pot med tortellini, pancetta och körsbärstomater"
+},
+{
+"id": "op-arla-bonor-soltorkade",
+"name": "One pot pasta med bönor och soltorkade tomater"
+},
+{
+"id": "op-koket-salsiccia-svamp",
+"name": "One pot pasta med salsiccia och svamp"
+},
+{
+"id": "op-ica-salsiccia-sparris",
+"name": "One pot pasta med salsiccia, sparris och citron"
+},
+{
+"id": "op-ica-one-pot-pasta",
+"name": "One pot pasta med tomat och basilika"
+},
+{
+"id": "op-ica-kotlett",
+"name": "One pot pasta med vitlöksstekt kotlett"
+},
+{
+"id": "op-koket-kycklingkebab-ris",
+"name": "One pot ris med kycklingkebab"
+},
+{
+"id": "op-koket-scampi-pasta",
+"name": "One pot scampipasta"
+},
+{
+"id": "op-koket-torsk",
+"name": "One pot torsk"
+},
+{
+"id": "ossobuco",
+"name": "Ossobuco med gremolata och risotto"
+},
+{
+"id": "oxfile-rodvinssas",
+"name": "Oxfilé med rödvinssås och potatisgratäng"
+},
+{
+"id": "pad-thai-tofu",
+"name": "Pad thai med tofu"
+},
+{
+"id": "paella",
+"name": "Paella med skaldjur och kyckling"
+},
+{
+"id": "getostpaj",
+"name": "Paj med getost, rödlök och honung"
+},
+{
+"id": "panerad-torsk",
+"name": "Panerad torsk med remouladsås och potatis"
+},
+{
+"id": "pannbiff-lok",
+"name": "Pannbiff med stekt lök och potatis"
+},
+{
+"id": "arrabbiata",
+"name": "Pasta arrabbiata med mozzarella"
+},
+{
+"id": "carbonara",
+"name": "Pasta carbonara"
+},
+{
+"id": "tv4-pasta-bacon-vasterbotten",
+"name": "Pasta med bacon och Västerbottensost"
+},
+{
+"id": "tv4-pasta-kronartskocka",
+"name": "Pasta med kronärtskocka och citron"
+},
+{
+"id": "ica-pasta-kyckling-haricots",
+"name": "Pasta med krämig kyckling och haricots verts"
+},
+{
+"id": "laxpasta-spenat",
+"name": "Pasta med lax och spenat"
+},
+{
+"id": "salsiccia-pasta",
+"name": "Pasta med salsiccia och tomat"
+},
+{
+"id": "skinkpasta-arter",
+"name": "Pasta med skinka och ärtor i gräddsås"
+},
+{
+"id": "ica-pasta-verde",
+"name": "Pasta verde"
+},
+{
+"id": "tv4-pastagratang-falukorv-blomkal",
+"name": "Pastagratäng med falukorv och blomkål"
+},
+{
+"id": "arla-pastagratang-kyckling",
+"name": "Pastagratäng med kyckling"
+},
+{
+"id": "pestopasta-kyckling",
+"name": "Pestopasta med kyckling och soltorkade tomater"
+},
+{
+"id": "pizza-margherita",
+"name": "Pizza margherita"
+},
+{
+"id": "pocherad-torsk",
+"name": "Pocherad torsk med brynt smör, pepparrot och ägg"
+},
+{
+"id": "pokebowl-lax",
+"name": "Pokébowl med lax"
+},
+{
+"id": "op-ica-potatis-kikartsgryta",
+"name": "Potatis- och kikärtsgryta"
+},
+{
+"id": "potatis-purjosoppa",
+"name": "Potatis- och purjolökssoppa med bröd"
+},
+{
+"id": "pulled-pork",
+"name": "Pulled pork-burgare med coleslaw"
+},
+{
+"id": "pytt-i-panna",
+"name": "Pytt i panna med stekt ägg och rödbetor"
+},
+{
+"id": "bonquesadillas",
+"name": "Quesadillas med svarta bönor och ost"
+},
+{
+"id": "raggmunk-flask",
+"name": "Raggmunk med stekt fläsk och lingon"
+},
+{
+"id": "revbensspjall",
+"name": "Revbensspjäll med coleslaw och majskolvar"
+},
+{
+"id": "rakcurry-kokos",
+"name": "Räkcurry med kokos och naan"
+},
+{
+"id": "rakpasta-vitlok",
+"name": "Räkpasta med vitlök och chili"
+},
+{
+"id": "rakrisotto",
+"name": "Räkrisotto med citron och sparris"
+},
+{
+"id": "raknudlar-wok",
+"name": "Räkwok med nudlar och sockerärtor"
+},
+{
+"id": "rod-curry-kyckling",
+"name": "Röd curry med kyckling och ris"
+},
+{
+"id": "thaisoppa-rakor",
+"name": "Röd currysoppa med räkor och nudlar"
+},
+{
+"id": "linsgryta-kokos",
+"name": "Röd linsgryta med kokosmjölk"
+},
+{
+"id": "rodbetsbiffar",
+"name": "Rödbetsbiffar med fetaost och bulgur"
+},
+{
+"id": "rodspatta-smorsas",
+"name": "Rödspätta med smörsås och potatis"
+},
+{
+"id": "sej-curry-ris",
+"name": "Sej i currysås med ris"
+},
+{
+"id": "sej-pressad-potatis",
+"name": "Sej med pressad potatis och brynt smör"
+},
+{
+"id": "shakshuka",
+"name": "Shakshuka med bröd"
+},
+{
+"id": "shepherds-pie",
+"name": "Shepherd's pie"
+},
+{
+"id": "op-koket-sjomansgryta",
+"name": "Sjömansgryta med köttfärs och porter"
+},
+{
+"id": "sloppy-joes",
+"name": "Sloppy joes med coleslaw"
+},
+{
+"id": "tv4-smorstekt-torsk-rotfrukter",
+"name": "Smörstekt torsk med rostade rotfrukter"
+},
+{
+"id": "tv4-snabb-kottfarssas-svamp",
+"name": "Snabb köttfärssås med svamp"
+},
+{
+"id": "spaghetti-kottfarssas",
+"name": "Spaghetti och köttfärssås"
+},
+{
+"id": "spanakopita",
+"name": "Spanakopita med grekisk sallad"
+},
+{
+"id": "tortilla-espanola",
+"name": "Spansk tortilla med sallad"
+},
+{
+"id": "ica-sprodbakad-torsk",
+"name": "Sprödbakad torsk med Rhode Island-sås"
+},
+{
+"id": "stekt-stromming",
+"name": "Stekt strömming med potatismos och lingon"
+},
+{
+"id": "hemmasushi",
+"name": "Sushi hemma"
+},
+{
+"id": "svamprisotto",
+"name": "Svamprisotto med parmesan"
+},
+{
+"id": "svampstroganoff",
+"name": "Svampstroganoff med ris"
+},
+{
+"id": "svampwellington",
+"name": "Svampwellington med rödvinssky"
+},
+{
+"id": "sotpotatissoppa",
+"name": "Sötpotatissoppa med kokos och chili"
+},
+{
+"id": "sotsur-kyckling",
+"name": "Sötsur kyckling med ris"
+},
+{
+"id": "tacos",
+"name": "Tacos med köttfärs"
+},
+{
+"id": "tandoorikyckling",
+"name": "Tandoorikyckling med raita och naan"
+},
+{
+"id": "teriyakilax",
+"name": "Teriyakilax med ris och sesam"
+},
+{
+"id": "tofu-bowl",
+"name": "Teriyakitofu-bowl med ris"
+},
+{
+"id": "op-ica-thaigryta-ris",
+"name": "Thaigryta med kyckling och ris"
+},
+{
+"id": "pad-kra-pao",
+"name": "Thailändsk basilikakyckling med ris"
+},
+{
+"id": "thai-biffsallad",
+"name": "Thailändsk biffsallad med glasnudlar"
+},
+{
+"id": "tofuwok",
+"name": "Tofuwok med cashew och nudlar"
+},
+{
+"id": "op-ica-tomat-kyckling-ris",
+"name": "Tomat- och kycklinggryta med ris"
+},
+{
+"id": "tomatsoppa-macka",
+"name": "Tomatsoppa med varma mozzarellamackor"
+},
+{
+"id": "tonfiskpasta",
+"name": "Tonfiskpasta med tomat och kapris"
+},
+{
+"id": "torsk-chorizo-bonor",
+"name": "Torsk med chorizo och vita bönor"
+},
+{
+"id": "tv4-torsk-sparris-citronsas",
+"name": "Torsk med smörstekt sparris och gräddig citronsås"
+},
+{
+"id": "torsk-aggsas",
+"name": "Torsk med äggsås och potatis"
+},
+{
+"id": "arla-torskrygg-ugn",
+"name": "Torskrygg i ugn"
+},
+{
+"id": "fetapasta-ugn",
+"name": "Ugnsbakad fetaostpasta med tomater"
+},
+{
+"id": "hel-havsabborre",
+"name": "Ugnsbakad hel fisk med citron och örter"
+},
+{
+"id": "laxsida-farskpotatis",
+"name": "Ugnsbakad laxsida med örter och färskpotatis"
+},
+{
+"id": "lax-dillpotatis",
+"name": "Ugnslax med dillpotatis och citronsås"
+},
+{
+"id": "lax-feta-bulgur",
+"name": "Ugnslax med fetaost, oliver och bulgur"
+},
+{
+"id": "ugnspannkaka-bacon",
+"name": "Ugnspannkaka med bacon och lingon"
+},
+{
+"id": "koket-vegansk-scampi-rod-curry",
+"name": "Vegansk scampi i röd curry"
+},
+{
+"id": "vego-biryani",
+"name": "Vegetarisk biryani"
+},
+{
+"id": "ica-vego-gryta-svamp",
+"name": "Vegetarisk gryta med svamp"
+},
+{
+"id": "op-koket-halloumi-hotpot",
+"name": "Vegetarisk halloumi hot pot-gryta"
+},
+{
+"id": "op-arla-tikka-masala-linser",
+"name": "Vegetarisk tikka masala med röda linser"
+},
+{
+"id": "ica-vego-pastagryta-feta",
+"name": "Vego pastagryta med fetaost"
+},
+{
+"id": "vegoburgare-sotpotatis",
+"name": "Vegoburgare med sötpotatispommes"
+},
+{
+"id": "op-koket-vegogryta-kikartor-linser",
+"name": "Vegogryta med kikärtor och linser"
+},
+{
+"id": "wallenbergare",
+"name": "Wallenbergare med potatismos och ärtor"
+},
+{
+"id": "schnitzel",
+"name": "Wienerschnitzel med potatissallad"
+},
+{
+"id": "arla-adelostfisk",
+"name": "Ädelostfisk"
+},
+{
+"id": "artsoppa-pannkakor",
+"name": "Ärtsoppa och pannkakor"
+},
+{
+"id": "linas-asiatisk-flaskfars",
+"name": "Asiatisk fläskfärs med nudlar och koriander",
+"url": "https://www.linasmatkasse.se/recept/46554/asiatisk-flaskfars-med-nudlar-och-koriander"
+}
+]
