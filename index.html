@@ -318,7 +318,7 @@ const DEF_STAPLES=[{n:"Mjölk",c:"mejeri"},{n:"Filmjölk",c:"mejeri"},{n:"Yoghur
 
 const S={db:null,sample:null,canWrite:true,ready:false,recipes:new Map(),recLoaded:false,
   week:null,weekLoaded:false,items:new Map(),itemsLoaded:false,
-  settings:{servings:4,helg:[4,5,6],allergens:[],avoid:[],weekStart:0},plan:{have:[],wishes:[]},staples:DEF_STAPLES,stapleEdit:false,
+  settings:{servings:4,helg:[4,5,6],allergens:[],avoid:[],weekStart:0,easy:[4]},plan:{have:[],wishes:[]},staples:DEF_STAPLES,stapleEdit:false,
   tab:"week",monday:null,uid:null,user:null,names:{},ratings:{},base:new Map(),over:new Map(),hid:null,all:new Map(),hidden:new Set(),cid:null,pool:null,offline:false,sheet:null,edit:null,recFilter:"alla",showDone:false,busy:false,unsub:[]};
 
 /* ---------- utils ---------- */
@@ -358,6 +358,10 @@ function scaleQ(q,u,f){if(q==null||q==="")return null;let v=q*f;
 function fmtQU(q,u){const n=fmtNum(q);if(!n)return u&&u!=="st"?u:"";return u&&u!=="st"?n+" "+u:n+(u==="st"?" st":"")}
 function slug(s){return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9|]+/g,"-").replace(/\|/g,"~").replace(/^-+|-+$/g,"").slice(0,150)||"x"}
 function dayCat(d){return S.settings.helg.includes((d+startOff())%7)?"helg":"vardag"}
+// Enkla dagar (t.ex. fredag): gott men snabbt, högst 35 minuter.
+function isEasy(d){return (S.settings.easy||[]).includes((d+startOff())%7)}
+const MYS=/taco|pizza|burgar|hamburgar|kebab|quesadilla|nacho|wrap|fajita|enchilada|fish and chips|shawarma|gyros|souvlaki|carbonara|stroganoff|pytt|flygande jacob|falafel|korv/i;
+function dayFit(r,d){return isEasy(d)?(+r.time||60)<=35&&r.cat==="vardag":r.cat===dayCat(d)}
 function getR(id){return id?(S.all.get(id)||S.recipes.get(id)):null}
 function guessCat(n){const s=n.toLowerCase();
   const m=[["mejeri",/mjölk|fil|yoghurt|grädde|smör|ost|ägg|kvarg|crème|creme|gräddfil|juice/],["brod",/bröd|knäcke|tortilla|pita|bulle|fralla|baguette/],["gront",/äpple|banan|apelsin|päron|druv|citron|lime|lök|tomat|gurka|sallad|paprika|morot|potatis|avokado|frukt|bär|kiwi|melon|spenat|broccoli|svamp|vitlök|ingefära|örter|persilja|dill/],["kott",/kött|färs|kyckling|korv|bacon|skinka|pålägg|lax|torsk|fisk|räk|fläsk|biff/],["frys",/fryst|glass|frys/],["hushall",/toa|papper|disk|tvätt|tvål|schampo|blöj|soppåse|folie|batteri/],["torr",/pasta|ris|mjöl|socker|gryn|müsli|flingor|kaffe|te$|bönor|linser|konserv|krossade|buljong/]];
@@ -506,7 +510,8 @@ function scoreWeek(days){const rs=weekRecs(days);let s=0,perfect=true;
     if(a.bas===b.bas&&a.bas!=="ovrigt"){s-=60;perfect=false}
     if(a.protein===b.protein){s-=a.protein==="fisk"?60:6;perfect=false}}
   {const nf=rs.filter(r=>r&&r.protein==="fisk").length;if(nf>1)s-=(nf-1)*12}
-  rs.forEach((r,d)=>{if(r&&r.cat!==dayCat(d)){s-=20;perfect=false}});
+  rs.forEach((r,d)=>{if(r&&!dayFit(r,d)){s-=isEasy(d)?35:20;perfect=false}
+    if(r&&isEasy(d)){if(MYS.test(r.name))s+=10;const a=rating(r).avg;if(a)s+=(a-3)*4;if(r.onepot)s+=3}});
   s+=new Set(rs.filter(Boolean).map(r=>r.protein)).size*3;
   s+=smartScore(days)+haveScore(days)+dealScore(days);
   return {s,perfect}}
@@ -524,7 +529,7 @@ async function randomize(){
     for(const w of fixedW)cur[+w.d]={r:w.r,lock:true,wish:true};
     let wok=true;
     for(const w of freeW){if(cur.some(x=>x&&x.r===w.r))continue;const wr=getR(w.r);
-      const free=[0,1,2,3,4,5,6].filter(d=>!cur[d]);const pref=free.filter(d=>dayCat(d)===wr.cat);
+      const free=[0,1,2,3,4,5,6].filter(d=>!cur[d]);const pref=free.filter(d=>dayFit(wr,d));
       const pool2=pref.length?pref:free;if(!pool2.length){wok=false;break}
       cur[pool2[Math.floor(Math.random()*pool2.length)]]={r:w.r,lock:true,wish:true}}
     if(!wok)continue;
@@ -536,7 +541,7 @@ async function randomize(){
       const nx=cur[d+1]&&cur[d+1].lock?getR(cur[d+1].r):null;
       const nb=[prev&&prev.bas,nx&&nx.bas].filter(b=>b&&b!=="ovrigt");
       const fits=r=>!used.has(r.id)&&(r.bas==="ovrigt"||!nb.includes(r.bas))&&!(r.protein==="fisk"&&((prev&&prev.protein==="fisk")||(nx&&nx.protein==="fisk")));
-      let cand=all.filter(r=>r.cat===dayCat(d)&&fits(r));
+      let cand=all.filter(r=>dayFit(r,d)&&fits(r));
       if(!cand.length)cand=all.filter(fits);
       if(!cand.length){ok=false;break}
       const fresh=cand.filter(r=>!prevIds.has(r.id));
@@ -560,8 +565,8 @@ function candidatesFor(d,days,{strict=true}={}){
   if(cur&&(cur.protein==="fisk"||cur.protein==="kott")&&!others.some(o=>o.protein===cur.protein))need=cur.protein;
   const fishAdj=r=>r.protein==="fisk"&&((rs[d-1]&&rs[d-1].protein==="fisk")||(rs[d+1]&&rs[d+1].protein==="fisk"));
   const tiers=[
-    r=>r.cat===dayCat(d)&&(r.bas==="ovrigt"||!nb.includes(r.bas))&&(!need||r.protein===need)&&srcOk(r,d,days)&&!fishAdj(r),
-    r=>r.cat===dayCat(d)&&(r.bas==="ovrigt"||!nb.includes(r.bas))&&srcOk(r,d,days)&&!fishAdj(r),
+    r=>dayFit(r,d)&&(r.bas==="ovrigt"||!nb.includes(r.bas))&&(!need||r.protein===need)&&srcOk(r,d,days)&&!fishAdj(r),
+    r=>dayFit(r,d)&&(r.bas==="ovrigt"||!nb.includes(r.bas))&&srcOk(r,d,days)&&!fishAdj(r),
     r=>(r.bas==="ovrigt"||!nb.includes(r.bas))&&!fishAdj(r),
     r=>true];
   for(const t of tiers){const c=all.filter(r=>!used.has(r.id)&&t(r));if(c.length)return c}
@@ -663,7 +668,7 @@ function renderWeek(){
       <div class="dname"><b>${DS[d]}</b><span class="num">${date.getDate()}/${date.getMonth()+1}</span></div>
       <button class="dish" data-act="open-day" data-d="${d}">
         <span class="t">${r?esc(r.name):'<span class="muted">Recept saknas</span>'}</span>
-        ${r?`<span class="chips"><span class="p t${PCLS[r.protein]}"><i class="p${PCLS[r.protein]}"></i>${PROT[r.protein]}</span><span${basClash(rs,d)?' class="warn"':""}>${BAS[r.bas]}</span><span class="num">${r.time} min</span>${miniStar(r)}${restChip(d,LL,r)}${x.wish?'<span class="tag">Önskad</span>':""}${dealsFor(r).length?'<span class="tag">Erbjudande</span>':""}${wk?'<span class="tag">Helg</span>':""}</span>`:""}
+        ${r?`<span class="chips"><span class="p t${PCLS[r.protein]}"><i class="p${PCLS[r.protein]}"></i>${PROT[r.protein]}</span><span${basClash(rs,d)?' class="warn"':""}>${BAS[r.bas]}</span><span class="num">${r.time} min</span>${miniStar(r)}${restChip(d,LL,r)}${x.wish?'<span class="tag">Önskad</span>':""}${dealsFor(r).length?'<span class="tag">Erbjudande</span>':""}${isEasy(d)?'<span class="tag">Enkel</span>':wk?'<span class="tag">Helg</span>':""}</span>`:""}
       </button>
       <div class="dact">
         <button class="iconbtn" data-act="swap" data-d="${d}" aria-label="Byt rätt på ${DAYS[d]}" ${x.lock?"disabled":""}>${IC.swap}</button>
@@ -809,6 +814,9 @@ function renderSheet(){
     <div class="sec">Dagar med helgrätter</div>
     <div class="daysel">${BASE_DS.map((n,d)=>`<button data-act="helg" data-d="${d}" class="${S.settings.helg.includes(d)?"on":""}" aria-pressed="${S.settings.helg.includes(d)}">${n}</button>`).join("")}</div>
     <p class="muted" style="font-size:14px">Övriga dagar får enklare vardagsrätter.</p>
+    <div class="sec">Enkla dagar – gott men snabbt</div>
+    <div class="daysel">${BASE_DS.map((n,d)=>`<button data-act="easy" data-d="${d}" class="${(S.settings.easy||[]).includes(d)?"on":""}" aria-pressed="${(S.settings.easy||[]).includes(d)}">${n}</button>`).join("")}</div>
+    <p class="muted" style="font-size:14px">Rätter på högst 35 minuter, gärna fredagsmys som tacos, pizza och hamburgare, och sådant ni gett höga betyg.</p>
     <div class="sec">Allergier</div>
     <div class="chipsrow" style="display:flex;flex-wrap:wrap;gap:6px">${Object.entries(ALLERGENS).map(([k,A])=>`<button class="chip${(S.settings.allergens||[]).includes(k)?" on":""}" data-act="allergen" data-k="${k}" aria-pressed="${(S.settings.allergens||[]).includes(k)}">${A.label}</button>`).join("")}</div>
     <div class="sec">Ingredienser vi inte vill ha</div>
@@ -829,7 +837,7 @@ function renderSheet(){
     <div class="sec">Synk</div>
     <div class="note" style="font-size:13.5px;line-height:1.6">Hushåll: <b class="num">${esc((S.hid||"").slice(0,6))}</b><br>Inloggning: ${S.authOk?"OK":"<b class=\"warn\">misslyckades</b>"}<br>Senaste sparning: ${S.lastSync?new Date(S.lastSync).toLocaleTimeString("sv-SE"):"–"}${S.lastErr?`<br><b class="warn">Fel: ${esc(S.lastErr)}</b>`:""}</div>
     <button class="btn small" data-act="sync-test">Testa synk</button>
-    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-06 15:06</p>`}
+    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-06 15:11</p>`}
   else if(s.type==="edit"){inner=editorHtml()}
   $("#sheet-root").innerHTML=wrapSheet(inner)}
 function wrapSheet(inner){return `<div class="scrim" data-act="scrim"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>${inner}</div></div>`}
@@ -838,7 +846,7 @@ function renderPickList(){
   const nb=[rs[s.d-1]&&rs[s.d-1].bas,rs[s.d+1]&&rs[s.d+1].bas].filter(b=>b&&b!=="ovrigt");
   const inWeek=new Set(days.map(x=>x&&x.r));
   let list=filteredRecipes(q,"alla");
-  const cat=dayCat(s.d);list.sort((a,b)=>(a.cat===cat?0:1)-(b.cat===cat?0:1));
+  list.sort((a,b)=>(dayFit(a,s.d)?0:1)-(dayFit(b,s.d)?0:1));
   $("#pick-list").innerHTML=`<div class="list">`+list.map(r=>{
     const bl=blockedBy(r);const warn=bl.length?"Innehåller "+bl.join(", "):s.wish?"":nb.includes(r.bas)?`Samma tillbehör som dagen intill`:inWeek.has(r.id)?"Redan i veckan":"";
     return recRow(r,"pick-choose").replace("</span></span></button>",`</span>${warn?`<span class="warn" style="display:block;font-size:12.5px">${warn}</span>`:""}</span></button>`)}).join("")+`</div>`}
@@ -1009,6 +1017,7 @@ document.addEventListener("click",async ev=>{
     case"suggest":ev.preventDefault();await doSuggest();break;
     case"serv":{if(!guardWrite())return;const n=Math.min(12,Math.max(1,S.settings.servings+(+el.dataset.v)));if(n===S.settings.servings)return;
       S.settings={...S.settings,servings:n};renderSheet();await saveSettings(true);break}
+    case"easy":{if(!guardWrite())return;const e=new Set(S.settings.easy||[]);e.has(d)?e.delete(d):e.add(d);S.settings={...S.settings,easy:[...e].sort()};renderSheet();render();await saveSettings(false);break}
     case"helg":{if(!guardWrite())return;const h=new Set(S.settings.helg);h.has(d)?h.delete(d):h.add(d);S.settings={...S.settings,helg:[...h].sort()};renderSheet();await saveSettings(false);break}
   }
 });
@@ -1140,7 +1149,7 @@ async function init(){
   S.pool.collection("recipes").onSnapshot(s=>{const m=new Map();s.docs.forEach(d=>m.set(d.id,d.data()));S.over=m;mergeRecipes();S.recLoaded=true;render()},e=>{console.error(e);S.recLoaded=true;render()});
   S.db.collection("hidden").onSnapshot(s=>{S.hidden=new Set(s.docs.map(d=>d.id));mergeRecipes();render()},e=>console.error(e));
   S.db.collection("ratings").onSnapshot(s=>{const m={};s.docs.forEach(d=>m[d.id]=d.data());S.ratings=m;render()},e=>console.error(e));
-  S.db.doc("config/settings").onSnapshot(s=>{if(s.exists){const d=s.data();S.settings={servings:+d.servings||4,helg:Array.isArray(d.helg)?d.helg:[4,5,6],allergens:Array.isArray(d.allergens)?d.allergens:[],avoid:Array.isArray(d.avoid)?d.avoid:[],weekStart:d.weekStart!=null?+d.weekStart:0};syncWeekStart();render()}});
+  S.db.doc("config/settings").onSnapshot(s=>{if(s.exists){const d=s.data();S.settings={servings:+d.servings||4,helg:Array.isArray(d.helg)?d.helg:[4,5,6],allergens:Array.isArray(d.allergens)?d.allergens:[],avoid:Array.isArray(d.avoid)?d.avoid:[],easy:Array.isArray(d.easy)?d.easy:[4],weekStart:d.weekStart!=null?+d.weekStart:0};syncWeekStart();render()}});
   S.db.doc("config/staples").onSnapshot(s=>{if(s.exists&&Array.isArray(s.data().items))S.staples=s.data().items;if(S.tab==="shop")renderStaples()});
   subscribeWeek();render();
   if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(()=>{})}
