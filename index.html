@@ -504,7 +504,8 @@ function scoreWeek(days){const rs=weekRecs(days);let s=0,perfect=true;
   if(has("kott"))s+=40;else perfect=false; if(has("fisk"))s+=40;else perfect=false;
   for(let d=1;d<7;d++){const a=rs[d-1],b=rs[d];if(!a||!b)continue;
     if(a.bas===b.bas&&a.bas!=="ovrigt"){s-=60;perfect=false}
-    if(a.protein===b.protein){s-=6;perfect=false}}
+    if(a.protein===b.protein){s-=a.protein==="fisk"?60:6;perfect=false}}
+  {const nf=rs.filter(r=>r&&r.protein==="fisk").length;if(nf>1)s-=(nf-1)*12}
   rs.forEach((r,d)=>{if(r&&r.cat!==dayCat(d)){s-=20;perfect=false}});
   s+=new Set(rs.filter(Boolean).map(r=>r.protein)).size*3;
   s+=smartScore(days)+haveScore(days)+dealScore(days);
@@ -534,7 +535,7 @@ async function randomize(){
       const prev=days[d-1]?getR(days[d-1].r):null;
       const nx=cur[d+1]&&cur[d+1].lock?getR(cur[d+1].r):null;
       const nb=[prev&&prev.bas,nx&&nx.bas].filter(b=>b&&b!=="ovrigt");
-      const fits=r=>!used.has(r.id)&&(r.bas==="ovrigt"||!nb.includes(r.bas));
+      const fits=r=>!used.has(r.id)&&(r.bas==="ovrigt"||!nb.includes(r.bas))&&!(r.protein==="fisk"&&((prev&&prev.protein==="fisk")||(nx&&nx.protein==="fisk")));
       let cand=all.filter(r=>r.cat===dayCat(d)&&fits(r));
       if(!cand.length)cand=all.filter(fits);
       if(!cand.length){ok=false;break}
@@ -557,10 +558,11 @@ function candidatesFor(d,days,{strict=true}={}){
   const others=rs.filter((r,i)=>i!==d&&r);
   let need=null;
   if(cur&&(cur.protein==="fisk"||cur.protein==="kott")&&!others.some(o=>o.protein===cur.protein))need=cur.protein;
+  const fishAdj=r=>r.protein==="fisk"&&((rs[d-1]&&rs[d-1].protein==="fisk")||(rs[d+1]&&rs[d+1].protein==="fisk"));
   const tiers=[
-    r=>r.cat===dayCat(d)&&(r.bas==="ovrigt"||!nb.includes(r.bas))&&(!need||r.protein===need)&&srcOk(r,d,days),
-    r=>r.cat===dayCat(d)&&(r.bas==="ovrigt"||!nb.includes(r.bas))&&srcOk(r,d,days),
-    r=>(r.bas==="ovrigt"||!nb.includes(r.bas)),
+    r=>r.cat===dayCat(d)&&(r.bas==="ovrigt"||!nb.includes(r.bas))&&(!need||r.protein===need)&&srcOk(r,d,days)&&!fishAdj(r),
+    r=>r.cat===dayCat(d)&&(r.bas==="ovrigt"||!nb.includes(r.bas))&&srcOk(r,d,days)&&!fishAdj(r),
+    r=>(r.bas==="ovrigt"||!nb.includes(r.bas))&&!fishAdj(r),
     r=>true];
   for(const t of tiers){const c=all.filter(r=>!used.has(r.id)&&t(r));if(c.length)return c}
   return []}
@@ -827,7 +829,7 @@ function renderSheet(){
     <div class="sec">Synk</div>
     <div class="note" style="font-size:13.5px;line-height:1.6">Hushåll: <b class="num">${esc((S.hid||"").slice(0,6))}</b><br>Inloggning: ${S.authOk?"OK":"<b class=\"warn\">misslyckades</b>"}<br>Senaste sparning: ${S.lastSync?new Date(S.lastSync).toLocaleTimeString("sv-SE"):"–"}${S.lastErr?`<br><b class="warn">Fel: ${esc(S.lastErr)}</b>`:""}</div>
     <button class="btn small" data-act="sync-test">Testa synk</button>
-    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-05 21:14</p>`}
+    <p class="muted" style="font-size:12px;margin-top:20px">Version 2026-11-06 15:06</p>`}
   else if(s.type==="edit"){inner=editorHtml()}
   $("#sheet-root").innerHTML=wrapSheet(inner)}
 function wrapSheet(inner){return `<div class="scrim" data-act="scrim"><div class="sheet" role="dialog" aria-modal="true"><div class="grab"></div>${inner}</div></div>`}
