@@ -3328,7 +3328,7 @@
    "originalImage": {
     "imageType": "PRIMARY",
     "format": "original",
-    "url": "https://assets.axfood.se/image/upload/f_auto/02307983900005_C1L1_s03",
+    "url": "https://assets.axfood.se/image/upload/f_auto/02307983900005_C1L1_s04",
     "altText": null,
     "galleryIndex": null,
     "width": null
@@ -3341,7 +3341,7 @@
    "thumbnail": {
     "imageType": "PRIMARY",
     "format": "thumbnail",
-    "url": "https://assets.axfood.se/image/upload/f_auto,t_100/02307983900005_C1L1_s03",
+    "url": "https://assets.axfood.se/image/upload/f_auto,t_100/02307983900005_C1L1_s04",
     "altText": null,
     "galleryIndex": null,
     "width": null
@@ -3352,7 +3352,7 @@
    "image": {
     "imageType": "PRIMARY",
     "format": "product",
-    "url": "https://assets.axfood.se/image/upload/f_auto,t_200/02307983900005_C1L1_s03",
+    "url": "https://assets.axfood.se/image/upload/f_auto,t_200/02307983900005_C1L1_s04",
     "altText": null,
     "galleryIndex": null,
     "width": null
@@ -6080,7 +6080,7 @@
    "name": "Salta jordnötter"
   },
   {
-   "offlinePromotionLowestHistoricalPrice": "23,56 kr/st",
+   "offlinePromotionLowestHistoricalPrice": "23,56-23,90 kr/st",
    "googleAnalyticsCategory": "",
    "online": false,
    "displayVolume": "0,8/8ll",
@@ -6746,7 +6746,7 @@
    "name": "Fish & crisp"
   },
   {
-   "offlinePromotionLowestHistoricalPrice": "23,56 kr/st",
+   "offlinePromotionLowestHistoricalPrice": "23,56-23,90 kr/st",
    "googleAnalyticsCategory": "",
    "online": false,
    "displayVolume": "0,8/8ll",
