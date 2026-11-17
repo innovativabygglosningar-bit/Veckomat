@@ -1,0 +1,80 @@
+{
+  "id": "svetsrok",
+  "titel": "Svetsrök och gaser vid svetsning och lödning",
+  "status": "bas",
+  "ingress": "Svetsrök innehåller partiklar och gaser som ger huvudvärk, irritation och metallröksfeber och på sikt försämrad lungfunktion, ökad risk för lungcancer (särskilt vid rostfritt stål) och hjärt-kärlsjukdom.",
+  "riskomrade": "halsofarligt",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall",
+    "anlaggning"
+  ],
+  "byggdelar": [
+    "stomme",
+    "vs"
+  ],
+  "indikatorer": [
+    "montagesvets",
+    "svetsning",
+    "lödning",
+    "förzinkat",
+    "rostfritt"
+  ],
+  "vadArRisken": [
+    "Svetsning i målat eller förzinkat gods bildar giftiga gaser. Svetsning i trånga, dåligt ventilerade utrymmen är särskilt farlig."
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Montagesvetsning i ytbehandlat gods."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Skruvförband och punktutsug."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Konstruktör",
+      "atgard": "Projektera skruvförband i stället för montagesvets; märk ut svetsställen på förbehandlade detaljer så att de kan maskas av."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Ventilation, punktutsug, andningsskydd, ingen ensam svetsning i trånga utrymmen."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "svetsrok.1",
+      "fraga": "Kräver konstruktionen montagesvetsning på plats som kunde ersättas med skruvförband?",
+      "skede": "projektering",
+      "underlag": [
+        "konstruktionsritningar"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Kemiska riskkällor."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Svetsning, lödning.docx – driven",
+      "url": "https://drive.google.com/file/d/19HCB7jfkNzPqgfamJZOCSHWTNyQlB60q/view"
+    },
+    {
+      "titel": "H-Pelare, Balkar-P.docx – driven",
+      "url": "https://drive.google.com/file/d/1CbVwRxM6bWpROikoC7xE_dm3oKJmz_Tv/view"
+    }
+  ]
+}

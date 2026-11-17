@@ -1,0 +1,91 @@
+{
+  "id": "kvicksilver",
+  "titel": "Kvicksilver vid rivning och ombyggnad",
+  "status": "bas",
+  "ingress": "Kvicksilver är en lättflyktig, giftig tungmetall som kan avgå som ånga och spridas. Det är svårt att identifiera och kräver ofta laboratorieprov.",
+  "riskomrade": "halsofarligt",
+  "sarskildRisk": [
+    3,
+    13
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "ombyggnad",
+    "rivning",
+    "underhall"
+  ],
+  "byggdelar": [
+    "vs",
+    "el",
+    "invandigt"
+  ],
+  "indikatorer": [
+    "avloppsledningar",
+    "tandvård",
+    "laboratorium",
+    "äldre armaturer",
+    "givare",
+    "termostater"
+  ],
+  "relevans": {
+    "projekttyper": [
+      "ombyggnad",
+      "rivning",
+      "underhall"
+    ]
+  },
+  "vadArRisken": [
+    "Särskilt utsatta är avloppsledningar i verksamheter som har hanterat kvicksilver, till exempel tandvård, vård och laboratorier."
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Okänd förekomst i avlopp och apparater."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Inventerat och sorterat som farligt avfall."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Byggherre / Projektör",
+      "atgard": "Inventera kvicksilver i miljö- och rivningsinventeringen före projektering av rivning, särskilt avlopp i vård- och laboratorieverksamhet."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Demontera och sortera kvicksilverhaltiga produkter separat som farligt avfall, med skyddsutrustning."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "kvicksilver.1",
+      "fraga": "Omfattar miljöinventeringen kvicksilver i avlopp, apparater och armaturer?",
+      "skede": "projektering",
+      "underlag": [
+        "miljöinventering"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Kemiska riskkällor."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Kvicksilver.docx – driven",
+      "url": "https://drive.google.com/file/d/1CicE89Bda5r4sZCMPnTEglY_HszKBgz4/view"
+    },
+    {
+      "titel": "Riskanalys drift och underhåll (projektexempel).pdf – driven",
+      "url": "https://drive.google.com/file/d/1ze3z9LgOXzD_h_FX-eVei6OhIbzY2NdQ/view"
+    }
+  ]
+}

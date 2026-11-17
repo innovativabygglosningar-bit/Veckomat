@@ -1,0 +1,79 @@
+{
+  "id": "tradfallning",
+  "titel": "Trädfällning och arbete med motorsåg",
+  "status": "bas",
+  "ingress": "Vid trädfällning finns risk att träffas av fallande träd och grenar och att skadas av motorsågen. Avverkning bör i första hand ske maskinellt och inte som ensamarbete.",
+  "riskomrade": "trafik",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "anlaggning"
+  ],
+  "byggdelar": [
+    "mark"
+  ],
+  "indikatorer": [
+    "avverkning",
+    "trädfällning",
+    "röjning",
+    "ledningsgata"
+  ],
+  "relevans": {
+    "projekttyper": [
+      "nybyggnad",
+      "anlaggning"
+    ]
+  },
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Manuell fällning intill byggnader."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Maskinell avverkning, utbildad personal."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Markprojektör",
+      "atgard": "Planera röjning och besiktiga trädbeståndet före avverkning."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Maskinell avverkning i första hand, utbildad personal med sågskydd, bedöm fällriktning och vind."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "tradfallning.1",
+      "fraga": "Förekommer trädfällning, och är röjningen planerad?",
+      "skede": "projektering",
+      "underlag": [
+        "markritningar"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+      "text": "Motorkedjesågar och röjsågar."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Motorkedje-röjsåg.docx – driven",
+      "url": "https://drive.google.com/file/d/1j7QxwFLdpuWKBsaMoqZlPJTOH8WAtKXH/view"
+    },
+    {
+      "titel": "Undvik risker vid trädfällning.pdf – driven",
+      "url": "https://drive.google.com/file/d/1cxhJ25E1lUEopOollGU_nLAYstlTkNqM/view"
+    }
+  ]
+}

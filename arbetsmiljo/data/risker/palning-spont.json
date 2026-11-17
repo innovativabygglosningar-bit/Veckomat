@@ -1,0 +1,93 @@
+{
+  "id": "palning-spont",
+  "titel": "Pålning, spontning och jordförstärkning",
+  "status": "bas",
+  "ingress": "Pålning, spontning och jordförstärkning sker med stora maskiner som lyfter tunga pålar och spontplank eller sprutar ned kalk under högt tryck. Lyft och kapning av pålar har orsakat olyckor.",
+  "riskomrade": "ras",
+  "sarskildRisk": [
+    2
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "anlaggning"
+  ],
+  "byggdelar": [
+    "mark"
+  ],
+  "indikatorer": [
+    "pålning",
+    "spont",
+    "sekantpålar",
+    "kalkcementpelare",
+    "jordförstärkning"
+  ],
+  "relevans": {
+    "profil": {
+      "schakt": [
+        "ja"
+      ]
+    }
+  },
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Tunga maskiner på svag mark."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Arbetsbädd med bärighet och avspärrning."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Geotekniker / Konstruktör",
+      "atgard": "Klargör tidigt behov av spont och släntlutningar, ange pållängder och undvik långa eller varierande kaplängder."
+    },
+    {
+      "skede": "projektering",
+      "ansvar": "BAS-P",
+      "atgard": "Planera arbetsområde med bärighet för maskinerna och avstånd till annat arbete."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Avspärrning vid pålning och kapning, skyddsutrustning vid kalkinjektering."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "palning-spont.1",
+      "fraga": "Är pållängder och behov av spont angivna, och finns arbetsbädd med bärighet för maskinerna?",
+      "skede": "projektering",
+      "underlag": [
+        "geoteknisk PM",
+        "konstruktionsritningar"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Byggnads- och anläggningsarbete."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Pålning.docx – driven",
+      "url": "https://drive.google.com/file/d/1BOjnut4xYlVt-4xuNSX3tlH-PpLQf448/view"
+    },
+    {
+      "titel": "Spontning.docx – driven",
+      "url": "https://drive.google.com/file/d/1IekzLZ_RUgXIAl6-632W6F5Uu-dXhwqx/view"
+    },
+    {
+      "titel": "Jordförstärkning.docx – driven",
+      "url": "https://drive.google.com/file/d/1QwRNVsyL6lFGDNkr5KlDbq83seVKtilp/view"
+    }
+  ]
+}

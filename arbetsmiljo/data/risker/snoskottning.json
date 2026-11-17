@@ -1,0 +1,83 @@
+{
+  "id": "snoskottning",
+  "titel": "Snöskottning från tak, snöras och istappar",
+  "status": "bas",
+  "ingress": "Snöskottning från hala tak hör till de mest riskfyllda arbetsuppgifterna, med risk för fall från tak och att personer nedanför träffas av snö och is. Snöras och istappar kan också falla vid dörrar och portar.",
+  "riskomrade": "atkomst",
+  "sarskildRisk": [
+    1
+  ],
+  "skeden": [
+    "projektering",
+    "drift"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "tak",
+    "fasad"
+  ],
+  "indikatorer": [
+    "snöskottning",
+    "snörasskydd",
+    "takfot",
+    "entré"
+  ],
+  "relevans": {
+    "projekttyper": [
+      "nybyggnad",
+      "ombyggnad"
+    ]
+  },
+  "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Tak utan förankringspunkter och snörasskydd."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Förankringspunkter och snörasskydd."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Arkitekt",
+      "atgard": "Förankringspunkter och takstegar på tak; snörasskydd över dörrar, portar och gångvägar."
+    },
+    {
+      "skede": "drift",
+      "ansvar": "Fastighetsägare / Entreprenör",
+      "atgard": "Personligt fallskydd, person på marken med hjälm och kommunikation, avspärrning."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "snoskottning.1",
+      "fraga": "Finns snörasskydd över entréer och förankringspunkter för snöskottning?",
+      "skede": "projektering",
+      "underlag": [
+        "takplan",
+        "fasadritningar"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:12 Utformning av arbetsplatser",
+      "text": "Permanenta arbetsplatser."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Snöskottning.docx – driven",
+      "url": "https://drive.google.com/file/d/1aDMS1Nd34Ux4jzMe9S4YZTRXW87eM2GI/view"
+    },
+    {
+      "titel": "Säkrare snöskottning från tak-adi660sv.pdf – driven",
+      "url": "https://drive.google.com/file/d/1F1V-RPiPRjGYYCsZma6Ih56cz7lHYB2l/view"
+    }
+  ]
+}

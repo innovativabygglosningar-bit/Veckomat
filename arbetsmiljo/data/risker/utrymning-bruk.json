@@ -1,0 +1,80 @@
+{
+  "id": "utrymning-bruk",
+  "titel": "Utrymning, larm och brandskydd i färdig byggnad",
+  "status": "bas",
+  "ingress": "Otillräckliga utrymningsvägar, nödbelysning, skyltning eller larm som inte hörs gör det svårt att utrymma, särskilt för personer med funktionsnedsättning. Lokaler med risk för brand, explosion eller gasutsläpp kan kräva detektorer och särskilda larm.",
+  "riskomrade": "utformning",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "drift"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "rum",
+    "el"
+  ],
+  "indikatorer": [
+    "utrymningsväg",
+    "nödbelysning",
+    "brandlarm",
+    "utrymningsplan"
+  ],
+  "relevans": {
+    "profil": {
+      "arbetslokaler": [
+        "ja"
+      ]
+    }
+  },
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Komplex byggnad med många användare."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Utrymning, larm och skyltning projekterade."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Arkitekt / Brandkonsult / Elprojektör",
+      "atgard": "Tillräckliga utrymningsvägar, nödbelysning, larm med ljus och ljud, platser för brandredskap, utrymning för rullstol och bår."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "utrymning-bruk.1",
+      "fraga": "Är utrymning och larm anpassade till verksamheten och till personer med funktionsnedsättning?",
+      "skede": "projektering",
+      "underlag": [
+        "brandskyddsbeskrivning"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:12 Utformning av arbetsplatser",
+      "text": "Utrymning och nödsituationer."
+    },
+    {
+      "ref": "BBR avsnitt 5",
+      "text": "Brandskydd."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "av_checklista_projektering_a3_formular_webb.pdf – driven",
+      "url": "https://drive.google.com/file/d/1eP3GMu5J1JSVJQu2itlDhq34mwfl9frn/view"
+    },
+    {
+      "titel": "risklogg-arbetsmiljo-projektering-220622_web.xlsx – driven",
+      "url": "https://drive.google.com/file/d/1UL9wJvnGOROj3eQo66LvzLzBxceIySRb/view"
+    }
+  ]
+}

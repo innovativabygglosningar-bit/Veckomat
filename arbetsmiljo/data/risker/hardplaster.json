@@ -41,7 +41,8 @@
   ],
   "vadArRisken": [
     "Överkänslighet kan uppstå efter kort exponering och är bestående – den drabbade kan inte fortsätta arbeta med ämnena.",
-    "Projektören styr valet av produkt och därmed om härdplast behövs."
+    "Projektören styr valet av produkt och därmed om härdplast behövs.",
+    "Från materialet på driven: Epoxi får inte användas som fukt- eller alkalispärr om likvärdiga alternativ finns; PUR-isolering frilägger isocyanat vid skärning; relining av rör använder härdplaster (bl.a. sprejning); akrylater och fogskum nämns i AV:s checklista; tjänstbarhetsintyg krävs."
   ],
   "forekomst": [
     {
@@ -107,6 +108,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.9.20",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "Epoxi.pdf – driven",
+      "url": "https://drive.google.com/file/d/1rJAIcpZq_K7lSvAgTQDWfRp4fxr0dADd/view"
+    },
+    {
+      "titel": "I-Skikt av isolering-P.docx – driven",
+      "url": "https://drive.google.com/file/d/1ou1XxNjZyjsnx_F2QpL1Em6hLPDLe_7f/view"
+    },
+    {
+      "titel": "Relining.docx – driven",
+      "url": "https://drive.google.com/file/d/1AjuLn4nDaRZIRtQ_uxpMKrPZLJjboTuo/view"
     }
   ]
 }

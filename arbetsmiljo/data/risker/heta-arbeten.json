@@ -34,7 +34,8 @@
     "byggtork"
   ],
   "vadArRisken": [
-    "Bränder vid takarbeten kan pyra i isolering i timmar innan de upptäcks. Gasolflaskor är explosionsrisk vid brand."
+    "Bränder vid takarbeten kan pyra i isolering i timmar innan de upptäcks. Gasolflaskor är explosionsrisk vid brand.",
+    "Från materialet på driven: Gasol är 1,5–2 gånger tyngre än luft och samlas i lägre utrymmen; gasolvärmare vid duktak ger brandrisk; tidigare inbyggt brandfarligt material kan vara dolt vid kompletteringsarbeten och ska anges på monteringsritning vid svetsning; montage svets minimeras; gasflaskor förvaras nattetid i låst container."
   ],
   "riskFore": {
     "s": 2,
@@ -82,6 +83,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.6.04, 9.6.05",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "Brandskydd på byggarbetsplats.docx – driven",
+      "url": "https://drive.google.com/file/d/1qUE6FI4ObuC1cBFmiFySjKqjB6VwvT5d/view"
+    },
+    {
+      "titel": "Läggning-omläggning av tätskikts- och duktak.docx – driven",
+      "url": "https://drive.google.com/file/d/1UDGL4oHWZUoZxn6gSKuam82dgeQVrUxE/view"
+    },
+    {
+      "titel": "N-Kompletteringar av sakvaror-P.docx – driven",
+      "url": "https://drive.google.com/file/d/1x4rN2b4j5Tv0wlBw2NvhhnT2yxsANljm/view"
     }
   ]
 }

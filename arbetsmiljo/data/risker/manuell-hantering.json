@@ -33,7 +33,8 @@
     "stora format"
   ],
   "vadArRisken": [
-    "Belastningsskador är den vanligaste arbetssjukdomen i byggbranschen. Projektören styr format och vikt genom materialval."
+    "Belastningsskador är den vanligaste arbetssjukdomen i byggbranschen. Projektören styr format och vikt genom materialval.",
+    "Från materialet på driven: Konkreta gränser i materialet: gipsskivor högst 900 mm breda och normalt under 25 kg, murstenar under 3 kg och murblock under 10–20 kg, golvplattor under 30 kg, markplattor över 3 kg med lyfthjälpmedel, papprullar 15–50 kg, fönster över 50 kg med kran, EG-väggblock 45 kg (ergonomirapport)."
   ],
   "riskFore": {
     "s": 3,
@@ -77,6 +78,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.05",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "Skivor,gips+plyfa.docx – driven",
+      "url": "https://drive.google.com/file/d/1lsz8psVJeoVCK2-XSjF-aYK2hRw1n0iT/view"
+    },
+    {
+      "titel": "Byggskivor.xlsx – driven",
+      "url": "https://drive.google.com/file/d/1HJ7EMrDoCzOgZl14P6noll_hmGrkqeTD/view"
+    },
+    {
+      "titel": "F-Murverk-P.docx – driven",
+      "url": "https://drive.google.com/file/d/1euC3psHBvzEkDhyuzrEjGIrIjs1FrV49/view"
     }
   ]
 }

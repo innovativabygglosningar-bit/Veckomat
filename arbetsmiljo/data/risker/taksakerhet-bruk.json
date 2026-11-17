@@ -1,0 +1,88 @@
+{
+  "id": "taksakerhet-bruk",
+  "titel": "Tillträde och arbete på tak i bruksskedet",
+  "status": "bas",
+  "ingress": "Sotning, besiktning och service av skorstenar, ventilation, solpaneler, antenner och takavvattning innebär fall vid tillträde via vind och takstege, halka på taket och fall från takkant.",
+  "riskomrade": "atkomst",
+  "sarskildRisk": [
+    1
+  ],
+  "skeden": [
+    "projektering",
+    "drift"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "tak"
+  ],
+  "indikatorer": [
+    "takstege",
+    "taklucka",
+    "gångbrygga",
+    "skorsten",
+    "solpaneler",
+    "takavvattning"
+  ],
+  "relevans": {
+    "projekttyper": [
+      "nybyggnad",
+      "ombyggnad"
+    ]
+  },
+  "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Servicekrävande installationer på tak utan säkert tillträde."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Säkert tillträde och taksäkerhet projekterade."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Arkitekt",
+      "atgard": "Projektera säkert tillträde (taklucka eller trappa, inte fasadstege), takstegar, gångbryggor, förankringspunkter och plattform vid skorsten; placera inte servicekrävande installationer på tak om det kan undvikas."
+    },
+    {
+      "skede": "drift",
+      "ansvar": "Fastighetsägare",
+      "atgard": "Kontrollera taksäkerhetsanordningar regelbundet; ta bort snö och is före arbete."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "taksakerhet-bruk.1",
+      "fraga": "Finns säkert tillträde till tak och taksäkerhet till alla servicepunkter?",
+      "skede": "projektering",
+      "underlag": [
+        "takplan",
+        "arkitektritningar"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:12 Utformning av arbetsplatser",
+      "text": "Permanenta arbetsplatser på tak."
+    },
+    {
+      "ref": "BBR avsnitt 8",
+      "text": "Tillträdesanordningar på tak."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbete vid anordning, skorsten, ventilation, antenn, solpanel etc.docx – driven",
+      "url": "https://drive.google.com/file/d/1-VudBVrtNvkZBOTwoISju3wZp_JG2mbq/view"
+    },
+    {
+      "titel": "Sotning.docx – driven",
+      "url": "https://drive.google.com/file/d/1rePVq6atmREIrW9w1HPHjZ69AG9futRU/view"
+    }
+  ]
+}

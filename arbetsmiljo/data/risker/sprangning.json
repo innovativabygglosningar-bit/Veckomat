@@ -40,7 +40,8 @@
     "motivering": "Sprängning eller bergarbeten förekommer."
   },
   "vadArRisken": [
-    "Felaktig laddning eller okänd bergkvalitet kan ge stenkast långt utanför arbetsområdet."
+    "Felaktig laddning eller okänd bergkvalitet kan ge stenkast långt utanför arbetsområdet.",
+    "Från materialet på driven: Radon vid berg- och underjordsarbete kräver mätning; skrotning och cementsprutning i berg; checklistor för upphandling av bergsprängning ovan jord."
   ],
   "riskFore": {
     "s": 2,
@@ -88,6 +89,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.15, 1.2.16",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "Radon.docx – driven",
+      "url": "https://drive.google.com/file/d/1S-x0lV4J6AbQqQuPhXr6YTFXy6kQf8Ok/view"
+    },
+    {
+      "titel": "Skrotning-Cementsprutning.docx – driven",
+      "url": "https://drive.google.com/file/d/1IVh3AUj17iKw1Vigz9-aqBGiH3FjS51V/view"
+    },
+    {
+      "titel": "Sprängning.xlsx – driven",
+      "url": "https://drive.google.com/file/d/1GFbyjK2J0laKzDi1_ugyxMW1h0f-wXEN/view"
     }
   ]
 }

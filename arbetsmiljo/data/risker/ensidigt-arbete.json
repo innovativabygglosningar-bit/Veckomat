@@ -1,0 +1,76 @@
+{
+  "id": "ensidigt-arbete",
+  "titel": "Ensidigt upprepat och handintensivt arbete",
+  "status": "bas",
+  "ingress": "Repetitiva rörelser vid murning, plattsättning, gipsskivemontage, markstensläggning och installationer ger besvär i händer, armar och nacke.",
+  "riskomrade": "ergonomi",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning"
+  ],
+  "byggdelar": [
+    "invandigt",
+    "el",
+    "mark"
+  ],
+  "indikatorer": [
+    "plattsättning",
+    "kabeldragning",
+    "skruvning",
+    "murning"
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Mycket upprepat arbete."
+  },
+  "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Större prefabricerade enheter."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Projektör",
+      "atgard": "Välj metoder och produkter som minskar repetitivt arbete, t.ex. större prefabricerade enheter och färdiga håltagningar."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Arbetsrotation, pauser och hjälpmedel."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "ensidigt-arbete.1",
+      "fraga": "Har metod- och materialval bedömts med hänsyn till upprepat arbete?",
+      "skede": "projektering",
+      "underlag": [
+        "beskrivning"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Belastningsergonomi."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Ensidigt upprepande arbete-adi_619.pdf – driven",
+      "url": "https://drive.google.com/file/d/1L4jXF6R3LZSyNq9rkLzZ2JQT6lRbfB8X/view"
+    },
+    {
+      "titel": "El-Ergonomi.docx – driven",
+      "url": "https://drive.google.com/file/d/1cC0Oh2c3JtIleKfV3dVWw1Y81g7xNBMo/view"
+    }
+  ]
+}

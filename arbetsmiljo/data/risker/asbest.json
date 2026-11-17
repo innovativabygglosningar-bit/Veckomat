@@ -88,7 +88,8 @@
   "vadArRisken": [
     "Asbest är ett fibrigt mineral som tidigare användes för sina brand-, värme- och slitstarka egenskaper. Inkapslat och oskadat material avger normalt inga fibrer – risken uppstår när materialet borras, slipas, sågas, bryts loss eller vittrar.",
     "Fibrerna är så tunna att de svävar länge i luften, sprids med ventilation och följer med kläder och verktyg. Den som exponeras märker inget i stunden; sjukdomarna kommer ofta decennier senare.",
-    "Störst exponering drabbar hantverkare som inte vet att materialet innehåller asbest – elektriker, rörmokare, ventilationsmontörer, golvläggare och rivningsarbetare. Därför är identifiering före byggstart den viktigaste åtgärden."
+    "Störst exponering drabbar hantverkare som inte vet att materialet innehåller asbest – elektriker, rörmokare, ventilationsmontörer, golvläggare och rivningsarbetare. Därför är identifiering före byggstart den viktigaste åtgärden.",
+    "Från materialet på driven: Elektrikerfaktabladet anger förekomst bakom elcentraler och elradiatorer, i lim under golvbeläggning, i fix och fog, i ventilationsisolering och lägenhetsskiljande väggar (byggnader 1950–80-tal); fastighetsägaren ska inventera före renovering och arbetsplatsen vara fri från asbest innan annat arbete. En tidigare risköversikt visar asbest i rörisolering."
   ],
   "forekomst": [
     {
@@ -375,6 +376,14 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 0.3.05",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "Risköversikt_Arbetsmiljö.doc – driven",
+      "url": "https://drive.google.com/file/d/1RoRs6X3tHKbNoK9SNjw3YOYnztYE149K/view"
+    },
+    {
+      "titel": "Asbetsupph_krav_20110125.pdf – driven",
+      "url": "https://drive.google.com/file/d/10H2Kiucr5ZxsaSwTWeQKoQ-gDVZmu2FO/view"
     }
   ]
 }

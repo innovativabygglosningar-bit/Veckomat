@@ -1,0 +1,85 @@
+{
+  "id": "impregnerat-tra",
+  "titel": "Impregnerat trä och kreosot",
+  "status": "bas",
+  "ingress": "Impregnerat trä kan innehålla krom, koppar, arsenik eller kreosot. Krom och arsenik är cancerframkallande och damm och rök vid bearbetning eller förbränning kan ge lungskador.",
+  "riskomrade": "halsofarligt",
+  "sarskildRisk": [
+    3
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "ombyggnad",
+    "rivning",
+    "anlaggning",
+    "underhall"
+  ],
+  "byggdelar": [
+    "mark",
+    "fasad"
+  ],
+  "indikatorer": [
+    "bryggor",
+    "stolpar",
+    "slipers",
+    "altaner",
+    "bullerplank",
+    "lekplatser",
+    "tryckimpregnerat"
+  ],
+  "relevans": {
+    "projekttyper": [
+      "ombyggnad",
+      "rivning",
+      "anlaggning",
+      "underhall"
+    ]
+  },
+  "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Rivning och kapning av äldre impregnerat virke."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Inventerat, dammbegränsning och separat sortering."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Projektör",
+      "atgard": "Föreskriv alternativ till kemiskt impregnerat virke där det är möjligt; inventera befintligt impregnerat virke före rivning."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Begränsa damm vid kapning, handskar och andningsskydd, sortera separat."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "impregnerat-tra.1",
+      "fraga": "Är befintligt impregnerat virke inventerat där det ska rivas?",
+      "skede": "projektering",
+      "underlag": [
+        "miljöinventering"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Kemiska riskkällor."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Impregnerat trä.docx – driven",
+      "url": "https://drive.google.com/file/d/1yfBd41PPC9lYnyvHj-0kegTXfdfOuwhh/view"
+    }
+  ]
+}

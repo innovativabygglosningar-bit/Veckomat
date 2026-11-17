@@ -43,7 +43,8 @@
     "motivering": "Schakt där ledningar finns."
   },
   "vadArRisken": [
-    "Ledningar ligger ofta inte där kartan visar. Skada på högspänningskabel eller gasledning kan få dödlig utgång och påverka tredje man."
+    "Ledningar ligger ofta inte där kartan visar. Skada på högspänningskabel eller gasledning kan få dödlig utgång och påverka tredje man.",
+    "Från materialet på driven: Ledningskartering ska genomföras; Skanskas arbetsmetod 'El i mark och luft' anger arbetssätt för markförlagda hög- och lågspänningsledningar."
   ],
   "riskFore": {
     "s": 2,
@@ -92,6 +93,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.04",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "risklista-M.docx – driven",
+      "url": "https://drive.google.com/file/d/1aQQhdWTOj6wRZx6R_4aKCrsvDM8NHXKL/view"
+    },
+    {
+      "titel": "El i mark och luft.docx – driven",
+      "url": "https://drive.google.com/file/d/1QJ6m-y_t6w8NuI95_y91O8z41j45xfm6/view"
+    },
+    {
+      "titel": "6%20El%20i%20mark%20och%20luft%20(1).pdf – driven",
+      "url": "https://drive.google.com/file/d/1dQy5sNyoD_BdhGmyL5jaLMmnitiJsqlT/view"
     }
   ]
 }

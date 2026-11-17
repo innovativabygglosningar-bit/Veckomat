@@ -39,7 +39,8 @@
     "motivering": "Verksamhet pågår under byggtiden."
   },
   "vadArRisken": [
-    "Tredje man känner inte till riskerna. Utrymningsvägar och brandskydd kan försämras under byggtiden."
+    "Tredje man känner inte till riskerna. Utrymningsvägar och brandskydd kan försämras under byggtiden.",
+    "Från materialet på driven: Ombyggnad i vårdlokaler kräver kontakt med avdelningen och inbyggnad av arbetsområdet; ungdomar kan klättra upp på ställningar utanför arbetstid; hyresgäster störs av buller, damm och avbrott i el/vatten och behöver informationsplan; obehöriga ska hindras med stängsel och stängda grindar."
   ],
   "riskFore": {
     "s": 3,
@@ -88,6 +89,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.8.02",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "Lista-risker-arbetsmoment.xlsx – driven",
+      "url": "https://drive.google.com/file/d/1EDGkiL5DdWPoi3TjNIsUygFfC2rwXSB3/view"
+    },
+    {
+      "titel": "Risköversikt_Arbetsmiljö.doc – driven",
+      "url": "https://drive.google.com/file/d/1RoRs6X3tHKbNoK9SNjw3YOYnztYE149K/view"
+    },
+    {
+      "titel": "Överlämningsmöte Bas.docx – driven",
+      "url": "https://drive.google.com/file/d/1SUPSD9ud31HU-1fbTdnouzMsJ7QdjhVO/view"
     }
   ]
 }

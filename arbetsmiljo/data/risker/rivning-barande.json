@@ -40,7 +40,8 @@
     "motivering": "Ingrepp i befintlig stomme."
   },
   "vadArRisken": [
-    "Befintliga konstruktioner avviker ofta från arkivritningar. Fel rivningsordning kan leda till ras."
+    "Befintliga konstruktioner avviker ofta från arkivritningar. Fel rivningsordning kan leda till ras.",
+    "Från materialet på driven: Rivningsplan med rivningsordning, beräkning av vikt och lyftpunkter; föraren vid rivning med grävmaskin, kran eller kula ska vara förtrogen med metoden; rivning genom sprängning kräver sprängplan; dokument som visar stabilitet i alla stadier."
   ],
   "riskFore": {
     "s": 2,
@@ -93,6 +94,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 0.3.02",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "Rivning.docx – driven",
+      "url": "https://drive.google.com/file/d/1tYboIwh5gbf8zyLaBNIr51HanONUkPqV/view"
+    },
+    {
+      "titel": "av_checklista_projektering_a3_formular_webb.pdf – driven",
+      "url": "https://drive.google.com/file/d/1eP3GMu5J1JSVJQu2itlDhq34mwfl9frn/view"
+    },
+    {
+      "titel": "Risköversikt_Arbetsmiljö.doc – driven",
+      "url": "https://drive.google.com/file/d/1RoRs6X3tHKbNoK9SNjw3YOYnztYE149K/view"
     }
   ]
 }

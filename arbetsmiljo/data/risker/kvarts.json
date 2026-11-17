@@ -41,7 +41,8 @@
   ],
   "vadArRisken": [
     "Kvartsdamm är osynligt i de skadliga fraktionerna. Exponering sker i nästan alla byggprojekt där håltagning, slipning eller rivning förekommer.",
-    "Projekteringen påverkar hur mycket bearbetning som behövs – t.ex. ingjutna ursparingar i stället för efterhandsborrning."
+    "Projekteringen påverkar hur mycket bearbetning som behövs – t.ex. ingjutna ursparingar i stället för efterhandsborrning.",
+    "Från materialet på driven: Spårfräsning är typiskt dammalstrande moment för elektriker; maskiner ska ha dammsugare med partikeluppsamlare. Vid blästring ska kvarts i blästersand och farliga ämnen i färg beaktas (AV:s checklista C.4.2)."
   ],
   "forekomst": [
     {
@@ -121,6 +122,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.63, 9.9.12",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "El-Damm.docx – driven",
+      "url": "https://drive.google.com/file/d/1BvpAA757OoAI5gQqkUKLhTgfS4MU86hY/view"
+    },
+    {
+      "titel": "av_checklista_projektering_a3_formular_webb.pdf – driven",
+      "url": "https://drive.google.com/file/d/1eP3GMu5J1JSVJQu2itlDhq34mwfl9frn/view"
+    },
+    {
+      "titel": "Kvarts-stendamm - Arbetsmiljöverket.pdf – driven",
+      "url": "https://drive.google.com/file/d/10CO-LDoKGYzAiENYqu_cIhhZ3S3UNvOa/view"
     }
   ]
 }

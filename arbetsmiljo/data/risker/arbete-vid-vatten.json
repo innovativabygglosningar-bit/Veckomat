@@ -41,7 +41,8 @@
     "motivering": "Arbete i eller nära vatten."
   },
   "vadArRisken": [
-    "Kallt vatten ger chock och nedsatt förmåga att ta sig upp. Strömmande vatten försvårar räddning."
+    "Kallt vatten ger chock och nedsatt förmåga att ta sig upp. Strömmande vatten försvårar räddning.",
+    "Från materialet på driven: Fallskydd behövs även under 2 m vid arbete över vatten; arbete på is kräver flytväst, livlina, isdubbar och att man inte arbetar ensam."
   ],
   "riskFore": {
     "s": 2,
@@ -85,6 +86,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.32",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "Fallrisk.docx – driven",
+      "url": "https://drive.google.com/file/d/1x_P4j1-YXvcFZ0xsL-dnaX5CHu7tIGoU/view"
+    },
+    {
+      "titel": "XXX-Ej införd-Bilaga AMP_risker.pdf – driven",
+      "url": "https://drive.google.com/file/d/1RYrryA3RYQ83T9KpztM6QruzdEY5S18X/view"
+    },
+    {
+      "titel": "Arbete med risk för drunkning.docx – driven",
+      "url": "https://drive.google.com/file/d/19MUI488TMKz0XIyS0rZAPSRl_rdjHiLO/view"
     }
   ]
 }

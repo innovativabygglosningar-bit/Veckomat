@@ -58,7 +58,8 @@
   ],
   "vadArRisken": [
     "Föroreningar kan vara okända tills schakt öppnas. Flyktiga ämnen kan ansamlas i schakt och ledningsgravar.",
-    "Utan provtagning blir både arbetsmiljö och massahantering oförutsägbar."
+    "Utan provtagning blir både arbetsmiljö och massahantering oförutsägbar.",
+    "Från materialet på driven: SBUF-info och remissversion om hälsa och säkerhet vid arbete i förorenade områden; markprojektör ska fråga om föroreningar i mark."
   ],
   "forekomst": [
     {
@@ -134,6 +135,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.03, 9.0.32",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "Marksanering.pdf – driven",
+      "url": "https://drive.google.com/file/d/1Q8CGz0laLWmzsZr_ZoS3rxquyhmJGMMx/view"
+    },
+    {
+      "titel": "3_3_03-11.pdf – driven",
+      "url": "https://drive.google.com/file/d/1WlkdkcP23fCx1Orau017zZLHgatcqqlp/view"
+    },
+    {
+      "titel": "risklista-M.docx – driven",
+      "url": "https://drive.google.com/file/d/1aQQhdWTOj6wRZx6R_4aKCrsvDM8NHXKL/view"
     }
   ]
 }

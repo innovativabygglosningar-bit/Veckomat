@@ -40,7 +40,8 @@
     "motivering": "Ingrepp i befintlig stomme."
   },
   "vadArRisken": [
-    "Handhållna bilmaskiner ger vibrationsskador (vita fingrar). Buller sprids i stommen till boende och verksamheter."
+    "Handhållna bilmaskiner ger vibrationsskador (vita fingrar). Buller sprids i stommen till boende och verksamheter.",
+    "Från materialet på driven: Prefabricerade element med färdiga hål och ingjutna ankarskenor minskar håltagning, damm och vibrationer (bl.a. vitbok mot vita fingrar); förbered håltagning i projekteringen; samordna håltagningar."
   ],
   "riskFore": {
     "s": 3,
@@ -85,6 +86,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.04",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "av_checklista_projektering_a3_formular_webb.pdf – driven",
+      "url": "https://drive.google.com/file/d/1eP3GMu5J1JSVJQu2itlDhq34mwfl9frn/view"
+    },
+    {
+      "titel": "HALFEN_Vitbok_mot_vita_fingrar.pdf – driven",
+      "url": "https://drive.google.com/file/d/1HM32-MGUDEjmYwhKLk2xxEdLLhptvyca/view"
+    },
+    {
+      "titel": "Bra-AM-for-montorer-o-driftpers_2020-11-09.pdf – driven",
+      "url": "https://drive.google.com/file/d/1RUugMDqUv3TAUd3KiJOJt7mB6eIdCgPn/view"
     }
   ]
 }

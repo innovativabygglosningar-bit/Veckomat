@@ -1,0 +1,72 @@
+{
+  "id": "nattarbete",
+  "titel": "Nattarbete och skiftarbete",
+  "status": "bas",
+  "ingress": "Sömnbrist ger trötthet och sämre reaktionsförmåga. Fem timmars sömnbrist motsvarar påverkan av alkohol och ökar olycksrisken. På sikt ökar risken för högt blodtryck och hjärt-kärlsjukdom.",
+  "riskomrade": "organisation",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "underhall"
+  ],
+  "byggdelar": [
+    "etablering"
+  ],
+  "indikatorer": [
+    "nattarbete",
+    "trafiksvag tid",
+    "avstängning",
+    "forcerad tidplan"
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Nattarbete vid väg eller i verksamhet."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Nattarbete minimerat i tidplanen."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Byggherre / BAS-P",
+      "atgard": "Planera tidplanen så att nattarbete minimeras; beskriv nattarbete i arbetsmiljöplanen."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Begränsa längd och antal nattpass, belysning och vila."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "nattarbete.1",
+      "fraga": "Kräver projektet nattarbete, och är det beskrivet i arbetsmiljöplanen?",
+      "skede": "projektering",
+      "underlag": [
+        "tidplan",
+        "arbetsmiljöplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:2 Planering och organisering av arbetsmiljöarbete",
+      "text": "Arbetstid och återhämtning."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Nattarbete.docx – driven",
+      "url": "https://drive.google.com/file/d/1Ybc9d6szu81TAoyymGSpDdPJ43W5d41g/view"
+    }
+  ]
+}

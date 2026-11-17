@@ -30,7 +30,8 @@
     "rivning av installationer"
   ],
   "vadArRisken": [
-    "Vid ombyggnad är det ofta oklart vilka delar av befintlig elanläggning som är spänningslösa. Håltagning kan träffa dolda kablar."
+    "Vid ombyggnad är det ofta oklart vilka delar av befintlig elanläggning som är spänningslösa. Håltagning kan träffa dolda kablar.",
+    "Från materialet på driven: Användning av befintlig elanläggning som tillfällig anläggning vid ombyggnad (Handbok 415): ansvarig för huvud-/undercentral ska anges och andra informeras om delvis spänningssatt anläggning; gamla anläggningar kan sakna jordfelsbrytare; fem säkerhetsregler och blockering; spänningsprovare enligt EN 61243-3; generatorer med jordfelsbrytare."
   ],
   "riskFore": {
     "s": 2,
@@ -78,6 +79,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 8.6.01, 8.6.02",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "El-tillfällig elanläggning.docx – driven",
+      "url": "https://drive.google.com/file/d/1szHbXMdFYOgnbGNEjGO_GXSO30wyn0FQ/view"
+    },
+    {
+      "titel": "El-elsäkerhet skylt och blockeringar.docx – driven",
+      "url": "https://drive.google.com/file/d/1U6agaBNuM3RHZZvd9nJnY_btiYHX4-DI/view"
+    },
+    {
+      "titel": "El-elgenomströmning.docx – driven",
+      "url": "https://drive.google.com/file/d/1NliqpzFu3p4M9x6LJiXX-yjL3a4m2Lof/view"
     }
   ]
 }

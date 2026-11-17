@@ -1,0 +1,81 @@
+{
+  "id": "byggdamm",
+  "titel": "Byggdamm – trä-, gips- och betongdamm",
+  "status": "bas",
+  "ingress": "Byggnadsarbetare exponeras för damm från eget och andras arbete. Damm ökar risken för KOL och trädamm ger förhöjd risk för cancer i näsa och bihålor. De minsta, osynliga partiklarna är farligast.",
+  "riskomrade": "buller",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "rivning",
+    "underhall"
+  ],
+  "byggdelar": [
+    "invandigt",
+    "stomme"
+  ],
+  "indikatorer": [
+    "slipning",
+    "spackling",
+    "spårfräsning",
+    "kapning",
+    "rivning"
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Mycket bearbetning på plats."
+  },
+  "riskEfter": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Prefabricering och dammsugare på maskinerna."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Projektör",
+      "atgard": "Välj metoder och material som minskar bearbetning på plats, t.ex. prefabricerade håltagningar och ingjutningsgods."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Maskiner med dammsugare och partikelfilter, avskärmning, ventilation, andningsskydd, löpande städning med dammsugare."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "byggdamm.1",
+      "fraga": "Ställer arbetsmiljöplanen krav på dammbekämpning och städning?",
+      "skede": "produktion",
+      "underlag": [
+        "arbetsmiljöplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Kemiska riskkällor – damm."
+    },
+    {
+      "ref": "AFS 2023:14 Gränsvärden för luftvägsexponering",
+      "text": "Damm."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Damm.docx – driven",
+      "url": "https://drive.google.com/file/d/1FGTLoW4HDdyq3enVS9hAfzfKWVfYKPfF/view"
+    },
+    {
+      "titel": "Minska byggdammet.pdf – driven",
+      "url": "https://drive.google.com/file/d/1l8Namki0K7KqUVP7GHMGebk2T2r0OpBl/view"
+    }
+  ]
+}

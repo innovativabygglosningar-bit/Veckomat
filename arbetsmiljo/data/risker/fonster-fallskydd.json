@@ -1,0 +1,70 @@
+{
+  "id": "fonster-fallskydd",
+  "titel": "Fall genom öppningsbara fönster och balkongdörrar",
+  "status": "bas",
+  "ingress": "Där barn kan vistas ska öppningsbara fönster med karmunderkant under 1,8 m ha säkerhetsbeslag eller spärranordningar. Balkongdörrar och fönster med glas närmare golvet än 0,6 m ska ha båda. Kravet gäller även balkonginglasningar.",
+  "riskomrade": "utformning",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "drift"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "fasad"
+  ],
+  "indikatorer": [
+    "säkerhetsbeslag",
+    "balkonginglasning",
+    "förskola",
+    "bostäder"
+  ],
+  "relevans": {
+    "projekttyper": [
+      "nybyggnad",
+      "ombyggnad"
+    ]
+  },
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Fönster utan spärr i bostad eller förskola."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Godkända beslag föreskrivna."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Arkitekt",
+      "atgard": "Föreskriv godkända säkerhetsbeslag och spärranordningar; bevaka kravet vid beställning av inglasningar."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "fonster-fallskydd.1",
+      "fraga": "Har öppningsbara fönster och balkongdörrar säkerhetsbeslag där barn kan vistas?",
+      "skede": "projektering",
+      "underlag": [
+        "fönsterförteckning"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "BBR avsnitt 8",
+      "text": "Skydd mot fall genom fönster."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Utlåtande beslag fönster och balkonger (projektexempel).pdf – driven",
+      "url": "https://drive.google.com/file/d/1crjOkWLP5y6PY5-5n992hxQB2jbNEVeQ/view"
+    }
+  ]
+}

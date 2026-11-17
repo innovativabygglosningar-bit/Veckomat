@@ -47,7 +47,8 @@
     "motivering": "Prefab, stålstomme eller tunga element ingår."
   },
   "vadArRisken": [
-    "Element kan välta före slutlig förankring. Montörer arbetar ofta på höjd samtidigt som lasten hänger i kranen."
+    "Element kan välta före slutlig förankring. Montörer arbetar ofta på höjd samtidigt som lasten hänger i kranen.",
+    "Från materialet på driven: Element över 500 kg ska ha viktangivelse; montageplan och arbetsmetodbeskrivning med stomleverantör; infästningar för provisorisk stagning och lyftöglor; avspärrning vid montage över annat arbetsområde; fallskydd vid lossning av betongelement; modul- och volymelementmontage med fästöglor för livlina och säkerhetskontrollant; stålmontage från saxlift."
   ],
   "forekomst": [
     {
@@ -127,6 +128,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 3.0.01, 3.2–3.7, 6.0",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "G-Konstruktioner av monteringsfärdiga element-P.docx – driven",
+      "url": "https://drive.google.com/file/d/1X_cdR1FO4HXBBrrEseiPX_F2XP4yRvoQ/view"
+    },
+    {
+      "titel": "Arbete_over_tva_meter_Element_2015.pdf – driven",
+      "url": "https://drive.google.com/file/d/1gWdGyE0c8ay0trEsYbP_8tgHbkYziEAl/view"
+    },
+    {
+      "titel": "Lista-risker-arbetsmoment.xlsx – driven",
+      "url": "https://drive.google.com/file/d/1EDGkiL5DdWPoi3TjNIsUygFfC2rwXSB3/view"
     }
   ]
 }

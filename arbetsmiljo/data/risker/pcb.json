@@ -61,7 +61,8 @@
   ],
   "vadArRisken": [
     "PCB är giftigt, ackumuleras i kroppen och misstänks vara cancerframkallande. Halterna i fogar kan vara mycket höga och ämnet sprids till angränsande betong och puts.",
-    "Risken uppstår främst vid fasadrenovering, fönsterbyte och golvrivning när fogar fräses eller skärs bort."
+    "Risken uppstår främst vid fasadrenovering, fönsterbyte och golvrivning när fogar fräses eller skärs bort.",
+    "Från materialet på driven: Avfallsblad om PCB i bygg- och rivningsavfall; om PCB i fogar eller golvbeläggning ska avfallshanteringen planeras."
   ],
   "forekomst": [
     {
@@ -146,6 +147,14 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 0.3.05",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "Blad30 Pcb (1).pdf – driven",
+      "url": "https://drive.google.com/file/d/14PYiXZJXEJtRCAEUwDtbtrKZtz057znt/view"
+    },
+    {
+      "titel": "av_checklista_projektering_a3_formular_webb.pdf – driven",
+      "url": "https://drive.google.com/file/d/1eP3GMu5J1JSVJQu2itlDhq34mwfl9frn/view"
     }
   ]
 }

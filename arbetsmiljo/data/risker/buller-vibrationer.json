@@ -34,7 +34,8 @@
     "packning"
   ],
   "vadArRisken": [
-    "Hörselskador är bestående. Helkroppsvibrationer drabbar maskinförare."
+    "Hörselskador är bestående. Helkroppsvibrationer drabbar maskinförare.",
+    "Från materialet på driven: Bruksskedets ljudmiljö (buller från fläktrum, installationer och trafik, akustik och överhörning) ska hanteras i projekteringen; insatsvärde 2,5 m/s² och gränsvärde 5,0 m/s² för hand-armvibrationer; insatsvärde 80 dB och gränsvärde 85 dB för buller."
   ],
   "riskFore": {
     "s": 3,
@@ -79,6 +80,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.61–1.2.63, 3.1.12, 9.9.11–9.9.13",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "av_checklista_projektering_a3_formular_webb.pdf – driven",
+      "url": "https://drive.google.com/file/d/1eP3GMu5J1JSVJQu2itlDhq34mwfl9frn/view"
+    },
+    {
+      "titel": "El-Vibrationer.docx – driven",
+      "url": "https://drive.google.com/file/d/1KRT0eBEG1VC55uv3TKKuuMJA2WHrFhRv/view"
+    },
+    {
+      "titel": "El-Buller.docx – driven",
+      "url": "https://drive.google.com/file/d/14ZwWJit58mHvxbWyHJnXuCOlNFstpzr7/view"
     }
   ]
 }

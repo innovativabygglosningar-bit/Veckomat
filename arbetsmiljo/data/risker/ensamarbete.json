@@ -2,6 +2,7 @@
   "id": "ensamarbete",
   "titel": "Ensamarbete",
   "status": "bas",
+  "allman": true,
   "ingress": "Den som arbetar ensam kan inte larma eller få hjälp vid olycka eller sjukdom.",
   "riskomrade": "organisation",
   "sarskildRisk": [],
@@ -28,7 +29,8 @@
     "helgarbete"
   ],
   "vadArRisken": [
-    "Vissa arbeten får inte utföras ensam, t.ex. nedstigning i brunnar och arbete i fallskyddssele."
+    "Vissa arbeten får inte utföras ensam, t.ex. nedstigning i brunnar och arbete i fallskyddssele.",
+    "Från materialet på driven: Trädfällning och svetsning i trånga utrymmen får inte utföras ensam; vid platsbesök i sällan besökta utrymmen bör man arbeta parvis eller meddela var man är."
   ],
   "riskFore": {
     "s": 2,
@@ -67,7 +69,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.60, 9.0.33",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "Lista-risker-arbetsmoment.xlsx – driven",
+      "url": "https://drive.google.com/file/d/1EDGkiL5DdWPoi3TjNIsUygFfC2rwXSB3/view"
+    },
+    {
+      "titel": "Svetsning, lödning.docx – driven",
+      "url": "https://drive.google.com/file/d/19HCB7jfkNzPqgfamJZOCSHWTNyQlB60q/view"
+    },
+    {
+      "titel": "XXX-Ej införd-Bilaga AMP_risker.pdf – driven",
+      "url": "https://drive.google.com/file/d/1RYrryA3RYQ83T9KpztM6QruzdEY5S18X/view"
     }
-  ],
-  "allman": true
+  ]
 }

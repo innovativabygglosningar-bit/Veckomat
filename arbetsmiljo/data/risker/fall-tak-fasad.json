@@ -50,7 +50,8 @@
   },
   "vadArRisken": [
     "Risken finns vid alla arbeten där nivåskillnaden är mer än två meter, men även lägre fall kan ge allvarliga skador.",
-    "Projekteringen avgör om kollektiva skydd kan monteras tidigt och om framtida underhåll kan göras säkert."
+    "Projekteringen avgör om kollektiva skydd kan monteras tidigt och om framtida underhåll kan göras säkert.",
+    "Från materialet på driven: Projektören ska ange permanenta infästningar för takräcken, livlinor, ställningar och fasadstegar på ritning (även för framtida omglasning); vid taklutning ≥14° bör horisontell arbetsplattform ordnas, vid skorstensarbete på tak >6° tillfällig plattform; fallskydd krävs även under 2 m vid vatten och uppstickande armering; stålstommar har små stigytor."
   ],
   "forekomst": [
     {
@@ -135,6 +136,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 3.0.01, 4.0.01, 5.6.05",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "L-Puts, målning-P.docx – driven",
+      "url": "https://drive.google.com/file/d/1_oyMZDQH2slMajJzbMdnbUEmwtU2dFU7/view"
+    },
+    {
+      "titel": "Z-Fästdon-tätningar-P.docx – driven",
+      "url": "https://drive.google.com/file/d/12XjxIC7expBY9r76GX9cJvkLEwmvL-2_/view"
+    },
+    {
+      "titel": "H-Pelare, Balkar-P.docx – driven",
+      "url": "https://drive.google.com/file/d/1CbVwRxM6bWpROikoC7xE_dm3oKJmz_Tv/view"
     }
   ]
 }

@@ -1,12 +1,10 @@
 {
   "id": "utvandigt-underhall",
-  "titel": "Utvändigt underhåll – belysning, snö och tak",
+  "titel": "Utvändigt underhåll – belysning och utemiljö",
   "status": "bas",
-  "ingress": "Snöskottning av tak, rensning av ventilationshuvar, byte av fasadbelysning och skötsel av planteringar kan innebära fall och tunga moment om de inte planeras.",
+  "ingress": "Byte av fasadbelysning, rensning av takavvattning från mark, skötsel av planteringar och snöröjning av markytor kan innebära arbete på höjd och tunga moment om det inte planeras. Tak och snöskottning har egna riskblad.",
   "riskomrade": "atkomst",
-  "sarskildRisk": [
-    1
-  ],
+  "sarskildRisk": [],
   "skeden": [
     "projektering",
     "drift"
@@ -16,33 +14,26 @@
     "ombyggnad"
   ],
   "byggdelar": [
-    "tak",
     "fasad",
     "mark"
   ],
   "indikatorer": [
-    "snöskottning",
     "fasadbelysning",
-    "takavvattning",
-    "snörasskydd",
-    "planteringar"
+    "planteringar",
+    "snöupplag",
+    "maskinell snöröjning"
   ],
   "riskFore": {
-    "s": 3,
+    "s": 2,
     "k": 3,
-    "motivering": "Takarbete vintertid."
+    "motivering": "Belysning på hög fasad, planteringar utan tillträde."
   },
   "riskEfter": {
     "s": 1,
     "k": 3,
-    "motivering": "Snörasskydd, förankringspunkter, åtkomlig belysning."
+    "motivering": "Åtkomlig belysning, ytor för maskinell snöröjning."
   },
   "atgarder": [
-    {
-      "skede": "projektering",
-      "ansvar": "Arkitekt",
-      "atgard": "Snörasskydd, takskyddsanordningar och infästningar för fallskydd; ytor för maskinell snöröjning och snöupplag."
-    },
     {
       "skede": "projektering",
       "ansvar": "Elprojektör",
@@ -52,12 +43,17 @@
       "skede": "projektering",
       "ansvar": "Markprojektör",
       "atgard": "Planteringsytor med tillträde för skötsel."
+    },
+    {
+      "skede": "projektering",
+      "ansvar": "Arkitekt / Markprojektör",
+      "atgard": "Ytor för maskinell snöröjning och snöupplag."
     }
   ],
   "granskning": [
     {
       "id": "utvandigt-underhall.1",
-      "fraga": "Kan tak, fasadbelysning och utemiljö underhållas säkert?",
+      "fraga": "Kan fasadbelysning och utemiljö underhållas och snöröjas säkert?",
       "skede": "projektering",
       "underlag": [
         "arkitektritningar",

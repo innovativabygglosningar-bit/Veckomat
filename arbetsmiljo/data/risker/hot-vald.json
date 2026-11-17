@@ -1,0 +1,78 @@
+{
+  "id": "hot-vald",
+  "titel": "Hot och våld – lokalutformning och larm",
+  "status": "bas",
+  "ingress": "Verksamheter med risk för hot och våld behöver överblickbara lokaler, väl belysta entréer och larm.",
+  "riskomrade": "utformning",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "drift"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "rum",
+    "el"
+  ],
+  "indikatorer": [
+    "vård",
+    "socialtjänst",
+    "reception",
+    "personalentré",
+    "överfallslarm"
+  ],
+  "relevans": {
+    "profil": {
+      "arbetslokaler": [
+        "ja"
+      ]
+    }
+  },
+  "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Verksamhet med publik kontakt."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Utformning och larm anpassade."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Arkitekt / Elprojektör",
+      "atgard": "Utforma receptioner och personalentréer, belysning och larm så att hot och våld förebyggs, med flyktvägar för personalen."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "hot-vald.1",
+      "fraga": "Är lokalutformning och larm anpassade till verksamhetens risk för hot och våld?",
+      "skede": "projektering",
+      "underlag": [
+        "arkitektritningar",
+        "verksamhetsbeskrivning"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:12 Utformning av arbetsplatser",
+      "text": "Arbetslokaler."
+    },
+    {
+      "ref": "AFS 2023:2 Planering och organisering av arbetsmiljöarbete",
+      "text": "Hot och våld."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "av_checklista_projektering_a3_formular_webb.pdf – driven",
+      "url": "https://drive.google.com/file/d/1eP3GMu5J1JSVJQu2itlDhq34mwfl9frn/view"
+    }
+  ]
+}

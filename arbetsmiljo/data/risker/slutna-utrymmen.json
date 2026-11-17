@@ -44,7 +44,8 @@
     "motivering": "Anläggningsarbete med brunnar, kulvertar, tankar eller tunnlar. Kontrollera även vid ombyggnad om pumpgropar eller kulvertar berörs."
   },
   "vadArRisken": [
-    "Flera dödsolyckor har inträffat när kollegor försökt rädda en medvetslös person i en brunn."
+    "Flera dödsolyckor har inträffat när kollegor försökt rädda en medvetslös person i en brunn.",
+    "Från materialet på driven: Luften ska undersökas varje gång arbete påbörjas i cistern, brunn, silo eller lastutrymme; risk för koldioxidförgiftning i sprinklerrum (arbeta i par, håll dörren öppen); minst två separata öppningar i trånga riskområden; reningsverk med förgiftnings- och smittrisk."
   ],
   "riskFore": {
     "s": 2,
@@ -93,6 +94,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.0.01, 9.0.03",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "Arbete i brunnar eller tunnlar samt anläggningsarbete under jord.docx – driven",
+      "url": "https://drive.google.com/file/d/1dkMPEmoZWR0oKfer5wb09xDeCj80L6Eb/view"
+    },
+    {
+      "titel": "Lista-risker-arbetsmoment.xlsx – driven",
+      "url": "https://drive.google.com/file/d/1EDGkiL5DdWPoi3TjNIsUygFfC2rwXSB3/view"
+    },
+    {
+      "titel": "av_checklista_projektering_a3_formular_webb.pdf – driven",
+      "url": "https://drive.google.com/file/d/1eP3GMu5J1JSVJQu2itlDhq34mwfl9frn/view"
     }
   ]
 }

@@ -32,7 +32,8 @@
     "maskin"
   ],
   "vadArRisken": [
-    "Maskinförare har begränsad sikt. Markpersonal som arbetar nära maskin i rörelse är särskilt utsatt."
+    "Maskinförare har begränsad sikt. Markpersonal som arbetar nära maskin i rörelse är särskilt utsatt.",
+    "Från materialet på driven: Fordonshantering på arbetsplatsen ska planeras motsvarande TA-plan; snabbfästen för redskap på entreprenadmaskiner måste låsas säkert; dåligt klimat i förarhytt ger trötthet; midjestyrda dumprar, vältar och truckar har egna kontrollpunkter."
   ],
   "riskFore": {
     "s": 3,
@@ -76,6 +77,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 2.4.01, 9.1.10, 9.1.22",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "Fordon.docx – driven",
+      "url": "https://drive.google.com/file/d/1ZtQ241J6OMySkiXgkccB_87OkvJJ5qdL/view"
+    },
+    {
+      "titel": "maskinforare.pdf – driven",
+      "url": "https://drive.google.com/file/d/11bIx0q6yineRSuz9rW-x1scb2ewMvEQE/view"
+    },
+    {
+      "titel": "arbetsmiljoansvarig.pdf – driven",
+      "url": "https://drive.google.com/file/d/1GolkMZRQVLslflFxGHhCfRenII17vJeX/view"
     }
   ]
 }

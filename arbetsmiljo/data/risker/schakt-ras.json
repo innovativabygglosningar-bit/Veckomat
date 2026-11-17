@@ -45,7 +45,8 @@
   },
   "vadArRisken": [
     "Även grunda schakter (> 1 m) kan rasa. Grundvatten, tjäle och regn försämrar stabiliteten snabbt.",
-    "Närliggande byggnader och vägar kan påverkas av schakt och påverka schaktens stabilitet."
+    "Närliggande byggnader och vägar kan påverkas av schakt och påverka schaktens stabilitet.",
+    "Från materialet på driven: Schaktplan bör upprättas av projektör; upplag hålls borta från schaktkrön (undantag ≤1,5 m djup); risk för bottenupptryckning och översvämning; tillräcklig frischakt mot källarvägg; grundläggning ovan intilliggande byggnads grundläggningsnivå beaktas."
   ],
   "forekomst": [
     {
@@ -117,6 +118,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.01, 1.2.10–1.2.14",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "C-Mark-P.docx – driven",
+      "url": "https://drive.google.com/file/d/1zFbEgUL6a7YzDXrPEHIcoN9rm2tU6Kv1/view"
+    },
+    {
+      "titel": "Arbete som innebär risk att begravas under jordmassor eller sjunka ner i lös mark.docx – driven",
+      "url": "https://drive.google.com/file/d/190QEHK2BsNaN58u2M-1Zhj4ZrD5BTLUh/view"
+    },
+    {
+      "titel": "risklista-M.docx – driven",
+      "url": "https://drive.google.com/file/d/1aQQhdWTOj6wRZx6R_4aKCrsvDM8NHXKL/view"
     }
   ]
 }

@@ -40,7 +40,8 @@
     "motivering": "Luftledningar inom eller intill området."
   },
   "vadArRisken": [
-    "Överslag kan ske utan direkt kontakt. Konsekvensen är ofta dödlig."
+    "Överslag kan ske utan direkt kontakt. Konsekvensen är ofta dödlig.",
+    "Från materialet på driven: Friledningar för byggström ska undvikas nära kran och grävmaskin och stolpar skyddas mot påkörning; klätterplattformar och liftar ska kontrolleras mot luftkablar."
   ],
   "riskFore": {
     "s": 2,
@@ -93,6 +94,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 8.6.03",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "EL-P.docx – driven",
+      "url": "https://drive.google.com/file/d/1X7HjaaQBQq94zE7LfQNCt4JFXttHsqR9/view"
+    },
+    {
+      "titel": "Klätterplattform.docx – driven",
+      "url": "https://drive.google.com/file/d/1Cdm0EnW5jgFuKLbzVyZlFi0F_W1Wzc9_/view"
+    },
+    {
+      "titel": "Arbete i närheten av högspänningsledning.docx – driven",
+      "url": "https://drive.google.com/file/d/11CVVCcgo2snb-Ll8xaE9hsskiqeAiGdm/view"
     }
   ]
 }

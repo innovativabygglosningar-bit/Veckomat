@@ -43,7 +43,8 @@
     "motivering": "Arbetsplatsen ligger intill trafik."
   },
   "vadArRisken": [
-    "Passerande trafik tar ofta inte hänsyn till arbetsplatsen. Leveranser och backande fordon vid in- och utfarter är vanliga risksituationer."
+    "Passerande trafik tar ofta inte hänsyn till arbetsplatsen. Leveranser och backande fordon vid in- och utfarter är vanliga risksituationer.",
+    "Från materialet på driven: Trafikanordningsplaner (TA-plan), Trafikverkets regler och utbildningskrav för arbete vid väg och spår; formställning över väg/järnväg kräver särskild hänsyn och i första hand omledning av trafik."
   ],
   "riskFore": {
     "s": 3,
@@ -100,6 +101,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.1.01",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "Arbete vid väg.docx – driven",
+      "url": "https://drive.google.com/file/d/1OpA-Q4intOM31ctVWfdFSK47j04NVD8P/view"
+    },
+    {
+      "titel": "Arbete vid spårområde.docx – driven",
+      "url": "https://drive.google.com/file/d/1NHtuAnfuK4ioD9luJjUnTQJGWj9pwffe/view"
+    },
+    {
+      "titel": "Trafikanordningsplaner-Exempelsamling1.pdf – driven",
+      "url": "https://drive.google.com/file/d/1c6UY8JEecjFT_bXSB_J5JRWlt395qOa4/view"
     }
   ]
 }

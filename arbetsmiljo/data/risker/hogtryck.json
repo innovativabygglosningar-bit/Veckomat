@@ -1,0 +1,66 @@
+{
+  "id": "hogtryck",
+  "titel": "Högtrycksspolning och vattenbilning",
+  "status": "bas",
+  "allman": true,
+  "ingress": "Högtryckstvättar och vattenbilning ger risk för skärskador av vattenstrålen, slangar som slår, elfel och buller.",
+  "riskomrade": "buller",
+  "sarskildRisk": [],
+  "skeden": [
+    "produktion",
+    "drift"
+  ],
+  "projekttyper": [
+    "ombyggnad",
+    "underhall",
+    "anlaggning"
+  ],
+  "byggdelar": [
+    "fasad",
+    "stomme"
+  ],
+  "indikatorer": [
+    "vattenbilning",
+    "högtryckstvätt",
+    "fasadtvätt"
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Vattenbilning av betong."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Kontrollerad utrustning och skydd."
+  },
+  "atgarder": [
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Kontrollera utrustning och säkerhetsanordningar, IP-klassad eldriven utrustning, handskar, ögonskydd, vattentäta kläder, utbildad personal."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "hogtryck.1",
+      "fraga": "Hanteras vattenbilning och högtrycksspolning i arbetsmiljöplanen?",
+      "skede": "produktion",
+      "underlag": [
+        "arbetsmiljöplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+      "text": "Arbetsutrustning."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Vattenbilning-Högtryckssprutning.docx – driven",
+      "url": "https://drive.google.com/file/d/1YxB-abQjbVZkb8A1pEpq-zLmnm6A1koI/view"
+    }
+  ]
+}

@@ -46,7 +46,8 @@
   },
   "vadArRisken": [
     "Bly tas upp via inandning och sväljning och påverkar nervsystem, blod och njurar. Särskilt skadligt för foster.",
-    "Risken är störst vid fönsterrenovering, ommålning av fasader och rostskyddsmålade stålkonstruktioner."
+    "Risken är störst vid fönsterrenovering, ommålning av fasader och rostskyddsmålade stålkonstruktioner.",
+    "Från materialet på driven: Arbete med bly kräver medicinsk kontroll; bly kan tas upp via hud och luftvägar."
   ],
   "forekomst": [
     {
@@ -115,6 +116,16 @@
     {
       "ref": "AFS 2023:15 Medicinska kontroller i arbetslivet",
       "text": "Blodblyprov vid blyarbete."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Bly.docx – driven",
+      "url": "https://drive.google.com/file/d/1r1c4k9UMeE8mjL_QI0_efRVgoMWZmno-/view"
+    },
+    {
+      "titel": "Lista-risker-arbetsmoment.xlsx – driven",
+      "url": "https://drive.google.com/file/d/1EDGkiL5DdWPoi3TjNIsUygFfC2rwXSB3/view"
     }
   ]
 }

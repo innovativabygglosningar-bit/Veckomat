@@ -47,7 +47,8 @@
     "motivering": "Arbete i befintliga byggnader."
   },
   "vadArRisken": [
-    "Exponering kan ge luftvägsbesvär, allergi och infektioner. Risken är störst vid rivning av fuktskadade bjälklag, krypgrunder och våtrum samt vid stambyte."
+    "Exponering kan ge luftvägsbesvär, allergi och infektioner. Risken är störst vid rivning av fuktskadade bjälklag, krypgrunder och våtrum samt vid stambyte.",
+    "Från materialet på driven: Byggfukt i betonggolv och trävirke ska hanteras och beskrivas tydligt i bygghandlingarna (AV C.3). Fuktiga grunder och ledningsgravar ger svamptillväxt och lukt. Ohyra/gnagare och fågelbon (skorsten, tak) kan ge infektioner."
   ],
   "forekomst": [
     {
@@ -106,6 +107,18 @@
     {
       "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 8.4.02",
       "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    },
+    {
+      "titel": "av_checklista_projektering_a3_formular_webb.pdf – driven",
+      "url": "https://drive.google.com/file/d/1eP3GMu5J1JSVJQu2itlDhq34mwfl9frn/view"
+    },
+    {
+      "titel": "VVS-P.docx – driven",
+      "url": "https://drive.google.com/file/d/1njwGKK9ooIujlSoHfXZgR2hxBMzqo2mK/view"
+    },
+    {
+      "titel": "Borttagning av djur.docx – driven",
+      "url": "https://drive.google.com/file/d/17GpCWFEbU2btT7t4aQ1OHxgSvMlYriV9/view"
     }
   ]
 }

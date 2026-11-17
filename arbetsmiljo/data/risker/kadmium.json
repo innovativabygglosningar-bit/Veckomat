@@ -1,0 +1,89 @@
+{
+  "id": "kadmium",
+  "titel": "Kadmium",
+  "status": "bas",
+  "ingress": "Kadmium är en mycket giftig metall som kan skada lungor, njurar och skelett. Inandning av kadmiumoxidrök vid upphettning kan ge akuta lungskador.",
+  "riskomrade": "halsofarligt",
+  "sarskildRisk": [
+    3
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "ombyggnad",
+    "rivning",
+    "underhall"
+  ],
+  "byggdelar": [
+    "el",
+    "fasad",
+    "invandigt"
+  ],
+  "indikatorer": [
+    "nickelkadmiumbatterier",
+    "lödning",
+    "färgpigment",
+    "rivning"
+  ],
+  "relevans": {
+    "projekttyper": [
+      "ombyggnad",
+      "rivning",
+      "underhall"
+    ]
+  },
+  "riskFore": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Upphettning av kadmiumhaltigt material."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Kända förekomster och skyddsåtgärder."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Projektör",
+      "atgard": "Undvik produkter med kadmium och redovisa känd förekomst i befintliga material."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Medicinsk kontroll, punktutsug och andningsskydd vid upphettning eller bearbetning."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "kadmium.1",
+      "fraga": "Har kadmium i befintlig färg, batterier eller lod inventerats där det berörs?",
+      "skede": "projektering",
+      "underlag": [
+        "miljöinventering"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Kemiska riskkällor."
+    },
+    {
+      "ref": "AFS 2023:15 Medicinska kontroller i arbetslivet",
+      "text": "Kadmium."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Kadmium.docx – driven",
+      "url": "https://drive.google.com/file/d/1uueKmVbsuBY7AC2Apbfh2JJXT0ol0W5C/view"
+    },
+    {
+      "titel": "Medicinska kontroller.docx – driven",
+      "url": "https://drive.google.com/file/d/1DnNOuyMx_A_MnIFQTUxP5Ay4oL9qMti6/view"
+    }
+  ]
+}
