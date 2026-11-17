@@ -1,0 +1,100 @@
+{
+  "version": 2,
+  "anmarkning": "Hänvisningarna följer Arbetsmiljöverkets föreskrifter (AFS 2023:1–15) som gäller från 2025-01-01. Kontrollera aktuell lydelse på av.se när paragrafer citeras.",
+
+  "skala": {
+    "sannolikhet": [
+      {"v": 1, "namn": "Obetydlig", "text": "Förekommer nästan aldrig"},
+      {"v": 2, "namn": "Liten", "text": "Förekommer sällan"},
+      {"v": 3, "namn": "Måttlig", "text": "Förekommer då och då"},
+      {"v": 4, "namn": "Stor", "text": "Förekommer ofta"}
+    ],
+    "konsekvens": [
+      {"v": 1, "namn": "Lindrig", "text": "Enstaka lindrig personskada utan vård eller sjukskrivning"},
+      {"v": 2, "namn": "Måttlig", "text": "Lindriga personskador, vård och sjukskrivning 1–2 dagar"},
+      {"v": 3, "namn": "Allvarlig", "text": "Enstaka allvarlig personskada, sjukskrivning 3–7 dagar"},
+      {"v": 4, "namn": "Mycket allvarlig", "text": "Allvarlig personskada, sjukskrivning > 8 dagar, bestående skada eller dödsfall"}
+    ],
+    "nivaer": [
+      {"min": 1, "max": 3, "namn": "Låg", "text": "Ingen ytterligare åtgärd krävs."},
+      {"min": 4, "max": 9, "namn": "Medel", "text": "Risk kan förekomma. Bedöm om ytterligare åtgärd krävs."},
+      {"min": 12, "max": 16, "namn": "Hög", "text": "Allvarlig risk. Åtgärd ska vidtas."}
+    ]
+  },
+
+  "status": [
+    {"id": "klar", "namn": "Fullständigt riskblad"},
+    {"id": "bas", "namn": "Grundblad", "text": "Innehåller det viktigaste – kan fördjupas med förekomst, beslutsflöde och textmallar."}
+  ],
+
+  "kategorier": {
+    "skeden": [
+      {"id": "projektering", "namn": "Projektering", "text": "Risken kan byggas bort eller styras i handlingarna (BAS-P, projektörer, byggherre)."},
+      {"id": "produktion", "namn": "Produktion", "text": "Risken uppstår vid utförandet (BAS-U, entreprenörer)."},
+      {"id": "drift", "namn": "Drift & underhåll", "text": "Risken finns kvar i färdig byggnad – ska in i journal och dokumentation för framtida arbeten."}
+    ],
+    "projekttyper": [
+      {"id": "nybyggnad", "namn": "Nybyggnad"},
+      {"id": "ombyggnad", "namn": "Ombyggnad / renovering"},
+      {"id": "rivning", "namn": "Rivning"},
+      {"id": "anlaggning", "namn": "Mark & anläggning"},
+      {"id": "underhall", "namn": "Underhåll / ROT i drift"}
+    ],
+    "riskomraden": [
+      {"id": "halsofarligt", "namn": "Hälsofarliga ämnen"},
+      {"id": "fall", "namn": "Fall från höjd"},
+      {"id": "ras", "namn": "Ras, schakt & berg"},
+      {"id": "lyft", "namn": "Tunga lyft & montage"},
+      {"id": "trafik", "namn": "Trafik & maskiner"},
+      {"id": "rivning", "namn": "Rivning & ingrepp i stomme"},
+      {"id": "el", "namn": "El & ledningar"},
+      {"id": "brand", "namn": "Brand"},
+      {"id": "ergonomi", "namn": "Ergonomi & belastning"},
+      {"id": "buller", "namn": "Buller, damm & vibrationer"},
+      {"id": "vatten", "namn": "Vatten & slutna utrymmen"},
+      {"id": "organisation", "namn": "Organisation & omgivning"},
+      {"id": "atkomst", "namn": "Åtkomst för drift & underhåll"}
+    ],
+    "byggdelar": [
+      {"id": "mark", "namn": "Mark & grund"},
+      {"id": "stomme", "namn": "Stomme & bjälklag"},
+      {"id": "tak", "namn": "Tak"},
+      {"id": "fasad", "namn": "Fasad, fönster & dörrar"},
+      {"id": "invandigt", "namn": "Invändiga ytskikt & väggar"},
+      {"id": "vs", "namn": "VS / rör"},
+      {"id": "vent", "namn": "Ventilation"},
+      {"id": "el", "namn": "El"},
+      {"id": "etablering", "namn": "Etablering & logistik"}
+    ],
+    "sarskildRisk": [
+      {"nr": 1, "text": "Fall från högre höjd än två meter"},
+      {"nr": 2, "text": "Risk att begravas under jordmassor eller sjunka ner i lös mark"},
+      {"nr": 3, "text": "Exponering för farliga kemiska eller biologiska ämnen"},
+      {"nr": 4, "text": "Exponering för joniserande strålning"},
+      {"nr": 5, "text": "Arbete i närheten av högspänningsledning"},
+      {"nr": 6, "text": "Risk för drunkning"},
+      {"nr": 7, "text": "Arbete i brunnar, tunnlar eller under jord"},
+      {"nr": 8, "text": "Undervattensarbete med dykarutrustning"},
+      {"nr": 9, "text": "Arbete i kassun under förhöjt lufttryck"},
+      {"nr": 10, "text": "Arbete där sprängämnen används"},
+      {"nr": 11, "text": "Montering och nedmontering av tunga byggelement"},
+      {"nr": 12, "text": "Arbete på plats med passerande fordonstrafik"},
+      {"nr": 13, "text": "Rivning av bärande konstruktioner eller hälsofarliga material"}
+    ]
+  },
+
+  "profilfragor": [
+    {"id": "projekttyp", "fraga": "Vilken typ av projekt är det?", "typ": "flerval", "kalla": "projekttyper"},
+    {"id": "byggar", "fraga": "Byggår (eller senaste större ombyggnad) för befintlig byggnad", "typ": "ar", "hjalp": "Lämna tomt vid ren nybyggnad."},
+    {"id": "inventering", "fraga": "Har miljö- och materialinventering (farliga ämnen) gjorts?", "typ": "val", "alternativ": ["ja", "nej", "vet ej"]},
+    {"id": "verksamhet", "fraga": "Pågår verksamhet i eller intill byggnaden under byggtiden (boende, kontor, skola, vård)?", "typ": "val", "alternativ": ["ja", "nej"]},
+    {"id": "hojd", "fraga": "Förekommer arbete på höjd över 2 m (tak, fasad, ställning, bjälklagskant)?", "typ": "val", "alternativ": ["ja", "nej"]},
+    {"id": "prefab", "fraga": "Ingår prefab, stålstomme eller andra tunga element som lyfts med kran?", "typ": "val", "alternativ": ["ja", "nej"]},
+    {"id": "schakt", "fraga": "Förekommer schakt eller markarbeten?", "typ": "val", "alternativ": ["ja", "nej"]},
+    {"id": "ledningar", "fraga": "Finns ledningar i mark eller luftledningar inom eller intill området?", "typ": "val", "alternativ": ["ja", "nej", "vet ej"]},
+    {"id": "forurenad", "fraga": "Finns misstanke om förorenad mark (tidigare industri, drivmedel, okända fyllnadsmassor)?", "typ": "val", "alternativ": ["ja", "nej", "vet ej"]},
+    {"id": "sprangning", "fraga": "Förekommer sprängning eller bergarbeten?", "typ": "val", "alternativ": ["ja", "nej"]},
+    {"id": "vatten", "fraga": "Förekommer arbete i eller nära vatten (kaj, dike, damm, öppet vatten)?", "typ": "val", "alternativ": ["ja", "nej"]},
+    {"id": "trafik", "fraga": "Ligger arbetsplatsen intill väg, gata, spår eller i område med fordonstrafik?", "typ": "val", "alternativ": ["ja", "nej"]}
+  ]
+}

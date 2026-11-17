@@ -1,0 +1,92 @@
+{
+  "id": "rivning-barande",
+  "titel": "Rivning av bärande konstruktioner",
+  "status": "bas",
+  "ingress": "Kvarvarande delar kan förlora stabilitet när bärande väggar, bjälklag eller pelare tas bort.",
+  "riskomrade": "rivning",
+  "sarskildRisk": [
+    13
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "ombyggnad",
+    "rivning"
+  ],
+  "byggdelar": [
+    "stomme"
+  ],
+  "sokord": [
+    "håltagning",
+    "stämp",
+    "rivningsplan",
+    "bärande vägg"
+  ],
+  "indikatorer": [
+    "bärande vägg",
+    "rivning",
+    "ny öppning",
+    "stämpning",
+    "rivningsritning",
+    "bjälklag"
+  ],
+  "relevans": {
+    "projekttyper": [
+      "ombyggnad",
+      "rivning"
+    ],
+    "motivering": "Ingrepp i befintlig stomme."
+  },
+  "vadArRisken": [
+    "Befintliga konstruktioner avviker ofta från arkivritningar. Fel rivningsordning kan leda till ras."
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Okända konstruktioner och rivningsordning."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Konstruktör anger stämpning och rivningsordning."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Konstruktör",
+      "atgard": "Utred befintlig stomme (okulärt, provhål); ange temporär stämpning och rivningsordning på ritning."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Arbetsberedning med rivningsmetod, avspärrning, kontroll av stämp."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "rivning-barande.1",
+      "fraga": "Finns rivningsritning med stämpning och rivningsordning?",
+      "skede": "projektering",
+      "underlag": [
+        "rivningsritning",
+        "konstruktionsritningar"
+      ]
+    },
+    {
+      "id": "rivning-barande.2",
+      "fraga": "Är befintlig konstruktion verifierad (inte bara arkivritningar)?",
+      "skede": "projektering",
+      "underlag": [
+        "konstruktionsutredning"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Rivningsarbete."
+    }
+  ]
+}

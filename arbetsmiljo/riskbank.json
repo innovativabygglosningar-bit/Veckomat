@@ -1,360 +1,3555 @@
 {
-  "version": 1,
-  "uppdaterad": "2026-11-17",
-  "anmarkning": "Föreskriftshänvisningar följer Arbetsmiljöverkets struktur från 2025-01-01 (AFS 2023:x). Äldre beteckningar anges inom parentes eftersom mycket av underlaget på driven hänvisar till dem. Stäm av paragrafer mot av.se innan de citeras i en arbetsmiljöplan.",
-
-  "skala": {
-    "sannolikhet": [
-      {"v": 1, "namn": "Obetydlig", "text": "Förekommer nästan aldrig"},
-      {"v": 2, "namn": "Liten", "text": "Förekommer sällan"},
-      {"v": 3, "namn": "Måttlig", "text": "Förekommer då och då"},
-      {"v": 4, "namn": "Stor", "text": "Förekommer ofta"}
-    ],
-    "konsekvens": [
-      {"v": 1, "namn": "Lindrig", "text": "Enstaka lindrig personskada utan vård eller sjukskrivning"},
-      {"v": 2, "namn": "Måttlig", "text": "Lindriga personskador, vård och sjukskrivning 1–2 dagar"},
-      {"v": 3, "namn": "Allvarlig", "text": "Enstaka allvarlig personskada, sjukskrivning 3–7 dagar"},
-      {"v": 4, "namn": "Mycket allvarlig", "text": "Allvarlig personskada, sjukskrivning > 8 dagar, bestående skada eller dödsfall"}
-    ],
-    "nivaer": [
-      {"min": 1, "max": 3, "namn": "Låg", "text": "Ingen ytterligare åtgärd krävs."},
-      {"min": 4, "max": 9, "namn": "Medel", "text": "Risk kan förekomma. Bedöm om ytterligare åtgärd krävs."},
-      {"min": 12, "max": 16, "namn": "Hög", "text": "Allvarlig risk. Åtgärd ska vidtas."}
-    ]
-  },
-
-  "kategorier": {
-    "skeden": [
-      {"id": "projektering", "namn": "Projektering", "text": "Risken kan byggas bort eller styras i handlingarna (BAS-P, projektörer, byggherre)."},
-      {"id": "produktion", "namn": "Produktion", "text": "Risken uppstår vid utförandet (BAS-U, entreprenörer)."},
-      {"id": "drift", "namn": "Drift & underhåll", "text": "Risken finns kvar i färdig byggnad – ska in i journal och dokumentation för framtida arbeten."}
-    ],
-    "projekttyper": [
-      {"id": "nybyggnad", "namn": "Nybyggnad"},
-      {"id": "ombyggnad", "namn": "Ombyggnad / renovering"},
-      {"id": "rivning", "namn": "Rivning"},
-      {"id": "anlaggning", "namn": "Mark & anläggning"},
-      {"id": "underhall", "namn": "Underhåll / ROT i drift"}
-    ],
-    "riskomraden": [
-      {"id": "halsofarligt", "namn": "Hälsofarliga ämnen"},
-      {"id": "fall", "namn": "Fall från höjd"},
-      {"id": "ras", "namn": "Ras & schakt"},
-      {"id": "lyft", "namn": "Tunga lyft & montage"},
-      {"id": "trafik", "namn": "Trafik & maskiner"},
-      {"id": "rivning", "namn": "Rivning & stabilitet"},
-      {"id": "el", "namn": "El"},
-      {"id": "brand", "namn": "Brand"},
-      {"id": "ergonomi", "namn": "Ergonomi & belastning"},
-      {"id": "buller", "namn": "Buller, damm & vibrationer"}
-    ],
-    "byggdelar": [
-      {"id": "mark", "namn": "Mark & grund"},
-      {"id": "stomme", "namn": "Stomme & bjälklag"},
-      {"id": "tak", "namn": "Tak"},
-      {"id": "fasad", "namn": "Fasad, fönster & dörrar"},
-      {"id": "invandigt", "namn": "Invändiga ytskikt & väggar"},
-      {"id": "vs", "namn": "VS / rör"},
-      {"id": "vent", "namn": "Ventilation"},
-      {"id": "el", "namn": "El"},
-      {"id": "etablering", "namn": "Etablering & logistik"}
-    ],
-    "sarskildRisk": [
-      {"nr": 1, "text": "Fall från högre höjd än två meter"},
-      {"nr": 2, "text": "Risk att begravas under jordmassor eller sjunka ner i lös mark"},
-      {"nr": 3, "text": "Exponering för farliga kemiska eller biologiska ämnen"},
-      {"nr": 4, "text": "Exponering för joniserande strålning"},
-      {"nr": 5, "text": "Arbete i närheten av högspänningsledning"},
-      {"nr": 6, "text": "Risk för drunkning"},
-      {"nr": 7, "text": "Arbete i brunnar, tunnlar eller under jord"},
-      {"nr": 8, "text": "Undervattensarbete med dykarutrustning"},
-      {"nr": 9, "text": "Arbete i kassun under förhöjt lufttryck"},
-      {"nr": 10, "text": "Arbete där sprängämnen används"},
-      {"nr": 11, "text": "Montering och nedmontering av tunga byggelement"},
-      {"nr": 12, "text": "Arbete på plats med passerande fordonstrafik"},
-      {"nr": 13, "text": "Rivning av bärande konstruktioner eller hälsofarliga material"}
-    ]
-  },
-
-  "profilfragor": [
-    {"id": "projekttyp", "fraga": "Vilken typ av projekt är det?", "typ": "flerval", "kalla": "projekttyper"},
-    {"id": "byggar", "fraga": "Byggår (eller senaste större ombyggnad) för befintlig byggnad", "typ": "ar", "hjalp": "Lämna tomt vid ren nybyggnad."},
-    {"id": "inventering", "fraga": "Har miljö- och materialinventering (farliga ämnen) gjorts?", "typ": "val", "alternativ": ["ja", "nej", "vet ej"]},
-    {"id": "schakt", "fraga": "Förekommer schakt eller markarbeten?", "typ": "val", "alternativ": ["ja", "nej"]},
-    {"id": "hojd", "fraga": "Förekommer arbete på höjd över 2 m (tak, fasad, ställning)?", "typ": "val", "alternativ": ["ja", "nej"]},
-    {"id": "trafik", "fraga": "Ligger arbetsplatsen intill väg, gata eller i verksamhet med fordonstrafik?", "typ": "val", "alternativ": ["ja", "nej"]},
-    {"id": "verksamhet", "fraga": "Pågår verksamhet i byggnaden under byggtiden (boende, kontor, skola)?", "typ": "val", "alternativ": ["ja", "nej"]}
+ "version": 2,
+ "anmarkning": "Hänvisningarna följer Arbetsmiljöverkets föreskrifter (AFS 2023:1–15) som gäller från 2025-01-01. Kontrollera aktuell lydelse på av.se när paragrafer citeras.",
+ "skala": {
+  "sannolikhet": [
+   {
+    "v": 1,
+    "namn": "Obetydlig",
+    "text": "Förekommer nästan aldrig"
+   },
+   {
+    "v": 2,
+    "namn": "Liten",
+    "text": "Förekommer sällan"
+   },
+   {
+    "v": 3,
+    "namn": "Måttlig",
+    "text": "Förekommer då och då"
+   },
+   {
+    "v": 4,
+    "namn": "Stor",
+    "text": "Förekommer ofta"
+   }
   ],
-
-  "risker": [
-    {
-      "id": "asbest",
-      "titel": "Asbest",
-      "status": "klar",
-      "ingress": "Asbestfibrer frigörs när asbesthaltigt material bearbetas, rivs eller skadas. Inandning kan efter 20–40 år ge asbestos, lungcancer och mesoteliom. Det finns ingen säker nedre exponeringsnivå.",
-      "riskomrade": "halsofarligt",
-      "sarskildRisk": [3, 13],
-      "skeden": ["projektering", "produktion", "drift"],
-      "projekttyper": ["ombyggnad", "rivning", "underhall"],
-      "byggdelar": ["tak", "fasad", "invandigt", "vs", "vent", "el", "stomme"],
-      "sokord": ["eternit", "asbestcement", "rörisolering", "mattlim", "vinylplattor", "kakelfix", "sanering", "miljöinventering", "rivning"],
-
-      "relevans": {
-        "projekttyper": ["ombyggnad", "rivning", "underhall"],
-        "byggarFore": 1983,
-        "motivering": "Asbest användes i stor omfattning i byggmaterial ca 1950–1982 och förekommer även i äldre byggnader (pannor, rörisolering). Totalförbud 1982. Ombyggnad, rivning och underhåll i byggnader från före 1983 ska därför alltid hanteras som att asbest kan förekomma tills motsatsen visats."
-      },
-
-      "profilvarningar": [
-        {
-          "om": {"inventering": ["nej", "vet ej"]},
-          "niva": "hog",
-          "text": "Miljöinventering saknas. Rekommendera byggherren att beställa material- och miljöinventering med provtagning innan projekteringen låses. Utan den kan varken omfattning, tidplan eller kostnad för sanering bedömas, och risken för oförutsedda fynd under produktion blir stor."
-        },
-        {
-          "om": {"verksamhet": ["ja"]},
-          "niva": "medel",
-          "text": "Pågående verksamhet i byggnaden: sanering måste planeras med inneslutning, undertryck och tidsfönster så att boende/verksamhet inte exponeras. Samordna med fastighetsägarens ventilationsdrift."
-        }
-      ],
-
-      "vadArRisken": [
-        "Asbest är ett fibrigt mineral som tidigare användes för sina brand-, värme- och slitstarka egenskaper. Inkapslat och oskadat material avger normalt inga fibrer – risken uppstår när materialet borras, slipas, sågas, bryts loss eller vittrar.",
-        "Fibrerna är så tunna att de svävar länge i luften, sprids med ventilation och följer med kläder och verktyg. Den som exponeras märker inget i stunden; sjukdomarna kommer ofta decennier senare.",
-        "Störst exponering drabbar hantverkare som inte vet att materialet innehåller asbest – elektriker, rörmokare, ventilationsmontörer, golvläggare och rivningsarbetare. Därför är identifiering före byggstart den viktigaste åtgärden."
-      ],
-
-      "forekomst": [
-        {"byggdel": "fasad", "plats": "Fasad", "exempel": "Asbestcementskivor (eternit) som fasadbeklädnad, fönsterbänkar, ballongfronter, fasadputs."},
-        {"byggdel": "tak", "plats": "Tak", "exempel": "Korrugerade asbestcementplattor, takpannor/skifferimitation, takfotsinklädnad, ventilationshuvar."},
-        {"byggdel": "invandigt", "plats": "Golv", "exempel": "Vinylplattor och plastmattor med asbestfilt/alkaliskydd i underskiktet, mattlim (svart bitumenlim), avjämning."},
-        {"byggdel": "invandigt", "plats": "Våtrum & kök", "exempel": "Kakelfix och fogbruk, spackel, golvbrunnsmanschetter."},
-        {"byggdel": "invandigt", "plats": "Väggar & tak inomhus", "exempel": "Lägenhetsskiljande väggar, sprutad bullerdämpning, skivor i undertak, fogmassor och spackel."},
-        {"byggdel": "vs", "plats": "Rör & värme", "exempel": "Rörisolering (ofta vit/grå kartongliknande), böjar och ventiler, värmepannor och pannrum, avloppsrör och stammar av asbestcement, packningar."},
-        {"byggdel": "vent", "plats": "Ventilation", "exempel": "Kondens- och brandisolering av kanaler, flexibla stosar, packningar i aggregat, asbestcementkanaler."},
-        {"byggdel": "el", "plats": "El", "exempel": "Brandskyddsskivor bakom elcentraler och mätartavlor, bakom elradiatorer, ljusbågsskydd, gamla säkringar."},
-        {"byggdel": "stomme", "plats": "Brandskydd", "exempel": "Brandisolering av stålbalkar och pelare, brandcellsgränser, brandskyddsdörrar (kärna), soprum och sopnedkast."},
-        {"byggdel": "fasad", "plats": "Fönster & dörrar", "exempel": "Fönsterkitt och fogmassor, skivor i fönsterbröstningar, brandklassade dörrar."},
-        {"byggdel": "mark", "plats": "Mark", "exempel": "Gamla VA-ledningar av asbestcement, rivningsmassor och fyllnadsmassor med asbestrester."}
-      ],
-
-      "riskFore": {
-        "s": 3, "k": 4,
-        "motivering": "Ombyggnad i byggnad från före 1983 utan genomförd inventering: asbest förekommer ofta och upptäcks först när materialet redan bearbetats. Konsekvensen är allvarlig, irreversibel sjukdom."
-      },
-      "riskEfter": {
-        "s": 1, "k": 4,
-        "motivering": "Inventering med provtagning gjord, förekomster sanerade av behörig entreprenör före övriga arbeten och rutin för oförutsedda fynd finns. Konsekvensen är densamma om exponering ändå sker, men sannolikheten är obetydlig."
-      },
-
-      "beslutsflode": [
-        {
-          "id": "q1",
-          "fraga": "Är det ombyggnad, rivning eller underhåll i en byggnad uppförd eller renoverad före 1983?",
-          "ja": "q2",
-          "nej": {"slut": "Asbest är inte en sannolik risk. Notera bedömningen i riskanalysen. Kontrollera ändå om äldre delar (t.ex. pannrum, tillbyggnader, VA i mark) berörs."}
-        },
-        {
-          "id": "q2",
-          "fraga": "Har material- och miljöinventering med provtagning genomförts för de delar som berörs?",
-          "ja": "q3",
-          "nej": {"slut": "Byggherren bör beställa inventering innan projekteringen låses. BAS-P för in åtgärden i riskanalysen med ansvarig och datum. Fram till dess ska allt misstänkt material behandlas som asbesthaltigt.", "niva": "hog"}
-        },
-        {
-          "id": "q3",
-          "fraga": "Har asbest identifierats i inventeringen?",
-          "ja": "q4",
-          "nej": {"slut": "Risken är reducerad men inte eliminerad – dolda förekomster finns (bakom ytskikt, i bjälklag, i schakt). För in en rutin för oförutsedda fynd i arbetsmiljöplanen.", "niva": "medel"}
-        },
-        {
-          "id": "q4",
-          "fraga": "Ska materialet rivas/saneras inom projektet (eller beröras av arbeten)?",
-          "ja": {"slut": "Sanering av entreprenör med tillstånd från Arbetsmiljöverket, före övriga arbeten i området. Ange förekomster på ritning och i beskrivning, lägg sanering tidigt i tidplanen och kräv friklassning (luftmätning/visuell kontroll) innan andra entreprenörer släpps in.", "niva": "hog"},
-          "nej": {"slut": "Kvarlämnad asbest: märk, kapsla in vid behov, skydda mot skador under byggtiden och dokumentera läget i journal och FDU så att framtida underhåll känner till den.", "niva": "medel"}
-        }
-      ],
-
-      "atgarder": [
-        {"skede": "projektering", "ansvar": "Byggherre", "atgard": "Beställ material- och miljöinventering med provtagning och analys av samtliga berörda delar innan systemhandling/bygghandling låses."},
-        {"skede": "projektering", "ansvar": "BAS-P", "atgard": "Begär in inventeringsrapporten, för in identifierade förekomster i riskanalysen och arbetsmiljöplanen. Följ upp att projektörerna har tagit del av den."},
-        {"skede": "projektering", "ansvar": "Projektörer", "atgard": "Välj lösningar som undviker ingrepp i asbesthaltigt material där det går (t.ex. dra nya installationer i nya stråk, kapsla in i stället för att riva). Redovisa förekomster på rivningsritningar och i beskrivningar."},
-        {"skede": "projektering", "ansvar": "BAS-P / Byggherre", "atgard": "Säkerställ att sanering är en egen post i förfrågningsunderlaget, utförs av behörig entreprenör och ligger tidigt i tidplanen före övriga arbeten i berörda utrymmen."},
-        {"skede": "produktion", "ansvar": "BAS-U", "atgard": "Samordna så att ingen annan entreprenör arbetar i området innan sanering är klar och utrymmet friklassats. Avspärrning och skyltning: ”Varning – Asbest – Tillträde förbjudet för obehöriga”."},
-        {"skede": "produktion", "ansvar": "Saneringsentreprenör", "atgard": "Tillstånd från Arbetsmiljöverket, utbildad personal med giltig medicinsk kontroll, objektsanpassad arbetsbeskrivning, inneslutning med undertryck, dammsugare med HEPA-filter, andningsskydd och engångsoverall, sluss för ombyte."},
-        {"skede": "produktion", "ansvar": "Entreprenör", "atgard": "Avfall hanteras som farligt avfall: dubbelt emballerat, märkt, i låst/täckt container. Spara transportdokument."},
-        {"skede": "produktion", "ansvar": "Alla", "atgard": "Rutin för oförutsett fynd: STOPPA arbetet, spärra av, informera BAS-U, låt provta. Arbetet återupptas först efter analysbesked eller sanering."},
-        {"skede": "drift", "ansvar": "BAS-P / Byggherre", "atgard": "Kvarlämnad asbest dokumenteras i journal och dokumentation (läge, typ, skick) och överlämnas till fastighetsägaren. Märk synliga förekomster."},
-        {"skede": "drift", "ansvar": "Fastighetsägare", "atgard": "Inför framtida underhåll: kontrollera asbestregistret innan håltagning, byte av installationer eller ytskikt beställs."}
-      ],
-
-      "granskning": [
-        {"fraga": "Finns en material- och miljöinventering och täcker den alla delar som berörs av ombyggnaden (inklusive schakt, bjälklag, installationsstråk)?", "skede": "projektering"},
-        {"fraga": "Är provtagna förekomster markerade på rivningsritning/planer?", "skede": "projektering"},
-        {"fraga": "Har projektörerna undvikit onödiga ingrepp i asbesthaltigt material (nya håltagningar, ledningsdragning genom asbestvägg)?", "skede": "projektering"},
-        {"fraga": "Är sanering en egen post i förfrågningsunderlaget med krav på tillstånd från Arbetsmiljöverket?", "skede": "projektering"},
-        {"fraga": "Ligger sanering före övriga arbeten i tidplanen, med tid för friklassning?", "skede": "projektering"},
-        {"fraga": "Beskriver arbetsmiljöplanen rutin för oförutsett fynd?", "skede": "produktion"},
-        {"fraga": "Finns en plan för hantering av farligt avfall (emballering, container, transport)?", "skede": "produktion"},
-        {"fraga": "Är kvarlämnad asbest dokumenterad för journal och dokumentation (FDU)?", "skede": "drift"}
-      ],
-
-      "textArbetsmiljoplan": "Asbest\nByggnaden är uppförd före 1983 och asbest har identifierats i [ange material och utrymmen, se inventeringsrapport daterad ÅÅÅÅ-MM-DD]. Asbesthaltigt material som berörs av arbetena ska saneras av entreprenör med tillstånd från Arbetsmiljöverket innan andra arbeten påbörjas i berört område. Saneringsområdet ska vara avspärrat och skyltat. Övriga entreprenörer får tillträde först när området friklassats av BAS-U.\nVid misstanke om asbest som inte finns med i inventeringen ska arbetet omedelbart avbrytas, området spärras av och BAS-U kontaktas. Arbetet får återupptas först efter provtagning och, vid behov, sanering.\nAsbesthaltigt avfall hanteras som farligt avfall.",
-
-      "textHandlingar": "Rivning av asbesthaltigt material ska utföras av entreprenör med tillstånd från Arbetsmiljöverket för rivning av asbest. Sanering ska vara slutförd och utrymmet friklassat innan övriga arbeten påbörjas. Förekomster redovisas i miljöinventering daterad [ÅÅÅÅ-MM-DD] och på ritning [nr].",
-
-      "regler": [
-        {"ref": "AFS 2023:10 Risker i arbetsmiljön – asbest", "text": "Krav på kartläggning, tillstånd, utbildning, skyddsåtgärder och friklassning vid arbete med asbest. (Tidigare AFS 2006:1 Asbest.)"},
-        {"ref": "AFS 2023:15 Medicinska kontroller", "text": "Medicinsk kontroll med tjänstbarhetsintyg för den som arbetar med asbest. (Tidigare AFS 2019:3.)"},
-        {"ref": "AFS 2023:3 Projektering och byggarbetsmiljösamordning", "text": "Byggherrens och BAS-P:s ansvar att beakta risker, inkl. rivning av hälsofarliga material som arbete med särskild risk. (Tidigare AFS 1999:3.)"},
-        {"ref": "Arbetsmiljölagen 3 kap. 6–7 f §§", "text": "Byggherrens, projektörens och byggarbetsmiljösamordnarens ansvar."},
-        {"ref": "Plan- och bygglagen / kontrollplan", "text": "Vid rivning ska kontrollplanen redovisa farligt avfall och hur det hanteras – inventeringen är underlaget."},
-        {"ref": "Avfallsförordningen (2020:614)", "text": "Asbestavfall är farligt avfall – krav på sortering, emballering och dokumentation."}
-      ],
-
-      "kallor": [
-        {"titel": "Asbest.docx (Bygghjälmen) – driven", "url": "https://drive.google.com/file/d/1-IQPl_zzzcFaCVfKEDJdneaOH0IJ6V8V/view"},
-        {"titel": "El-Asbest.docx – driven", "url": "https://drive.google.com/file/d/1EnVRHMmdcNkKGyJ6sMXjnWnQ-QGhBHE4/view"},
-        {"titel": "Asbest rivning utomhus (instruktion) – driven", "url": "https://drive.google.com/file/d/1gLhH3p6bxbQFoyWEJmOOaNeDX4JD0ang/view"},
-        {"titel": "Bli asbestsmart (broschyr) – driven", "url": "https://drive.google.com/file/d/1gczWBACLhGi9V5dsGNtoiYLoeWpchRjN/view"},
-        {"titel": "Arbetsmiljöverket – Asbest", "url": "https://www.av.se/produktion-industri-och-logistik/asbest/"}
-      ]
-    },
-
-    {
-      "id": "pcb",
-      "titel": "PCB i fogmassor och isolerrutor",
-      "status": "utkast",
-      "ingress": "PCB är ett miljö- och hälsofarligt ämne som användes i fogmassor, isolerglasrutor och golvmassor 1956–1973. Exponering sker via damm och ångor vid rivning och fräsning.",
-      "riskomrade": "halsofarligt",
-      "sarskildRisk": [3, 13],
-      "skeden": ["projektering", "produktion"],
-      "projekttyper": ["ombyggnad", "rivning"],
-      "byggdelar": ["fasad", "invandigt"],
-      "sokord": ["fogmassa", "isolerruta", "golvmassa", "sanering"],
-      "relevans": {"projekttyper": ["ombyggnad", "rivning"], "byggarFran": 1956, "byggarFore": 1974, "motivering": "Byggnader uppförda eller renoverade 1956–1973."},
-      "profilvarningar": [{"om": {"inventering": ["nej", "vet ej"]}, "niva": "hog", "text": "Inventering saknas – PCB ska ingå i miljöinventeringen."}],
-      "riskFore": {"s": 3, "k": 3, "motivering": "Vanligt i fogar i fasader från perioden; exponering vid fräsning."},
-      "riskEfter": {"s": 1, "k": 3, "motivering": "Inventerat och sanerat av behörig entreprenör före övriga arbeten."},
-      "atgarder": [
-        {"skede": "projektering", "ansvar": "Byggherre", "atgard": "PCB ingår i miljöinventeringen (fogar, isolerrutor, golvmassor)."},
-        {"skede": "produktion", "ansvar": "Saneringsentreprenör", "atgard": "Sanering med punktutsug, andningsskydd och medicinsk kontroll. Farligt avfall."}
-      ],
-      "granskning": [{"fraga": "Omfattar inventeringen fogmassor och isolerglas?", "skede": "projektering"}],
-      "regler": [{"ref": "AFS 2023:10 / AFS 2023:15", "text": "Kemiska risker och medicinska kontroller."}]
-    },
-
-    {
-      "id": "fall-tak-fasad",
-      "titel": "Fall från höjd – tak och fasad",
-      "status": "utkast",
-      "ingress": "Fall från tak, ställning och bjälklagskanter är den vanligaste orsaken till dödsolyckor i byggbranschen.",
-      "riskomrade": "fall",
-      "sarskildRisk": [1],
-      "skeden": ["projektering", "produktion", "drift"],
-      "projekttyper": ["nybyggnad", "ombyggnad", "underhall"],
-      "byggdelar": ["tak", "fasad", "stomme"],
-      "sokord": ["ställning", "skyddsräcke", "takfot", "lift", "fallskydd"],
-      "relevans": {"profil": {"hojd": ["ja"]}, "motivering": "Arbete på höjd över 2 m."},
-      "riskFore": {"s": 3, "k": 4, "motivering": "Arbete vid oskyddade kanter."},
-      "riskEfter": {"s": 1, "k": 4, "motivering": "Kollektiva skydd (räcken, ställning) planerade från start."},
-      "atgarder": [
-        {"skede": "projektering", "ansvar": "Projektörer", "atgard": "Projektera infästningar för skyddsräcken, prefabricerade räcken på element, placera installationer så att de nås utan arbete vid kant."},
-        {"skede": "produktion", "ansvar": "BAS-U", "atgard": "Ställningsplan, kantskydd, täckning av hål, lift med utbildad förare."},
-        {"skede": "drift", "ansvar": "Projektörer", "atgard": "Permanenta takskyddsanordningar (räcken, gångbryggor, förankringspunkter) för underhåll av tak, fläktar och solceller."}
-      ],
-      "granskning": [
-        {"fraga": "Finns säker åtkomst till tak för framtida underhåll (stege, gångbrygga, räcke)?", "skede": "drift"},
-        {"fraga": "Är hål i bjälklag och schakt för installationer redovisade med täckning?", "skede": "projektering"}
-      ],
-      "regler": [{"ref": "AFS 2023:13 Risker vid vissa typer av arbete – byggnads- och anläggningsarbete", "text": "Skydd mot fall. (Tidigare AFS 1999:3.)"}]
-    },
-
-    {
-      "id": "schakt-ras",
-      "titel": "Ras i schakt",
-      "status": "utkast",
-      "ingress": "Ras i schakt kan begrava personer på några sekunder. Risken ökar med djup, lös jord, vatten och belastning nära schaktkant.",
-      "riskomrade": "ras",
-      "sarskildRisk": [2],
-      "skeden": ["projektering", "produktion"],
-      "projekttyper": ["nybyggnad", "anlaggning", "ombyggnad"],
-      "byggdelar": ["mark"],
-      "sokord": ["släntlutning", "spont", "ledningsgrav", "geoteknik"],
-      "relevans": {"profil": {"schakt": ["ja"]}, "motivering": "Schakt eller markarbeten förekommer."},
-      "riskFore": {"s": 2, "k": 4, "motivering": "Djupa schakter utan geoteknisk utredning."},
-      "riskEfter": {"s": 1, "k": 4, "motivering": "Geoteknik utredd, släntlutning/spont projekterad."},
-      "atgarder": [
-        {"skede": "projektering", "ansvar": "Byggherre / Geotekniker", "atgard": "Geoteknisk undersökning, ange släntlutning eller spont i handlingarna."},
-        {"skede": "produktion", "ansvar": "Entreprenör", "atgard": "Kabelvisning, upplag och maskiner på säkert avstånd från schaktkant, avspärrning."}
-      ],
-      "granskning": [{"fraga": "Finns geoteknisk utredning och anvisning om släntlutning eller stödkonstruktion?", "skede": "projektering"}],
-      "regler": [{"ref": "AFS 2023:13", "text": "Schaktning och skydd mot ras. (Tidigare AFS 1999:3.)"}]
-    },
-
-    {
-      "id": "trafik",
-      "titel": "Arbete intill fordonstrafik",
-      "status": "utkast",
-      "ingress": "Påkörning av personer som arbetar intill väg eller i verksamhetsområde med truckar och leveranser.",
-      "riskomrade": "trafik",
-      "sarskildRisk": [12],
-      "skeden": ["projektering", "produktion"],
-      "projekttyper": ["nybyggnad", "ombyggnad", "anlaggning", "underhall"],
-      "byggdelar": ["etablering"],
-      "sokord": ["TA-plan", "etableringsplan", "leveranser"],
-      "relevans": {"profil": {"trafik": ["ja"]}, "motivering": "Arbetsplatsen ligger intill trafik."},
-      "riskFore": {"s": 3, "k": 4, "motivering": "Ingen separering av gående och fordon."},
-      "riskEfter": {"s": 1, "k": 4, "motivering": "Etableringsplan och TA-plan med fysisk separering."},
-      "atgarder": [
-        {"skede": "projektering", "ansvar": "BAS-P", "atgard": "Preliminär etableringsplan med in- och utfarter, avlastningsytor och gångvägar."},
-        {"skede": "produktion", "ansvar": "BAS-U", "atgard": "TA-plan godkänd av väghållare, avstängningar, varselkläder."}
-      ],
-      "granskning": [{"fraga": "Är etablering, leveransvägar och gångvägar redovisade?", "skede": "projektering"}],
-      "regler": [{"ref": "AFS 2023:13", "text": "Arbete på plats med passerande fordonstrafik."}]
-    },
-
-    {
-      "id": "tunga-element",
-      "titel": "Montage av tunga byggelement",
-      "status": "utkast",
-      "ingress": "Lyft av prefabricerade element, stålstomme och takstolar – risk för klämskador, nedfallande last och instabila element.",
-      "riskomrade": "lyft",
-      "sarskildRisk": [11],
-      "skeden": ["projektering", "produktion"],
-      "projekttyper": ["nybyggnad", "ombyggnad"],
-      "byggdelar": ["stomme", "tak"],
-      "sokord": ["prefab", "lyftplan", "kran", "montagestabilitet"],
-      "relevans": {"projekttyper": ["nybyggnad"], "motivering": "Vanligt i nybyggnad med prefab eller stålstomme."},
-      "riskFore": {"s": 2, "k": 4, "motivering": "Montageordning och temporär stabilisering ej utredd."},
-      "riskEfter": {"s": 1, "k": 4, "motivering": "Lyftpunkter och montagestabilitet projekterade."},
-      "atgarder": [
-        {"skede": "projektering", "ansvar": "Konstruktör", "atgard": "Lyftanordningar ingjutna, montageanvisning med stabilitet under montage."},
-        {"skede": "produktion", "ansvar": "Entreprenör", "atgard": "Lyftplan, avspärrad lyftzon, signalman."}
-      ],
-      "granskning": [{"fraga": "Redovisar konstruktören temporär stabilitet och lyftpunkter?", "skede": "projektering"}],
-      "regler": [{"ref": "AFS 2023:13", "text": "Montering av tunga byggelement."}]
-    },
-
-    {
-      "id": "rivning-barande",
-      "titel": "Rivning av bärande konstruktioner",
-      "status": "utkast",
-      "ingress": "Kvarvarande delar kan förlora stabilitet när bärande väggar, bjälklag eller pelare tas bort.",
-      "riskomrade": "rivning",
-      "sarskildRisk": [13],
-      "skeden": ["projektering", "produktion"],
-      "projekttyper": ["ombyggnad", "rivning"],
-      "byggdelar": ["stomme"],
-      "sokord": ["håltagning", "stämp", "rivningsplan"],
-      "relevans": {"projekttyper": ["ombyggnad", "rivning"], "motivering": "Ingrepp i befintlig stomme."},
-      "riskFore": {"s": 2, "k": 4, "motivering": "Okända konstruktioner och rivningsordning."},
-      "riskEfter": {"s": 1, "k": 4, "motivering": "Konstruktör anger stämpning och rivningsordning."},
-      "atgarder": [
-        {"skede": "projektering", "ansvar": "Konstruktör", "atgard": "Utred befintlig stomme, ange temporär stämpning och rivningsordning på ritning."},
-        {"skede": "produktion", "ansvar": "Entreprenör", "atgard": "Arbetsberedning med rivningsmetod, avspärrning."}
-      ],
-      "granskning": [{"fraga": "Finns rivningsritning med stämpning och ordning?", "skede": "projektering"}],
-      "regler": [{"ref": "AFS 2023:13", "text": "Rivningsarbete."}]
-    }
+  "konsekvens": [
+   {
+    "v": 1,
+    "namn": "Lindrig",
+    "text": "Enstaka lindrig personskada utan vård eller sjukskrivning"
+   },
+   {
+    "v": 2,
+    "namn": "Måttlig",
+    "text": "Lindriga personskador, vård och sjukskrivning 1–2 dagar"
+   },
+   {
+    "v": 3,
+    "namn": "Allvarlig",
+    "text": "Enstaka allvarlig personskada, sjukskrivning 3–7 dagar"
+   },
+   {
+    "v": 4,
+    "namn": "Mycket allvarlig",
+    "text": "Allvarlig personskada, sjukskrivning > 8 dagar, bestående skada eller dödsfall"
+   }
+  ],
+  "nivaer": [
+   {
+    "min": 1,
+    "max": 3,
+    "namn": "Låg",
+    "text": "Ingen ytterligare åtgärd krävs."
+   },
+   {
+    "min": 4,
+    "max": 9,
+    "namn": "Medel",
+    "text": "Risk kan förekomma. Bedöm om ytterligare åtgärd krävs."
+   },
+   {
+    "min": 12,
+    "max": 16,
+    "namn": "Hög",
+    "text": "Allvarlig risk. Åtgärd ska vidtas."
+   }
   ]
+ },
+ "status": [
+  {
+   "id": "klar",
+   "namn": "Fullständigt riskblad"
+  },
+  {
+   "id": "bas",
+   "namn": "Grundblad",
+   "text": "Innehåller det viktigaste – kan fördjupas med förekomst, beslutsflöde och textmallar."
+  }
+ ],
+ "kategorier": {
+  "skeden": [
+   {
+    "id": "projektering",
+    "namn": "Projektering",
+    "text": "Risken kan byggas bort eller styras i handlingarna (BAS-P, projektörer, byggherre)."
+   },
+   {
+    "id": "produktion",
+    "namn": "Produktion",
+    "text": "Risken uppstår vid utförandet (BAS-U, entreprenörer)."
+   },
+   {
+    "id": "drift",
+    "namn": "Drift & underhåll",
+    "text": "Risken finns kvar i färdig byggnad – ska in i journal och dokumentation för framtida arbeten."
+   }
+  ],
+  "projekttyper": [
+   {
+    "id": "nybyggnad",
+    "namn": "Nybyggnad"
+   },
+   {
+    "id": "ombyggnad",
+    "namn": "Ombyggnad / renovering"
+   },
+   {
+    "id": "rivning",
+    "namn": "Rivning"
+   },
+   {
+    "id": "anlaggning",
+    "namn": "Mark & anläggning"
+   },
+   {
+    "id": "underhall",
+    "namn": "Underhåll / ROT i drift"
+   }
+  ],
+  "riskomraden": [
+   {
+    "id": "halsofarligt",
+    "namn": "Hälsofarliga ämnen"
+   },
+   {
+    "id": "fall",
+    "namn": "Fall från höjd"
+   },
+   {
+    "id": "ras",
+    "namn": "Ras, schakt & berg"
+   },
+   {
+    "id": "lyft",
+    "namn": "Tunga lyft & montage"
+   },
+   {
+    "id": "trafik",
+    "namn": "Trafik & maskiner"
+   },
+   {
+    "id": "rivning",
+    "namn": "Rivning & ingrepp i stomme"
+   },
+   {
+    "id": "el",
+    "namn": "El & ledningar"
+   },
+   {
+    "id": "brand",
+    "namn": "Brand"
+   },
+   {
+    "id": "ergonomi",
+    "namn": "Ergonomi & belastning"
+   },
+   {
+    "id": "buller",
+    "namn": "Buller, damm & vibrationer"
+   },
+   {
+    "id": "vatten",
+    "namn": "Vatten & slutna utrymmen"
+   },
+   {
+    "id": "organisation",
+    "namn": "Organisation & omgivning"
+   },
+   {
+    "id": "atkomst",
+    "namn": "Åtkomst för drift & underhåll"
+   }
+  ],
+  "byggdelar": [
+   {
+    "id": "mark",
+    "namn": "Mark & grund"
+   },
+   {
+    "id": "stomme",
+    "namn": "Stomme & bjälklag"
+   },
+   {
+    "id": "tak",
+    "namn": "Tak"
+   },
+   {
+    "id": "fasad",
+    "namn": "Fasad, fönster & dörrar"
+   },
+   {
+    "id": "invandigt",
+    "namn": "Invändiga ytskikt & väggar"
+   },
+   {
+    "id": "vs",
+    "namn": "VS / rör"
+   },
+   {
+    "id": "vent",
+    "namn": "Ventilation"
+   },
+   {
+    "id": "el",
+    "namn": "El"
+   },
+   {
+    "id": "etablering",
+    "namn": "Etablering & logistik"
+   }
+  ],
+  "sarskildRisk": [
+   {
+    "nr": 1,
+    "text": "Fall från högre höjd än två meter"
+   },
+   {
+    "nr": 2,
+    "text": "Risk att begravas under jordmassor eller sjunka ner i lös mark"
+   },
+   {
+    "nr": 3,
+    "text": "Exponering för farliga kemiska eller biologiska ämnen"
+   },
+   {
+    "nr": 4,
+    "text": "Exponering för joniserande strålning"
+   },
+   {
+    "nr": 5,
+    "text": "Arbete i närheten av högspänningsledning"
+   },
+   {
+    "nr": 6,
+    "text": "Risk för drunkning"
+   },
+   {
+    "nr": 7,
+    "text": "Arbete i brunnar, tunnlar eller under jord"
+   },
+   {
+    "nr": 8,
+    "text": "Undervattensarbete med dykarutrustning"
+   },
+   {
+    "nr": 9,
+    "text": "Arbete i kassun under förhöjt lufttryck"
+   },
+   {
+    "nr": 10,
+    "text": "Arbete där sprängämnen används"
+   },
+   {
+    "nr": 11,
+    "text": "Montering och nedmontering av tunga byggelement"
+   },
+   {
+    "nr": 12,
+    "text": "Arbete på plats med passerande fordonstrafik"
+   },
+   {
+    "nr": 13,
+    "text": "Rivning av bärande konstruktioner eller hälsofarliga material"
+   }
+  ]
+ },
+ "profilfragor": [
+  {
+   "id": "projekttyp",
+   "fraga": "Vilken typ av projekt är det?",
+   "typ": "flerval",
+   "kalla": "projekttyper"
+  },
+  {
+   "id": "byggar",
+   "fraga": "Byggår (eller senaste större ombyggnad) för befintlig byggnad",
+   "typ": "ar",
+   "hjalp": "Lämna tomt vid ren nybyggnad."
+  },
+  {
+   "id": "inventering",
+   "fraga": "Har miljö- och materialinventering (farliga ämnen) gjorts?",
+   "typ": "val",
+   "alternativ": [
+    "ja",
+    "nej",
+    "vet ej"
+   ]
+  },
+  {
+   "id": "verksamhet",
+   "fraga": "Pågår verksamhet i eller intill byggnaden under byggtiden (boende, kontor, skola, vård)?",
+   "typ": "val",
+   "alternativ": [
+    "ja",
+    "nej"
+   ]
+  },
+  {
+   "id": "hojd",
+   "fraga": "Förekommer arbete på höjd över 2 m (tak, fasad, ställning, bjälklagskant)?",
+   "typ": "val",
+   "alternativ": [
+    "ja",
+    "nej"
+   ]
+  },
+  {
+   "id": "prefab",
+   "fraga": "Ingår prefab, stålstomme eller andra tunga element som lyfts med kran?",
+   "typ": "val",
+   "alternativ": [
+    "ja",
+    "nej"
+   ]
+  },
+  {
+   "id": "schakt",
+   "fraga": "Förekommer schakt eller markarbeten?",
+   "typ": "val",
+   "alternativ": [
+    "ja",
+    "nej"
+   ]
+  },
+  {
+   "id": "ledningar",
+   "fraga": "Finns ledningar i mark eller luftledningar inom eller intill området?",
+   "typ": "val",
+   "alternativ": [
+    "ja",
+    "nej",
+    "vet ej"
+   ]
+  },
+  {
+   "id": "forurenad",
+   "fraga": "Finns misstanke om förorenad mark (tidigare industri, drivmedel, okända fyllnadsmassor)?",
+   "typ": "val",
+   "alternativ": [
+    "ja",
+    "nej",
+    "vet ej"
+   ]
+  },
+  {
+   "id": "sprangning",
+   "fraga": "Förekommer sprängning eller bergarbeten?",
+   "typ": "val",
+   "alternativ": [
+    "ja",
+    "nej"
+   ]
+  },
+  {
+   "id": "vatten",
+   "fraga": "Förekommer arbete i eller nära vatten (kaj, dike, damm, öppet vatten)?",
+   "typ": "val",
+   "alternativ": [
+    "ja",
+    "nej"
+   ]
+  },
+  {
+   "id": "trafik",
+   "fraga": "Ligger arbetsplatsen intill väg, gata, spår eller i område med fordonstrafik?",
+   "typ": "val",
+   "alternativ": [
+    "ja",
+    "nej"
+   ]
+  }
+ ],
+ "risker": [
+  {
+   "id": "arbete-vid-vatten",
+   "titel": "Arbete i eller nära vatten",
+   "status": "bas",
+   "ingress": "Arbete vid kajer, bryggor, diken, dammar och dagvattenmagasin innebär risk för drunkning, även på grunt vatten.",
+   "riskomrade": "vatten",
+   "sarskildRisk": [
+    6
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "anlaggning",
+    "nybyggnad"
+   ],
+   "byggdelar": [
+    "mark"
+   ],
+   "sokord": [
+    "kaj",
+    "brygga",
+    "dagvatten",
+    "flytväst"
+   ],
+   "indikatorer": [
+    "kaj",
+    "brygga",
+    "dagvattendamm",
+    "å",
+    "sjö",
+    "vattendrag"
+   ],
+   "relevans": {
+    "profil": {
+     "vatten": [
+      "ja"
+     ]
+    },
+    "motivering": "Arbete i eller nära vatten."
+   },
+   "vadArRisken": [
+    "Kallt vatten ger chock och nedsatt förmåga att ta sig upp. Strömmande vatten försvårar räddning."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Arbete vid oskyddad vattenkant."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Räcken, flytväst och räddningsutrustning."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Prefabricering på land; räcken och förankringspunkter vid kaj."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Flytväst, livboj, båtshake, räddningsbåt vid behov, ej ensamarbete."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "arbete-vid-vatten.1",
+     "fraga": "Är arbete nära vatten identifierat i arbetsmiljöplanen med räddningsplan?",
+     "skede": "projektering",
+     "underlag": [
+      "arbetsmiljöplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Arbete med risk för drunkning."
+    }
+   ]
+  },
+  {
+   "id": "trafik",
+   "titel": "Arbete intill fordons- och spårtrafik",
+   "status": "bas",
+   "ingress": "Påkörning av personer som arbetar intill väg, gata eller spår, samt risk för tredje man vid in- och utfarter.",
+   "riskomrade": "trafik",
+   "sarskildRisk": [
+    12
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "etablering"
+   ],
+   "sokord": [
+    "TA-plan",
+    "etableringsplan",
+    "leveranser",
+    "spår"
+   ],
+   "indikatorer": [
+    "väg",
+    "gata",
+    "spår",
+    "TA-plan",
+    "etableringsplan",
+    "in- och utfart"
+   ],
+   "relevans": {
+    "profil": {
+     "trafik": [
+      "ja"
+     ]
+    },
+    "motivering": "Arbetsplatsen ligger intill trafik."
+   },
+   "vadArRisken": [
+    "Passerande trafik tar ofta inte hänsyn till arbetsplatsen. Leveranser och backande fordon vid in- och utfarter är vanliga risksituationer."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Ingen separering av gående och fordon."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Etableringsplan och TA-plan med fysisk separering."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P",
+     "atgard": "Preliminär etableringsplan med in- och utfarter, avlastningsytor och gångvägar."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "Byggherre",
+     "atgard": "Tidig dialog med väghållare/spårhållare om avstängningar."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "BAS-U",
+     "atgard": "TA-plan godkänd av väghållare, fysiska avstängningar, varselkläder, vakt vid backning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "trafik.1",
+     "fraga": "Är etablering, leveransvägar och gångvägar redovisade?",
+     "skede": "projektering",
+     "underlag": [
+      "etableringsplan"
+     ]
+    },
+    {
+     "id": "trafik.2",
+     "fraga": "Kräver arbetet TA-plan eller spårtillstånd och är det angivet i AF?",
+     "skede": "projektering",
+     "underlag": [
+      "AF"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Arbete på plats med passerande fordonstrafik."
+    }
+   ]
+  },
+  {
+   "id": "hogspanning",
+   "titel": "Arbete nära högspänningsledning",
+   "status": "bas",
+   "ingress": "Kranar, liftar, tippande lastbilar och pumpbilar kan komma i kontakt med eller överslag från luftledningar.",
+   "riskomrade": "el",
+   "sarskildRisk": [
+    5
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "anlaggning",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "etablering",
+    "mark"
+   ],
+   "sokord": [
+    "luftledning",
+    "kran",
+    "skyddsavstånd"
+   ],
+   "indikatorer": [
+    "luftledning",
+    "kraftledning",
+    "kranplacering",
+    "mobilkran"
+   ],
+   "relevans": {
+    "profil": {
+     "ledningar": [
+      "ja"
+     ]
+    },
+    "motivering": "Luftledningar inom eller intill området."
+   },
+   "vadArRisken": [
+    "Överslag kan ske utan direkt kontakt. Konsekvensen är ofta dödlig."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Kranar och lyft nära ledning."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Ledning flyttad/frånkopplad eller avstånd säkrat."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Byggherre",
+     "atgard": "Kontakta ledningsägaren tidigt om flytt eller frånkoppling."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P",
+     "atgard": "Redovisa ledningen och skyddsavstånd i etableringsplanen; placera kran utom räckhåll."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Höjdbegränsning, markering, vakt vid lyft."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "hogspanning.1",
+     "fraga": "Är luftledningar och skyddsavstånd redovisade i etableringsplanen?",
+     "skede": "projektering",
+     "underlag": [
+      "etableringsplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Arbete nära högspänningsledning."
+    },
+    {
+     "ref": "ELSÄK-FS",
+     "text": "Elsäkerhet."
+    }
+   ]
+  },
+  {
+   "id": "arbetsstallning",
+   "titel": "Arbete över axelhöjd och under knähöjd",
+   "status": "bas",
+   "ingress": "Installation i tak, montage av undertak och golvarbeten innebär långvarigt arbete i belastande ställningar.",
+   "riskomrade": "ergonomi",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+   ],
+   "byggdelar": [
+    "vs",
+    "vent",
+    "el",
+    "invandigt"
+   ],
+   "sokord": [
+    "undertak",
+    "installation i tak",
+    "golvläggning"
+   ],
+   "indikatorer": [
+    "undertak",
+    "takmontage",
+    "golvläggning",
+    "rördragning i tak"
+   ],
+   "vadArRisken": [
+    "Långvarigt arbete med armarna över axelhöjd eller på knä ger skador i nacke, axlar och knän."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Mycket takmontage."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Förtillverkning och hjälpmedel."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Installationsprojektörer",
+     "atgard": "Prefabricerade installationspaket, samordnade stråk som kan monteras från lift."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Liftar, ställbara arbetsbockar, knäskydd, arbetsväxling."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "arbetsstallning.1",
+     "fraga": "Är installationsstråk samordnade så att montage kan ske i bra arbetshöjd?",
+     "skede": "projektering",
+     "underlag": [
+      "samordningsritning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Belastningsergonomi."
+    }
+   ]
+  },
+  {
+   "id": "asbest",
+   "titel": "Asbest",
+   "status": "klar",
+   "ingress": "Asbestfibrer frigörs när asbesthaltigt material bearbetas, rivs eller skadas. Inandning kan efter 20–40 år ge asbestos, lungcancer och mesoteliom. Det finns ingen säker nedre exponeringsnivå.",
+   "riskomrade": "halsofarligt",
+   "sarskildRisk": [
+    3,
+    13
+   ],
+   "skeden": [
+    "projektering",
+    "produktion",
+    "drift"
+   ],
+   "projekttyper": [
+    "ombyggnad",
+    "rivning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "tak",
+    "fasad",
+    "invandigt",
+    "vs",
+    "vent",
+    "el",
+    "stomme"
+   ],
+   "sokord": [
+    "eternit",
+    "asbestcement",
+    "rörisolering",
+    "mattlim",
+    "vinylplattor",
+    "kakelfix",
+    "sanering",
+    "miljöinventering",
+    "rivning"
+   ],
+   "indikatorer": [
+    "byggår före 1983",
+    "ombyggnad",
+    "rivning",
+    "rivningsritning",
+    "håltagning",
+    "byte av stammar",
+    "stambyte",
+    "golvbyte",
+    "ny ventilation",
+    "eternit",
+    "asbestcement",
+    "rörisolering",
+    "miljöinventering",
+    "farligt avfall",
+    "sanering"
+   ],
+   "relevans": {
+    "projekttyper": [
+     "ombyggnad",
+     "rivning",
+     "underhall"
+    ],
+    "byggarFore": 1983,
+    "motivering": "Asbest användes i stor omfattning i byggmaterial ca 1950–1982 och förekommer även i äldre byggnader (pannor, rörisolering). Totalförbud 1982. Ombyggnad, rivning och underhåll i byggnader från före 1983 ska därför alltid hanteras som att asbest kan förekomma tills motsatsen visats."
+   },
+   "profilvarningar": [
+    {
+     "om": {
+      "inventering": [
+       "nej",
+       "vet ej"
+      ]
+     },
+     "niva": "hog",
+     "text": "Miljöinventering saknas. Rekommendera byggherren att beställa material- och miljöinventering med provtagning innan projekteringen låses. Utan den kan varken omfattning, tidplan eller kostnad för sanering bedömas, och risken för oförutsedda fynd under produktion blir stor."
+    },
+    {
+     "om": {
+      "verksamhet": [
+       "ja"
+      ]
+     },
+     "niva": "medel",
+     "text": "Pågående verksamhet i byggnaden: sanering måste planeras med inneslutning, undertryck och tidsfönster så att boende/verksamhet inte exponeras. Samordna med fastighetsägarens ventilationsdrift."
+    }
+   ],
+   "vadArRisken": [
+    "Asbest är ett fibrigt mineral som tidigare användes för sina brand-, värme- och slitstarka egenskaper. Inkapslat och oskadat material avger normalt inga fibrer – risken uppstår när materialet borras, slipas, sågas, bryts loss eller vittrar.",
+    "Fibrerna är så tunna att de svävar länge i luften, sprids med ventilation och följer med kläder och verktyg. Den som exponeras märker inget i stunden; sjukdomarna kommer ofta decennier senare.",
+    "Störst exponering drabbar hantverkare som inte vet att materialet innehåller asbest – elektriker, rörmokare, ventilationsmontörer, golvläggare och rivningsarbetare. Därför är identifiering före byggstart den viktigaste åtgärden."
+   ],
+   "forekomst": [
+    {
+     "byggdel": "fasad",
+     "plats": "Fasad",
+     "exempel": "Asbestcementskivor (eternit) som fasadbeklädnad, fönsterbänkar, ballongfronter, fasadputs."
+    },
+    {
+     "byggdel": "tak",
+     "plats": "Tak",
+     "exempel": "Korrugerade asbestcementplattor, takpannor/skifferimitation, takfotsinklädnad, ventilationshuvar."
+    },
+    {
+     "byggdel": "invandigt",
+     "plats": "Golv",
+     "exempel": "Vinylplattor och plastmattor med asbestfilt/alkaliskydd i underskiktet, mattlim (svart bitumenlim), avjämning."
+    },
+    {
+     "byggdel": "invandigt",
+     "plats": "Våtrum & kök",
+     "exempel": "Kakelfix och fogbruk, spackel, golvbrunnsmanschetter."
+    },
+    {
+     "byggdel": "invandigt",
+     "plats": "Väggar & tak inomhus",
+     "exempel": "Lägenhetsskiljande väggar, sprutad bullerdämpning, skivor i undertak, fogmassor och spackel."
+    },
+    {
+     "byggdel": "vs",
+     "plats": "Rör & värme",
+     "exempel": "Rörisolering (ofta vit/grå kartongliknande), böjar och ventiler, värmepannor och pannrum, avloppsrör och stammar av asbestcement, packningar."
+    },
+    {
+     "byggdel": "vent",
+     "plats": "Ventilation",
+     "exempel": "Kondens- och brandisolering av kanaler, flexibla stosar, packningar i aggregat, asbestcementkanaler."
+    },
+    {
+     "byggdel": "el",
+     "plats": "El",
+     "exempel": "Brandskyddsskivor bakom elcentraler och mätartavlor, bakom elradiatorer, ljusbågsskydd, gamla säkringar."
+    },
+    {
+     "byggdel": "stomme",
+     "plats": "Brandskydd",
+     "exempel": "Brandisolering av stålbalkar och pelare, brandcellsgränser, brandskyddsdörrar (kärna), soprum och sopnedkast."
+    },
+    {
+     "byggdel": "fasad",
+     "plats": "Fönster & dörrar",
+     "exempel": "Fönsterkitt och fogmassor, skivor i fönsterbröstningar, brandklassade dörrar."
+    },
+    {
+     "byggdel": "mark",
+     "plats": "Mark",
+     "exempel": "Gamla VA-ledningar av asbestcement, rivningsmassor och fyllnadsmassor med asbestrester."
+    }
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Ombyggnad i byggnad från före 1983 utan genomförd inventering: asbest förekommer ofta och upptäcks först när materialet redan bearbetats. Konsekvensen är allvarlig, irreversibel sjukdom."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Inventering med provtagning gjord, förekomster sanerade av behörig entreprenör före övriga arbeten och rutin för oförutsedda fynd finns. Konsekvensen är densamma om exponering ändå sker, men sannolikheten är obetydlig."
+   },
+   "beslutsflode": [
+    {
+     "id": "q1",
+     "fraga": "Är det ombyggnad, rivning eller underhåll i en byggnad uppförd eller renoverad före 1983?",
+     "ja": "q2",
+     "nej": {
+      "slut": "Asbest är inte en sannolik risk. Notera bedömningen i riskanalysen. Kontrollera ändå om äldre delar (t.ex. pannrum, tillbyggnader, VA i mark) berörs."
+     }
+    },
+    {
+     "id": "q2",
+     "fraga": "Har material- och miljöinventering med provtagning genomförts för de delar som berörs?",
+     "ja": "q3",
+     "nej": {
+      "slut": "Byggherren bör beställa inventering innan projekteringen låses. BAS-P för in åtgärden i riskanalysen med ansvarig och datum. Fram till dess ska allt misstänkt material behandlas som asbesthaltigt.",
+      "niva": "hog"
+     }
+    },
+    {
+     "id": "q3",
+     "fraga": "Har asbest identifierats i inventeringen?",
+     "ja": "q4",
+     "nej": {
+      "slut": "Risken är reducerad men inte eliminerad – dolda förekomster finns (bakom ytskikt, i bjälklag, i schakt). För in en rutin för oförutsedda fynd i arbetsmiljöplanen.",
+      "niva": "medel"
+     }
+    },
+    {
+     "id": "q4",
+     "fraga": "Ska materialet rivas/saneras inom projektet (eller beröras av arbeten)?",
+     "ja": {
+      "slut": "Sanering av entreprenör med tillstånd från Arbetsmiljöverket, före övriga arbeten i området. Ange förekomster på ritning och i beskrivning, lägg sanering tidigt i tidplanen och kräv friklassning (luftmätning/visuell kontroll) innan andra entreprenörer släpps in.",
+      "niva": "hog"
+     },
+     "nej": {
+      "slut": "Kvarlämnad asbest: märk, kapsla in vid behov, skydda mot skador under byggtiden och dokumentera läget i journal och FDU så att framtida underhåll känner till den.",
+      "niva": "medel"
+     }
+    }
+   ],
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Byggherre",
+     "atgard": "Beställ material- och miljöinventering med provtagning och analys av samtliga berörda delar innan systemhandling/bygghandling låses."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P",
+     "atgard": "Begär in inventeringsrapporten, för in identifierade förekomster i riskanalysen och arbetsmiljöplanen. Följ upp att projektörerna har tagit del av den."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Välj lösningar som undviker ingrepp i asbesthaltigt material där det går (t.ex. dra nya installationer i nya stråk, kapsla in i stället för att riva). Redovisa förekomster på rivningsritningar och i beskrivningar."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P / Byggherre",
+     "atgard": "Säkerställ att sanering är en egen post i förfrågningsunderlaget, utförs av behörig entreprenör och ligger tidigt i tidplanen före övriga arbeten i berörda utrymmen."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "BAS-U",
+     "atgard": "Samordna så att ingen annan entreprenör arbetar i området innan sanering är klar och utrymmet friklassats. Avspärrning och skyltning: ”Varning – Asbest – Tillträde förbjudet för obehöriga”."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Saneringsentreprenör",
+     "atgard": "Tillstånd från Arbetsmiljöverket, utbildad personal med giltig medicinsk kontroll, objektsanpassad arbetsbeskrivning, inneslutning med undertryck, dammsugare med HEPA-filter, andningsskydd och engångsoverall, sluss för ombyte."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Avfall hanteras som farligt avfall: dubbelt emballerat, märkt, i låst/täckt container. Spara transportdokument."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Alla",
+     "atgard": "Rutin för oförutsett fynd: STOPPA arbetet, spärra av, informera BAS-U, låt provta. Arbetet återupptas först efter analysbesked eller sanering."
+    },
+    {
+     "skede": "drift",
+     "ansvar": "BAS-P / Byggherre",
+     "atgard": "Kvarlämnad asbest dokumenteras i journal och dokumentation (läge, typ, skick) och överlämnas till fastighetsägaren. Märk synliga förekomster."
+    },
+    {
+     "skede": "drift",
+     "ansvar": "Fastighetsägare",
+     "atgard": "Inför framtida underhåll: kontrollera asbestregistret innan håltagning, byte av installationer eller ytskikt beställs."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "asbest.1",
+     "fraga": "Finns en material- och miljöinventering och täcker den alla delar som berörs av ombyggnaden (inklusive schakt, bjälklag, installationsstråk)?",
+     "skede": "projektering",
+     "underlag": [
+      "miljöinventering"
+     ]
+    },
+    {
+     "id": "asbest.2",
+     "fraga": "Är provtagna förekomster markerade på rivningsritning/planer?",
+     "skede": "projektering",
+     "underlag": [
+      "rivningsritning",
+      "planer"
+     ]
+    },
+    {
+     "id": "asbest.3",
+     "fraga": "Har projektörerna undvikit onödiga ingrepp i asbesthaltigt material (nya håltagningar, ledningsdragning genom asbestvägg)?",
+     "skede": "projektering",
+     "underlag": [
+      "ritningar",
+      "beskrivningar"
+     ]
+    },
+    {
+     "id": "asbest.4",
+     "fraga": "Är sanering en egen post i förfrågningsunderlaget med krav på tillstånd från Arbetsmiljöverket?",
+     "skede": "projektering",
+     "underlag": [
+      "AF",
+      "mängdförteckning"
+     ]
+    },
+    {
+     "id": "asbest.5",
+     "fraga": "Ligger sanering före övriga arbeten i tidplanen, med tid för friklassning?",
+     "skede": "projektering",
+     "underlag": [
+      "tidplan"
+     ]
+    },
+    {
+     "id": "asbest.6",
+     "fraga": "Beskriver arbetsmiljöplanen rutin för oförutsett fynd?",
+     "skede": "produktion",
+     "underlag": [
+      "arbetsmiljöplan"
+     ]
+    },
+    {
+     "id": "asbest.7",
+     "fraga": "Finns en plan för hantering av farligt avfall (emballering, container, transport)?",
+     "skede": "produktion",
+     "underlag": [
+      "arbetsmiljöplan",
+      "AF"
+     ]
+    },
+    {
+     "id": "asbest.8",
+     "fraga": "Är kvarlämnad asbest dokumenterad för journal och dokumentation (FDU)?",
+     "skede": "drift",
+     "underlag": [
+      "journal och dokumentation"
+     ]
+    }
+   ],
+   "textArbetsmiljoplan": "Asbest\nByggnaden är uppförd före 1983 och asbest har identifierats i [ange material och utrymmen, se inventeringsrapport daterad ÅÅÅÅ-MM-DD]. Asbesthaltigt material som berörs av arbetena ska saneras av entreprenör med tillstånd från Arbetsmiljöverket innan andra arbeten påbörjas i berört område. Saneringsområdet ska vara avspärrat och skyltat. Övriga entreprenörer får tillträde först när området friklassats av BAS-U.\nVid misstanke om asbest som inte finns med i inventeringen ska arbetet omedelbart avbrytas, området spärras av och BAS-U kontaktas. Arbetet får återupptas först efter provtagning och, vid behov, sanering.\nAsbesthaltigt avfall hanteras som farligt avfall.",
+   "textHandlingar": "Rivning av asbesthaltigt material ska utföras av entreprenör med tillstånd från Arbetsmiljöverket för rivning av asbest. Sanering ska vara slutförd och utrymmet friklassat innan övriga arbeten påbörjas. Förekomster redovisas i miljöinventering daterad [ÅÅÅÅ-MM-DD] och på ritning [nr].",
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön – asbest",
+     "text": "Krav på kartläggning, tillstånd, utbildning, skyddsåtgärder och friklassning vid arbete med asbest."
+    },
+    {
+     "ref": "AFS 2023:14 Gränsvärden för luftvägsexponering",
+     "text": "Hygieniskt gränsvärde för asbestfibrer."
+    },
+    {
+     "ref": "AFS 2023:15 Medicinska kontroller i arbetslivet",
+     "text": "Medicinsk kontroll med tjänstbarhetsintyg för den som arbetar med asbest."
+    },
+    {
+     "ref": "AFS 2023:3 Projektering och byggarbetsmiljösamordning",
+     "text": "Byggherrens, projektörens och BAS-P:s skyldigheter, inkl. rivning av hälsofarliga material som arbete med särskild risk."
+    },
+    {
+     "ref": "Arbetsmiljölagen 3 kap. 6–7 f §§",
+     "text": "Byggherrens, projektörens och byggarbetsmiljösamordnarens ansvar."
+    },
+    {
+     "ref": "Plan- och bygglagen – kontrollplan vid rivning",
+     "text": "Kontrollplanen ska redovisa farligt avfall och hur det hanteras – inventeringen är underlaget."
+    },
+    {
+     "ref": "Avfallsförordningen (2020:614)",
+     "text": "Asbestavfall är farligt avfall – krav på sortering, emballering och dokumentation."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Asbest.docx (Bygghjälmen) – driven",
+     "url": "https://drive.google.com/file/d/1-IQPl_zzzcFaCVfKEDJdneaOH0IJ6V8V/view"
+    },
+    {
+     "titel": "El-Asbest.docx – driven",
+     "url": "https://drive.google.com/file/d/1EnVRHMmdcNkKGyJ6sMXjnWnQ-QGhBHE4/view"
+    },
+    {
+     "titel": "Asbest rivning utomhus (instruktion) – driven",
+     "url": "https://drive.google.com/file/d/1gLhH3p6bxbQFoyWEJmOOaNeDX4JD0ang/view"
+    },
+    {
+     "titel": "Bli asbestsmart (broschyr) – driven",
+     "url": "https://drive.google.com/file/d/1gczWBACLhGi9V5dsGNtoiYLoeWpchRjN/view"
+    },
+    {
+     "titel": "Arbetsmiljöverket – Asbest",
+     "url": "https://www.av.se/produktion-industri-och-logistik/asbest/"
+    }
+   ]
+  },
+  {
+   "id": "ledningar-mark",
+   "titel": "Befintliga ledningar i mark",
+   "status": "bas",
+   "ingress": "Grävning nära el-, gas- och fjärrvärmeledningar kan ge elchock, ljusbåge, gasläckage och brännskador.",
+   "riskomrade": "el",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "anlaggning",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "mark"
+   ],
+   "sokord": [
+    "kabelvisning",
+    "ledningskollen",
+    "gasledning",
+    "fjärrvärme"
+   ],
+   "indikatorer": [
+    "schakt",
+    "ledningar",
+    "kabelvisning",
+    "ledningskollen",
+    "gas",
+    "fjärrvärme"
+   ],
+   "relevans": {
+    "profil": {
+     "schakt": [
+      "ja"
+     ],
+     "ledningar": [
+      "ja"
+     ]
+    },
+    "motivering": "Schakt där ledningar finns."
+   },
+   "vadArRisken": [
+    "Ledningar ligger ofta inte där kartan visar. Skada på högspänningskabel eller gasledning kan få dödlig utgång och påverka tredje man."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Ledningar okända eller felaktigt inmätta."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Ledningar utredda och visade, handgrävning nära ledning."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Inhämta ledningsinformation (Ledningskollen) och redovisa på markritning; undvik schakt nära befintliga ledningar."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Kabelvisning före grävning, handgrävning/sugschakt nära ledning, ledningsägarens anvisningar."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "ledningar-mark.1",
+     "fraga": "Är befintliga ledningar redovisade på markritningarna?",
+     "skede": "projektering",
+     "underlag": [
+      "markritningar",
+      "ledningsplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Byggnads- och anläggningsarbete."
+    },
+    {
+     "ref": "ELSÄK-FS",
+     "text": "Elsäkerhet vid arbete nära elektriska anläggningar."
+    }
+   ]
+  },
+  {
+   "id": "bly-farg",
+   "titel": "Bly och tungmetaller i färg och kitt",
+   "status": "bas",
+   "ingress": "Äldre färg (blymönja, blyvitt, kromat) och fönsterkitt kan innehålla bly. Exponering sker via damm och rök vid slipning, skrapning, blästring och värmebehandling.",
+   "riskomrade": "halsofarligt",
+   "sarskildRisk": [
+    3,
+    13
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "ombyggnad",
+    "rivning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "fasad",
+    "invandigt",
+    "stomme"
+   ],
+   "sokord": [
+    "blymönja",
+    "fönsterkitt",
+    "färgskrapning",
+    "blästring"
+   ],
+   "indikatorer": [
+    "fönsterrenovering",
+    "ommålning",
+    "blästring",
+    "stålkonstruktion",
+    "byggår före 1980"
+   ],
+   "relevans": {
+    "projekttyper": [
+     "ombyggnad",
+     "rivning",
+     "underhall"
+    ],
+    "byggarFore": 1980,
+    "motivering": "Byggnader målade före ca 1980."
+   },
+   "vadArRisken": [
+    "Bly tas upp via inandning och sväljning och påverkar nervsystem, blod och njurar. Särskilt skadligt för foster.",
+    "Risken är störst vid fönsterrenovering, ommålning av fasader och rostskyddsmålade stålkonstruktioner."
+   ],
+   "forekomst": [
+    {
+     "plats": "Fönster",
+     "exempel": "Kitt och färg på träfönster."
+    },
+    {
+     "plats": "Fasad",
+     "exempel": "Oljefärg på träpanel och plåt."
+    },
+    {
+     "plats": "Stål",
+     "exempel": "Blymönja som rostskydd på balkar, räcken och broar."
+    }
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Torrslipning och värmebehandling av gammal färg ger hög exponering."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Provtagning och val av metod med låg dammbildning."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Byggherre",
+     "atgard": "Provta färg och kitt i inventeringen."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Föreskriv metoder med låg damm- och rökbildning (våtmetoder, kemisk avfärgning med kontroll) – inte torrslipning eller öppen låga."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Punktutsug, andningsskydd, tvättmöjlighet, ät- och rökförbud i arbetsområdet. Medicinsk kontroll vid blyarbete."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "bly-farg.1",
+     "fraga": "Är färg och kitt provtagna där målningsarbeten eller rivning ska ske?",
+     "skede": "projektering",
+     "underlag": [
+      "miljöinventering"
+     ]
+    },
+    {
+     "id": "bly-farg.2",
+     "fraga": "Anger beskrivningen arbetsmetod för borttagning av gammal färg?",
+     "skede": "projektering",
+     "underlag": [
+      "beskrivning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Kemiska riskkällor – bly."
+    },
+    {
+     "ref": "AFS 2023:15 Medicinska kontroller i arbetslivet",
+     "text": "Blodblyprov vid blyarbete."
+    }
+   ]
+  },
+  {
+   "id": "slutna-utrymmen",
+   "titel": "Brunnar, kulvertar och slutna utrymmen",
+   "status": "bas",
+   "ingress": "I brunnar, tankar, kulvertar och tunnlar kan syrebrist och giftiga gaser (svavelväte, koldioxid) uppstå. Räddning är svår.",
+   "riskomrade": "vatten",
+   "sarskildRisk": [
+    7
+   ],
+   "skeden": [
+    "projektering",
+    "produktion",
+    "drift"
+   ],
+   "projekttyper": [
+    "anlaggning",
+    "ombyggnad",
+    "nybyggnad",
+    "underhall"
+   ],
+   "byggdelar": [
+    "mark",
+    "vs"
+   ],
+   "sokord": [
+    "brunn",
+    "kulvert",
+    "tank",
+    "syrebrist",
+    "gasvarnare"
+   ],
+   "indikatorer": [
+    "brunn",
+    "kulvert",
+    "tank",
+    "pumpgrop",
+    "dagvattenmagasin",
+    "tunnel"
+   ],
+   "relevans": {
+    "projekttyper": [
+     "anlaggning"
+    ],
+    "motivering": "Anläggningsarbete med brunnar, kulvertar, tankar eller tunnlar. Kontrollera även vid ombyggnad om pumpgropar eller kulvertar berörs."
+   },
+   "vadArRisken": [
+    "Flera dödsolyckor har inträffat när kollegor försökt rädda en medvetslös person i en brunn."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Nedstigning utan gasmätning."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Behov av nedstigning minimerat; rutiner för gasmätning och räddning."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Utforma så att drift och service kan ske ovan mark; tillräckliga manluckor, stegar och förankringspunkter."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Gasmätning, ventilation, fallskyddssele med räddningsutrustning, vakt ovan jord."
+    },
+    {
+     "skede": "drift",
+     "ansvar": "Projektörer",
+     "atgard": "Dokumentera slutna utrymmen och krav för tillträde."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "slutna-utrymmen.1",
+     "fraga": "Kan brunnar och tankar skötas utan nedstigning?",
+     "skede": "projektering",
+     "underlag": [
+      "VA-ritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Arbete i brunnar, tunnlar och under jord."
+    }
+   ]
+  },
+  {
+   "id": "buller-vibrationer",
+   "titel": "Buller och vibrationer",
+   "status": "bas",
+   "ingress": "Spontning, pålning, sprängning, rivning och maskinarbeten ger buller som kan ge hörselskador och vibrationer som skadar händer och rygg.",
+   "riskomrade": "buller",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "rivning",
+    "anlaggning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "mark",
+    "stomme",
+    "etablering"
+   ],
+   "sokord": [
+    "pålning",
+    "spont",
+    "hörselskydd"
+   ],
+   "indikatorer": [
+    "pålning",
+    "spontning",
+    "slagborrning",
+    "rivning",
+    "packning"
+   ],
+   "vadArRisken": [
+    "Hörselskador är bestående. Helkroppsvibrationer drabbar maskinförare."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Bullrande moment i de flesta projekt."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Tystare metoder och skydd."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Välj tystare metoder där möjligt (borrade pålar, tryckta spont)."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Hörselskydd, begränsad exponeringstid, vibrationsdämpad utrustning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "buller-vibrationer.1",
+     "fraga": "Är grundläggnings- och spontmetod vald med hänsyn till buller och vibrationer?",
+     "skede": "projektering",
+     "underlag": [
+      "geoteknisk PM",
+      "konstruktionsritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Buller och vibrationer."
+    }
+   ]
+  },
+  {
+   "id": "bygg-el",
+   "titel": "Byggström och spänningssatta installationer",
+   "status": "bas",
+   "ingress": "Skadade kablar, provisoriska installationer och befintliga spänningssatta anläggningar vid ombyggnad ger risk för elolycka.",
+   "riskomrade": "el",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+   ],
+   "byggdelar": [
+    "el",
+    "etablering"
+   ],
+   "sokord": [
+    "byggström",
+    "frånskiljning",
+    "dolda kablar"
+   ],
+   "indikatorer": [
+    "byggström",
+    "befintlig elanläggning",
+    "håltagning",
+    "rivning av installationer"
+   ],
+   "vadArRisken": [
+    "Vid ombyggnad är det ofta oklart vilka delar av befintlig elanläggning som är spänningslösa. Håltagning kan träffa dolda kablar."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Okänd status på befintliga ledningar."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Plan för frånskiljning och byggström."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Elprojektör",
+     "atgard": "Redovisa befintlig anläggning som rivs eller behålls; plan för frånkoppling."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Byggström med jordfelsbrytare, kabeldragning i höjd, kontroll innan håltagning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "bygg-el.1",
+     "fraga": "Redovisar elhandlingarna vad som ska kopplas bort före rivning?",
+     "skede": "projektering",
+     "underlag": [
+      "elritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "ELSÄK-FS",
+     "text": "Elsäkerhet vid arbete."
+    },
+    {
+     "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+     "text": "Elektrisk arbetsutrustning."
+    }
+   ]
+  },
+  {
+   "id": "ensamarbete",
+   "titel": "Ensamarbete",
+   "status": "bas",
+   "ingress": "Den som arbetar ensam kan inte larma eller få hjälp vid olycka eller sjukdom.",
+   "riskomrade": "organisation",
+   "sarskildRisk": [],
+   "skeden": [
+    "produktion",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "etablering"
+   ],
+   "sokord": [
+    "larm",
+    "kvällsarbete"
+   ],
+   "indikatorer": [
+    "ensamarbete",
+    "kvällsarbete",
+    "helgarbete"
+   ],
+   "vadArRisken": [
+    "Vissa arbeten får inte utföras ensam, t.ex. nedstigning i brunnar och arbete i fallskyddssele."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Ensamarbete förekommer vid efterarbeten."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Rutiner för kontakt och larm."
+   },
+   "atgarder": [
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Riskbedöm ensamarbete, larmrutiner, inget ensamarbete vid särskild risk."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "ensamarbete.1",
+     "fraga": "Hanterar arbetsmiljöplanen ensamarbete?",
+     "skede": "produktion",
+     "underlag": [
+      "arbetsmiljöplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:2 Planering och organisering av arbetsmiljöarbete",
+     "text": "Ensamarbete."
+    }
+   ]
+  },
+  {
+   "id": "fall-tak-fasad",
+   "titel": "Fall från tak, fasad och ställning",
+   "status": "bas",
+   "ingress": "Fall från tak, ställning och bjälklagskanter är den vanligaste orsaken till dödsolyckor i byggbranschen.",
+   "riskomrade": "fall",
+   "sarskildRisk": [
+    1
+   ],
+   "skeden": [
+    "projektering",
+    "produktion",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+   ],
+   "byggdelar": [
+    "tak",
+    "fasad",
+    "stomme"
+   ],
+   "sokord": [
+    "ställning",
+    "skyddsräcke",
+    "takfot",
+    "lift",
+    "fallskydd",
+    "balkong"
+   ],
+   "indikatorer": [
+    "takarbete",
+    "takbyte",
+    "fasadarbete",
+    "balkong",
+    "ställning",
+    "lift",
+    "taklutning",
+    "solceller"
+   ],
+   "relevans": {
+    "profil": {
+     "hojd": [
+      "ja"
+     ]
+    },
+    "motivering": "Arbete på höjd över 2 m."
+   },
+   "vadArRisken": [
+    "Risken finns vid alla arbeten där nivåskillnaden är mer än två meter, men även lägre fall kan ge allvarliga skador.",
+    "Projekteringen avgör om kollektiva skydd kan monteras tidigt och om framtida underhåll kan göras säkert."
+   ],
+   "forekomst": [
+    {
+     "plats": "Tak",
+     "exempel": "Takbyten, takfot, takfönster, solceller, montage av ventilationshuvar."
+    },
+    {
+     "plats": "Fasad",
+     "exempel": "Fasadbyten, fönsterbyten, balkongmontage."
+    },
+    {
+     "plats": "Stomme",
+     "exempel": "Bjälklagskanter före montage av fasad."
+    }
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Arbete vid oskyddade kanter."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Kollektiva skydd (räcken, ställning) planerade från start."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Projektera infästningar för skyddsräcken; prefabricerade räcken på element; tidiga permanenta räcken."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P",
+     "atgard": "Kräv ställningsplan/skyddsanordning i arbetsmiljöplanen; ytor för lift och ställning i etableringsplanen."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "BAS-U",
+     "atgard": "Ställningsplan, kantskydd, lift med utbildad förare, räddningsplan vid fallskyddssele."
+    },
+    {
+     "skede": "drift",
+     "ansvar": "Projektörer",
+     "atgard": "Permanenta takskyddsanordningar (räcken, gångbryggor, förankringspunkter) för underhåll."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "fall-tak-fasad.1",
+     "fraga": "Finns permanenta takskydd och säker väg upp på tak för framtida underhåll?",
+     "skede": "drift",
+     "underlag": [
+      "takplan",
+      "arkitektritningar"
+     ]
+    },
+    {
+     "id": "fall-tak-fasad.2",
+     "fraga": "Redovisar etableringsplanen ytor för ställning och lift?",
+     "skede": "projektering",
+     "underlag": [
+      "etableringsplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Byggnads- och anläggningsarbete – skydd mot fall."
+    },
+    {
+     "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+     "text": "Ställningar, liftar och fallskydd."
+    },
+    {
+     "ref": "AFS 2023:12 Utformning av arbetsplatser",
+     "text": "Skydd mot fall på permanenta arbetsplatser."
+    }
+   ]
+  },
+  {
+   "id": "fasadunderhall",
+   "titel": "Fönsterputs och fasadunderhåll",
+   "status": "bas",
+   "ingress": "Fönsterputs, byte av glas och fasadunderhåll på höga byggnader kräver arbete på höjd om inget annat har planerats.",
+   "riskomrade": "atkomst",
+   "sarskildRisk": [
+    1
+   ],
+   "skeden": [
+    "projektering",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "fasad",
+    "tak"
+   ],
+   "sokord": [
+    "fönsterputs",
+    "förankringspunkt",
+    "lift"
+   ],
+   "indikatorer": [
+    "glasfasad",
+    "höga fönster",
+    "atrium",
+    "takfönster",
+    "fasadmaterial"
+   ],
+   "vadArRisken": [
+    "Utan uppställningsytor för lift eller fasta förankringspunkter blir underhållet riskfyllt och dyrt."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Inga planerade underhållslösningar."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Vändbara fönster, förankringar och liftytor."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt",
+     "atgard": "Fönster som kan putsas inifrån, uppställningsytor för lift, förankringspunkter på tak, åtkomst till atrium och takfönster."
+    },
+    {
+     "skede": "drift",
+     "ansvar": "BAS-P",
+     "atgard": "Beskriv underhållsmetod i journal och dokumentation."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "fasadunderhall.1",
+     "fraga": "Finns lösning för fönsterputs och glasbyte för höga eller svåråtkomliga partier?",
+     "skede": "projektering",
+     "underlag": [
+      "arkitektritningar",
+      "fasadritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:3 Projektering och byggarbetsmiljösamordning",
+     "text": "Projektering för framtida underhåll."
+    }
+   ]
+  },
+  {
+   "id": "forurenad-mark",
+   "titel": "Förorenad mark",
+   "status": "bas",
+   "ingress": "Mark vid tidigare industri, bensinstationer, verkstäder och utfyllnader kan innehålla oljor, lösningsmedel, tungmetaller och tjära. Exponering via damm, ånga och hudkontakt vid schakt.",
+   "riskomrade": "halsofarligt",
+   "sarskildRisk": [
+    3
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "anlaggning",
+    "rivning",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "mark"
+   ],
+   "sokord": [
+    "markmiljö",
+    "provtagning",
+    "tjärasfalt",
+    "massor"
+   ],
+   "indikatorer": [
+    "tidigare industri",
+    "bensinstation",
+    "fyllnadsmassor",
+    "tjärasfalt",
+    "markmiljöundersökning",
+    "schakt"
+   ],
+   "relevans": {
+    "profil": {
+     "schakt": [
+      "ja"
+     ],
+     "forurenad": [
+      "ja"
+     ]
+    },
+    "motivering": "Schakt i område med misstänkt förorening."
+   },
+   "profilvarningar": [
+    {
+     "om": {
+      "forurenad": [
+       "vet ej"
+      ]
+     },
+     "niva": "medel",
+     "text": "Okänd markhistorik – rekommendera historisk inventering och markmiljöundersökning före projektering av schakt."
+    }
+   ],
+   "vadArRisken": [
+    "Föroreningar kan vara okända tills schakt öppnas. Flyktiga ämnen kan ansamlas i schakt och ledningsgravar.",
+    "Utan provtagning blir både arbetsmiljö och massahantering oförutsägbar."
+   ],
+   "forekomst": [
+    {
+     "plats": "Industri- och verkstadstomter",
+     "exempel": "Oljor, lösningsmedel, metaller."
+    },
+    {
+     "plats": "Vägar och planer",
+     "exempel": "Tjärasfalt (PAH) i äldre beläggningar."
+    },
+    {
+     "plats": "Utfyllnader",
+     "exempel": "Okända fyllnadsmassor med rivningsrester."
+    }
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Okänd förorening upptäcks först vid schakt."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Markmiljöundersökning gjord, skyddsåtgärder och masshantering planerade."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Byggherre",
+     "atgard": "Beställ markmiljöundersökning och vid behov PAH-analys av asfalt."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Redovisa föroreningar och hantering av massor i handlingarna."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Skyddsutrustning, hygienutrymme, gasvarnare i djupa schakt, information till alla UE."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "forurenad-mark.1",
+     "fraga": "Finns markmiljöundersökning för de ytor som schaktas?",
+     "skede": "projektering",
+     "underlag": [
+      "markmiljöundersökning",
+      "geoteknisk PM"
+     ]
+    },
+    {
+     "id": "forurenad-mark.2",
+     "fraga": "Är tjärasfalt provtagen där beläggning ska rivas?",
+     "skede": "projektering",
+     "underlag": [
+      "miljöinventering"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Kemiska riskkällor."
+    },
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Byggnads- och anläggningsarbete."
+    }
+   ]
+  },
+  {
+   "id": "heta-arbeten",
+   "titel": "Heta arbeten och brandfarlig gas",
+   "status": "bas",
+   "ingress": "Svetsning, skärning, lödning och takläggning med gasol kan antända brännbart material och orsaka brand i befintlig byggnad.",
+   "riskomrade": "brand",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+   ],
+   "byggdelar": [
+    "tak",
+    "vs",
+    "stomme"
+   ],
+   "sokord": [
+    "svetsning",
+    "gasol",
+    "takpapp",
+    "lödning",
+    "brandvakt"
+   ],
+   "indikatorer": [
+    "svetsad takpapp",
+    "lödning",
+    "svetsning",
+    "gasol",
+    "byggtork"
+   ],
+   "vadArRisken": [
+    "Bränder vid takarbeten kan pyra i isolering i timmar innan de upptäcks. Gasolflaskor är explosionsrisk vid brand."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Heta arbeten i befintlig byggnad med brännbart material."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Kalla metoder valda; tillstånd och brandvakt för kvarvarande."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Välj kalla metoder: självhäftande/mekaniskt fäst takduk, pressade rörkopplingar i stället för lödning."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Tillstånd för heta arbeten, certifierad personal, brandvakt och efterbevakning, gasolhantering enligt tillstånd."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "heta-arbeten.1",
+     "fraga": "Föreskrivs metoder som kräver heta arbeten där kalla alternativ finns?",
+     "skede": "projektering",
+     "underlag": [
+      "beskrivning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "Lag (2010:1011) om brandfarliga och explosiva varor",
+     "text": "Hantering och förvaring av gasol."
+    },
+    {
+     "ref": "Säkerhetsregler för heta arbeten (Brandskyddsföreningen)",
+     "text": "Tillstånd, utbildning och brandvakt."
+    }
+   ]
+  },
+  {
+   "id": "haltagning-bilning",
+   "titel": "Håltagning och bilning i befintlig stomme",
+   "status": "bas",
+   "ingress": "Bilning och kärnborrning ger höga buller- och vibrationsnivåer, kvartsdamm och risk att träffa armering, kablar och rör.",
+   "riskomrade": "buller",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "ombyggnad",
+    "underhall"
+   ],
+   "byggdelar": [
+    "stomme",
+    "vs",
+    "vent",
+    "el"
+   ],
+   "sokord": [
+    "kärnborrning",
+    "bilning",
+    "vibrationer",
+    "stomljud"
+   ],
+   "indikatorer": [
+    "håltagning",
+    "kärnborrning",
+    "bilning",
+    "stambyte",
+    "ny ventilation"
+   ],
+   "relevans": {
+    "projekttyper": [
+     "ombyggnad",
+     "underhall"
+    ],
+    "motivering": "Ingrepp i befintlig stomme."
+   },
+   "vadArRisken": [
+    "Handhållna bilmaskiner ger vibrationsskador (vita fingrar). Buller sprids i stommen till boende och verksamheter."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Mycket håltagning med handhållna maskiner."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Samordnad håltagning med maskinbunden utrustning."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Samordna och minimera håltagningar; använd befintliga schakt; redovisa håltagningsritning."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Maskinbunden kärnborr/vajersåg, vibrationsdämpade verktyg, hörselskydd, tider för bullrande arbete."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "haltagning-bilning.1",
+     "fraga": "Finns samordnad håltagningsritning?",
+     "skede": "projektering",
+     "underlag": [
+      "håltagningsritning",
+      "samordningsritning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Buller och vibrationer."
+    }
+   ]
+  },
+  {
+   "id": "hardplaster",
+   "titel": "Härdplaster och isocyanater",
+   "status": "bas",
+   "ingress": "Epoxi, polyuretan (isocyanater) och akrylater finns i golvbeläggningar, fogskum, lim, injektering och tätskikt. De är starkt allergiframkallande via hud och andning.",
+   "riskomrade": "halsofarligt",
+   "sarskildRisk": [
+    3
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall",
+    "anlaggning"
+   ],
+   "byggdelar": [
+    "invandigt",
+    "stomme",
+    "fasad",
+    "tak"
+   ],
+   "sokord": [
+    "epoxi",
+    "polyuretan",
+    "isocyanat",
+    "fogskum",
+    "akrylat"
+   ],
+   "indikatorer": [
+    "epoxigolv",
+    "polyuretan",
+    "PUR",
+    "fogskum",
+    "injektering",
+    "tätskikt",
+    "lim"
+   ],
+   "vadArRisken": [
+    "Överkänslighet kan uppstå efter kort exponering och är bestående – den drabbade kan inte fortsätta arbeta med ämnena.",
+    "Projektören styr valet av produkt och därmed om härdplast behövs."
+   ],
+   "forekomst": [
+    {
+     "plats": "Golv",
+     "exempel": "Epoxi- och polyuretangolv i garage, kök, industri."
+    },
+    {
+     "plats": "Fasad & fönster",
+     "exempel": "Fogskum och fogmassor."
+    },
+    {
+     "plats": "Stomme",
+     "exempel": "Injektering av sprickor, ingjutning av ankare."
+    },
+    {
+     "plats": "Tak",
+     "exempel": "Sprutade tätskikt."
+    }
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Vanligt förekommande; allergi är bestående."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Alternativa produkter valda där möjligt; utbildning och skydd."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Välj produkter utan härdplast där det är tekniskt möjligt; ange produkter med säkerhetsdatablad."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Endast personal med utbildning och medicinsk kontroll; handskar av rätt material, andningsskydd, ventilation."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "hardplaster.1",
+     "fraga": "Är föreskrivna härdplastprodukter motiverade och finns säkerhetsdatablad?",
+     "skede": "projektering",
+     "underlag": [
+      "beskrivning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Härdplaster – utbildning och skyddsåtgärder."
+    },
+    {
+     "ref": "AFS 2023:15 Medicinska kontroller i arbetslivet",
+     "text": "Medicinsk kontroll vid arbete med härdplaster."
+    }
+   ]
+  },
+  {
+   "id": "tunga-installationer",
+   "titel": "Inbringning av tunga installationer",
+   "status": "bas",
+   "ingress": "Ventilationsaggregat, kylmaskiner, tunga rör, kanaler och elcentraler ska bäras in och lyftas på plats – ofta i trånga utrymmen och på höjd.",
+   "riskomrade": "lyft",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+   ],
+   "byggdelar": [
+    "vent",
+    "vs",
+    "el"
+   ],
+   "sokord": [
+    "fläktrum",
+    "aggregat",
+    "inbringning",
+    "kylmaskin"
+   ],
+   "indikatorer": [
+    "fläktrum",
+    "aggregat",
+    "kylmaskin",
+    "undercentral",
+    "inbringningsväg",
+    "takaggregat"
+   ],
+   "vadArRisken": [
+    "Saknas inbringningsväg blir resultatet manuella lyft, provisoriska lösningar och risk för klämskador. Samma problem uppstår när utrustningen ska bytas i drift."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Ingen planerad inbringningsväg."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Inbringningsväg och lyftpunkter projekterade."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt / Installationsprojektörer",
+     "atgard": "Redovisa inbringningsväg, lyftbalkar/lyftöglor och tillräckliga dörr- och schaktmått för fläktrum och undercentraler."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Lyfthjälpmedel, lyftplan för takaggregat."
+    },
+    {
+     "skede": "drift",
+     "ansvar": "Projektörer",
+     "atgard": "Möjliggör byte av komponenter utan rivning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "tunga-installationer.1",
+     "fraga": "Finns redovisad inbringningsväg till fläktrum och undercentral?",
+     "skede": "projektering",
+     "underlag": [
+      "arkitektritningar",
+      "installationsritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Belastningsergonomi."
+    },
+    {
+     "ref": "AFS 2023:3 Projektering och byggarbetsmiljösamordning",
+     "text": "Projektörens ansvar för underhåll."
+    }
+   ]
+  },
+  {
+   "id": "kvarts",
+   "titel": "Kvartsdamm vid bearbetning av betong och sten",
+   "status": "bas",
+   "ingress": "Respirabelt kvartsdamm bildas när betong, puts, tegel och sten sågas, borras, slipas eller bilas. Det kan ge silikos och lungcancer.",
+   "riskomrade": "halsofarligt",
+   "sarskildRisk": [
+    3
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "rivning",
+    "anlaggning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "stomme",
+    "invandigt",
+    "mark",
+    "fasad"
+   ],
+   "sokord": [
+    "silikos",
+    "håltagning",
+    "slipning",
+    "bilning",
+    "betongsågning"
+   ],
+   "indikatorer": [
+    "håltagning",
+    "kärnborrning",
+    "betongslipning",
+    "bilning",
+    "sågning",
+    "rivning"
+   ],
+   "vadArRisken": [
+    "Kvartsdamm är osynligt i de skadliga fraktionerna. Exponering sker i nästan alla byggprojekt där håltagning, slipning eller rivning förekommer.",
+    "Projekteringen påverkar hur mycket bearbetning som behövs – t.ex. ingjutna ursparingar i stället för efterhandsborrning."
+   ],
+   "forekomst": [
+    {
+     "plats": "Stomme",
+     "exempel": "Håltagning och kärnborrning i betongbjälklag och väggar."
+    },
+    {
+     "plats": "Golv",
+     "exempel": "Slipning av betonggolv inför ytskikt."
+    },
+    {
+     "plats": "Mark",
+     "exempel": "Bergarbeten, krossning, stenläggning."
+    }
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Förekommer i de flesta projekt; ofta otillräcklig dammbekämpning."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Ursparingar projekterade och dammreducerande metoder föreskrivna."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Samordna installationer så att ursparingar och genomföringar gjuts in eller sågas i ett tidigt skede."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P",
+     "atgard": "Lyft dammfrågan i arbetsmiljöplanen: krav på verktyg med vatten eller integrerat utsug."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Utsug med H-klassad dammsugare, vattenbegjutning, andningsskydd P3, städning med dammsugare – inte sopning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "kvarts.1",
+     "fraga": "Är ursparingar för installationer redovisade på konstruktionsritningar?",
+     "skede": "projektering",
+     "underlag": [
+      "konstruktionsritningar",
+      "samordningsritning"
+     ]
+    },
+    {
+     "id": "kvarts.2",
+     "fraga": "Ställer arbetsmiljöplanen krav på dammbekämpning?",
+     "skede": "projektering",
+     "underlag": [
+      "arbetsmiljöplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Kvarts – kartläggning och åtgärder."
+    },
+    {
+     "ref": "AFS 2023:14 Gränsvärden för luftvägsexponering",
+     "text": "Gränsvärde för respirabelt kvartsdamm."
+    },
+    {
+     "ref": "AFS 2023:15 Medicinska kontroller i arbetslivet",
+     "text": "Medicinsk kontroll vid kvartsexponering."
+    }
+   ]
+  },
+  {
+   "id": "maskiner-arbetsplats",
+   "titel": "Maskiner och truckar på arbetsplatsen",
+   "status": "bas",
+   "ingress": "Påkörning och klämning av markpersonal vid hjullastare, grävmaskiner, truckar och lastbilar inom arbetsområdet.",
+   "riskomrade": "trafik",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "rivning"
+   ],
+   "byggdelar": [
+    "etablering",
+    "mark"
+   ],
+   "sokord": [
+    "hjullastare",
+    "grävmaskin",
+    "truck",
+    "backning"
+   ],
+   "indikatorer": [
+    "etableringsplan",
+    "upplag",
+    "transportväg",
+    "maskin"
+   ],
+   "vadArRisken": [
+    "Maskinförare har begränsad sikt. Markpersonal som arbetar nära maskin i rörelse är särskilt utsatt."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Blandad trafik av maskiner och gående."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Separerade gång- och transportvägar."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P",
+     "atgard": "Etableringsplan med separerade gång- och transportvägar och vändytor."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Utbildade förare, besiktigade maskiner, backvarnare, avstånd till markpersonal."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "maskiner-arbetsplats.1",
+     "fraga": "Finns separerade gång- och transportvägar i etableringsplanen?",
+     "skede": "projektering",
+     "underlag": [
+      "etableringsplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+     "text": "Mobila arbetsutrustningar och förarbehörighet."
+    }
+   ]
+  },
+  {
+   "id": "tunga-element",
+   "titel": "Montage av tunga byggelement",
+   "status": "bas",
+   "ingress": "Lyft av prefabricerade element, stålstomme, takstolar och moduler – risk för klämskador, nedfallande last och instabila element.",
+   "riskomrade": "lyft",
+   "sarskildRisk": [
+    11
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "stomme",
+    "tak",
+    "fasad"
+   ],
+   "sokord": [
+    "prefab",
+    "lyftplan",
+    "kran",
+    "montagestabilitet",
+    "håldäck",
+    "stålstomme"
+   ],
+   "indikatorer": [
+    "prefab",
+    "håldäck",
+    "stålstomme",
+    "betongelement",
+    "takstolar",
+    "volymelement",
+    "mobilkran",
+    "tornkran"
+   ],
+   "relevans": {
+    "profil": {
+     "prefab": [
+      "ja"
+     ]
+    },
+    "motivering": "Prefab, stålstomme eller tunga element ingår."
+   },
+   "vadArRisken": [
+    "Element kan välta före slutlig förankring. Montörer arbetar ofta på höjd samtidigt som lasten hänger i kranen."
+   ],
+   "forekomst": [
+    {
+     "plats": "Stomme",
+     "exempel": "Betongväggar, håldäck, HDF, pelare och balkar."
+    },
+    {
+     "plats": "Tak",
+     "exempel": "Takstolar, limträ, TRP-plåt."
+    },
+    {
+     "plats": "Fasad",
+     "exempel": "Sandwichelement, glaspartier."
+    },
+    {
+     "plats": "Moduler",
+     "exempel": "Volymelement, badrumsmoduler."
+    }
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Montageordning och temporär stabilisering ej utredd."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Lyftpunkter och montagestabilitet projekterade."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Konstruktör",
+     "atgard": "Lyftanordningar ingjutna; montageanvisning med stabilitet under montage och montageordning."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P",
+     "atgard": "Kranplacering och upplagsytor i etableringsplanen."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Lyftplan, avspärrad lyftzon, signalman, styrlinor."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "tunga-element.1",
+     "fraga": "Redovisar konstruktören temporär stabilitet och lyftpunkter?",
+     "skede": "projektering",
+     "underlag": [
+      "konstruktionsritningar",
+      "montageanvisning"
+     ]
+    },
+    {
+     "id": "tunga-element.2",
+     "fraga": "Är kranplacering och upplag redovisade?",
+     "skede": "projektering",
+     "underlag": [
+      "etableringsplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Montering av tunga byggelement."
+    },
+    {
+     "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+     "text": "Lyftanordningar och lyftredskap."
+    }
+   ]
+  },
+  {
+   "id": "mogel-biologiskt",
+   "titel": "Mögel, fuktskador och biologiska ämnen",
+   "status": "bas",
+   "ingress": "Fuktskadade konstruktioner, avloppsvatten och fågelspillning på vindar kan ge exponering för mögelsporer, bakterier och smittämnen.",
+   "riskomrade": "halsofarligt",
+   "sarskildRisk": [
+    3
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "ombyggnad",
+    "rivning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "invandigt",
+    "tak",
+    "vs",
+    "stomme"
+   ],
+   "sokord": [
+    "mögel",
+    "fuktskada",
+    "duvspillning",
+    "avlopp",
+    "krypgrund"
+   ],
+   "indikatorer": [
+    "fuktskada",
+    "mögel",
+    "krypgrund",
+    "vind",
+    "stambyte",
+    "avlopp",
+    "vattenskada"
+   ],
+   "relevans": {
+    "projekttyper": [
+     "ombyggnad",
+     "rivning",
+     "underhall"
+    ],
+    "motivering": "Arbete i befintliga byggnader."
+   },
+   "vadArRisken": [
+    "Exponering kan ge luftvägsbesvär, allergi och infektioner. Risken är störst vid rivning av fuktskadade bjälklag, krypgrunder och våtrum samt vid stambyte."
+   ],
+   "forekomst": [
+    {
+     "plats": "Grund",
+     "exempel": "Krypgrunder och torpargrunder."
+    },
+    {
+     "plats": "Vind",
+     "exempel": "Fågelspillning, fuktig takpanel."
+    },
+    {
+     "plats": "VS",
+     "exempel": "Avloppsstammar, golvbrunnar."
+    }
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Vanligt i äldre byggnader."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 2,
+    "motivering": "Fuktutredning gjord, skyddsåtgärder planerade."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Byggherre",
+     "atgard": "Fuktutredning där skador misstänks."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Andningsskydd, handskar, undertryck vid sanering, hygienrutiner vid avloppsarbete."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "mogel-biologiskt.1",
+     "fraga": "Finns fuktutredning för konstruktioner som ska rivas?",
+     "skede": "projektering",
+     "underlag": [
+      "fuktutredning",
+      "miljöinventering"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Biologiska riskkällor."
+    }
+   ]
+  },
+  {
+   "id": "pcb",
+   "titel": "PCB i fogmassor, isolerrutor och golv",
+   "status": "bas",
+   "ingress": "PCB användes i fogmassor, isolerglasrutor, golvmassor och kondensatorer i byggnader från 1956–1973. Exponering sker via damm och ånga vid fräsning, rivning och uppvärmning.",
+   "riskomrade": "halsofarligt",
+   "sarskildRisk": [
+    3,
+    13
+   ],
+   "skeden": [
+    "projektering",
+    "produktion",
+    "drift"
+   ],
+   "projekttyper": [
+    "ombyggnad",
+    "rivning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "fasad",
+    "invandigt"
+   ],
+   "sokord": [
+    "fogmassa",
+    "isolerruta",
+    "golvmassa",
+    "kondensator",
+    "sanering"
+   ],
+   "indikatorer": [
+    "byggår 1956–1973",
+    "fönsterbyte",
+    "fasadrenovering",
+    "fogar",
+    "golvrivning",
+    "miljöinventering"
+   ],
+   "relevans": {
+    "projekttyper": [
+     "ombyggnad",
+     "rivning",
+     "underhall"
+    ],
+    "byggarFran": 1956,
+    "byggarFore": 1974,
+    "motivering": "Byggnader uppförda eller renoverade 1956–1973."
+   },
+   "profilvarningar": [
+    {
+     "om": {
+      "inventering": [
+       "nej",
+       "vet ej"
+      ]
+     },
+     "niva": "hog",
+     "text": "Miljöinventering saknas – PCB i fogar och isolerrutor ska ingå i inventeringen innan projekteringen låses."
+    }
+   ],
+   "vadArRisken": [
+    "PCB är giftigt, ackumuleras i kroppen och misstänks vara cancerframkallande. Halterna i fogar kan vara mycket höga och ämnet sprids till angränsande betong och puts.",
+    "Risken uppstår främst vid fasadrenovering, fönsterbyte och golvrivning när fogar fräses eller skärs bort."
+   ],
+   "forekomst": [
+    {
+     "plats": "Fasad",
+     "exempel": "Fogar mellan betongelement, runt fönster och dörrar, dilatationsfogar."
+    },
+    {
+     "plats": "Fönster",
+     "exempel": "Isolerglasrutor med PCB-haltig kantförsegling."
+    },
+    {
+     "plats": "Golv",
+     "exempel": "Akrylatgolv och golvmassor i industri- och källarlokaler."
+    },
+    {
+     "plats": "El",
+     "exempel": "Kondensatorer i äldre lysrörsarmaturer."
+    }
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Vanligt i fasadfogar från perioden; hög exponering vid fräsning utan skydd."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Inventerat och sanerat av behörig entreprenör före övriga arbeten."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Byggherre",
+     "atgard": "PCB ingår i miljöinventeringen (fogar, isolerrutor, golvmassor, armaturer) med provtagning."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Redovisa PCB-förekomster på ritning och i beskrivning; sanering som egen post."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Saneringsentreprenör",
+     "atgard": "Sanering med punktutsug och HEPA-filter, andningsskydd, medicinsk kontroll. Farligt avfall."
+    },
+    {
+     "skede": "drift",
+     "ansvar": "BAS-P",
+     "atgard": "Kvarlämnad PCB dokumenteras i journal och dokumentation."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "pcb.1",
+     "fraga": "Omfattar miljöinventeringen fogmassor, isolerrutor och golvmassor?",
+     "skede": "projektering",
+     "underlag": [
+      "miljöinventering"
+     ]
+    },
+    {
+     "id": "pcb.2",
+     "fraga": "Är PCB-sanering en egen post före fönster- och fasadarbeten?",
+     "skede": "projektering",
+     "underlag": [
+      "AF",
+      "tidplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Kemiska riskkällor."
+    },
+    {
+     "ref": "AFS 2023:15 Medicinska kontroller i arbetslivet",
+     "text": "Medicinsk kontroll vid arbete med PCB."
+    }
+   ]
+  },
+  {
+   "id": "pagaende-verksamhet",
+   "titel": "Pågående verksamhet och tredje man",
+   "status": "bas",
+   "ingress": "När boende, elever, patienter eller kontorspersonal finns i eller intill byggnaden måste arbetsplatsen avgränsas och byggtrafik, damm, buller och utrymningsvägar samordnas.",
+   "riskomrade": "organisation",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "ombyggnad",
+    "underhall",
+    "nybyggnad"
+   ],
+   "byggdelar": [
+    "etablering"
+   ],
+   "sokord": [
+    "evakuering",
+    "etapp",
+    "avgränsning",
+    "boende"
+   ],
+   "indikatorer": [
+    "etappindelning",
+    "boende kvar",
+    "pågående verksamhet",
+    "evakuering",
+    "utrymningsväg"
+   ],
+   "relevans": {
+    "profil": {
+     "verksamhet": [
+      "ja"
+     ]
+    },
+    "motivering": "Verksamhet pågår under byggtiden."
+   },
+   "vadArRisken": [
+    "Tredje man känner inte till riskerna. Utrymningsvägar och brandskydd kan försämras under byggtiden."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Oklara gränser mellan arbetsplats och verksamhet."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Etapper, avgränsningar och utrymning planerade."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P / Byggherre",
+     "atgard": "Etappindelning, avgränsningar, separata entréer och transportvägar; plan för utrymning och brandskydd under byggtiden."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "BAS-U",
+     "atgard": "Samordning med verksamheten, information, dammskydd och undertryck."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "pagaende-verksamhet.1",
+     "fraga": "Finns etapp- och avgränsningsplan och plan för utrymning under byggtiden?",
+     "skede": "projektering",
+     "underlag": [
+      "etableringsplan",
+      "brandskyddsbeskrivning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:3 Projektering och byggarbetsmiljösamordning",
+     "text": "Samordning och arbetsmiljöplan."
+    },
+    {
+     "ref": "AFS 2023:2 Planering och organisering av arbetsmiljöarbete",
+     "text": "Samordning med andra verksamheter."
+    }
+   ]
+  },
+  {
+   "id": "schakt-ras",
+   "titel": "Ras i schakt",
+   "status": "bas",
+   "ingress": "Ras i schakt kan begrava personer på några sekunder. Risken ökar med djup, lös jord, vatten, vibrationer och belastning nära schaktkant.",
+   "riskomrade": "ras",
+   "sarskildRisk": [
+    2
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "anlaggning",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "mark"
+   ],
+   "sokord": [
+    "släntlutning",
+    "spont",
+    "ledningsgrav",
+    "geoteknik",
+    "grundvatten"
+   ],
+   "indikatorer": [
+    "schakt",
+    "ledningsgrav",
+    "spont",
+    "grundläggning",
+    "källare",
+    "schaktdjup",
+    "grundvatten"
+   ],
+   "relevans": {
+    "profil": {
+     "schakt": [
+      "ja"
+     ]
+    },
+    "motivering": "Schakt eller markarbeten förekommer."
+   },
+   "vadArRisken": [
+    "Även grunda schakter (> 1 m) kan rasa. Grundvatten, tjäle och regn försämrar stabiliteten snabbt.",
+    "Närliggande byggnader och vägar kan påverkas av schakt och påverka schaktens stabilitet."
+   ],
+   "forekomst": [
+    {
+     "plats": "Grund",
+     "exempel": "Schakt för källare och grundsulor."
+    },
+    {
+     "plats": "Ledningar",
+     "exempel": "Ledningsgravar för VA, el, fjärrvärme."
+    },
+    {
+     "plats": "Brunnar",
+     "exempel": "Pumpgropar och brunnar."
+    }
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Djupa schakter utan geoteknisk utredning."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Geoteknik utredd, släntlutning/spont projekterad."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Byggherre / Geotekniker",
+     "atgard": "Geoteknisk undersökning; ange släntlutning, stödkonstruktion och grundvattenhantering."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Minimera schaktdjup; prefabricerade brunnar och rörpaket för kortare tid i schakt."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Kontroll av schaktkant, upplag och maskiner på säkert avstånd, avspärrning, säker uppstigning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "schakt-ras.1",
+     "fraga": "Finns geoteknisk utredning med anvisning om släntlutning eller stödkonstruktion?",
+     "skede": "projektering",
+     "underlag": [
+      "geoteknisk PM",
+      "markritningar"
+     ]
+    },
+    {
+     "id": "schakt-ras.2",
+     "fraga": "Är påverkan på närliggande byggnader och vägar utredd?",
+     "skede": "projektering",
+     "underlag": [
+      "geoteknisk PM"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Schaktning och skydd mot ras."
+    }
+   ]
+  },
+  {
+   "id": "rivning-barande",
+   "titel": "Rivning av bärande konstruktioner",
+   "status": "bas",
+   "ingress": "Kvarvarande delar kan förlora stabilitet när bärande väggar, bjälklag eller pelare tas bort.",
+   "riskomrade": "rivning",
+   "sarskildRisk": [
+    13
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "ombyggnad",
+    "rivning"
+   ],
+   "byggdelar": [
+    "stomme"
+   ],
+   "sokord": [
+    "håltagning",
+    "stämp",
+    "rivningsplan",
+    "bärande vägg"
+   ],
+   "indikatorer": [
+    "bärande vägg",
+    "rivning",
+    "ny öppning",
+    "stämpning",
+    "rivningsritning",
+    "bjälklag"
+   ],
+   "relevans": {
+    "projekttyper": [
+     "ombyggnad",
+     "rivning"
+    ],
+    "motivering": "Ingrepp i befintlig stomme."
+   },
+   "vadArRisken": [
+    "Befintliga konstruktioner avviker ofta från arkivritningar. Fel rivningsordning kan leda till ras."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Okända konstruktioner och rivningsordning."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Konstruktör anger stämpning och rivningsordning."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Konstruktör",
+     "atgard": "Utred befintlig stomme (okulärt, provhål); ange temporär stämpning och rivningsordning på ritning."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Arbetsberedning med rivningsmetod, avspärrning, kontroll av stämp."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "rivning-barande.1",
+     "fraga": "Finns rivningsritning med stämpning och rivningsordning?",
+     "skede": "projektering",
+     "underlag": [
+      "rivningsritning",
+      "konstruktionsritningar"
+     ]
+    },
+    {
+     "id": "rivning-barande.2",
+     "fraga": "Är befintlig konstruktion verifierad (inte bara arkivritningar)?",
+     "skede": "projektering",
+     "underlag": [
+      "konstruktionsutredning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Rivningsarbete."
+    }
+   ]
+  },
+  {
+   "id": "sprangning",
+   "titel": "Sprängning och bergarbeten",
+   "status": "bas",
+   "ingress": "Sprängning ger risk för stenkast, ras, vibrationer i omgivningen och spränggaser i schakt och tunnlar.",
+   "riskomrade": "ras",
+   "sarskildRisk": [
+    10
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "anlaggning",
+    "nybyggnad"
+   ],
+   "byggdelar": [
+    "mark"
+   ],
+   "sokord": [
+    "sprängplan",
+    "bergschakt",
+    "stenkast",
+    "besiktning"
+   ],
+   "indikatorer": [
+    "sprängning",
+    "berg",
+    "bergschakt",
+    "bergskärning",
+    "sprängplan"
+   ],
+   "relevans": {
+    "profil": {
+     "sprangning": [
+      "ja"
+     ]
+    },
+    "motivering": "Sprängning eller bergarbeten förekommer."
+   },
+   "vadArRisken": [
+    "Felaktig laddning eller okänd bergkvalitet kan ge stenkast långt utanför arbetsområdet."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Sprängning nära bebyggelse."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Sprängplan, riskanalys och besiktning."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Byggherre / Geotekniker",
+     "atgard": "Bergteknisk utredning, riskanalys för vibrationer, syn av omgivande byggnader."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Sprängentreprenör",
+     "atgard": "Sprängplan med borr- och laddplan, täckning, avspärrning, signaler, sprängarbas."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "sprangning.1",
+     "fraga": "Finns bergteknisk utredning och vibrationsriskanalys?",
+     "skede": "projektering",
+     "underlag": [
+      "bergteknisk PM"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Arbete där sprängämnen används."
+    },
+    {
+     "ref": "Lag (2010:1011) om brandfarliga och explosiva varor",
+     "text": "Tillstånd för explosiva varor."
+    }
+   ]
+  },
+  {
+   "id": "manuell-hantering",
+   "titel": "Tunga manuella lyft av byggmaterial",
+   "status": "bas",
+   "ingress": "Stora skivor, block, fönster och säckar ger belastningsskador i rygg och axlar vid upprepade lyft.",
+   "riskomrade": "ergonomi",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+   ],
+   "byggdelar": [
+    "invandigt",
+    "fasad",
+    "stomme"
+   ],
+   "sokord": [
+    "gipsskivor",
+    "block",
+    "belastning",
+    "lyfthjälpmedel"
+   ],
+   "indikatorer": [
+    "gipsskiva",
+    "lättbetong",
+    "murblock",
+    "fönster",
+    "stora format"
+   ],
+   "vadArRisken": [
+    "Belastningsskador är den vanligaste arbetssjukdomen i byggbranschen. Projektören styr format och vikt genom materialval."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Upprepade tunga lyft."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Lättare format och lyfthjälpmedel."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Välj material med hanterbar vikt och format (t.ex. lätta skivor, block < 25 kg), föreskriv lyfthjälpmedel för fönster och glas."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Materialleveranser nära arbetsplatsen, lyfthjälpmedel, arbetsväxling."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "manuell-hantering.1",
+     "fraga": "Föreskrivs material med format och vikt som kräver lyfthjälpmedel?",
+     "skede": "projektering",
+     "underlag": [
+      "beskrivning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Belastningsergonomi."
+    }
+   ]
+  },
+  {
+   "id": "atkomst-installationer",
+   "titel": "Åtkomst till installationer för drift och underhåll",
+   "status": "bas",
+   "ingress": "Aggregat, filter, ventiler, spjäll och el som placeras svåråtkomligt ger fall- och belastningsrisker för servicepersonal i hela byggnadens livslängd.",
+   "riskomrade": "atkomst",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "vent",
+    "vs",
+    "el",
+    "tak"
+   ],
+   "sokord": [
+    "fläktrum",
+    "filterbyte",
+    "serviceutrymme",
+    "undertak"
+   ],
+   "indikatorer": [
+    "takaggregat",
+    "fläktrum",
+    "undertak",
+    "serviceyta",
+    "inspektionslucka",
+    "driftinstruktion"
+   ],
+   "vadArRisken": [
+    "Det här är projektörens tydligaste möjlighet att påverka arbetsmiljön i driftskedet. Felaktiga placeringar kan sällan rättas i efterhand."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Installationer placerade utan serviceutrymme."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Serviceytor och säker åtkomst projekterade."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Installationsprojektörer",
+     "atgard": "Placera komponenter som kräver service inom räckhåll från golv eller fast plattform; redovisa serviceytor och inspektionsluckor."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt",
+     "atgard": "Fast trappa till fläktrum på tak, gångbryggor och räcken."
+    },
+    {
+     "skede": "drift",
+     "ansvar": "BAS-P",
+     "atgard": "För in kvarvarande risker och åtkomst i journal och dokumentation."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "atkomst-installationer.1",
+     "fraga": "Är serviceytor för aggregat och filter redovisade?",
+     "skede": "projektering",
+     "underlag": [
+      "installationsritningar"
+     ]
+    },
+    {
+     "id": "atkomst-installationer.2",
+     "fraga": "Finns fast och säker väg till fläktrum och takaggregat?",
+     "skede": "projektering",
+     "underlag": [
+      "arkitektritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:3 Projektering och byggarbetsmiljösamordning",
+     "text": "Projektering för framtida drift och underhåll."
+    },
+    {
+     "ref": "AFS 2023:12 Utformning av arbetsplatser",
+     "text": "Arbetsplatsens utformning."
+    }
+   ]
+  },
+  {
+   "id": "hal-bjalklag",
+   "titel": "Öppningar i bjälklag, trapphus och hisschakt",
+   "status": "bas",
+   "ingress": "Håltagningar, schakt och trapphus innan trappor och räcken monterats ger risk för fall genom bjälklag och för nedfallande föremål.",
+   "riskomrade": "fall",
+   "sarskildRisk": [
+    1
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "stomme",
+    "vs",
+    "vent",
+    "el"
+   ],
+   "sokord": [
+    "håltagning",
+    "schakt",
+    "trapphus",
+    "hisschakt",
+    "täckning"
+   ],
+   "indikatorer": [
+    "installationsschakt",
+    "hisschakt",
+    "trapphus",
+    "ursparing",
+    "håltagning i bjälklag"
+   ],
+   "vadArRisken": [
+    "Hål för installationer täcks ofta provisoriskt och skydden flyttas under byggtiden. Hisschakt och trapphus är vanliga olycksplatser."
+   ],
+   "forekomst": [
+    {
+     "plats": "Bjälklag",
+     "exempel": "Ursparingar för VS, ventilation och el."
+    },
+    {
+     "plats": "Trapphus",
+     "exempel": "Före montage av trappor och räcken."
+    },
+    {
+     "plats": "Hisschakt",
+     "exempel": "Dörröppningar före montage av hissdörrar."
+    }
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Många hål, skydd flyttas."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Hål projekterade med armering/nät eller tidiga skydd, prefabtrappa tidigt."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Konstruktör",
+     "atgard": "Gjut in armeringsnät/genomstansningsskydd i ursparingar eller ange täckning; prefabricerade trappor som monteras med stommen."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "BAS-U",
+     "atgard": "Märkta och fastsatta skydd, rutin för att flytta skydd, räcken vid schakt."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "hal-bjalklag.1",
+     "fraga": "Anger konstruktionshandlingarna skydd för ursparingar och schakt?",
+     "skede": "projektering",
+     "underlag": [
+      "konstruktionsritningar"
+     ]
+    },
+    {
+     "id": "hal-bjalklag.2",
+     "fraga": "Monteras trappor tidigt (prefab) så att permanent tillträde finns?",
+     "skede": "projektering",
+     "underlag": [
+      "tidplan",
+      "konstruktionsritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Skydd mot fall – öppningar."
+    }
+   ]
+  }
+ ]
 }

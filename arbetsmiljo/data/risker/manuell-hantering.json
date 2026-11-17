@@ -1,0 +1,76 @@
+{
+  "id": "manuell-hantering",
+  "titel": "Tunga manuella lyft av byggmaterial",
+  "status": "bas",
+  "ingress": "Stora skivor, block, fönster och säckar ger belastningsskador i rygg och axlar vid upprepade lyft.",
+  "riskomrade": "ergonomi",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+  ],
+  "byggdelar": [
+    "invandigt",
+    "fasad",
+    "stomme"
+  ],
+  "sokord": [
+    "gipsskivor",
+    "block",
+    "belastning",
+    "lyfthjälpmedel"
+  ],
+  "indikatorer": [
+    "gipsskiva",
+    "lättbetong",
+    "murblock",
+    "fönster",
+    "stora format"
+  ],
+  "vadArRisken": [
+    "Belastningsskador är den vanligaste arbetssjukdomen i byggbranschen. Projektören styr format och vikt genom materialval."
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Upprepade tunga lyft."
+  },
+  "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Lättare format och lyfthjälpmedel."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Projektörer",
+      "atgard": "Välj material med hanterbar vikt och format (t.ex. lätta skivor, block < 25 kg), föreskriv lyfthjälpmedel för fönster och glas."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Materialleveranser nära arbetsplatsen, lyfthjälpmedel, arbetsväxling."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "manuell-hantering.1",
+      "fraga": "Föreskrivs material med format och vikt som kräver lyfthjälpmedel?",
+      "skede": "projektering",
+      "underlag": [
+        "beskrivning"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Belastningsergonomi."
+    }
+  ]
+}

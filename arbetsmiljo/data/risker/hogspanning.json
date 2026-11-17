@@ -1,0 +1,92 @@
+{
+  "id": "hogspanning",
+  "titel": "Arbete nära högspänningsledning",
+  "status": "bas",
+  "ingress": "Kranar, liftar, tippande lastbilar och pumpbilar kan komma i kontakt med eller överslag från luftledningar.",
+  "riskomrade": "el",
+  "sarskildRisk": [
+    5
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "anlaggning",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "etablering",
+    "mark"
+  ],
+  "sokord": [
+    "luftledning",
+    "kran",
+    "skyddsavstånd"
+  ],
+  "indikatorer": [
+    "luftledning",
+    "kraftledning",
+    "kranplacering",
+    "mobilkran"
+  ],
+  "relevans": {
+    "profil": {
+      "ledningar": [
+        "ja"
+      ]
+    },
+    "motivering": "Luftledningar inom eller intill området."
+  },
+  "vadArRisken": [
+    "Överslag kan ske utan direkt kontakt. Konsekvensen är ofta dödlig."
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Kranar och lyft nära ledning."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Ledning flyttad/frånkopplad eller avstånd säkrat."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Byggherre",
+      "atgard": "Kontakta ledningsägaren tidigt om flytt eller frånkoppling."
+    },
+    {
+      "skede": "projektering",
+      "ansvar": "BAS-P",
+      "atgard": "Redovisa ledningen och skyddsavstånd i etableringsplanen; placera kran utom räckhåll."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Höjdbegränsning, markering, vakt vid lyft."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "hogspanning.1",
+      "fraga": "Är luftledningar och skyddsavstånd redovisade i etableringsplanen?",
+      "skede": "projektering",
+      "underlag": [
+        "etableringsplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Arbete nära högspänningsledning."
+    },
+    {
+      "ref": "ELSÄK-FS",
+      "text": "Elsäkerhet."
+    }
+  ]
+}

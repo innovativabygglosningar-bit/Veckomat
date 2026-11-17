@@ -1,0 +1,126 @@
+{
+  "id": "tunga-element",
+  "titel": "Montage av tunga byggelement",
+  "status": "bas",
+  "ingress": "Lyft av prefabricerade element, stålstomme, takstolar och moduler – risk för klämskador, nedfallande last och instabila element.",
+  "riskomrade": "lyft",
+  "sarskildRisk": [
+    11
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "stomme",
+    "tak",
+    "fasad"
+  ],
+  "sokord": [
+    "prefab",
+    "lyftplan",
+    "kran",
+    "montagestabilitet",
+    "håldäck",
+    "stålstomme"
+  ],
+  "indikatorer": [
+    "prefab",
+    "håldäck",
+    "stålstomme",
+    "betongelement",
+    "takstolar",
+    "volymelement",
+    "mobilkran",
+    "tornkran"
+  ],
+  "relevans": {
+    "profil": {
+      "prefab": [
+        "ja"
+      ]
+    },
+    "motivering": "Prefab, stålstomme eller tunga element ingår."
+  },
+  "vadArRisken": [
+    "Element kan välta före slutlig förankring. Montörer arbetar ofta på höjd samtidigt som lasten hänger i kranen."
+  ],
+  "forekomst": [
+    {
+      "plats": "Stomme",
+      "exempel": "Betongväggar, håldäck, HDF, pelare och balkar."
+    },
+    {
+      "plats": "Tak",
+      "exempel": "Takstolar, limträ, TRP-plåt."
+    },
+    {
+      "plats": "Fasad",
+      "exempel": "Sandwichelement, glaspartier."
+    },
+    {
+      "plats": "Moduler",
+      "exempel": "Volymelement, badrumsmoduler."
+    }
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Montageordning och temporär stabilisering ej utredd."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Lyftpunkter och montagestabilitet projekterade."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Konstruktör",
+      "atgard": "Lyftanordningar ingjutna; montageanvisning med stabilitet under montage och montageordning."
+    },
+    {
+      "skede": "projektering",
+      "ansvar": "BAS-P",
+      "atgard": "Kranplacering och upplagsytor i etableringsplanen."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Lyftplan, avspärrad lyftzon, signalman, styrlinor."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "tunga-element.1",
+      "fraga": "Redovisar konstruktören temporär stabilitet och lyftpunkter?",
+      "skede": "projektering",
+      "underlag": [
+        "konstruktionsritningar",
+        "montageanvisning"
+      ]
+    },
+    {
+      "id": "tunga-element.2",
+      "fraga": "Är kranplacering och upplag redovisade?",
+      "skede": "projektering",
+      "underlag": [
+        "etableringsplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Montering av tunga byggelement."
+    },
+    {
+      "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+      "text": "Lyftanordningar och lyftredskap."
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "id": "fasadunderhall",
+  "titel": "Fönsterputs och fasadunderhåll",
+  "status": "bas",
+  "ingress": "Fönsterputs, byte av glas och fasadunderhåll på höga byggnader kräver arbete på höjd om inget annat har planerats.",
+  "riskomrade": "atkomst",
+  "sarskildRisk": [
+    1
+  ],
+  "skeden": [
+    "projektering",
+    "drift"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "fasad",
+    "tak"
+  ],
+  "sokord": [
+    "fönsterputs",
+    "förankringspunkt",
+    "lift"
+  ],
+  "indikatorer": [
+    "glasfasad",
+    "höga fönster",
+    "atrium",
+    "takfönster",
+    "fasadmaterial"
+  ],
+  "vadArRisken": [
+    "Utan uppställningsytor för lift eller fasta förankringspunkter blir underhållet riskfyllt och dyrt."
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Inga planerade underhållslösningar."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Vändbara fönster, förankringar och liftytor."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Arkitekt",
+      "atgard": "Fönster som kan putsas inifrån, uppställningsytor för lift, förankringspunkter på tak, åtkomst till atrium och takfönster."
+    },
+    {
+      "skede": "drift",
+      "ansvar": "BAS-P",
+      "atgard": "Beskriv underhållsmetod i journal och dokumentation."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "fasadunderhall.1",
+      "fraga": "Finns lösning för fönsterputs och glasbyte för höga eller svåråtkomliga partier?",
+      "skede": "projektering",
+      "underlag": [
+        "arkitektritningar",
+        "fasadritningar"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:3 Projektering och byggarbetsmiljösamordning",
+      "text": "Projektering för framtida underhåll."
+    }
+  ]
+}

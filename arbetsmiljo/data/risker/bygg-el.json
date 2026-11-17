@@ -1,0 +1,77 @@
+{
+  "id": "bygg-el",
+  "titel": "Byggström och spänningssatta installationer",
+  "status": "bas",
+  "ingress": "Skadade kablar, provisoriska installationer och befintliga spänningssatta anläggningar vid ombyggnad ger risk för elolycka.",
+  "riskomrade": "el",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+  ],
+  "byggdelar": [
+    "el",
+    "etablering"
+  ],
+  "sokord": [
+    "byggström",
+    "frånskiljning",
+    "dolda kablar"
+  ],
+  "indikatorer": [
+    "byggström",
+    "befintlig elanläggning",
+    "håltagning",
+    "rivning av installationer"
+  ],
+  "vadArRisken": [
+    "Vid ombyggnad är det ofta oklart vilka delar av befintlig elanläggning som är spänningslösa. Håltagning kan träffa dolda kablar."
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Okänd status på befintliga ledningar."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Plan för frånskiljning och byggström."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Elprojektör",
+      "atgard": "Redovisa befintlig anläggning som rivs eller behålls; plan för frånkoppling."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Byggström med jordfelsbrytare, kabeldragning i höjd, kontroll innan håltagning."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "bygg-el.1",
+      "fraga": "Redovisar elhandlingarna vad som ska kopplas bort före rivning?",
+      "skede": "projektering",
+      "underlag": [
+        "elritningar"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "ELSÄK-FS",
+      "text": "Elsäkerhet vid arbete."
+    },
+    {
+      "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+      "text": "Elektrisk arbetsutrustning."
+    }
+  ]
+}

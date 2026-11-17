@@ -1,0 +1,91 @@
+{
+  "id": "ledningar-mark",
+  "titel": "Befintliga ledningar i mark",
+  "status": "bas",
+  "ingress": "Grävning nära el-, gas- och fjärrvärmeledningar kan ge elchock, ljusbåge, gasläckage och brännskador.",
+  "riskomrade": "el",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "anlaggning",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "mark"
+  ],
+  "sokord": [
+    "kabelvisning",
+    "ledningskollen",
+    "gasledning",
+    "fjärrvärme"
+  ],
+  "indikatorer": [
+    "schakt",
+    "ledningar",
+    "kabelvisning",
+    "ledningskollen",
+    "gas",
+    "fjärrvärme"
+  ],
+  "relevans": {
+    "profil": {
+      "schakt": [
+        "ja"
+      ],
+      "ledningar": [
+        "ja"
+      ]
+    },
+    "motivering": "Schakt där ledningar finns."
+  },
+  "vadArRisken": [
+    "Ledningar ligger ofta inte där kartan visar. Skada på högspänningskabel eller gasledning kan få dödlig utgång och påverka tredje man."
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Ledningar okända eller felaktigt inmätta."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Ledningar utredda och visade, handgrävning nära ledning."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Projektörer",
+      "atgard": "Inhämta ledningsinformation (Ledningskollen) och redovisa på markritning; undvik schakt nära befintliga ledningar."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Kabelvisning före grävning, handgrävning/sugschakt nära ledning, ledningsägarens anvisningar."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "ledningar-mark.1",
+      "fraga": "Är befintliga ledningar redovisade på markritningarna?",
+      "skede": "projektering",
+      "underlag": [
+        "markritningar",
+        "ledningsplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Byggnads- och anläggningsarbete."
+    },
+    {
+      "ref": "ELSÄK-FS",
+      "text": "Elsäkerhet vid arbete nära elektriska anläggningar."
+    }
+  ]
+}

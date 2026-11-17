@@ -1,0 +1,84 @@
+{
+  "id": "arbete-vid-vatten",
+  "titel": "Arbete i eller nära vatten",
+  "status": "bas",
+  "ingress": "Arbete vid kajer, bryggor, diken, dammar och dagvattenmagasin innebär risk för drunkning, även på grunt vatten.",
+  "riskomrade": "vatten",
+  "sarskildRisk": [
+    6
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "anlaggning",
+    "nybyggnad"
+  ],
+  "byggdelar": [
+    "mark"
+  ],
+  "sokord": [
+    "kaj",
+    "brygga",
+    "dagvatten",
+    "flytväst"
+  ],
+  "indikatorer": [
+    "kaj",
+    "brygga",
+    "dagvattendamm",
+    "å",
+    "sjö",
+    "vattendrag"
+  ],
+  "relevans": {
+    "profil": {
+      "vatten": [
+        "ja"
+      ]
+    },
+    "motivering": "Arbete i eller nära vatten."
+  },
+  "vadArRisken": [
+    "Kallt vatten ger chock och nedsatt förmåga att ta sig upp. Strömmande vatten försvårar räddning."
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Arbete vid oskyddad vattenkant."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Räcken, flytväst och räddningsutrustning."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Projektörer",
+      "atgard": "Prefabricering på land; räcken och förankringspunkter vid kaj."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Flytväst, livboj, båtshake, räddningsbåt vid behov, ej ensamarbete."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "arbete-vid-vatten.1",
+      "fraga": "Är arbete nära vatten identifierat i arbetsmiljöplanen med räddningsplan?",
+      "skede": "projektering",
+      "underlag": [
+        "arbetsmiljöplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Arbete med risk för drunkning."
+    }
+  ]
+}

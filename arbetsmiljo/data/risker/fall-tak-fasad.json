@@ -1,0 +1,134 @@
+{
+  "id": "fall-tak-fasad",
+  "titel": "Fall från tak, fasad och ställning",
+  "status": "bas",
+  "ingress": "Fall från tak, ställning och bjälklagskanter är den vanligaste orsaken till dödsolyckor i byggbranschen.",
+  "riskomrade": "fall",
+  "sarskildRisk": [
+    1
+  ],
+  "skeden": [
+    "projektering",
+    "produktion",
+    "drift"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+  ],
+  "byggdelar": [
+    "tak",
+    "fasad",
+    "stomme"
+  ],
+  "sokord": [
+    "ställning",
+    "skyddsräcke",
+    "takfot",
+    "lift",
+    "fallskydd",
+    "balkong"
+  ],
+  "indikatorer": [
+    "takarbete",
+    "takbyte",
+    "fasadarbete",
+    "balkong",
+    "ställning",
+    "lift",
+    "taklutning",
+    "solceller"
+  ],
+  "relevans": {
+    "profil": {
+      "hojd": [
+        "ja"
+      ]
+    },
+    "motivering": "Arbete på höjd över 2 m."
+  },
+  "vadArRisken": [
+    "Risken finns vid alla arbeten där nivåskillnaden är mer än två meter, men även lägre fall kan ge allvarliga skador.",
+    "Projekteringen avgör om kollektiva skydd kan monteras tidigt och om framtida underhåll kan göras säkert."
+  ],
+  "forekomst": [
+    {
+      "plats": "Tak",
+      "exempel": "Takbyten, takfot, takfönster, solceller, montage av ventilationshuvar."
+    },
+    {
+      "plats": "Fasad",
+      "exempel": "Fasadbyten, fönsterbyten, balkongmontage."
+    },
+    {
+      "plats": "Stomme",
+      "exempel": "Bjälklagskanter före montage av fasad."
+    }
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Arbete vid oskyddade kanter."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Kollektiva skydd (räcken, ställning) planerade från start."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Projektörer",
+      "atgard": "Projektera infästningar för skyddsräcken; prefabricerade räcken på element; tidiga permanenta räcken."
+    },
+    {
+      "skede": "projektering",
+      "ansvar": "BAS-P",
+      "atgard": "Kräv ställningsplan/skyddsanordning i arbetsmiljöplanen; ytor för lift och ställning i etableringsplanen."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "BAS-U",
+      "atgard": "Ställningsplan, kantskydd, lift med utbildad förare, räddningsplan vid fallskyddssele."
+    },
+    {
+      "skede": "drift",
+      "ansvar": "Projektörer",
+      "atgard": "Permanenta takskyddsanordningar (räcken, gångbryggor, förankringspunkter) för underhåll."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "fall-tak-fasad.1",
+      "fraga": "Finns permanenta takskydd och säker väg upp på tak för framtida underhåll?",
+      "skede": "drift",
+      "underlag": [
+        "takplan",
+        "arkitektritningar"
+      ]
+    },
+    {
+      "id": "fall-tak-fasad.2",
+      "fraga": "Redovisar etableringsplanen ytor för ställning och lift?",
+      "skede": "projektering",
+      "underlag": [
+        "etableringsplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Byggnads- och anläggningsarbete – skydd mot fall."
+    },
+    {
+      "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+      "text": "Ställningar, liftar och fallskydd."
+    },
+    {
+      "ref": "AFS 2023:12 Utformning av arbetsplatser",
+      "text": "Skydd mot fall på permanenta arbetsplatser."
+    }
+  ]
+}

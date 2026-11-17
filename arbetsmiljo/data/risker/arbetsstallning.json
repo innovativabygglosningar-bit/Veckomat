@@ -1,0 +1,76 @@
+{
+  "id": "arbetsstallning",
+  "titel": "Arbete över axelhöjd och under knähöjd",
+  "status": "bas",
+  "ingress": "Installation i tak, montage av undertak och golvarbeten innebär långvarigt arbete i belastande ställningar.",
+  "riskomrade": "ergonomi",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion",
+    "drift"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+  ],
+  "byggdelar": [
+    "vs",
+    "vent",
+    "el",
+    "invandigt"
+  ],
+  "sokord": [
+    "undertak",
+    "installation i tak",
+    "golvläggning"
+  ],
+  "indikatorer": [
+    "undertak",
+    "takmontage",
+    "golvläggning",
+    "rördragning i tak"
+  ],
+  "vadArRisken": [
+    "Långvarigt arbete med armarna över axelhöjd eller på knä ger skador i nacke, axlar och knän."
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Mycket takmontage."
+  },
+  "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Förtillverkning och hjälpmedel."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Installationsprojektörer",
+      "atgard": "Prefabricerade installationspaket, samordnade stråk som kan monteras från lift."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Liftar, ställbara arbetsbockar, knäskydd, arbetsväxling."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "arbetsstallning.1",
+      "fraga": "Är installationsstråk samordnade så att montage kan ske i bra arbetshöjd?",
+      "skede": "projektering",
+      "underlag": [
+        "samordningsritning"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Belastningsergonomi."
+    }
+  ]
+}

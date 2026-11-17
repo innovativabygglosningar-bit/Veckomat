@@ -1,0 +1,87 @@
+{
+  "id": "pagaende-verksamhet",
+  "titel": "Pågående verksamhet och tredje man",
+  "status": "bas",
+  "ingress": "När boende, elever, patienter eller kontorspersonal finns i eller intill byggnaden måste arbetsplatsen avgränsas och byggtrafik, damm, buller och utrymningsvägar samordnas.",
+  "riskomrade": "organisation",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "ombyggnad",
+    "underhall",
+    "nybyggnad"
+  ],
+  "byggdelar": [
+    "etablering"
+  ],
+  "sokord": [
+    "evakuering",
+    "etapp",
+    "avgränsning",
+    "boende"
+  ],
+  "indikatorer": [
+    "etappindelning",
+    "boende kvar",
+    "pågående verksamhet",
+    "evakuering",
+    "utrymningsväg"
+  ],
+  "relevans": {
+    "profil": {
+      "verksamhet": [
+        "ja"
+      ]
+    },
+    "motivering": "Verksamhet pågår under byggtiden."
+  },
+  "vadArRisken": [
+    "Tredje man känner inte till riskerna. Utrymningsvägar och brandskydd kan försämras under byggtiden."
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Oklara gränser mellan arbetsplats och verksamhet."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Etapper, avgränsningar och utrymning planerade."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "BAS-P / Byggherre",
+      "atgard": "Etappindelning, avgränsningar, separata entréer och transportvägar; plan för utrymning och brandskydd under byggtiden."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "BAS-U",
+      "atgard": "Samordning med verksamheten, information, dammskydd och undertryck."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "pagaende-verksamhet.1",
+      "fraga": "Finns etapp- och avgränsningsplan och plan för utrymning under byggtiden?",
+      "skede": "projektering",
+      "underlag": [
+        "etableringsplan",
+        "brandskyddsbeskrivning"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:3 Projektering och byggarbetsmiljösamordning",
+      "text": "Samordning och arbetsmiljöplan."
+    },
+    {
+      "ref": "AFS 2023:2 Planering och organisering av arbetsmiljöarbete",
+      "text": "Samordning med andra verksamheter."
+    }
+  ]
+}

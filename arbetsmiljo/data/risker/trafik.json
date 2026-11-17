@@ -1,0 +1,99 @@
+{
+  "id": "trafik",
+  "titel": "Arbete intill fordons- och spårtrafik",
+  "status": "bas",
+  "ingress": "Påkörning av personer som arbetar intill väg, gata eller spår, samt risk för tredje man vid in- och utfarter.",
+  "riskomrade": "trafik",
+  "sarskildRisk": [
+    12
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "underhall"
+  ],
+  "byggdelar": [
+    "etablering"
+  ],
+  "sokord": [
+    "TA-plan",
+    "etableringsplan",
+    "leveranser",
+    "spår"
+  ],
+  "indikatorer": [
+    "väg",
+    "gata",
+    "spår",
+    "TA-plan",
+    "etableringsplan",
+    "in- och utfart"
+  ],
+  "relevans": {
+    "profil": {
+      "trafik": [
+        "ja"
+      ]
+    },
+    "motivering": "Arbetsplatsen ligger intill trafik."
+  },
+  "vadArRisken": [
+    "Passerande trafik tar ofta inte hänsyn till arbetsplatsen. Leveranser och backande fordon vid in- och utfarter är vanliga risksituationer."
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Ingen separering av gående och fordon."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Etableringsplan och TA-plan med fysisk separering."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "BAS-P",
+      "atgard": "Preliminär etableringsplan med in- och utfarter, avlastningsytor och gångvägar."
+    },
+    {
+      "skede": "projektering",
+      "ansvar": "Byggherre",
+      "atgard": "Tidig dialog med väghållare/spårhållare om avstängningar."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "BAS-U",
+      "atgard": "TA-plan godkänd av väghållare, fysiska avstängningar, varselkläder, vakt vid backning."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "trafik.1",
+      "fraga": "Är etablering, leveransvägar och gångvägar redovisade?",
+      "skede": "projektering",
+      "underlag": [
+        "etableringsplan"
+      ]
+    },
+    {
+      "id": "trafik.2",
+      "fraga": "Kräver arbetet TA-plan eller spårtillstånd och är det angivet i AF?",
+      "skede": "projektering",
+      "underlag": [
+        "AF"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Arbete på plats med passerande fordonstrafik."
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "id": "haltagning-bilning",
+  "titel": "Håltagning och bilning i befintlig stomme",
+  "status": "bas",
+  "ingress": "Bilning och kärnborrning ger höga buller- och vibrationsnivåer, kvartsdamm och risk att träffa armering, kablar och rör.",
+  "riskomrade": "buller",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "ombyggnad",
+    "underhall"
+  ],
+  "byggdelar": [
+    "stomme",
+    "vs",
+    "vent",
+    "el"
+  ],
+  "sokord": [
+    "kärnborrning",
+    "bilning",
+    "vibrationer",
+    "stomljud"
+  ],
+  "indikatorer": [
+    "håltagning",
+    "kärnborrning",
+    "bilning",
+    "stambyte",
+    "ny ventilation"
+  ],
+  "relevans": {
+    "projekttyper": [
+      "ombyggnad",
+      "underhall"
+    ],
+    "motivering": "Ingrepp i befintlig stomme."
+  },
+  "vadArRisken": [
+    "Handhållna bilmaskiner ger vibrationsskador (vita fingrar). Buller sprids i stommen till boende och verksamheter."
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Mycket håltagning med handhållna maskiner."
+  },
+  "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Samordnad håltagning med maskinbunden utrustning."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Projektörer",
+      "atgard": "Samordna och minimera håltagningar; använd befintliga schakt; redovisa håltagningsritning."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Maskinbunden kärnborr/vajersåg, vibrationsdämpade verktyg, hörselskydd, tider för bullrande arbete."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "haltagning-bilning.1",
+      "fraga": "Finns samordnad håltagningsritning?",
+      "skede": "projektering",
+      "underlag": [
+        "håltagningsritning",
+        "samordningsritning"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Buller och vibrationer."
+    }
+  ]
+}

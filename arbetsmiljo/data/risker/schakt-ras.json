@@ -1,0 +1,116 @@
+{
+  "id": "schakt-ras",
+  "titel": "Ras i schakt",
+  "status": "bas",
+  "ingress": "Ras i schakt kan begrava personer på några sekunder. Risken ökar med djup, lös jord, vatten, vibrationer och belastning nära schaktkant.",
+  "riskomrade": "ras",
+  "sarskildRisk": [
+    2
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "anlaggning",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "mark"
+  ],
+  "sokord": [
+    "släntlutning",
+    "spont",
+    "ledningsgrav",
+    "geoteknik",
+    "grundvatten"
+  ],
+  "indikatorer": [
+    "schakt",
+    "ledningsgrav",
+    "spont",
+    "grundläggning",
+    "källare",
+    "schaktdjup",
+    "grundvatten"
+  ],
+  "relevans": {
+    "profil": {
+      "schakt": [
+        "ja"
+      ]
+    },
+    "motivering": "Schakt eller markarbeten förekommer."
+  },
+  "vadArRisken": [
+    "Även grunda schakter (> 1 m) kan rasa. Grundvatten, tjäle och regn försämrar stabiliteten snabbt.",
+    "Närliggande byggnader och vägar kan påverkas av schakt och påverka schaktens stabilitet."
+  ],
+  "forekomst": [
+    {
+      "plats": "Grund",
+      "exempel": "Schakt för källare och grundsulor."
+    },
+    {
+      "plats": "Ledningar",
+      "exempel": "Ledningsgravar för VA, el, fjärrvärme."
+    },
+    {
+      "plats": "Brunnar",
+      "exempel": "Pumpgropar och brunnar."
+    }
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Djupa schakter utan geoteknisk utredning."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Geoteknik utredd, släntlutning/spont projekterad."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Byggherre / Geotekniker",
+      "atgard": "Geoteknisk undersökning; ange släntlutning, stödkonstruktion och grundvattenhantering."
+    },
+    {
+      "skede": "projektering",
+      "ansvar": "Projektörer",
+      "atgard": "Minimera schaktdjup; prefabricerade brunnar och rörpaket för kortare tid i schakt."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Kontroll av schaktkant, upplag och maskiner på säkert avstånd, avspärrning, säker uppstigning."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "schakt-ras.1",
+      "fraga": "Finns geoteknisk utredning med anvisning om släntlutning eller stödkonstruktion?",
+      "skede": "projektering",
+      "underlag": [
+        "geoteknisk PM",
+        "markritningar"
+      ]
+    },
+    {
+      "id": "schakt-ras.2",
+      "fraga": "Är påverkan på närliggande byggnader och vägar utredd?",
+      "skede": "projektering",
+      "underlag": [
+        "geoteknisk PM"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Schaktning och skydd mot ras."
+    }
+  ]
+}

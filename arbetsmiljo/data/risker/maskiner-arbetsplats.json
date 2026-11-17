@@ -1,0 +1,75 @@
+{
+  "id": "maskiner-arbetsplats",
+  "titel": "Maskiner och truckar på arbetsplatsen",
+  "status": "bas",
+  "ingress": "Påkörning och klämning av markpersonal vid hjullastare, grävmaskiner, truckar och lastbilar inom arbetsområdet.",
+  "riskomrade": "trafik",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "rivning"
+  ],
+  "byggdelar": [
+    "etablering",
+    "mark"
+  ],
+  "sokord": [
+    "hjullastare",
+    "grävmaskin",
+    "truck",
+    "backning"
+  ],
+  "indikatorer": [
+    "etableringsplan",
+    "upplag",
+    "transportväg",
+    "maskin"
+  ],
+  "vadArRisken": [
+    "Maskinförare har begränsad sikt. Markpersonal som arbetar nära maskin i rörelse är särskilt utsatt."
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Blandad trafik av maskiner och gående."
+  },
+  "riskEfter": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Separerade gång- och transportvägar."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "BAS-P",
+      "atgard": "Etableringsplan med separerade gång- och transportvägar och vändytor."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Utbildade förare, besiktigade maskiner, backvarnare, avstånd till markpersonal."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "maskiner-arbetsplats.1",
+      "fraga": "Finns separerade gång- och transportvägar i etableringsplanen?",
+      "skede": "projektering",
+      "underlag": [
+        "etableringsplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+      "text": "Mobila arbetsutrustningar och förarbehörighet."
+    }
+  ]
+}

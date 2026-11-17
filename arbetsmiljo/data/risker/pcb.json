@@ -1,0 +1,145 @@
+{
+  "id": "pcb",
+  "titel": "PCB i fogmassor, isolerrutor och golv",
+  "status": "bas",
+  "ingress": "PCB användes i fogmassor, isolerglasrutor, golvmassor och kondensatorer i byggnader från 1956–1973. Exponering sker via damm och ånga vid fräsning, rivning och uppvärmning.",
+  "riskomrade": "halsofarligt",
+  "sarskildRisk": [
+    3,
+    13
+  ],
+  "skeden": [
+    "projektering",
+    "produktion",
+    "drift"
+  ],
+  "projekttyper": [
+    "ombyggnad",
+    "rivning",
+    "underhall"
+  ],
+  "byggdelar": [
+    "fasad",
+    "invandigt"
+  ],
+  "sokord": [
+    "fogmassa",
+    "isolerruta",
+    "golvmassa",
+    "kondensator",
+    "sanering"
+  ],
+  "indikatorer": [
+    "byggår 1956–1973",
+    "fönsterbyte",
+    "fasadrenovering",
+    "fogar",
+    "golvrivning",
+    "miljöinventering"
+  ],
+  "relevans": {
+    "projekttyper": [
+      "ombyggnad",
+      "rivning",
+      "underhall"
+    ],
+    "byggarFran": 1956,
+    "byggarFore": 1974,
+    "motivering": "Byggnader uppförda eller renoverade 1956–1973."
+  },
+  "profilvarningar": [
+    {
+      "om": {
+        "inventering": [
+          "nej",
+          "vet ej"
+        ]
+      },
+      "niva": "hog",
+      "text": "Miljöinventering saknas – PCB i fogar och isolerrutor ska ingå i inventeringen innan projekteringen låses."
+    }
+  ],
+  "vadArRisken": [
+    "PCB är giftigt, ackumuleras i kroppen och misstänks vara cancerframkallande. Halterna i fogar kan vara mycket höga och ämnet sprids till angränsande betong och puts.",
+    "Risken uppstår främst vid fasadrenovering, fönsterbyte och golvrivning när fogar fräses eller skärs bort."
+  ],
+  "forekomst": [
+    {
+      "plats": "Fasad",
+      "exempel": "Fogar mellan betongelement, runt fönster och dörrar, dilatationsfogar."
+    },
+    {
+      "plats": "Fönster",
+      "exempel": "Isolerglasrutor med PCB-haltig kantförsegling."
+    },
+    {
+      "plats": "Golv",
+      "exempel": "Akrylatgolv och golvmassor i industri- och källarlokaler."
+    },
+    {
+      "plats": "El",
+      "exempel": "Kondensatorer i äldre lysrörsarmaturer."
+    }
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Vanligt i fasadfogar från perioden; hög exponering vid fräsning utan skydd."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Inventerat och sanerat av behörig entreprenör före övriga arbeten."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Byggherre",
+      "atgard": "PCB ingår i miljöinventeringen (fogar, isolerrutor, golvmassor, armaturer) med provtagning."
+    },
+    {
+      "skede": "projektering",
+      "ansvar": "Projektörer",
+      "atgard": "Redovisa PCB-förekomster på ritning och i beskrivning; sanering som egen post."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Saneringsentreprenör",
+      "atgard": "Sanering med punktutsug och HEPA-filter, andningsskydd, medicinsk kontroll. Farligt avfall."
+    },
+    {
+      "skede": "drift",
+      "ansvar": "BAS-P",
+      "atgard": "Kvarlämnad PCB dokumenteras i journal och dokumentation."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "pcb.1",
+      "fraga": "Omfattar miljöinventeringen fogmassor, isolerrutor och golvmassor?",
+      "skede": "projektering",
+      "underlag": [
+        "miljöinventering"
+      ]
+    },
+    {
+      "id": "pcb.2",
+      "fraga": "Är PCB-sanering en egen post före fönster- och fasadarbeten?",
+      "skede": "projektering",
+      "underlag": [
+        "AF",
+        "tidplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Kemiska riskkällor."
+    },
+    {
+      "ref": "AFS 2023:15 Medicinska kontroller i arbetslivet",
+      "text": "Medicinsk kontroll vid arbete med PCB."
+    }
+  ]
+}

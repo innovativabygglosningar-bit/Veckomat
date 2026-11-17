@@ -127,6 +127,8 @@ td.sk{white-space:nowrap}
 .checklist label{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--line)}
 .checklist input{margin-top:4px;width:16px;height:16px;accent-color:var(--accent)}
 .checklist .sk{margin-left:auto;font-size:12px}
+code.gid{font-size:12px;background:var(--soft);padding:1px 5px;border-radius:4px;color:var(--muted)}
+code{font-size:12px}
 pre.mall{white-space:pre-wrap;font:14px/1.55 var(--f-body);background:var(--soft);padding:12px;border-radius:8px;margin:0}
 .mall-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
 .note{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
@@ -146,7 +148,8 @@ pre.mall{white-space:pre-wrap;font:14px/1.55 var(--f-body);background:var(--soft
 <div class="stripe"></div>
 <main><div class="wrap" id="app"><p class="muted">Laddar riskbanken…</p></div></main>
 
-<script>
+<script type="module">
+import { niva as nivaFor, relevans as relevansFor, relevansText as relText, profilVarningar as varnFor } from './lib/relevans.mjs';
 (function(){
 const app = document.getElementById('app');
 let DB = null;
@@ -159,38 +162,11 @@ let filter = {q:'', skede:'', omrade:'', byggdel:'', sr:false, visaEj:true};
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const namn = (lista, id) => (DB.kategorier[lista].find(x => x.id === id) || {}).namn || id;
-function niva(r){ return DB.skala.nivaer.find(n => r >= n.min && r <= n.max) || DB.skala.nivaer[DB.skala.nivaer.length-1]; }
+const niva = r => nivaFor(DB.skala, r);
 const lvl = (s,k) => { const r = s*k; return `<span class="lvl ${niva(r).namn}" title="S ${s} × K ${k}">${r} ${niva(r).namn}</span>`; };
 
-/* Relevans: varje kriterium som profilen har svar på måste stämma.
-   Kriterier utan svar i profilen ger "möjlig". */
-function relevans(risk){
-  const rv = risk.relevans || {};
-  let okand = false, ok = true;
-  if (rv.projekttyper){
-    if (!profil.projekttyp || !profil.projekttyp.length) okand = true;
-    else if (!rv.projekttyper.some(p => profil.projekttyp.includes(p))) ok = false;
-  }
-  if (rv.byggarFore){
-    const nybygg = profil.projekttyp && profil.projekttyp.length && profil.projekttyp.every(p => p === 'nybyggnad');
-    if (nybygg && !profil.byggar) ok = false;
-    else if (!profil.byggar) okand = true;
-    else if (!(profil.byggar < rv.byggarFore && (!rv.byggarFran || profil.byggar >= rv.byggarFran))) ok = false;
-  }
-  if (rv.profil){
-    for (const [k, vals] of Object.entries(rv.profil)){
-      if (!profil[k]) okand = true; else if (!vals.includes(profil[k])) ok = false;
-    }
-  }
-  if (!ok) return 'nej';
-  return okand ? 'mojlig' : 'ja';
-}
-const relText = {ja:'Relevant för projektet', mojlig:'Möjlig – svara på fler frågor', nej:'Ej aktuell enligt profilen'};
-
-function profilVarningar(risk){
-  return (risk.profilvarningar || []).filter(v =>
-    Object.entries(v.om).every(([k, vals]) => profil[k] && vals.includes(profil[k])));
-}
+const relevans = risk => relevansFor(risk, profil);
+const profilVarningar = risk => varnFor(risk, profil);
 
 /* ---------- Bank ---------- */
 function renderBank(){
@@ -213,7 +189,8 @@ function renderBank(){
       <h2>Projektprofil</h2>
       <p class="small muted" style="margin:0">Svara på frågorna så sorteras banken efter vad som är aktuellt i just ditt projekt.</p>
       ${profilHtml}
-      <button class="btn" id="nollstall">Nollställ profil</button>
+      <div class="chips" style="margin-top:14px"><button class="btn" id="export">Exportera projekt.json</button><label class="btn" for="import">Importera…</label><input type="file" id="import" accept=".json,application/json" hidden><button class="btn" id="nollstall">Nollställ</button></div>
+      <p class="small muted">Exporterad profil läggs i <code>projekt/&lt;namn&gt;/projekt.json</code> – sedan kan Claude granska handlingarna mot den.</p>
     </aside>
     <section>
       <div class="filters">
@@ -249,6 +226,18 @@ function renderBank(){
   }));
   app.querySelector('#q').addEventListener('input', e => { filter.q = e.target.value; renderLista(); });
   app.querySelector('#nollstall').addEventListener('click', () => { profil = {projekttyp: []}; spara(); renderBank(); });
+  app.querySelector('#export').addEventListener('click', () => {
+    const namn = prompt('Projektnamn', 'Nytt projekt'); if (namn === null) return;
+    const data = {namn, datum: new Date().toISOString().slice(0, 10), profil};
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'}));
+    a.download = 'projekt.json'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+  app.querySelector('#import').addEventListener('change', async e => {
+    const f = e.target.files[0]; if (!f) return;
+    try { const d = JSON.parse(await f.text()); profil = Object.assign({projekttyp: []}, d.profil || d); spara(); renderBank(); }
+    catch(err){ alert('Kunde inte läsa filen: ' + err.message); }
+  });
   renderLista();
 }
 function spara(){ store.set('basp.profil', profil); }
@@ -278,7 +267,7 @@ function renderLista(){
         <span class="rel ${rel}">${relText[rel]}</span>
         ${(r.sarskildRisk||[]).map(n => `<span class="pill sr" title="${esc(DB.kategorier.sarskildRisk.find(x=>x.nr===n).text)}">Särskild risk ${n}</span>`).join('')}
         ${r.skeden.map(s => `<span class="pill">${esc(namn('skeden', s))}</span>`).join('')}
-        ${r.status === 'utkast' ? '<span class="pill draft">Utkast</span>' : ''}
+        ${r.status === 'bas' ? '<span class="pill draft">Grundblad</span>' : ''}
         ${profilVarningar(r).some(v => v.niva==='hog') && rel!=='nej' ? '<span class="rel ja">⚠ Åtgärd i profil</span>' : ''}
       </div>
     </a>`).join('') || '<p class="muted">Inga risker matchar filtret.</p>'}</div>`;
@@ -313,7 +302,7 @@ function renderRisk(id){
 
   const chk = store.get('basp.check.' + r.id, {});
   const granskHtml = (r.granskning||[]).length ? `<div class="checklist">${r.granskning.map((g, i) =>
-    `<label><input type="checkbox" data-c="${i}" ${chk[i]?'checked':''}><span>${esc(g.fraga)}</span><span class="pill sk">${skFor(g.skede)}</span></label>`).join('')}</div>` : '';
+    `<label><input type="checkbox" data-c="${i}" ${chk[i]?'checked':''}><span><code class="gid">${esc(g.id||'')}</code> ${esc(g.fraga)}${g.underlag ? `<br><span class="small muted">Underlag: ${esc(g.underlag.join(', '))}</span>` : ''}</span><span class="pill sk">${skFor(g.skede)}</span></label>`).join('')}</div>` : '';
 
   const mall = (rubrik, txt, key) => txt ? `<div style="margin-top:12px"><div class="mall-head"><h3>${rubrik}</h3><button class="btn no-print" data-copy="${key}">Kopiera</button></div><pre class="mall">${esc(txt)}</pre></div>` : '';
 
@@ -328,7 +317,7 @@ function renderRisk(id){
         <span class="pill">${esc(namn('riskomraden', r.riskomrade))}</span>
         ${r.skeden.map(s => `<span class="pill">${skFor(s)}</span>`).join('')}
         ${r.projekttyper.map(p => `<span class="pill">${esc(namn('projekttyper', p))}</span>`).join('')}
-        ${r.status === 'utkast' ? '<span class="pill draft">Utkast – behöver kompletteras</span>' : ''}
+        ${r.status === 'bas' ? '<span class="pill draft">Grundblad – kan fördjupas</span>' : ''}
       </div>
       <p class="ingress">${esc(r.ingress)}</p>
       ${varn.map(v => `<div class="alert ${v.niva==='medel'?'medel':''}"><b>Utifrån projektprofilen</b>${esc(v.text)}</div>`).join('')}
@@ -346,6 +335,8 @@ function renderRisk(id){
     ${r.relevans && r.relevans.motivering ? sec('När är risken aktuell?', `<p style="margin:0">${esc(r.relevans.motivering)}</p>`) : ''}
 
     ${sec('Var kan risken förekomma?', (r.forekomst||[]).length ? `<div class="forekomst">${r.forekomst.map(f => `<div class="f"><b>${esc(f.plats)}</b><span class="small">${esc(f.exempel)}</span></div>`).join('')}</div>` : '')}
+
+    ${(r.indikatorer||[]).length ? sec('Leta efter i handlingarna', `<div class="chips">${r.indikatorer.map(x => `<span class="pill">${esc(x)}</span>`).join('')}</div>`) : ''}
 
     ${(r.beslutsflode||[]).length ? sec('Bedöm i ditt projekt', `<p class="small muted" style="margin-top:0">Gå igenom frågorna – resultatet visar hur risken ska omhändertas.</p><div class="flow" id="flow"></div>`) : ''}
 

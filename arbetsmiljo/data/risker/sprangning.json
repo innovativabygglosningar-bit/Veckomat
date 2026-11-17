@@ -1,0 +1,87 @@
+{
+  "id": "sprangning",
+  "titel": "Sprängning och bergarbeten",
+  "status": "bas",
+  "ingress": "Sprängning ger risk för stenkast, ras, vibrationer i omgivningen och spränggaser i schakt och tunnlar.",
+  "riskomrade": "ras",
+  "sarskildRisk": [
+    10
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "anlaggning",
+    "nybyggnad"
+  ],
+  "byggdelar": [
+    "mark"
+  ],
+  "sokord": [
+    "sprängplan",
+    "bergschakt",
+    "stenkast",
+    "besiktning"
+  ],
+  "indikatorer": [
+    "sprängning",
+    "berg",
+    "bergschakt",
+    "bergskärning",
+    "sprängplan"
+  ],
+  "relevans": {
+    "profil": {
+      "sprangning": [
+        "ja"
+      ]
+    },
+    "motivering": "Sprängning eller bergarbeten förekommer."
+  },
+  "vadArRisken": [
+    "Felaktig laddning eller okänd bergkvalitet kan ge stenkast långt utanför arbetsområdet."
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Sprängning nära bebyggelse."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Sprängplan, riskanalys och besiktning."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Byggherre / Geotekniker",
+      "atgard": "Bergteknisk utredning, riskanalys för vibrationer, syn av omgivande byggnader."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Sprängentreprenör",
+      "atgard": "Sprängplan med borr- och laddplan, täckning, avspärrning, signaler, sprängarbas."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "sprangning.1",
+      "fraga": "Finns bergteknisk utredning och vibrationsriskanalys?",
+      "skede": "projektering",
+      "underlag": [
+        "bergteknisk PM"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Arbete där sprängämnen används."
+    },
+    {
+      "ref": "Lag (2010:1011) om brandfarliga och explosiva varor",
+      "text": "Tillstånd för explosiva varor."
+    }
+  ]
+}

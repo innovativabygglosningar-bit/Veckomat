@@ -1,0 +1,81 @@
+{
+  "id": "heta-arbeten",
+  "titel": "Heta arbeten och brandfarlig gas",
+  "status": "bas",
+  "ingress": "Svetsning, skärning, lödning och takläggning med gasol kan antända brännbart material och orsaka brand i befintlig byggnad.",
+  "riskomrade": "brand",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+  ],
+  "byggdelar": [
+    "tak",
+    "vs",
+    "stomme"
+  ],
+  "sokord": [
+    "svetsning",
+    "gasol",
+    "takpapp",
+    "lödning",
+    "brandvakt"
+  ],
+  "indikatorer": [
+    "svetsad takpapp",
+    "lödning",
+    "svetsning",
+    "gasol",
+    "byggtork"
+  ],
+  "vadArRisken": [
+    "Bränder vid takarbeten kan pyra i isolering i timmar innan de upptäcks. Gasolflaskor är explosionsrisk vid brand."
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Heta arbeten i befintlig byggnad med brännbart material."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Kalla metoder valda; tillstånd och brandvakt för kvarvarande."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Projektörer",
+      "atgard": "Välj kalla metoder: självhäftande/mekaniskt fäst takduk, pressade rörkopplingar i stället för lödning."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Tillstånd för heta arbeten, certifierad personal, brandvakt och efterbevakning, gasolhantering enligt tillstånd."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "heta-arbeten.1",
+      "fraga": "Föreskrivs metoder som kräver heta arbeten där kalla alternativ finns?",
+      "skede": "projektering",
+      "underlag": [
+        "beskrivning"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "Lag (2010:1011) om brandfarliga och explosiva varor",
+      "text": "Hantering och förvaring av gasol."
+    },
+    {
+      "ref": "Säkerhetsregler för heta arbeten (Brandskyddsföreningen)",
+      "text": "Tillstånd, utbildning och brandvakt."
+    }
+  ]
+}

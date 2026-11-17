@@ -1,0 +1,133 @@
+{
+  "id": "forurenad-mark",
+  "titel": "Förorenad mark",
+  "status": "bas",
+  "ingress": "Mark vid tidigare industri, bensinstationer, verkstäder och utfyllnader kan innehålla oljor, lösningsmedel, tungmetaller och tjära. Exponering via damm, ånga och hudkontakt vid schakt.",
+  "riskomrade": "halsofarligt",
+  "sarskildRisk": [
+    3
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "anlaggning",
+    "rivning",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "mark"
+  ],
+  "sokord": [
+    "markmiljö",
+    "provtagning",
+    "tjärasfalt",
+    "massor"
+  ],
+  "indikatorer": [
+    "tidigare industri",
+    "bensinstation",
+    "fyllnadsmassor",
+    "tjärasfalt",
+    "markmiljöundersökning",
+    "schakt"
+  ],
+  "relevans": {
+    "profil": {
+      "schakt": [
+        "ja"
+      ],
+      "forurenad": [
+        "ja"
+      ]
+    },
+    "motivering": "Schakt i område med misstänkt förorening."
+  },
+  "profilvarningar": [
+    {
+      "om": {
+        "forurenad": [
+          "vet ej"
+        ]
+      },
+      "niva": "medel",
+      "text": "Okänd markhistorik – rekommendera historisk inventering och markmiljöundersökning före projektering av schakt."
+    }
+  ],
+  "vadArRisken": [
+    "Föroreningar kan vara okända tills schakt öppnas. Flyktiga ämnen kan ansamlas i schakt och ledningsgravar.",
+    "Utan provtagning blir både arbetsmiljö och massahantering oförutsägbar."
+  ],
+  "forekomst": [
+    {
+      "plats": "Industri- och verkstadstomter",
+      "exempel": "Oljor, lösningsmedel, metaller."
+    },
+    {
+      "plats": "Vägar och planer",
+      "exempel": "Tjärasfalt (PAH) i äldre beläggningar."
+    },
+    {
+      "plats": "Utfyllnader",
+      "exempel": "Okända fyllnadsmassor med rivningsrester."
+    }
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Okänd förorening upptäcks först vid schakt."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Markmiljöundersökning gjord, skyddsåtgärder och masshantering planerade."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Byggherre",
+      "atgard": "Beställ markmiljöundersökning och vid behov PAH-analys av asfalt."
+    },
+    {
+      "skede": "projektering",
+      "ansvar": "Projektörer",
+      "atgard": "Redovisa föroreningar och hantering av massor i handlingarna."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Skyddsutrustning, hygienutrymme, gasvarnare i djupa schakt, information till alla UE."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "forurenad-mark.1",
+      "fraga": "Finns markmiljöundersökning för de ytor som schaktas?",
+      "skede": "projektering",
+      "underlag": [
+        "markmiljöundersökning",
+        "geoteknisk PM"
+      ]
+    },
+    {
+      "id": "forurenad-mark.2",
+      "fraga": "Är tjärasfalt provtagen där beläggning ska rivas?",
+      "skede": "projektering",
+      "underlag": [
+        "miljöinventering"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Kemiska riskkällor."
+    },
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Byggnads- och anläggningsarbete."
+    }
+  ]
+}

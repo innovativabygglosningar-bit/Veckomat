@@ -1,0 +1,120 @@
+{
+  "id": "kvarts",
+  "titel": "Kvartsdamm vid bearbetning av betong och sten",
+  "status": "bas",
+  "ingress": "Respirabelt kvartsdamm bildas när betong, puts, tegel och sten sågas, borras, slipas eller bilas. Det kan ge silikos och lungcancer.",
+  "riskomrade": "halsofarligt",
+  "sarskildRisk": [
+    3
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "rivning",
+    "anlaggning",
+    "underhall"
+  ],
+  "byggdelar": [
+    "stomme",
+    "invandigt",
+    "mark",
+    "fasad"
+  ],
+  "sokord": [
+    "silikos",
+    "håltagning",
+    "slipning",
+    "bilning",
+    "betongsågning"
+  ],
+  "indikatorer": [
+    "håltagning",
+    "kärnborrning",
+    "betongslipning",
+    "bilning",
+    "sågning",
+    "rivning"
+  ],
+  "vadArRisken": [
+    "Kvartsdamm är osynligt i de skadliga fraktionerna. Exponering sker i nästan alla byggprojekt där håltagning, slipning eller rivning förekommer.",
+    "Projekteringen påverkar hur mycket bearbetning som behövs – t.ex. ingjutna ursparingar i stället för efterhandsborrning."
+  ],
+  "forekomst": [
+    {
+      "plats": "Stomme",
+      "exempel": "Håltagning och kärnborrning i betongbjälklag och väggar."
+    },
+    {
+      "plats": "Golv",
+      "exempel": "Slipning av betonggolv inför ytskikt."
+    },
+    {
+      "plats": "Mark",
+      "exempel": "Bergarbeten, krossning, stenläggning."
+    }
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Förekommer i de flesta projekt; ofta otillräcklig dammbekämpning."
+  },
+  "riskEfter": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Ursparingar projekterade och dammreducerande metoder föreskrivna."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Projektörer",
+      "atgard": "Samordna installationer så att ursparingar och genomföringar gjuts in eller sågas i ett tidigt skede."
+    },
+    {
+      "skede": "projektering",
+      "ansvar": "BAS-P",
+      "atgard": "Lyft dammfrågan i arbetsmiljöplanen: krav på verktyg med vatten eller integrerat utsug."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Utsug med H-klassad dammsugare, vattenbegjutning, andningsskydd P3, städning med dammsugare – inte sopning."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "kvarts.1",
+      "fraga": "Är ursparingar för installationer redovisade på konstruktionsritningar?",
+      "skede": "projektering",
+      "underlag": [
+        "konstruktionsritningar",
+        "samordningsritning"
+      ]
+    },
+    {
+      "id": "kvarts.2",
+      "fraga": "Ställer arbetsmiljöplanen krav på dammbekämpning?",
+      "skede": "projektering",
+      "underlag": [
+        "arbetsmiljöplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Kvarts – kartläggning och åtgärder."
+    },
+    {
+      "ref": "AFS 2023:14 Gränsvärden för luftvägsexponering",
+      "text": "Gränsvärde för respirabelt kvartsdamm."
+    },
+    {
+      "ref": "AFS 2023:15 Medicinska kontroller i arbetslivet",
+      "text": "Medicinsk kontroll vid kvartsexponering."
+    }
+  ]
+}

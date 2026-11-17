@@ -1,0 +1,102 @@
+{
+  "id": "hal-bjalklag",
+  "titel": "Öppningar i bjälklag, trapphus och hisschakt",
+  "status": "bas",
+  "ingress": "Håltagningar, schakt och trapphus innan trappor och räcken monterats ger risk för fall genom bjälklag och för nedfallande föremål.",
+  "riskomrade": "fall",
+  "sarskildRisk": [
+    1
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "stomme",
+    "vs",
+    "vent",
+    "el"
+  ],
+  "sokord": [
+    "håltagning",
+    "schakt",
+    "trapphus",
+    "hisschakt",
+    "täckning"
+  ],
+  "indikatorer": [
+    "installationsschakt",
+    "hisschakt",
+    "trapphus",
+    "ursparing",
+    "håltagning i bjälklag"
+  ],
+  "vadArRisken": [
+    "Hål för installationer täcks ofta provisoriskt och skydden flyttas under byggtiden. Hisschakt och trapphus är vanliga olycksplatser."
+  ],
+  "forekomst": [
+    {
+      "plats": "Bjälklag",
+      "exempel": "Ursparingar för VS, ventilation och el."
+    },
+    {
+      "plats": "Trapphus",
+      "exempel": "Före montage av trappor och räcken."
+    },
+    {
+      "plats": "Hisschakt",
+      "exempel": "Dörröppningar före montage av hissdörrar."
+    }
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Många hål, skydd flyttas."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Hål projekterade med armering/nät eller tidiga skydd, prefabtrappa tidigt."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Konstruktör",
+      "atgard": "Gjut in armeringsnät/genomstansningsskydd i ursparingar eller ange täckning; prefabricerade trappor som monteras med stommen."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "BAS-U",
+      "atgard": "Märkta och fastsatta skydd, rutin för att flytta skydd, räcken vid schakt."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "hal-bjalklag.1",
+      "fraga": "Anger konstruktionshandlingarna skydd för ursparingar och schakt?",
+      "skede": "projektering",
+      "underlag": [
+        "konstruktionsritningar"
+      ]
+    },
+    {
+      "id": "hal-bjalklag.2",
+      "fraga": "Monteras trappor tidigt (prefab) så att permanent tillträde finns?",
+      "skede": "projektering",
+      "underlag": [
+        "tidplan",
+        "konstruktionsritningar"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Skydd mot fall – öppningar."
+    }
+  ]
+}
