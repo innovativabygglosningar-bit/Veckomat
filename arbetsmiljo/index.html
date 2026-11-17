@@ -131,9 +131,20 @@ code.gid{font-size:12px;background:var(--soft);padding:1px 5px;border-radius:4px
 code{font-size:12px}
 pre.mall{white-space:pre-wrap;font:14px/1.55 var(--f-body);background:var(--soft);padding:12px;border-radius:8px;margin:0}
 .mall-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
-.note{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px}
+.note{font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;margin:12px 0 0}
 
+.print-only{display:none}
+.flow-print{padding-left:20px;margin:0}
+.flow-print > li{margin-bottom:10px}
+.flow-print ul{list-style:none;padding-left:0;margin:4px 0 0}
+.flow-print ul li{margin:3px 0}
+.utfall{display:inline;padding:1px 4px;border-radius:3px}
+.utfall.hog{background:var(--hog-bg)} .utfall.medel{background:var(--medel-bg)} .utfall.lag{background:var(--lag-bg)}
 @media print{
+  .print-only{display:block!important}
+  .note{font-size:7.5pt;padding-top:4px;margin:0;break-before:avoid}
+  .sheet h2{margin-bottom:6px}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   header.top,.stripe,.no-print,.back{display:none!important}
   body{background:#fff;color:#000;font-size:11pt}
   .card{border:none;padding:0}
@@ -166,6 +177,7 @@ const niva = r => nivaFor(DB.skala, r);
 const lvl = (s,k) => { const r = s*k; return `<span class="lvl ${niva(r).namn}" title="S ${s} × K ${k}">${r} ${niva(r).namn}</span>`; };
 
 const relevans = risk => relevansFor(risk, profil);
+const harProfil = () => Object.values(profil).some(v => Array.isArray(v) ? v.length : v !== '' && v != null);
 const profilVarningar = risk => varnFor(risk, profil);
 
 /* ---------- Bank ---------- */
@@ -312,7 +324,7 @@ function renderRisk(id){
       <a class="back" href="#/">← Tillbaka till riskbanken</a>
       <h1>${esc(r.titel)}</h1>
       <div class="chips">
-        <span class="rel ${rel}">${relText[rel]}</span>
+        ${harProfil() ? `<span class="rel ${rel}">${relText[rel]}</span>` : ''}
         ${(r.sarskildRisk||[]).map(n => `<span class="pill sr">Särskild risk ${n}: ${esc(k.sarskildRisk.find(x=>x.nr===n).text)}</span>`).join('')}
         <span class="pill">${esc(namn('riskomraden', r.riskomrade))}</span>
         ${r.skeden.map(s => `<span class="pill">${skFor(s)}</span>`).join('')}
@@ -338,7 +350,7 @@ function renderRisk(id){
 
     ${(r.indikatorer||[]).length ? sec('Leta efter i handlingarna', `<div class="chips">${r.indikatorer.map(x => `<span class="pill">${esc(x)}</span>`).join('')}</div>`) : ''}
 
-    ${(r.beslutsflode||[]).length ? sec('Bedöm i ditt projekt', `<p class="small muted" style="margin-top:0">Gå igenom frågorna – resultatet visar hur risken ska omhändertas.</p><div class="flow" id="flow"></div>`) : ''}
+    ${(r.beslutsflode||[]).length ? sec('Bedöm i ditt projekt', `<p class="small muted no-print" style="margin-top:0">Gå igenom frågorna – resultatet visar hur risken ska omhändertas.</p><div class="flow no-print" id="flow"></div>${flowPrint(r)}`) : ''}
 
     ${sec('Hur omhändertas risken?', atgarderHtml)}
 
@@ -346,11 +358,10 @@ function renderRisk(id){
 
     ${(r.textArbetsmiljoplan || r.textHandlingar) ? sec('Textmallar', mall('Till arbetsmiljöplanen', r.textArbetsmiljoplan, 'textArbetsmiljoplan') + mall('Till beskrivning / AF', r.textHandlingar, 'textHandlingar')) : ''}
 
-    ${sec('Regler och stöd', (r.regler||[]).length ? `<ul class="plain">${r.regler.map(x => `<li><b>${esc(x.ref)}</b> – ${esc(x.text)}</li>`).join('')}</ul>` : '')}
+    ${sec('Regler och stöd', (r.regler||[]).length ? `<ul class="plain">${r.regler.map(x => `<li><b>${esc(x.ref)}</b> – ${esc(x.text)}</li>`).join('')}</ul><p class="note">${esc(DB.anmarkning)}</p>` : '')}
 
     ${(r.kallor||[]).length ? sec('Källor', `<ul class="plain">${r.kallor.map(x => `<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.titel)}</a></li>`).join('')}</ul>`) : ''}
 
-    <p class="note">${esc(DB.anmarkning)}</p>
   </article>`;
 
   app.querySelectorAll('[data-c]').forEach(el => el.addEventListener('change', () => {
@@ -363,6 +374,14 @@ function renderRisk(id){
   }));
   if ((r.beslutsflode||[]).length) runFlow(r);
   window.scrollTo(0, 0);
+}
+
+function flowPrint(r){
+  const nr = Object.fromEntries(r.beslutsflode.map((s, i) => [s.id, i + 1]));
+  const gren = (svar, m) => typeof m === 'string'
+    ? `<li><b>${svar}</b> → gå till fråga ${nr[m]}</li>`
+    : `<li><b>${svar}</b> → <span class="utfall ${m.niva || 'lag'}">${esc(m.slut)}</span></li>`;
+  return `<ol class="print-only flow-print">${r.beslutsflode.map(s => `<li><b>${esc(s.fraga)}</b><ul>${gren('Ja', s.ja)}${gren('Nej', s.nej)}</ul></li>`).join('')}</ol>`;
 }
 
 function runFlow(r){
