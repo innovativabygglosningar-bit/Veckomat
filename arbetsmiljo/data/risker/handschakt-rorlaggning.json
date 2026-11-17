@@ -1,0 +1,81 @@
+{
+  "id": "handschakt-rorlaggning",
+  "titel": "Handschakt och rörläggning",
+  "status": "bas",
+  "ingress": "Rörläggning och handschakt i ledningsgravar ger belastningsskador i ländrygg och ben, ofta i trånga och blöta schakter.",
+  "riskomrade": "ergonomi",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "anlaggning",
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "mark",
+    "vs"
+  ],
+  "indikatorer": [
+    "ledningsgrav",
+    "rörläggning",
+    "handschakt",
+    "VA-ledning"
+  ],
+  "relevans": {
+    "profil": {
+      "schakt": [
+        "ja"
+      ]
+    }
+  },
+  "vadArRisken": [
+    "Skadorna beror sällan på själva schaktningen, som sker maskinellt, utan på arbetet i schakten: handschakt, ihopdragning och justering av rör."
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Mycket manuellt arbete i schakt."
+  },
+  "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Maskinellt arbete och lättare rörsystem."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Markprojektör",
+      "atgard": "Välj rörsystem och kopplingar som kan monteras med maskinhjälp; undvik onödigt djupa ledningar."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Endast lätt rensnings- och utjämningsarbete manuellt; grävmaskin för lyft och grävning; arbetsväxling."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "handschakt-rorlaggning.1",
+      "fraga": "Är rörsystem och förläggningsdjup valda med hänsyn till montage i schakt?",
+      "skede": "projektering",
+      "underlag": [
+        "VA-ritningar"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Belastningsergonomi."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.50, 1.2.51",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

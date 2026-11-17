@@ -1,0 +1,84 @@
+{
+  "id": "fall-i-schakt",
+  "titel": "Fall ned i schakt och nedfallande material i schakt",
+  "status": "bas",
+  "ingress": "Öppna schakter, gropar och brunnar ger fallrisk för personal och tredje man. Den som arbetar i schakten kan träffas av sten, material och verktyg.",
+  "riskomrade": "fall",
+  "sarskildRisk": [
+    1,
+    2
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "anlaggning",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "mark"
+  ],
+  "indikatorer": [
+    "schakt",
+    "brunn",
+    "spontkant",
+    "avspärrning",
+    "skyddsräcke"
+  ],
+  "relevans": {
+    "profil": {
+      "schakt": [
+        "ja"
+      ]
+    }
+  },
+  "vadArRisken": [
+    "Risken ökar vid höga slänter och spontkanter, i mörker och där schakten ligger nära gång- och transportvägar."
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Höga slänter och spontkanter utan räcke."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Räcken, täckning och avspärrning planerade."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "BAS-P",
+      "atgard": "Kräv avspärrning eller räcke kring schakter i arbetsmiljöplanen, särskilt nära gångvägar."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Skyddsräcke eller täckning av gropar och brunnar, rensning av löst material vid schaktkant, hjälm, belysning nattetid vid större schakter."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "fall-i-schakt.1",
+      "fraga": "Hanterar arbetsmiljöplanen avspärrning och fallskydd vid schakter?",
+      "skede": "produktion",
+      "underlag": [
+        "arbetsmiljöplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Skydd mot fall och nedfallande föremål."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.20, 1.2.40, 1.2.41",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

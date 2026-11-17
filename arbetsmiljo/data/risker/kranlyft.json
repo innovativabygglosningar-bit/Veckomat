@@ -1,0 +1,89 @@
+{
+  "id": "kranlyft",
+  "titel": "Kranlyft och hängande last",
+  "status": "bas",
+  "ingress": "Last kan falla från kranen om lyftredskap brister eller kopplas fel. Lyft över personer, bebodda byggnader eller arbetsområden ger allvarlig risk.",
+  "riskomrade": "lyft",
+  "sarskildRisk": [
+    11
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning"
+  ],
+  "byggdelar": [
+    "etablering",
+    "stomme"
+  ],
+  "indikatorer": [
+    "tornkran",
+    "mobilkran",
+    "lyftplan",
+    "kranplacering",
+    "svängradie"
+  ],
+  "relevans": {
+    "profil": {
+      "prefab": [
+        "ja"
+      ]
+    }
+  },
+  "vadArRisken": [
+    "Vind, dålig sikt för kranföraren och bristande teckengivning är vanliga orsaker till olyckor."
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Många lyft nära personer."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Lyftplan, avspärrning och inga lyft över personer."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "BAS-P",
+      "atgard": "Redovisa kranplacering och svängradie i etableringsplanen så att lyft över gångvägar, entréer och angränsande verksamhet undviks."
+    },
+    {
+      "skede": "projektering",
+      "ansvar": "Konstruktör",
+      "atgard": "Lyftpunkter och vikter på bygghandlingar."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Lyftplan, besiktigade kranar och lyftredskap, kranjournal, avspärrning av lyftområde, teckengivning, stopp vid hård vind."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "kranlyft.1",
+      "fraga": "Går kranens svängradie över gångvägar, entréer eller pågående verksamhet?",
+      "skede": "projektering",
+      "underlag": [
+        "etableringsplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+      "text": "Lyftanordningar och lyftredskap."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 6.0.01–6.0.14, 9.9.31–9.9.52",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

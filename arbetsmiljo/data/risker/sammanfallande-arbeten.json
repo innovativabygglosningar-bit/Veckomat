@@ -1,0 +1,75 @@
+{
+  "id": "sammanfallande-arbeten",
+  "titel": "Sammanfallande arbeten och tidplan",
+  "status": "bas",
+  "ingress": "När flera entreprenörer arbetar samtidigt på samma plats, eller ovanför varandra, uppstår risker som ingen av dem kontrollerar på egen hand.",
+  "riskomrade": "organisation",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "rivning",
+    "underhall"
+  ],
+  "byggdelar": [
+    "etablering"
+  ],
+  "indikatorer": [
+    "tidplan",
+    "huvudtidplan",
+    "sammanfallande",
+    "etapp"
+  ],
+  "vadArRisken": [
+    "BAS-P ska granska tidplanen för att hitta sammanfallande arbeten och kritiska moment."
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Pressad tidplan med parallella moment."
+  },
+  "riskEfter": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Granskad tidplan med åtskilda moment."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "BAS-P",
+      "atgard": "Granska tidplanen: identifiera sammanfallande arbeten och kritiska moment och meddela projekteringsledaren."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "BAS-U",
+      "atgard": "Samordna när produktionstidplanen finns."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "sammanfallande-arbeten.1",
+      "fraga": "Har tidplanen granskats för sammanfallande arbeten och kritiska moment?",
+      "skede": "projektering",
+      "underlag": [
+        "tidplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:3 Projektering och byggarbetsmiljösamordning",
+      "text": "Samordning och tidplan."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.8.01, Granskning tidplan",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

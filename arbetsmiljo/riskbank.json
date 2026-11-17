@@ -170,6 +170,14 @@
    {
     "id": "atkomst",
     "namn": "Åtkomst för drift & underhåll"
+   },
+   {
+    "id": "klimat",
+    "namn": "Klimat, ljus & väder"
+   },
+   {
+    "id": "utformning",
+    "namn": "Lokalernas utformning (bruksskede)"
    }
   ],
   "byggdelar": [
@@ -208,6 +216,10 @@
    {
     "id": "etablering",
     "namn": "Etablering & logistik"
+   },
+   {
+    "id": "rum",
+    "namn": "Rum, lokaler & tekniska utrymmen"
    }
   ],
   "sarskildRisk": [
@@ -298,6 +310,15 @@
    ]
   },
   {
+   "id": "arbetslokaler",
+   "fraga": "Ska byggnaden innehålla arbetslokaler (kontor, skola, vård, kök, industri, tekniska utrymmen med service)?",
+   "typ": "val",
+   "alternativ": [
+    "ja",
+    "nej"
+   ]
+  },
+  {
    "id": "hojd",
    "fraga": "Förekommer arbete på höjd över 2 m (tak, fasad, ställning, bjälklagskant)?",
    "typ": "val",
@@ -309,6 +330,15 @@
   {
    "id": "prefab",
    "fraga": "Ingår prefab, stålstomme eller andra tunga element som lyfts med kran?",
+   "typ": "val",
+   "alternativ": [
+    "ja",
+    "nej"
+   ]
+  },
+  {
+   "id": "platsgjutning",
+   "fraga": "Förekommer platsgjuten betong (formsättning, armering, gjutning)?",
    "typ": "val",
    "alternativ": [
     "ja",
@@ -372,7 +402,73 @@
    ]
   }
  ],
+ "allmanText": "Allmänna risker finns på alla byggarbetsplatser. De hanteras främst av entreprenören och behöver bara kontrolleras mot arbetsmiljöplanen.",
  "risker": [
+  {
+   "id": "alkohol-droger",
+   "titel": "Alkohol och droger",
+   "status": "bas",
+   "ingress": "Påverkan av alkohol eller droger ökar risken för olyckor, särskilt vid maskinarbete och arbete på höjd.",
+   "riskomrade": "organisation",
+   "sarskildRisk": [],
+   "skeden": [
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "rivning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "etablering"
+   ],
+   "indikatorer": [
+    "ordningsregler",
+    "drogpolicy"
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Ingen policy."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Ordningsregler och rutin."
+   },
+   "atgarder": [
+    {
+     "skede": "produktion",
+     "ansvar": "BAS-U",
+     "atgard": "Ordningsregler om alkohol och droger i arbetsmiljöplanen, rutin vid misstanke."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "alkohol-droger.1",
+     "fraga": "Finns ordningsregler om alkohol och droger i arbetsmiljöplanen?",
+     "skede": "produktion",
+     "underlag": [
+      "arbetsmiljöplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:1 Systematiskt arbetsmiljöarbete",
+     "text": "Rutiner."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.33",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "allman": true
+  },
   {
    "id": "arbete-vid-vatten",
    "titel": "Arbete i eller nära vatten",
@@ -454,6 +550,246 @@
     {
      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
      "text": "Arbete med risk för drunkning."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.32",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "kassun",
+   "titel": "Arbete i kassun under förhöjt lufttryck",
+   "status": "bas",
+   "ingress": "Arbete i kassun under förhöjt lufttryck ger risk för tryckfallssjuka, syrebrist och svår utrymning.",
+   "riskomrade": "vatten",
+   "sarskildRisk": [
+    9
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "anlaggning"
+   ],
+   "byggdelar": [
+    "mark"
+   ],
+   "indikatorer": [
+    "kassun",
+    "sänkbrunn",
+    "tryckluft"
+   ],
+   "relevans": {
+    "projekttyper": [
+     "anlaggning"
+    ]
+   },
+   "riskFore": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Ovanligt men allvarligt."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Alternativa metoder eller specialiststyrt arbete."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Välj metoder som undviker kassunarbete; ange utrymningsväg i arbetshandling."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Specialistkompetens, medicinsk kontroll, tryckkammare."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "kassun.1",
+     "fraga": "Kräver grundläggningen kassun eller sänkbrunn, och finns utrymningsväg angiven?",
+     "skede": "projektering",
+     "underlag": [
+      "konstruktionsritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Arbete i kassun."
+    },
+    {
+     "ref": "AFS 2023:15 Medicinska kontroller i arbetslivet",
+     "text": "Arbete i övertryck."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.0.01",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "trangautrymmen",
+   "titel": "Arbete i trånga utrymmen och krypgrunder",
+   "status": "bas",
+   "ingress": "Installationsdragning i krypgrunder, krypvindar, schakt och utrymmen med låg höjd ger olämpliga arbetsställningar och tunga lyft – både vid byggandet och vid allt framtida underhåll.",
+   "riskomrade": "ergonomi",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+   ],
+   "byggdelar": [
+    "rum",
+    "vs",
+    "vent",
+    "el"
+   ],
+   "indikatorer": [
+    "krypgrund",
+    "krypvind",
+    "installationsschakt",
+    "kulvert",
+    "låg takhöjd"
+   ],
+   "vadArRisken": [
+    "BAS-P-arket anger som riktvärde minst 0,6 m fritt utrymme vid passage och minst 2,1 m ståhöjd i utrymmen där man arbetar."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Installationer i kryputrymmen."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Tillräcklig höjd eller annan placering."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt / Installationsprojektörer",
+     "atgard": "Undvik kryputrymmen där arbete behövs; ge minst 2,1 m ståhöjd och 0,6 m passage; samordna så att arbeten inte sammanfaller i trånga utrymmen."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Arbetsrotation, belysning, ventilation."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "trangautrymmen.1",
+     "fraga": "Finns utrymmen där installationer kräver arbete i kryputrymme eller med låg höjd?",
+     "skede": "projektering",
+     "underlag": [
+      "arkitektritningar",
+      "installationsritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:12 Utformning av arbetsplatser",
+     "text": "Utrymme för arbete."
+    },
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Belastningsergonomi."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.03, 20.1.01, 20.1.12",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "industriomrade",
+   "titel": "Arbete inom industri- och processanläggningar",
+   "status": "bas",
+   "ingress": "I industrier, gasanläggningar och processmiljöer finns risker från verksamheten: kemikalier, tryck, explosiv atmosfär, truckar och maskiner.",
+   "riskomrade": "organisation",
+   "sarskildRisk": [
+    3
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "ombyggnad",
+    "underhall",
+    "nybyggnad"
+   ],
+   "byggdelar": [
+    "etablering"
+   ],
+   "indikatorer": [
+    "industri",
+    "processanläggning",
+    "gasanläggning",
+    "ATEX",
+    "tillträdesregler"
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Okända processrisker."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Samordning med anläggningens regler."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P",
+     "atgard": "Hämta in anläggningens skyddsregler, tillståndsrutiner och krav på utbildning; för in dem i arbetsmiljöplanen."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Säkerhetsutbildning för anläggningen, arbetstillstånd, följa lokala regler."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "industriomrade.1",
+     "fraga": "Är anläggningens skyddsregler och tillståndsrutiner införda i arbetsmiljöplanen?",
+     "skede": "projektering",
+     "underlag": [
+      "arbetsmiljöplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:2 Planering och organisering av arbetsmiljöarbete",
+     "text": "Samordning mellan arbetsgivare."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.32",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
     }
    ]
   },
@@ -554,6 +890,12 @@
      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
      "text": "Arbete på plats med passerande fordonstrafik."
     }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.1.01",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
    ]
   },
   {
@@ -646,6 +988,83 @@
      "ref": "ELSÄK-FS",
      "text": "Elsäkerhet."
     }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 8.6.03",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "arbete-pa-is",
+   "titel": "Arbete på is",
+   "status": "bas",
+   "ingress": "Arbete på isbelagda sjöar och vattendrag ger risk att gå igenom isen.",
+   "riskomrade": "vatten",
+   "sarskildRisk": [
+    6
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "anlaggning"
+   ],
+   "byggdelar": [
+    "mark"
+   ],
+   "indikatorer": [
+    "is",
+    "vinterväg",
+    "sjö"
+   ],
+   "relevans": {
+    "profil": {
+     "vatten": [
+      "ja"
+     ]
+    }
+   },
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Okänd isbärighet."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Isbärighet kontrollerad, räddningsutrustning."
+   },
+   "atgarder": [
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Kontrollera isens tjocklek och bärighet, inget ensamarbete, flytoverall, isdubbar, livlina."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "arbete-pa-is.1",
+     "fraga": "Hanterar arbetsmiljöplanen arbete på is?",
+     "skede": "produktion",
+     "underlag": [
+      "arbetsmiljöplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Arbete med risk för drunkning."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.33",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
    ]
   },
   {
@@ -722,7 +1141,252 @@
      "ref": "AFS 2023:10 Risker i arbetsmiljön",
      "text": "Belastningsergonomi."
     }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 8.0.01, 9.0.01, 9.0.02",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
    ]
+  },
+  {
+   "id": "belysning-morker",
+   "titel": "Arbetsbelysning och arbete i mörker",
+   "status": "bas",
+   "ingress": "Dålig belysning ökar risken för fall, snubbling och påkörning, särskilt vintertid, nattetid och vid schakter.",
+   "riskomrade": "klimat",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "etablering",
+    "el"
+   ],
+   "indikatorer": [
+    "arbetsbelysning",
+    "nattarbete",
+    "vinter",
+    "schakt"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Vinterarbete utan planerad belysning."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Arbetsbelysning i etableringen."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P / Elprojektör",
+     "atgard": "Arbetsplatsbelysning ute och inne i etablering och förfrågningsunderlag; belysning vid större schakter även nattetid."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Varselkläder, pannlampa, kontroll av belysning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "belysning-morker.1",
+     "fraga": "Hanteras arbetsbelysning under byggtiden i förfrågningsunderlaget?",
+     "skede": "projektering",
+     "underlag": [
+      "AF",
+      "etableringsplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:12 Utformning av arbetsplatser",
+     "text": "Belysning."
+    },
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Byggarbetsplatsen."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.10, 9.1.11",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "vard-kok-utrymmen",
+   "titel": "Arbetsutrymme i vårdlokaler och storkök",
+   "status": "bas",
+   "ingress": "Trånga vårdrum, hygienrum och kök ger belastningsskador vid förflyttning av patienter och vid hantering av varor och kärl.",
+   "riskomrade": "utformning",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "rum"
+   ],
+   "indikatorer": [
+    "vårdrum",
+    "hygienrum",
+    "patientlyft",
+    "storkök",
+    "tillagningskök"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Trånga vårdrum."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Utrymme för hjälpmedel och rullande hantering."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt",
+     "atgard": "Utrymme för lyfthjälpmedel och assistans i vårdrum och hygienrum (dörrbredder, trösklar); kök dimensionerade för antal portioner med plats för mottagning, förvaring och avfall."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "vard-kok-utrymmen.1",
+     "fraga": "Finns utrymme för lyfthjälpmedel och assistans i vård- och hygienrum?",
+     "skede": "projektering",
+     "underlag": [
+      "arkitektritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:12 Utformning av arbetsplatser",
+     "text": "Arbetslokaler."
+    },
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Belastningsergonomi."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 20.1.10",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "relevans": {
+    "projekttyper": [
+     "nybyggnad",
+     "ombyggnad"
+    ],
+    "profil": {
+     "arbetslokaler": [
+      "ja"
+     ]
+    },
+    "motivering": "Byggnaden ska innehålla arbetslokaler."
+   }
+  },
+  {
+   "id": "armeringsarbeten",
+   "titel": "Armeringsarbeten",
+   "status": "bas",
+   "ingress": "Najning i böjd ställning, tunga armeringsnät, uppstickande armeringsjärn och fallande järn vid kranlyft.",
+   "riskomrade": "ergonomi",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning"
+   ],
+   "byggdelar": [
+    "stomme",
+    "mark"
+   ],
+   "indikatorer": [
+    "armering",
+    "armeringsnät",
+    "najning"
+   ],
+   "vadArRisken": [
+    "Uppstickande järn ger allvarliga stick- och spetsskador vid fall. Najning ger rygg- och knäbesvär."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Mycket najning och uppstickande järn."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Prefabricerad armering, skydd på järn."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Konstruktör",
+     "atgard": "Använd prefabricerade armeringskorgar och nät i hanterbara format där möjligt."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Najningsautomat, säkerhetshattar på uppstickande järn, lyftok för nät, utbildning i stroppning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "armeringsarbeten.1",
+     "fraga": "Är armeringen utformad för prefabricering och kranhantering?",
+     "skede": "projektering",
+     "underlag": [
+      "konstruktionsritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Belastningsergonomi."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 2.4.11–2.4.16",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "relevans": {
+    "profil": {
+     "platsgjutning": [
+      "ja"
+     ]
+    },
+    "motivering": "Platsgjuten betong förekommer."
+   }
   },
   {
    "id": "asbest",
@@ -1097,8 +1761,164 @@
     {
      "titel": "Arbetsmiljöverket – Asbest",
      "url": "https://www.av.se/produktion-industri-och-logistik/asbest/"
+    },
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 0.3.05",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
     }
    ]
+  },
+  {
+   "id": "asfaltarbeten",
+   "titel": "Asfaltarbeten och asfaltsågning",
+   "status": "bas",
+   "ingress": "Sågning och läggning av asfalt ger buller, damm, ångor från het asfalt och risk vid användning av asfaltsåg.",
+   "riskomrade": "buller",
+   "sarskildRisk": [],
+   "skeden": [
+    "produktion"
+   ],
+   "projekttyper": [
+    "anlaggning",
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "mark"
+   ],
+   "indikatorer": [
+    "asfalt",
+    "beläggning",
+    "asfaltsåg",
+    "tjärasfalt"
+   ],
+   "vadArRisken": [
+    "Gammal asfalt kan innehålla tjära (PAH), se riskbladet om förorenad mark."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Sågning och het asfalt."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Vattenkyld sågning, skyddsutrustning."
+   },
+   "atgarder": [
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Asfaltsåg med vattenbegjutning, hörselskydd, andningsskydd vid behov, avspärrning mot trafik."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "asfaltarbeten.1",
+     "fraga": "Är äldre beläggning provtagen för tjära (PAH) där den ska rivas?",
+     "skede": "projektering",
+     "underlag": [
+      "miljöinventering"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Buller och kemiska riskkällor."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.7.01",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "relevans": {
+    "profil": {
+     "schakt": [
+      "ja"
+     ]
+    },
+    "motivering": "Mark- och anläggningsarbeten förekommer."
+   }
+  },
+  {
+   "id": "riskabla-processer",
+   "titel": "Avskiljning av riskabla processer",
+   "status": "bas",
+   "ingress": "Verksamhet med farliga ämnen, brandrisk, buller, damm, sprutmålning eller batteriladdning bör ligga i egna lokaler så att andra inte exponeras.",
+   "riskomrade": "utformning",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "rum"
+   ],
+   "indikatorer": [
+    "batteriladdning",
+    "sprutbox",
+    "kemikalieförråd",
+    "verkstad"
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Riskabel process i öppen lokal."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Avskild lokal med ventilation."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt / Ventilationsprojektör",
+     "atgard": "Avskilj riskabla processer i särskilda lokaler med anpassad ventilation och skyltning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "riskabla-processer.1",
+     "fraga": "Är riskabla processer avskilda i egna lokaler?",
+     "skede": "projektering",
+     "underlag": [
+      "arkitektritningar",
+      "verksamhetsbeskrivning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:12 Utformning av arbetsplatser",
+     "text": "Arbetslokaler."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 20.1.05, 20.6.04",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "relevans": {
+    "projekttyper": [
+     "nybyggnad",
+     "ombyggnad"
+    ],
+    "profil": {
+     "arbetslokaler": [
+      "ja"
+     ]
+    },
+    "motivering": "Byggnaden ska innehålla arbetslokaler."
+   }
   },
   {
    "id": "ledningar-mark",
@@ -1188,6 +2008,12 @@
     {
      "ref": "ELSÄK-FS",
      "text": "Elsäkerhet vid arbete nära elektriska anläggningar."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.04",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
     }
    ]
   },
@@ -1312,6 +2138,169 @@
    ]
   },
   {
+   "id": "blastring",
+   "titel": "Blästring och slipning av ytor",
+   "status": "bas",
+   "ingress": "Blästring och slipning ger höga dammnivåer. Blästersand kan innehålla kvarts och den färg som tas bort kan innehålla bly, krom eller PCB.",
+   "riskomrade": "halsofarligt",
+   "sarskildRisk": [
+    3
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "ombyggnad",
+    "rivning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "fasad",
+    "stomme",
+    "invandigt"
+   ],
+   "indikatorer": [
+    "blästring",
+    "sandblästring",
+    "slipning",
+    "färgborttagning"
+   ],
+   "relevans": {
+    "projekttyper": [
+     "ombyggnad",
+     "rivning",
+     "underhall"
+    ]
+   },
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Blästring av gammal färg."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Kvartsfritt blästermedel och provtagen färg."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Kontrollera att färgen som ska blästras är provtagen; föreskriv blästermedel utan kvarts eller andra metoder."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Inneslutning, andningsskydd, punktutsug."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "blastring.1",
+     "fraga": "Är ytor som ska blästras provtagna och blästermedel angivet?",
+     "skede": "projektering",
+     "underlag": [
+      "miljöinventering",
+      "beskrivning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Kvarts och kemiska riskkällor."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 0.3.05",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "brand-utrymning-byggtid",
+   "titel": "Brandskydd och utrymning under byggtiden",
+   "status": "bas",
+   "ingress": "Under byggtiden kan utrymningsvägar blockeras, brandcellsgränser brytas av håltagningar och brännbart avfall och gasflaskor öka brandrisken.",
+   "riskomrade": "brand",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+   ],
+   "byggdelar": [
+    "etablering",
+    "rum"
+   ],
+   "indikatorer": [
+    "utrymningsväg",
+    "brandcellsgräns",
+    "brandtätning",
+    "container",
+    "gasflaskor",
+    "brandskyddsbeskrivning"
+   ],
+   "vadArRisken": [
+    "Vid ombyggnad med pågående verksamhet berörs även brukare och boende."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Ombyggnad med verksamhet kvar."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Brandskydd under byggtiden planerat."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P / Brandkonsult",
+     "atgard": "Brandskydd och utrymning för byggskedet: alternativa utrymningsvägar, tillfällig brandtätning, larm och nödbelysning."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Fria utrymningsvägar, märkt tillfällig brandtätning med godkänt material, containrar med brännbart avfall minst 6 m från byggnad, gasflaskor i låst förvaring nattetid."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "brand-utrymning-byggtid.1",
+     "fraga": "Finns plan för brandskydd och utrymning under byggtiden?",
+     "skede": "projektering",
+     "underlag": [
+      "brandskyddsbeskrivning",
+      "etableringsplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "Lag (2003:778) om skydd mot olyckor",
+     "text": "Brandskydd."
+    },
+    {
+     "ref": "Lag (2010:1011) om brandfarliga och explosiva varor",
+     "text": "Gasflaskor."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.6.01–9.6.04",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
    "id": "slutna-utrymmen",
    "titel": "Brunnar, kulvertar och slutna utrymmen",
    "status": "bas",
@@ -1401,7 +2390,167 @@
      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
      "text": "Arbete i brunnar, tunnlar och under jord."
     }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.0.01, 9.0.03",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
    ]
+  },
+  {
+   "id": "brannskador-media",
+   "titel": "Brännskador från heta eller kalla medier",
+   "status": "bas",
+   "ingress": "Arbete med fjärrvärme, ånga, varmvatten och köldmedier kan ge brännskador och köldskador vid läckage eller felaktig avstängning.",
+   "riskomrade": "vatten",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion",
+    "drift"
+   ],
+   "projekttyper": [
+    "ombyggnad",
+    "underhall",
+    "nybyggnad"
+   ],
+   "byggdelar": [
+    "vs"
+   ],
+   "indikatorer": [
+    "fjärrvärme",
+    "undercentral",
+    "ånga",
+    "kylmaskin",
+    "köldmedium"
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Inkoppling mot befintliga system."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Avstängningsmöjligheter och rutiner."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "VS-projektör",
+     "atgard": "Avstängningsventiler så att delar kan tömmas och isoleras; isolering av heta ytor."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Avstängning och tömning före arbete, skyddsutrustning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "brannskador-media.1",
+     "fraga": "Finns avstängningsmöjligheter för arbete på heta och kalla system?",
+     "skede": "projektering",
+     "underlag": [
+      "VS-ritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Fysikaliska riskkällor."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 8.4.02",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "buller-installationer",
+   "titel": "Buller från installationer i färdig byggnad",
+   "status": "bas",
+   "ingress": "Buller från fläktrum, aggregat och kylmaskiner kan störa arbetslokaler och ge skadliga nivåer i tekniska utrymmen.",
+   "riskomrade": "buller",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "vent",
+    "rum"
+   ],
+   "indikatorer": [
+    "fläktrum",
+    "aggregat",
+    "akustik",
+    "ljudnivå"
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Fläktrum intill arbetslokaler."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 2,
+    "motivering": "Avvibrering och placering avstämd med akustiker."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Ventilationsprojektör / Arkitekt / Akustiker",
+     "atgard": "Placera bullrande utrustning bort från arbetslokaler; avvibrerade fundament."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "buller-installationer.1",
+     "fraga": "Är bullrande installationer placerade och avvibrerade med hänsyn till arbetslokaler?",
+     "skede": "projektering",
+     "underlag": [
+      "ventilationsritningar",
+      "akustikutlåtande"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Buller."
+    },
+    {
+     "ref": "BBR avsnitt 7",
+     "text": "Bullerskydd."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 20.4.01",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "relevans": {
+    "projekttyper": [
+     "nybyggnad",
+     "ombyggnad"
+    ],
+    "profil": {
+     "arbetslokaler": [
+      "ja"
+     ]
+    },
+    "motivering": "Byggnaden ska innehålla arbetslokaler."
+   }
   },
   {
    "id": "buller-vibrationer",
@@ -1478,6 +2627,12 @@
     {
      "ref": "AFS 2023:10 Risker i arbetsmiljön",
      "text": "Buller och vibrationer."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.61–1.2.63, 3.1.12, 9.9.11–9.9.13",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
     }
    ]
   },
@@ -1556,6 +2711,324 @@
      "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
      "text": "Elektrisk arbetsutrustning."
     }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 8.6.01, 8.6.02",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "stallningar",
+   "titel": "Byggställningar",
+   "status": "bas",
+   "ingress": "Felaktigt byggda, oförankrade eller ändrade ställningar kan rasa. Material kan falla från ställningen, och obehöriga kan klättra upp till tak.",
+   "riskomrade": "fall",
+   "sarskildRisk": [
+    1
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+   ],
+   "byggdelar": [
+    "fasad",
+    "tak",
+    "etablering"
+   ],
+   "indikatorer": [
+    "fasadställning",
+    "ställningsplan",
+    "ställningsförankring",
+    "väderskydd"
+   ],
+   "relevans": {
+    "profil": {
+     "hojd": [
+      "ja"
+     ]
+    }
+   },
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Stor ställning, många användare."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Ställningsplan, förankring och kontroll."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt / Konstruktör",
+     "atgard": "Granska att ställning och skyddsanordningar går att bygga mot fasad, tak och terrass; förankringspunkter."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Ställningsplan, besiktning före användning, nät mot nedfallande föremål, skydd mot obehörig klättring."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "stallningar.1",
+     "fraga": "Går det att resa ställning och förankra den mot vald fasad?",
+     "skede": "projektering",
+     "underlag": [
+      "fasadritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+     "text": "Ställningar."
+    },
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Skydd mot fall."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.3.01, 9.4.02",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "handmaskiner",
+   "titel": "Byggsåg, handmaskiner och krutdrivna verktyg",
+   "status": "bas",
+   "ingress": "Cirkelsågar, slipmaskiner, tryckluftsverktyg, högtryckssprutor och spikpistoler kan ge skär-, kläm- och ögonskador. Defekta elverktyg kan ge elchock.",
+   "riskomrade": "trafik",
+   "sarskildRisk": [],
+   "skeden": [
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "etablering"
+   ],
+   "indikatorer": [
+    "byggsåg",
+    "cirkelsåg",
+    "spikpistol",
+    "slipmaskin",
+    "bultpistol"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Många maskiner i bruk."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Kontrollerade maskiner och utbildade användare."
+   },
+   "atgarder": [
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Kontroll av nödstopp och skydd, städning kring byggsåg, bryt ström efter arbetsdag, reparation endast av behörig, ögonskydd."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "handmaskiner.1",
+     "fraga": "Hanteras maskiner och verktyg i arbetsmiljöplanen?",
+     "skede": "produktion",
+     "underlag": [
+      "arbetsmiljöplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+     "text": "Arbetsutrustning."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.1.21, 9.3.01",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "allman": true
+  },
+  {
+   "id": "ljus-klimat-lokaler",
+   "titel": "Dagsljus, belysning och klimat i arbetslokaler",
+   "status": "bas",
+   "ingress": "Brist på dagsljus, bländning, otillräcklig belysning, övertemperatur och dålig ventilation påverkar hälsa och olycksrisk för dem som ska arbeta i byggnaden.",
+   "riskomrade": "utformning",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "rum",
+    "fasad"
+   ],
+   "indikatorer": [
+    "dagsljus",
+    "solavskärmning",
+    "rumshöjd",
+    "belysning",
+    "ventilation"
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Arbetsplatser utan dagsljus."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 2,
+    "motivering": "Dagsljus, solskydd och belysning projekterade."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt",
+     "atgard": "Placera stadigvarande arbetsplatser i lokaler med fönster; utvändig solavskärmning; tillräcklig rumshöjd."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "El- och ventilationsprojektörer",
+     "atgard": "Belysning anpassad till arbetsuppgifterna; termiskt klimat och ventilation."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "ljus-klimat-lokaler.1",
+     "fraga": "Har stadigvarande arbetsplatser dagsljus, solskydd och tillräcklig rumshöjd?",
+     "skede": "projektering",
+     "underlag": [
+      "arkitektritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:12 Utformning av arbetsplatser",
+     "text": "Ljus, klimat och rumshöjd."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 20.1.04, 20.1.10",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "relevans": {
+    "projekttyper": [
+     "nybyggnad",
+     "ombyggnad"
+    ],
+    "profil": {
+     "arbetslokaler": [
+      "ja"
+     ]
+    },
+    "motivering": "Byggnaden ska innehålla arbetslokaler."
+   }
+  },
+  {
+   "id": "dykeri",
+   "titel": "Dykeriarbete",
+   "status": "bas",
+   "ingress": "Undervattensarbete med dykarutrustning vid kajer, bryggor, intag och broar innebär risk för drunkning, tryckfallssjuka och skador från utrustning.",
+   "riskomrade": "vatten",
+   "sarskildRisk": [
+    8
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "anlaggning"
+   ],
+   "byggdelar": [
+    "mark"
+   ],
+   "indikatorer": [
+    "dykare",
+    "undervattensarbete",
+    "kaj",
+    "intag"
+   ],
+   "relevans": {
+    "profil": {
+     "vatten": [
+      "ja"
+     ]
+    }
+   },
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Dykning i strömmande vatten."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Prefabricering ovan vatten, behörig dykentreprenör."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Minimera undervattensarbete genom prefabricering och montage från ytan."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Dykentreprenör",
+     "atgard": "Certifierade dykare, dykledare, reservdykare, arbetsmetodbeskrivning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "dykeri.1",
+     "fraga": "Kan undervattensarbete undvikas eller minimeras?",
+     "skede": "projektering",
+     "underlag": [
+      "konstruktionsritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Dykeriarbete."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.33",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
    ]
   },
   {
@@ -1621,6 +3094,172 @@
     {
      "ref": "AFS 2023:2 Planering och organisering av arbetsmiljöarbete",
      "text": "Ensamarbete."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.60, 9.0.33",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "allman": true
+  },
+  {
+   "id": "etablering-apd",
+   "titel": "Etablering och arbetsplatsdisposition",
+   "status": "bas",
+   "ingress": "Etableringsplanen (APD) avgör var kran, upplag, bodar, avfall, transportvägar, gångvägar och parkering hamnar. En trång eller ogenomtänkt etablering ger risker under hela byggtiden.",
+   "riskomrade": "organisation",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "rivning"
+   ],
+   "byggdelar": [
+    "etablering"
+   ],
+   "indikatorer": [
+    "etableringsplan",
+    "APD",
+    "bodar",
+    "upplag",
+    "kranplacering",
+    "parkering"
+   ],
+   "vadArRisken": [
+    "BAS-P ska se till att etableringen fungerar under hela produktionstiden, även när ställningar, schakter och upplag ändras."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Trångt och oplanerat."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Genomarbetad etableringsplan."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P",
+     "atgard": "Ta fram preliminär etableringsplan: avgränsning, parkering, transport- och gångvägar, bodar, kran och svängradie, upplag, avfall, entreprenadgränser, ledningar i mark."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "BAS-U",
+     "atgard": "Uppdatera etableringsplanen när arbetsplatsen förändras."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "etablering-apd.1",
+     "fraga": "Finns en etableringsplan som fungerar under hela produktionstiden?",
+     "skede": "projektering",
+     "underlag": [
+      "etableringsplan"
+     ]
+    },
+    {
+     "id": "etablering-apd.2",
+     "fraga": "Redovisar etableringsplanen ledningar i mark och tillåtet marktryck?",
+     "skede": "projektering",
+     "underlag": [
+      "etableringsplan",
+      "ledningsplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:3 Projektering och byggarbetsmiljösamordning",
+     "text": "Samordning och arbetsmiljöplan."
+    },
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Byggarbetsplatsen."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.1.11, Granskning APD",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "lastbilsflak",
+   "titel": "Fall från lastbilsflak vid lossning",
+   "status": "bas",
+   "ingress": "Vid koppling av last på flak riskerar montörer att falla, bli påkörda vid lastbilen eller klämmas mellan element.",
+   "riskomrade": "fall",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning"
+   ],
+   "byggdelar": [
+    "etablering"
+   ],
+   "indikatorer": [
+    "leveranser",
+    "lossning",
+    "prefab",
+    "avlastningsyta"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Koppling på flak utan skydd."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Säker tillträdesled och avlastningsyta."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P",
+     "atgard": "Avlastningsytor i etableringsplanen med plats runt fordonet."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Fast stege eller trappa till flak, fallskydd på flak, varselkläder, avstängning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "lastbilsflak.1",
+     "fraga": "Finns avlastningsytor med plats runt fordon i etableringsplanen?",
+     "skede": "projektering",
+     "underlag": [
+      "etableringsplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Skydd mot fall."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 3.5.10, 3.5.11, 9.1.14",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
     }
    ]
   },
@@ -1756,6 +3395,250 @@
      "ref": "AFS 2023:12 Utformning av arbetsplatser",
      "text": "Skydd mot fall på permanenta arbetsplatser."
     }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 3.0.01, 4.0.01, 5.6.05",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "fall-i-schakt",
+   "titel": "Fall ned i schakt och nedfallande material i schakt",
+   "status": "bas",
+   "ingress": "Öppna schakter, gropar och brunnar ger fallrisk för personal och tredje man. Den som arbetar i schakten kan träffas av sten, material och verktyg.",
+   "riskomrade": "fall",
+   "sarskildRisk": [
+    1,
+    2
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "anlaggning",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "mark"
+   ],
+   "indikatorer": [
+    "schakt",
+    "brunn",
+    "spontkant",
+    "avspärrning",
+    "skyddsräcke"
+   ],
+   "relevans": {
+    "profil": {
+     "schakt": [
+      "ja"
+     ]
+    }
+   },
+   "vadArRisken": [
+    "Risken ökar vid höga slänter och spontkanter, i mörker och där schakten ligger nära gång- och transportvägar."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Höga slänter och spontkanter utan räcke."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Räcken, täckning och avspärrning planerade."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P",
+     "atgard": "Kräv avspärrning eller räcke kring schakter i arbetsmiljöplanen, särskilt nära gångvägar."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Skyddsräcke eller täckning av gropar och brunnar, rensning av löst material vid schaktkant, hjälm, belysning nattetid vid större schakter."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "fall-i-schakt.1",
+     "fraga": "Hanterar arbetsmiljöplanen avspärrning och fallskydd vid schakter?",
+     "skede": "produktion",
+     "underlag": [
+      "arbetsmiljöplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Skydd mot fall och nedfallande föremål."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.20, 1.2.40, 1.2.41",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "formarbeten",
+   "titel": "Formsättning och formrivning",
+   "status": "bas",
+   "ingress": "Väggformar kan välta, svaja i kranen och klämma. Klättring på formar och arbete från enkla plank ger fallrisk. Rivning av form ger fallande formvirke.",
+   "riskomrade": "lyft",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning"
+   ],
+   "byggdelar": [
+    "stomme",
+    "mark"
+   ],
+   "indikatorer": [
+    "platsgjuten betong",
+    "väggform",
+    "formsättning",
+    "gjutning"
+   ],
+   "vadArRisken": [
+    "Risken ökar vid blåsigt väder och i trånga utrymmen. Formens utformning och förankring avgör hur säkert arbetet blir."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Stora väggformar och arbete på höjd."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Formsystem med räcken, stegar och förankring."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Konstruktör",
+     "atgard": "Tänk igenom formsättning och formrivning: förankring av väggformar, tillträde och skyddsutrustning."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Formar med fasta stegar och ändskyddsräcken; lossa inte krankroken förrän formen är förankrad; lagra formar enligt leverantörens anvisning; stadiga arbetsbockar."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "formarbeten.1",
+     "fraga": "Är det möjligt att forma och riva form säkert med vald konstruktion?",
+     "skede": "projektering",
+     "underlag": [
+      "konstruktionsritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Formbyggnad."
+    },
+    {
+     "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+     "text": "Lyftanordningar."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 2.4.01–2.4.24, 3.1.03–3.1.16",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "relevans": {
+    "profil": {
+     "platsgjutning": [
+      "ja"
+     ]
+    },
+    "motivering": "Platsgjuten betong förekommer."
+   }
+  },
+  {
+   "id": "faltarbete",
+   "titel": "Fältarbete i skog och mark",
+   "status": "bas",
+   "ingress": "Inventering, mätning och undersökningar i skog och mark innebär risk för fästingburen smitta (TBE, borrelia), skador i terräng och ensamarbete utan täckning.",
+   "riskomrade": "organisation",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "anlaggning"
+   ],
+   "byggdelar": [
+    "mark"
+   ],
+   "indikatorer": [
+    "fältarbete",
+    "inmätning",
+    "geoteknisk undersökning",
+    "terräng"
+   ],
+   "relevans": {
+    "projekttyper": [
+     "anlaggning"
+    ]
+   },
+   "riskFore": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Fältarbete i fästingområde."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 2,
+    "motivering": "Vaccination, rutiner och kommunikation."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Uppdragsledare",
+     "atgard": "Kläder för fältarbete, erbjudande om TBE-vaccination, rapportera var man befinner sig, kommunikation där mobiltäckning saknas."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "faltarbete.1",
+     "fraga": "Finns rutin för ensamarbete och kommunikation vid fältarbete?",
+     "skede": "projektering",
+     "underlag": [
+      "arbetsmiljöplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Biologiska riskkällor."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.32",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
    ]
   },
   {
@@ -1831,6 +3714,12 @@
     {
      "ref": "AFS 2023:3 Projektering och byggarbetsmiljösamordning",
      "text": "Projektering för framtida underhåll."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 20.2.01",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
     }
    ]
   },
@@ -1965,6 +3854,635 @@
      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
      "text": "Byggnads- och anläggningsarbete."
     }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.03, 9.0.32",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "forsta-hjalpen",
+   "titel": "Första hjälpen och krisstöd",
+   "status": "bas",
+   "ingress": "Vid olycka måste första hjälpen, larmvägar och krisstöd vara planerade och kända av alla på arbetsplatsen.",
+   "riskomrade": "organisation",
+   "sarskildRisk": [],
+   "skeden": [
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "rivning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "etablering"
+   ],
+   "indikatorer": [
+    "första hjälpen",
+    "hjärtstartare",
+    "olycka",
+    "räddningstjänst"
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Oklara rutiner."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Rutiner och utrustning på plats."
+   },
+   "atgarder": [
+    {
+     "skede": "produktion",
+     "ansvar": "BAS-U",
+     "atgard": "Första hjälpen-utrustning, utbildad personal, adress och angöring för räddningstjänst i arbetsmiljöplanen, rutin för krisstöd."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "forsta-hjalpen.1",
+     "fraga": "Beskriver arbetsmiljöplanen första hjälpen och larmrutiner?",
+     "skede": "produktion",
+     "underlag": [
+      "arbetsmiljöplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:2 Planering och organisering av arbetsmiljöarbete",
+     "text": "Första hjälpen och krisstöd."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.33",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "allman": true
+  },
+  {
+   "id": "gjutning",
+   "titel": "Gjutning och betonghantering",
+   "status": "bas",
+   "ingress": "Styrning av tung gjutslang, slodning, vibrering och kontakt med våt betong ger belastningsskador, vibrationsskador och frätskador eller allergi på huden.",
+   "riskomrade": "ergonomi",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning"
+   ],
+   "byggdelar": [
+    "stomme",
+    "mark"
+   ],
+   "indikatorer": [
+    "platsgjuten betong",
+    "gjutning",
+    "betongpump",
+    "självkompakterande betong"
+   ],
+   "vadArRisken": [
+    "Våt betong är starkt alkalisk och kan ge frätskador. Kromat i cement kan ge allergiskt eksem."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Mycket platsgjutning."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Självkompakterande betong, rätt skydd."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Konstruktör",
+     "atgard": "Överväg självkompakterande betong eller prefab för att minska vibrering och slodning."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Betongpump enligt tillverkarens instruktion, lätt avvibrerad vibratorstav, handskar och skyddskläder, rena gångbryggor."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "gjutning.1",
+     "fraga": "Har betongval och gjutmetod bedömts med hänsyn till arbetsmiljön?",
+     "skede": "projektering",
+     "underlag": [
+      "konstruktionsbeskrivning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Belastningsergonomi, vibrationer och kemiska riskkällor."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 2.4.20, 2.4.21, 3.1.10–3.1.12",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "relevans": {
+    "profil": {
+     "platsgjutning": [
+      "ja"
+     ]
+    },
+    "motivering": "Platsgjuten betong förekommer."
+   }
+  },
+  {
+   "id": "glaspartier-personsakerhet",
+   "titel": "Glaspartier och personsäkerhet",
+   "status": "bas",
+   "ingress": "Glaspartier i dörrar, väggar och räcken kan ge skärskador om någon går in i eller faller genom glaset.",
+   "riskomrade": "utformning",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "fasad",
+    "invandigt"
+   ],
+   "indikatorer": [
+    "glasparti",
+    "glasdörr",
+    "glasräcke",
+    "säkerhetsglas"
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Stora glasytor i gångstråk."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Säkerhetsglas och markering."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt",
+     "atgard": "Säkerhetsglas där det finns risk för skada; markering av glasytor."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "glaspartier-personsakerhet.1",
+     "fraga": "Är glas i dörrar, väggar och räcken säkerhetsglas och markerat?",
+     "skede": "projektering",
+     "underlag": [
+      "fönster- och dörrförteckning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "BBR avsnitt 8",
+     "text": "Säkerhet vid användning – glas."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 20.6.02",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "relevans": {
+    "projekttyper": [
+     "nybyggnad",
+     "ombyggnad"
+    ],
+    "profil": {
+     "arbetslokaler": [
+      "ja"
+     ]
+    },
+    "motivering": "Byggnaden ska innehålla arbetslokaler."
+   }
+  },
+  {
+   "id": "grundvatten-schakt",
+   "titel": "Grundvatten och bottenupptryckning i schakt",
+   "status": "bas",
+   "ingress": "När grundvattnet ligger över schaktbotten kan schaktslänter rasa, botten tryckas upp och schakten vattenfyllas. Länshållning och grundvattensänkning måste planeras.",
+   "riskomrade": "ras",
+   "sarskildRisk": [
+    2
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "anlaggning",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "mark"
+   ],
+   "indikatorer": [
+    "grundvattennivå",
+    "länshållning",
+    "grundvattensänkning",
+    "spont",
+    "källare",
+    "pumpgrop"
+   ],
+   "relevans": {
+    "profil": {
+     "schakt": [
+      "ja"
+     ]
+    }
+   },
+   "vadArRisken": [
+    "Bottenupptryckning och ras sker snabbt och utan förvarning. Pumpar som stannar kan ge vattenfylld schakt med personer i."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Djup schakt under grundvattenytan utan utredd länshållning."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Högsta tillåtna grundvattennivå och länshållning anges i arbetshandling."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Geotekniker",
+     "atgard": "Utred grundvattennivå och risk för bottenupptryckning; ange högsta tillåtna grundvattennivå i arbetshandling."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "Markprojektör",
+     "atgard": "Ange pumpars placering, förväntat uttag och hur schaktbotten ska utföras för avrinning. Ange att schakt inte får påbörjas innan avsänkning nåtts."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Beredskap för länshållning, reservpump, kontroll av grundvattennivå."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "grundvatten-schakt.1",
+     "fraga": "Anges högsta tillåtna grundvattennivå och krav på avsänkning i arbetshandlingen?",
+     "skede": "projektering",
+     "underlag": [
+      "geoteknisk PM",
+      "markritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Schaktning och skydd mot ras."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.02",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "trafik-bruksskede",
+   "titel": "Gång- och fordonstrafik vid färdig byggnad",
+   "status": "bas",
+   "ingress": "Varumottag, lastkajer och trucktrafik där gående rör sig ger påkörningsrisk i hela byggnadens livslängd.",
+   "riskomrade": "trafik",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "mark",
+    "rum"
+   ],
+   "indikatorer": [
+    "varumottag",
+    "lastkaj",
+    "trucktrafik",
+    "angöring"
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Blandad trafik vid varumottag."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Separerade gång- och fordonsvägar."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt / Markprojektör",
+     "atgard": "Separera gående och fordon; planera varumottag för förare och egen personal; skyltning och markering."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "trafik-bruksskede.1",
+     "fraga": "Är gång- och fordonstrafik separerad vid varumottag och lastkajer?",
+     "skede": "projektering",
+     "underlag": [
+      "situationsplan",
+      "markritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:12 Utformning av arbetsplatser",
+     "text": "Trafikleder."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 20.3.01",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "relevans": {
+    "projekttyper": [
+     "nybyggnad",
+     "ombyggnad"
+    ],
+    "profil": {
+     "arbetslokaler": [
+      "ja"
+     ]
+    },
+    "motivering": "Byggnaden ska innehålla arbetslokaler."
+   }
+  },
+  {
+   "id": "halka-snubbling",
+   "titel": "Halka och snubbling på byggarbetsplatsen",
+   "status": "bas",
+   "ingress": "Is, snö, löst material, kablar och nivåskillnader orsakar många olyckor på byggarbetsplatser.",
+   "riskomrade": "organisation",
+   "sarskildRisk": [],
+   "skeden": [
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "etablering"
+   ],
+   "indikatorer": [
+    "snöröjning",
+    "städning",
+    "kabeldragning",
+    "gångväg"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Vanlig olycksorsak."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Ordning, snöröjning och upphängda kablar."
+   },
+   "atgarder": [
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Snöröjning och sandning av gång- och transportvägar, löpande städning, kablar i höjd, täckning av hål."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "halka-snubbling.1",
+     "fraga": "Ställer arbetsmiljöplanen krav på ordning, städning och snöröjning?",
+     "skede": "produktion",
+     "underlag": [
+      "arbetsmiljöplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Byggarbetsplatsen."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.1.12, 9.9.01, 9.9.03",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "allman": true
+  },
+  {
+   "id": "halkrisk-golv",
+   "titel": "Halkrisk och golvval i färdig byggnad",
+   "status": "bas",
+   "ingress": "Fel golvmaterial i entréer, trapphus, kök, duschar och städrum ger halkolyckor i hela byggnadens livslängd.",
+   "riskomrade": "utformning",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "invandigt",
+    "rum"
+   ],
+   "indikatorer": [
+    "golvmaterial",
+    "entré",
+    "storkök",
+    "dusch",
+    "halkskydd"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Blanka golv i våta miljöer."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Halkskyddade golv och entrémattor."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt",
+     "atgard": "Halkskyddade golv där spill av vatten och fett förekommer; entrésystem som stoppar smuts och väta."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "halkrisk-golv.1",
+     "fraga": "Är golvmaterial valda med hänsyn till halkrisk i våta miljöer och entréer?",
+     "skede": "projektering",
+     "underlag": [
+      "rumsbeskrivning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:12 Utformning av arbetsplatser",
+     "text": "Golv."
+    },
+    {
+     "ref": "BBR avsnitt 8",
+     "text": "Säkerhet vid användning."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 7.2.01, 20.2.05",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "relevans": {
+    "projekttyper": [
+     "nybyggnad",
+     "ombyggnad"
+    ],
+    "profil": {
+     "arbetslokaler": [
+      "ja"
+     ]
+    },
+    "motivering": "Byggnaden ska innehålla arbetslokaler."
+   }
+  },
+  {
+   "id": "handschakt-rorlaggning",
+   "titel": "Handschakt och rörläggning",
+   "status": "bas",
+   "ingress": "Rörläggning och handschakt i ledningsgravar ger belastningsskador i ländrygg och ben, ofta i trånga och blöta schakter.",
+   "riskomrade": "ergonomi",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "anlaggning",
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "mark",
+    "vs"
+   ],
+   "indikatorer": [
+    "ledningsgrav",
+    "rörläggning",
+    "handschakt",
+    "VA-ledning"
+   ],
+   "relevans": {
+    "profil": {
+     "schakt": [
+      "ja"
+     ]
+    }
+   },
+   "vadArRisken": [
+    "Skadorna beror sällan på själva schaktningen, som sker maskinellt, utan på arbetet i schakten: handschakt, ihopdragning och justering av rör."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Mycket manuellt arbete i schakt."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Maskinellt arbete och lättare rörsystem."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Markprojektör",
+     "atgard": "Välj rörsystem och kopplingar som kan monteras med maskinhjälp; undvik onödigt djupa ledningar."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Endast lätt rensnings- och utjämningsarbete manuellt; grävmaskin för lyft och grävning; arbetsväxling."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "handschakt-rorlaggning.1",
+     "fraga": "Är rörsystem och förläggningsdjup valda med hänsyn till montage i schakt?",
+     "skede": "projektering",
+     "underlag": [
+      "VA-ritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Belastningsergonomi."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.50, 1.2.51",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
    ]
   },
   {
@@ -2045,6 +4563,12 @@
     {
      "ref": "Säkerhetsregler för heta arbeten (Brandskyddsföreningen)",
      "text": "Tillstånd, utbildning och brandvakt."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.6.04, 9.6.05",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
     }
    ]
   },
@@ -2129,6 +4653,12 @@
     {
      "ref": "AFS 2023:10 Risker i arbetsmiljön",
      "text": "Buller och vibrationer."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.04",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
     }
    ]
   },
@@ -2236,6 +4766,12 @@
      "ref": "AFS 2023:15 Medicinska kontroller i arbetslivet",
      "text": "Medicinsk kontroll vid arbete med härdplaster."
     }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.9.20",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
    ]
   },
   {
@@ -2323,6 +4859,551 @@
     {
      "ref": "AFS 2023:3 Projektering och byggarbetsmiljösamordning",
      "text": "Projektörens ansvar för underhåll."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 8.0.01, 8.4.01, 8.5.01–8.5.03",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "infastningar-skydd",
+   "titel": "Infästningar för skyddsräcken, nät och ställning",
+   "status": "bas",
+   "ingress": "Den som monterar skyddsräcken är själv oskyddad. Saknas förberedda infästningar blir monteringen riskfylld och skydden sämre förankrade.",
+   "riskomrade": "fall",
+   "sarskildRisk": [
+    1
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "stomme",
+    "tak",
+    "fasad"
+   ],
+   "indikatorer": [
+    "skyddsräcke",
+    "skyddsnät",
+    "ställningsförankring",
+    "valvkant",
+    "takfotstass"
+   ],
+   "relevans": {
+    "profil": {
+     "hojd": [
+      "ja"
+     ]
+    }
+   },
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Räcken monteras utan förberedda infästningar."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Infästningar projekterade och räcken monteras från säker position."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Konstruktör",
+     "atgard": "Projektera infästningar för tillfälliga räcken, nät, ställningar och väderskydd vid valvkanter, trapplöp, schakt och takfot. Välj fästdon som är beständiga och kan tas isär."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Montera räcken från säker position eller med sele; spärra av under montage."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "infastningar-skydd.1",
+     "fraga": "Är infästningar för tillfälliga skydd redovisade?",
+     "skede": "projektering",
+     "underlag": [
+      "konstruktionsritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Skydd mot fall."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.6.10, 9.6.11",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "invandigt-underhall",
+   "titel": "Invändigt underhåll – armaturer, kanalrensning",
+   "status": "bas",
+   "ingress": "Byte av ljuskällor i höga tak, rensning av ventilationskanaler och service i undertak görs ofta från lösa stegar med fallrisk.",
+   "riskomrade": "atkomst",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "el",
+    "vent",
+    "rum"
+   ],
+   "indikatorer": [
+    "armatur",
+    "takhöjd",
+    "atrium",
+    "kanalrensning",
+    "rensluckor",
+    "undertak"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Höga tak utan planerad åtkomst."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Åtkomlig placering och rensluckor."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Elprojektör",
+     "atgard": "Placera armaturer så att de kan bytas bekvämt; i höga rum: nedfirningsbara armaturer eller plats för lift."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "Ventilationsprojektör / Arkitekt",
+     "atgard": "Samordna rensluckor och åtkomst för kanalrensning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "invandigt-underhall.1",
+     "fraga": "Kan armaturer bytas och kanaler rensas utan arbete från lös stege på hög höjd?",
+     "skede": "projektering",
+     "underlag": [
+      "elritningar",
+      "ventilationsritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:12 Utformning av arbetsplatser",
+     "text": "Arbetsplatsens utformning."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 20.2.10, 20.2.11",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "joniserande-stralning",
+   "titel": "Joniserande strålning i befintlig verksamhet",
+   "status": "bas",
+   "ingress": "Ombyggnad i sjukhus, laboratorier och industrier kan innebära arbete nära strålkällor eller i kontaminerade utrymmen.",
+   "riskomrade": "halsofarligt",
+   "sarskildRisk": [
+    4
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "ombyggnad",
+    "underhall"
+   ],
+   "byggdelar": [
+    "rum"
+   ],
+   "indikatorer": [
+    "röntgen",
+    "strålkälla",
+    "laboratorium",
+    "nivåmätare",
+    "sjukhus",
+    "industri"
+   ],
+   "riskFore": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Arbete nära strålkälla utan avstämning."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Samordning med anläggningsägaren."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Byggherre / BAS-P",
+     "atgard": "Kontakta anläggningsägaren och strålskyddsansvarig; kartlägg strålkällor och kontaminerade ytor."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Följ anläggningens strålskyddsregler och tillträdesrutiner."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "joniserande-stralning.1",
+     "fraga": "Finns strålkällor i eller nära de utrymmen som berörs?",
+     "skede": "projektering",
+     "underlag": [
+      "verksamhetsbeskrivning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "Strålskyddslagen (2018:396) och SSMFS",
+     "text": "Strålskydd."
+    },
+    {
+     "ref": "AFS 2023:3 Projektering och byggarbetsmiljösamordning",
+     "text": "Arbete med särskild risk."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.31",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "kemiska-produkter",
+   "titel": "Kemiska produkter som byggs in",
+   "status": "bas",
+   "ingress": "Fog, färg, lim, lösningsmedel, tätskikt, kylmedier och tillsatsmedel kan vara hälsofarliga vid montage, och vissa avger ämnen även i drift.",
+   "riskomrade": "halsofarligt",
+   "sarskildRisk": [
+    3
+   ],
+   "skeden": [
+    "projektering",
+    "produktion",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+   ],
+   "byggdelar": [
+    "invandigt",
+    "stomme",
+    "fasad",
+    "tak",
+    "vs"
+   ],
+   "indikatorer": [
+    "fog",
+    "färg",
+    "lim",
+    "lösningsmedel",
+    "tätskikt",
+    "kemikalier"
+   ],
+   "vadArRisken": [
+    "Projektören väljer produkterna. Det är i projekteringen som farliga produkter kan väljas bort."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Produkter föreskrivna utan kontroll."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Produkter kontrollerade mot säkerhetsdatablad."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Kontrollera föreskrivna produkter mot säkerhetsdatablad och kemikaliedatabas; välj mindre farliga alternativ."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Säkerhetsdatablad på arbetsplatsen, riskbedömning, skyddsutrustning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "kemiska-produkter.1",
+     "fraga": "Har föreskrivna produkter kontrollerats mot säkerhetsdatablad?",
+     "skede": "projektering",
+     "underlag": [
+      "beskrivning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Kemiska riskkällor."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.9.20, 9.9.21",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "klam-skarskador",
+   "titel": "Klämskador samt stick- och skärskador",
+   "status": "bas",
+   "ingress": "Klämskador vid hantering av material och element, samt stick- och skärskador från spik, armering och verktyg, är vanliga i alla byggprojekt.",
+   "riskomrade": "organisation",
+   "sarskildRisk": [],
+   "skeden": [
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "etablering"
+   ],
+   "indikatorer": [
+    "materialhantering",
+    "rivning",
+    "armering"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Vanligt i alla projekt."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Rätt verktyg och skyddsutrustning."
+   },
+   "atgarder": [
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Skyddshandskar, skyddsskor, skyddsglasögon, rätt verktyg, ta bort spik ur löst virke, god kommunikation vid lyft."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "klam-skarskador.1",
+     "fraga": "Finns krav på personlig skyddsutrustning i arbetsmiljöplanen?",
+     "skede": "produktion",
+     "underlag": [
+      "arbetsmiljöplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+     "text": "Personlig skyddsutrustning."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.31, 9.9.10",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "allman": true
+  },
+  {
+   "id": "kort-tidplan-stress",
+   "titel": "Kort tidplan och stress",
+   "status": "bas",
+   "ingress": "För kort tid för planering, projektering och produktion leder till stress, genvägar och ökad olycksrisk.",
+   "riskomrade": "organisation",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "rivning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "etablering"
+   ],
+   "indikatorer": [
+    "tidplan",
+    "byggtid",
+    "forcering"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Forcerad tidplan."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Realistisk tidplan."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Byggherre",
+     "atgard": "Avsätt tillräcklig tid för planering, projektering, samordning och utförande. BAS-P kan uppskatta rimlig produktionstid utifrån prefabriceringsgrad."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Resursplanering, uppföljning av arbetsbelastning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "kort-tidplan-stress.1",
+     "fraga": "Är projekttidplanen realistisk med hänsyn till riskfyllda moment?",
+     "skede": "projektering",
+     "underlag": [
+      "tidplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:2 Planering och organisering av arbetsmiljöarbete",
+     "text": "Organisatorisk och social arbetsmiljö."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.8.03",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "kranlyft",
+   "titel": "Kranlyft och hängande last",
+   "status": "bas",
+   "ingress": "Last kan falla från kranen om lyftredskap brister eller kopplas fel. Lyft över personer, bebodda byggnader eller arbetsområden ger allvarlig risk.",
+   "riskomrade": "lyft",
+   "sarskildRisk": [
+    11
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning"
+   ],
+   "byggdelar": [
+    "etablering",
+    "stomme"
+   ],
+   "indikatorer": [
+    "tornkran",
+    "mobilkran",
+    "lyftplan",
+    "kranplacering",
+    "svängradie"
+   ],
+   "relevans": {
+    "profil": {
+     "prefab": [
+      "ja"
+     ]
+    }
+   },
+   "vadArRisken": [
+    "Vind, dålig sikt för kranföraren och bristande teckengivning är vanliga orsaker till olyckor."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Många lyft nära personer."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Lyftplan, avspärrning och inga lyft över personer."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P",
+     "atgard": "Redovisa kranplacering och svängradie i etableringsplanen så att lyft över gångvägar, entréer och angränsande verksamhet undviks."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "Konstruktör",
+     "atgard": "Lyftpunkter och vikter på bygghandlingar."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Lyftplan, besiktigade kranar och lyftredskap, kranjournal, avspärrning av lyftområde, teckengivning, stopp vid hård vind."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "kranlyft.1",
+     "fraga": "Går kranens svängradie över gångvägar, entréer eller pågående verksamhet?",
+     "skede": "projektering",
+     "underlag": [
+      "etableringsplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+     "text": "Lyftanordningar och lyftredskap."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 6.0.01–6.0.14, 9.9.31–9.9.52",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
     }
    ]
   },
@@ -2444,7 +5525,178 @@
      "ref": "AFS 2023:15 Medicinska kontroller i arbetslivet",
      "text": "Medicinsk kontroll vid kvartsexponering."
     }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.63, 9.9.12",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
    ]
+  },
+  {
+   "id": "liftar-plattformar",
+   "titel": "Liftar, klätterplattformar och arbetsplattformar",
+   "status": "bas",
+   "ingress": "Saxliftar, bomliftar och mastklätterplattformar kan välta, klämma föraren mot tak och balkar eller köras av kanter.",
+   "riskomrade": "fall",
+   "sarskildRisk": [
+    1
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+   ],
+   "byggdelar": [
+    "fasad",
+    "etablering"
+   ],
+   "indikatorer": [
+    "saxlift",
+    "bomlift",
+    "klätterplattform",
+    "mastklätterplattform",
+    "lift"
+   ],
+   "relevans": {
+    "profil": {
+     "hojd": [
+      "ja"
+     ]
+    }
+   },
+   "vadArRisken": [
+    "Plattformar ska vara kontrollerade av behörig person och användas enligt tillverkarens anvisningar, inom vindgränsen och med jämnt fördelad last."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Ojämn mark, vind."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Plan uppställningsyta, utbildade förare."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P",
+     "atgard": "Redovisa uppställningsytor för lift och plattform i etableringsplanen."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Förarutbildning, daglig kontroll, fallskydd i bomlift, stopp vid hård vind."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "liftar-plattformar.1",
+     "fraga": "Finns plana uppställningsytor för liftar längs fasader som ska bearbetas?",
+     "skede": "projektering",
+     "underlag": [
+      "etableringsplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+     "text": "Mobila arbetsplattformar."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 5.3.01–5.3.03, 9.1.23",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "marksten",
+   "titel": "Läggning av marksten och kantsten",
+   "status": "bas",
+   "ingress": "Läggning av marksten, plattor och kantsten innebär upprepade tunga lyft och arbete på knä.",
+   "riskomrade": "ergonomi",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "anlaggning",
+    "nybyggnad"
+   ],
+   "byggdelar": [
+    "mark"
+   ],
+   "indikatorer": [
+    "marksten",
+    "betongplattor",
+    "kantsten",
+    "natursten",
+    "stenläggning"
+   ],
+   "vadArRisken": [
+    "Stenformat och vikt bestäms i projekteringen."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Tunga stenar som läggs för hand."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Format för maskinläggning eller lyfthjälpmedel."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Markprojektör / Landskapsarkitekt",
+     "atgard": "Välj format och vikter som kan läggas med maskin eller lyfthjälpmedel."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Lyfthjälpmedel, god läggningsteknik, knäskydd, arbetsrotation."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "marksten.1",
+     "fraga": "Föreskrivs stenformat som kräver lyfthjälpmedel, och är det angivet?",
+     "skede": "projektering",
+     "underlag": [
+      "markbeskrivning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Belastningsergonomi."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.7.01",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "relevans": {
+    "profil": {
+     "schakt": [
+      "ja"
+     ]
+    },
+    "motivering": "Mark- och anläggningsarbeten förekommer."
+   }
   },
   {
    "id": "maskiner-arbetsplats",
@@ -2518,6 +5770,313 @@
     {
      "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
      "text": "Mobila arbetsutrustningar och förarbehörighet."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 2.4.01, 9.1.10, 9.1.22",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "mineralull",
+   "titel": "Mineralull och isolerfibrer",
+   "status": "bas",
+   "ingress": "Kapning och montering av mineralull ger damm och fibrer som irriterar hud, ögon och luftvägar. Vid rivning kan äldre isolering vara smutsig eller förorenad.",
+   "riskomrade": "halsofarligt",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "rivning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "stomme",
+    "tak",
+    "fasad",
+    "invandigt"
+   ],
+   "indikatorer": [
+    "mineralull",
+    "stenull",
+    "glasull",
+    "isolering",
+    "lösull"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 1,
+    "motivering": "Vanligt förekommande."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 1,
+    "motivering": "Färdigkapade format och skydd."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Välj format som minskar kapning; föreskriv produkter med säkerhetsdatablad."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Kapning med kniv i stället för såg, andningsskydd vid dammande arbete och lösullsblåsning, skyddskläder."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "mineralull.1",
+     "fraga": "Finns säkerhetsdatablad för föreskrivna isolerprodukter?",
+     "skede": "projektering",
+     "underlag": [
+      "beskrivning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Kemiska riskkällor."
+    },
+    {
+     "ref": "AFS 2023:14 Gränsvärden för luftvägsexponering",
+     "text": "Gränsvärde för fibrer."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 2.4.22, 3.1.02",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "allman": true
+  },
+  {
+   "id": "mobilkran",
+   "titel": "Mobilkran – uppställning och markbärighet",
+   "status": "bas",
+   "ingress": "En mobilkran kan välta om marken under stödbenen inte bär, till exempel över ledningar, källare eller nyfylld mark.",
+   "riskomrade": "lyft",
+   "sarskildRisk": [
+    11
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning"
+   ],
+   "byggdelar": [
+    "etablering",
+    "mark"
+   ],
+   "indikatorer": [
+    "mobilkran",
+    "stödben",
+    "uppställningsyta",
+    "marktryck"
+   ],
+   "relevans": {
+    "profil": {
+     "prefab": [
+      "ja"
+     ]
+    }
+   },
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Okänd markbärighet."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Uppställningsplats utredd och redovisad."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Geotekniker / Konstruktör",
+     "atgard": "Kontrollberäkna markens bärighet för stödbenstryck; redovisa tillåtna uppställningsplatser och laster på arbetshandling eller etableringsplan."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Stödbensplattor, kontroll av mark och underliggande ledningar före uppställning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "mobilkran.1",
+     "fraga": "Är uppställningsplatser för mobilkran redovisade med kontrollerad bärighet?",
+     "skede": "projektering",
+     "underlag": [
+      "etableringsplan",
+      "geoteknisk PM"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+     "text": "Lyftanordningar."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.9.51",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "fonster-glasmontage",
+   "titel": "Montage av fönster, glaspartier, dörrar och portar",
+   "status": "bas",
+   "ingress": "Fönster, glaspartier och portar är tunga och otympliga. Montage sker ofta vid öppningar på höjd, med risk för klämskador och glasbrott.",
+   "riskomrade": "lyft",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "fasad"
+   ],
+   "indikatorer": [
+    "fönster",
+    "glasparti",
+    "fönsterbyte",
+    "port",
+    "entrépartier"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Stora glas och partier utan hjälpmedel."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Vakuumlyftare och planerad transport."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt",
+     "atgard": "Ange glasstorlekar, vikter och monteringsmetod; se till att det finns plats för lyfthjälpmedel."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Vakuumlyftare, dörrlyft, kran för stora partier, säker kant vid öppningen."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "fonster-glasmontage.1",
+     "fraga": "Är vikt och storlek på glaspartier redovisade och möjliga att montera med hjälpmedel?",
+     "skede": "projektering",
+     "underlag": [
+      "fönsterförteckning",
+      "fasadritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Belastningsergonomi."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 5.5.01–5.5.04",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "skivmontage",
+   "titel": "Montage av skivor i väggar och tak",
+   "status": "bas",
+   "ingress": "Gips- och byggskivor i stora format är tunga och otympliga, särskilt i tak.",
+   "riskomrade": "ergonomi",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "invandigt"
+   ],
+   "indikatorer": [
+    "gipsskiva",
+    "undertak",
+    "innervägg",
+    "regelavstånd"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Stora skivor monteras för hand."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "900 mm skivor och skivlyft."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt",
+     "atgard": "Anpassa regelavstånd för 900 mm skivor; välj låga vikter och format."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Skivlyft för tak, skivvagnar, leverans nära arbetsplatsen."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "skivmontage.1",
+     "fraga": "Är regelavstånd och skivformat anpassade för manuell hantering?",
+     "skede": "projektering",
+     "underlag": [
+      "beskrivning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Belastningsergonomi."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 5.3.01, 6.3.02",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
     }
    ]
   },
@@ -2645,6 +6204,85 @@
      "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
      "text": "Lyftanordningar och lyftredskap."
     }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 3.0.01, 3.2–3.7, 6.0",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "murning",
+   "titel": "Murning med tunga block och stenar",
+   "status": "bas",
+   "ingress": "Murning innebär tusentals lyft per dag. Tunga stenar och block ger belastningsskador i rygg och axlar.",
+   "riskomrade": "ergonomi",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "fasad",
+    "invandigt"
+   ],
+   "indikatorer": [
+    "tegel",
+    "murblock",
+    "lättbetongblock",
+    "murad vägg"
+   ],
+   "vadArRisken": [
+    "BAS-P-arket anger som riktvärde murstenar under 3 kg och murblock under 10 kg; tyngre kräver lyfthjälpmedel."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Tunga block utan hjälpmedel."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Lätta format, lyfthjälpmedel."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt",
+     "atgard": "Välj murstenar under 3 kg och block under 10 kg, eller föreskriv lyfthjälpmedel."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Ställning med sänkt inre bomlag, lyfthjälpmedel, arbetsrotation."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "murning.1",
+     "fraga": "Föreskrivs murstenar över 3 kg eller block över 10 kg, och anges i så fall lyfthjälpmedel?",
+     "skede": "projektering",
+     "underlag": [
+      "beskrivning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:10 Risker i arbetsmiljön",
+     "text": "Belastningsergonomi."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 5.3.10, 6.3.01",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
    ]
   },
   {
@@ -2749,6 +6387,156 @@
     {
      "ref": "AFS 2023:10 Risker i arbetsmiljön",
      "text": "Biologiska riskkällor."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 8.4.02",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "nedfallande-foremal",
+   "titel": "Nedfallande föremål och skyddstak",
+   "status": "bas",
+   "ingress": "Material, verktyg och räckeskomponenter som faller från höjd kan träffa personer på marken, vid entréer och i pågående verksamhet.",
+   "riskomrade": "fall",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+   ],
+   "byggdelar": [
+    "etablering",
+    "fasad"
+   ],
+   "indikatorer": [
+    "skyddstak",
+    "entré",
+    "gångväg",
+    "fasadarbete",
+    "hjälm"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Arbete över gångvägar och entréer."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Skyddstak, nät och avspärrning."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt / BAS-P",
+     "atgard": "Projektera skyddstak över entréer som används under byggtiden, särskilt vid renovering med pågående verksamhet."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Avspärrning och markering, nät på ställning, hjälm."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "nedfallande-foremal.1",
+     "fraga": "Behövs skyddstak över entréer och gångvägar under byggtiden, och är det redovisat?",
+     "skede": "projektering",
+     "underlag": [
+      "etableringsplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Skydd mot nedfallande föremål."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 6.0.03, 6.0.04, 9.4.02, 9.6.11, 9.9.10",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "obehoriga-intrang",
+   "titel": "Obehöriga på arbetsplatsen",
+   "status": "bas",
+   "ingress": "Barn och andra obehöriga kan ta sig in på arbetsplatsen, upp på ställningar och tak eller ned i schakter, framför allt utanför arbetstid.",
+   "riskomrade": "organisation",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "rivning",
+    "anlaggning"
+   ],
+   "byggdelar": [
+    "etablering"
+   ],
+   "indikatorer": [
+    "inhägnad",
+    "stängsel",
+    "ställning",
+    "skola",
+    "bostadsområde"
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Arbetsplats i bostadsområde eller nära skola."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Inhägnad, låsta ställningar."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P",
+     "atgard": "Inhägnad och avgränsning av arbetsplatsen i etableringsplanen."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Stängsel, låsta grindar, ställningar som inte kan beträdas utanför arbetstid, skyltning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "obehoriga-intrang.1",
+     "fraga": "Är arbetsplatsens avgränsning redovisad i etableringsplanen?",
+     "skede": "projektering",
+     "underlag": [
+      "etableringsplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Byggarbetsplatsen."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.1.11, 9.3.01",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
     }
    ]
   },
@@ -2895,7 +6683,252 @@
      "ref": "AFS 2023:15 Medicinska kontroller i arbetslivet",
      "text": "Medicinsk kontroll vid arbete med PCB."
     }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 0.3.05",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
    ]
+  },
+  {
+   "id": "personalutrymmen",
+   "titel": "Personalutrymmen",
+   "status": "bas",
+   "ingress": "Arbetslokaler behöver toaletter, duschar, omklädning, pausrum och vilrum som är tillräckliga för antalet anställda och verksamhetens art.",
+   "riskomrade": "utformning",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "rum"
+   ],
+   "indikatorer": [
+    "personalrum",
+    "omklädningsrum",
+    "pausrum",
+    "vilrum"
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Underdimensionerade utrymmen."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 2,
+    "motivering": "Utrymmen enligt verksamhetens behov."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt",
+     "atgard": "Dimensionera personalutrymmen efter antal anställda och verksamhet."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "personalutrymmen.1",
+     "fraga": "Är personalutrymmena tillräckliga för verksamheten?",
+     "skede": "projektering",
+     "underlag": [
+      "arkitektritningar",
+      "rumsbeskrivning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:12 Utformning av arbetsplatser",
+     "text": "Personalutrymmen."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 20.1.02, 20.1.10",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "relevans": {
+    "projekttyper": [
+     "nybyggnad",
+     "ombyggnad"
+    ],
+    "profil": {
+     "arbetslokaler": [
+      "ja"
+     ]
+    },
+    "motivering": "Byggnaden ska innehålla arbetslokaler."
+   }
+  },
+  {
+   "id": "personligt-fallskydd",
+   "titel": "Personligt fallskydd – förankring och räddning",
+   "status": "bas",
+   "ingress": "När kollektiva skydd inte går att använda krävs sele med förankring. Utan förberedda förankringspunkter improviseras infästningar, och den som hänger i selen kan skadas av hängtrauma om räddning dröjer.",
+   "riskomrade": "fall",
+   "sarskildRisk": [
+    1
+   ],
+   "skeden": [
+    "projektering",
+    "produktion",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+   ],
+   "byggdelar": [
+    "stomme",
+    "tak"
+   ],
+   "indikatorer": [
+    "fallskyddssele",
+    "förankringspunkt",
+    "livlina",
+    "räddningsplan"
+   ],
+   "relevans": {
+    "profil": {
+     "hojd": [
+      "ja"
+     ]
+    }
+   },
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Sele utan förankringspunkter och räddningsplan."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Projekterade förankringspunkter och räddningsrutin."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Konstruktör",
+     "atgard": "Projektera fästpunkter för fallskydd vid valvkanter, takfot, trapphus och schakt, och permanenta förankringspunkter för underhåll."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Räddningsplan och utrustning för snabb nedtagning; utbildning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "personligt-fallskydd.1",
+     "fraga": "Finns fästpunkter för personligt fallskydd projekterade där räcken inte kan användas?",
+     "skede": "projektering",
+     "underlag": [
+      "konstruktionsritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+     "text": "Personlig fallskyddsutrustning."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 3.5.21, 3.5.22, 9.6.10",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "luftintag-avgaser",
+   "titel": "Placering av uteluftsintag – avgaser och föroreningar",
+   "status": "bas",
+   "ingress": "Uteluftsintag nära lastintag, gator, parkeringar eller avluft kan föra in avgaser i byggnaden under hela dess livslängd.",
+   "riskomrade": "utformning",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "vent"
+   ],
+   "indikatorer": [
+    "uteluftsintag",
+    "tilluftsintag",
+    "lastintag",
+    "avluft"
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Intag nära trafik."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 2,
+    "motivering": "Intag på tak eller från ren sida."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Ventilationsprojektör",
+     "atgard": "Placera uteluftsintag på tak eller långt från trafik, lastintag och avluft."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "luftintag-avgaser.1",
+     "fraga": "Är uteluftsintag placerade utan risk att avgaser eller avluft sugs in?",
+     "skede": "projektering",
+     "underlag": [
+      "ventilationsritningar",
+      "fasadritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:12 Utformning av arbetsplatser",
+     "text": "Luftkvalitet."
+    },
+    {
+     "ref": "BBR avsnitt 6",
+     "text": "Luftkvalitet."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 8.5.03, 20.5.02",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "relevans": {
+    "projekttyper": [
+     "nybyggnad",
+     "ombyggnad"
+    ],
+    "profil": {
+     "arbetslokaler": [
+      "ja"
+     ]
+    },
+    "motivering": "Byggnaden ska innehålla arbetslokaler."
+   }
   },
   {
    "id": "pagaende-verksamhet",
@@ -2981,6 +7014,189 @@
     {
      "ref": "AFS 2023:2 Planering och organisering av arbetsmiljöarbete",
      "text": "Samordning med andra verksamheter."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.8.02",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "omgivningspaverkan",
+   "titel": "Påverkan på intilliggande byggnader vid schakt och grundläggning",
+   "status": "bas",
+   "ingress": "Schakt, spontning, pålning och packning intill befintliga byggnader kan ge sättningar, sprickor och i värsta fall ras i grannbyggnaden.",
+   "riskomrade": "ras",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "anlaggning",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "mark"
+   ],
+   "indikatorer": [
+    "intilliggande byggnad",
+    "grundläggningsnivå",
+    "vibrationsmätning",
+    "pålning",
+    "spont",
+    "sättning"
+   ],
+   "relevans": {
+    "profil": {
+     "schakt": [
+      "ja"
+     ]
+    }
+   },
+   "vadArRisken": [
+    "Särskilt utsatt är byggnader grundlagda högre än den nya schaktbotten och byggnader på lera."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Schakt intill befintlig byggnad utan stabilitetsberäkning."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Stabilitet utredd, vibrationer mäts och anvisningar finns i arbetshandling."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Konstruktör / Geotekniker",
+     "atgard": "Kontrollera påverkan på befintlig byggnad genom stabilitetsberäkning; ange hur schakt intill befintlig byggnad ska utföras."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "Byggherre",
+     "atgard": "Riskanalys för vibrationer och syn av omgivande byggnader före start."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Vibrationsmätning och kontrollprogram under arbetet."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "omgivningspaverkan.1",
+     "fraga": "Finns stabilitetsberäkning och anvisningar för schakt intill befintliga byggnader?",
+     "skede": "projektering",
+     "underlag": [
+      "geoteknisk PM",
+      "konstruktionsritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Schaktning."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.21",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "radon",
+   "titel": "Radon och blåbetong",
+   "status": "bas",
+   "ingress": "Radon från mark och från blåbetong (alunskifferbetong) ger ökad risk för lungcancer vid långvarig exponering, både för dem som arbetar i byggnaden och i källare och kulvertar.",
+   "riskomrade": "halsofarligt",
+   "sarskildRisk": [
+    4
+   ],
+   "skeden": [
+    "projektering",
+    "produktion",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "rivning"
+   ],
+   "byggdelar": [
+    "mark",
+    "stomme",
+    "rum"
+   ],
+   "indikatorer": [
+    "radon",
+    "markradon",
+    "blåbetong",
+    "källare",
+    "radonmätning"
+   ],
+   "vadArRisken": [
+    "Blåbetong användes i byggnader från ca 1929–1975. Vid kortvarig rivning är blåbetong ingen större risk än vanlig betong; det är den långvariga exponeringen som är farlig."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Radonmark eller blåbetong utan åtgärd."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Radonskyddande utförande och mätning."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Konstruktör / Markprojektör",
+     "atgard": "Radonskyddande utförande på radonmark: tätning av skarvar och genomföringar, perforerad slang i dränerande lager förberedd för fläkt."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "Byggherre",
+     "atgard": "Radonmätning i befintlig byggnad vid ombyggnad; inventera blåbetong."
+    },
+    {
+     "skede": "drift",
+     "ansvar": "Fastighetsägare",
+     "atgard": "Radonmätning i arbetslokaler."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "radon.1",
+     "fraga": "Är radonskydd utrett utifrån markförhållanden, och finns blåbetong i befintlig byggnad?",
+     "skede": "projektering",
+     "underlag": [
+      "geoteknisk PM",
+      "miljöinventering"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "Strålskyddslagen (2018:396) och SSMFS",
+     "text": "Radon på arbetsplatser."
+    },
+    {
+     "ref": "BBR avsnitt 6",
+     "text": "Radonhalt i byggnader."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.01, 0.3.05",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
     }
    ]
   },
@@ -3098,6 +7314,12 @@
      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
      "text": "Schaktning och skydd mot ras."
     }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.01, 1.2.10–1.2.14",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
    ]
   },
   {
@@ -3190,6 +7412,310 @@
      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
      "text": "Rivningsarbete."
     }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 0.3.02",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "rivning-allmant",
+   "titel": "Rivning av icke bärande delar och inredning",
+   "status": "bas",
+   "ingress": "Rivning av väggar, undertak, installationer och inredning ger damm, buller, tunga lyft och nedfallande material. Rivningsmassor måste kunna transporteras ut.",
+   "riskomrade": "rivning",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "ombyggnad",
+    "rivning"
+   ],
+   "byggdelar": [
+    "invandigt",
+    "stomme"
+   ],
+   "indikatorer": [
+    "rivning",
+    "rivningsplan",
+    "rivningsritning",
+    "rivningsmassor"
+   ],
+   "relevans": {
+    "projekttyper": [
+     "ombyggnad",
+     "rivning"
+    ]
+   },
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Omfattande rivning inomhus."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Planerad rivning och uttransport."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Projektörer",
+     "atgard": "Ange vad som ska rivas och vilken skyddsutrustning som krävs; samordna transportvägar för rivningsmassor."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Besiktning före rivning, rivningsmetod, dammskydd, rullande uttransport."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "rivning-allmant.1",
+     "fraga": "Finns rivningsritning och transportväg för rivningsmassor?",
+     "skede": "projektering",
+     "underlag": [
+      "rivningsritning",
+      "etableringsplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Rivningsarbete."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 0.3.01–0.3.03",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "rullande-hantering",
+   "titel": "Rullande hantering och transporter i färdig byggnad",
+   "status": "bas",
+   "ingress": "Varumottag, storkök, avfallshantering och städning ger tunga lyft om byggnaden saknar plana transportvägar, hiss och tillräckliga dörrbredder.",
+   "riskomrade": "utformning",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "rum",
+    "invandigt"
+   ],
+   "indikatorer": [
+    "varumottag",
+    "storkök",
+    "avfallsrum",
+    "trösklar",
+    "dörrbredd",
+    "städrum"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Trappor och trösklar i transportvägar."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 2,
+    "motivering": "Planerade vägar för rullande hantering."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt",
+     "atgard": "Planera transportvägar för rullande hantering av varor, avfall och städutrustning: hiss eller ramp, plana golv, dörrbredder, inga trösklar."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "rullande-hantering.1",
+     "fraga": "Kan varor, avfall och städutrustning hanteras rullande i byggnaden?",
+     "skede": "projektering",
+     "underlag": [
+      "arkitektritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:12 Utformning av arbetsplatser",
+     "text": "Transportvägar."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 7.2.01, 20.2.10, 20.5.03",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "relevans": {
+    "projekttyper": [
+     "nybyggnad",
+     "ombyggnad"
+    ],
+    "profil": {
+     "arbetslokaler": [
+      "ja"
+     ]
+    },
+    "motivering": "Byggnaden ska innehålla arbetslokaler."
+   }
+  },
+  {
+   "id": "sammanfallande-arbeten",
+   "titel": "Sammanfallande arbeten och tidplan",
+   "status": "bas",
+   "ingress": "När flera entreprenörer arbetar samtidigt på samma plats, eller ovanför varandra, uppstår risker som ingen av dem kontrollerar på egen hand.",
+   "riskomrade": "organisation",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "rivning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "etablering"
+   ],
+   "indikatorer": [
+    "tidplan",
+    "huvudtidplan",
+    "sammanfallande",
+    "etapp"
+   ],
+   "vadArRisken": [
+    "BAS-P ska granska tidplanen för att hitta sammanfallande arbeten och kritiska moment."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 4,
+    "motivering": "Pressad tidplan med parallella moment."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Granskad tidplan med åtskilda moment."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P",
+     "atgard": "Granska tidplanen: identifiera sammanfallande arbeten och kritiska moment och meddela projekteringsledaren."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "BAS-U",
+     "atgard": "Samordna när produktionstidplanen finns."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "sammanfallande-arbeten.1",
+     "fraga": "Har tidplanen granskats för sammanfallande arbeten och kritiska moment?",
+     "skede": "projektering",
+     "underlag": [
+      "tidplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:3 Projektering och byggarbetsmiljösamordning",
+     "text": "Samordning och tidplan."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.8.01, Granskning tidplan",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "terrangfordon",
+   "titel": "Snöskoter och fyrhjuling i fält",
+   "status": "bas",
+   "ingress": "Transport med snöskoter eller fyrhjuling till svåråtkomliga arbetsplatser innebär risk för vältning och olyckor långt från hjälp.",
+   "riskomrade": "trafik",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "anlaggning"
+   ],
+   "byggdelar": [
+    "mark"
+   ],
+   "indikatorer": [
+    "snöskoter",
+    "fyrhjuling",
+    "terrängfordon"
+   ],
+   "relevans": {
+    "projekttyper": [
+     "anlaggning"
+    ]
+   },
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Körning i terräng ensam."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Utbildning, hjälm, färdplan."
+   },
+   "atgarder": [
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör / Uppdragsledare",
+     "atgard": "Förarutbildning, hjälm och ryggskydd, färdplan, kör inte ensam, säkerhetsutrustning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "terrangfordon.1",
+     "fraga": "Hanteras transport med terrängfordon i arbetsmiljöplanen?",
+     "skede": "produktion",
+     "underlag": [
+      "arbetsmiljöplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+     "text": "Mobila arbetsutrustningar."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.1.24",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
    ]
   },
   {
@@ -3277,6 +7803,379 @@
      "ref": "Lag (2010:1011) om brandfarliga och explosiva varor",
      "text": "Tillstånd för explosiva varor."
     }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.15, 1.2.16",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "temporar-stabilitet",
+   "titel": "Stabilitet under uppförandet och tillfälliga laster",
+   "status": "bas",
+   "ingress": "Väggar, pelare, murade väggar och bjälklag kan välta eller rasa innan stommen är färdig och stabiliserad. Upplag av material på bjälklag kan överbelasta.",
+   "riskomrade": "lyft",
+   "sarskildRisk": [
+    11
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "stomme"
+   ],
+   "indikatorer": [
+    "provisorisk stagning",
+    "stämpning",
+    "montageordning",
+    "upplag på bjälklag",
+    "fribärande"
+   ],
+   "vadArRisken": [
+    "Konstruktioner dimensioneras för färdigt läge. Byggskedet med ofullständig stomme, vind och tillfälliga laster måste utredas särskilt."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Stabilitet under byggskedet inte utredd."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Tillfälliga stöd och tillåtna laster redovisade."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Konstruktör",
+     "atgard": "Projektera tillfälliga stöd och stagning, ange montageordning och tillåtna laster på bjälklag under byggskedet."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Montageplan med stagning, stämpning och förankring; sprid laster på bjälklag; stoppa arbete vid kraftig vind."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "temporar-stabilitet.1",
+     "fraga": "Redovisar konstruktören stabilitet under uppförandet och tillåtna byggskedeslaster?",
+     "skede": "projektering",
+     "underlag": [
+      "konstruktionsritningar",
+      "montageanvisning"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Montering av byggelement och stabilitet."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 3.1.01, 3.5.01, 3.5.26, 5.3.11, 6.0.02",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "stegar-tilltrade",
+   "titel": "Stegar och tillträdesleder",
+   "status": "bas",
+   "ingress": "Lösa stegar som glider, välter eller används för arbete i stället för tillträde är en vanlig orsak till fallolyckor.",
+   "riskomrade": "fall",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+   ],
+   "byggdelar": [
+    "etablering",
+    "stomme"
+   ],
+   "indikatorer": [
+    "stege",
+    "trapptorn",
+    "tillträde",
+    "arbetsbock"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Lösa stegar som huvudsakligt tillträde."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Trapptorn och tidiga permanenta trappor."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Konstruktör / Arkitekt",
+     "atgard": "Montera permanenta trappor tidigt så att de kan användas som tillträdesled."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Trapptorn i stället för stegar; stegar bara för kortvarigt arbete, förankrade och kontrollerade."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "stegar-tilltrade.1",
+     "fraga": "Finns säkra tillträdesleder till alla plan under byggtiden?",
+     "skede": "projektering",
+     "underlag": [
+      "etableringsplan",
+      "tidplan"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+     "text": "Stegar och arbetsbockar."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 3.1.08, 3.5.23, 9.9.61",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "stad-avfallsutrymmen",
+   "titel": "Städ- och avfallsutrymmen",
+   "status": "bas",
+   "ingress": "För små eller fel placerade städrum och avfallsutrymmen ger långa transporter, tunga lyft och dålig arbetsmiljö för städ- och driftpersonal.",
+   "riskomrade": "utformning",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "rum"
+   ],
+   "indikatorer": [
+    "städrum",
+    "avfallsrum",
+    "miljörum",
+    "källsortering"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Städrum saknas på våningsplan."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 2,
+    "motivering": "Städrum per plan och tillgängliga avfallsutrymmen."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt",
+     "atgard": "Städrum på varje plan med vatten, utslagsback och plats för städvagn; avfallsutrymmen med plats för sortering och rullande transport; ytskikt och inredning som är lätta att städa."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "stad-avfallsutrymmen.1",
+     "fraga": "Finns städrum per plan och avfallsutrymmen med rullande transportväg?",
+     "skede": "projektering",
+     "underlag": [
+      "arkitektritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:12 Utformning av arbetsplatser",
+     "text": "Städ- och avfallsutrymmen."
+    },
+    {
+     "ref": "BBR avsnitt 3",
+     "text": "Utrymmen för avfall."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 20.1.03, 20.1.10, 20.6.03",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "relevans": {
+    "projekttyper": [
+     "nybyggnad",
+     "ombyggnad"
+    ],
+    "profil": {
+     "arbetslokaler": [
+      "ja"
+     ]
+    },
+    "motivering": "Byggnaden ska innehålla arbetslokaler."
+   }
+  },
+  {
+   "id": "tidig-driftsattning",
+   "titel": "Tidig driftsättning av hiss, värme och el",
+   "status": "bas",
+   "ingress": "Utan permanent hiss bärs material i trappor. Utan värme och belysning blir arbetsmiljön kall och mörk. Att driftsätta permanenta installationer tidigt minskar bärandet och ger bättre klimat.",
+   "riskomrade": "organisation",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "el",
+    "vs"
+   ],
+   "indikatorer": [
+    "hiss",
+    "byggvärme",
+    "permanent belysning",
+    "tidplan"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Sen driftsättning."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Hiss och värme tidigt i tidplanen."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Byggherre / BAS-P",
+     "atgard": "Planera in tidig driftsättning av hiss, värme och belysning i tidplanen och förfrågningsunderlaget."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "tidig-driftsattning.1",
+     "fraga": "Är tidig driftsättning av hiss, värme och belysning planerad?",
+     "skede": "projektering",
+     "underlag": [
+      "tidplan",
+      "AF"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Byggarbetsplatsens utformning."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 8.6.02, 8.6.03",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "transportleder-byggtid",
+   "titel": "Transport- och tillträdesleder under byggtiden",
+   "status": "bas",
+   "ingress": "Om byggelement, aggregat och rivningsmassor inte kan transporteras in och ut på ett enkelt sätt blir det tunga manuella lyft, bärande i trappor och provisoriska håltagningar.",
+   "riskomrade": "ergonomi",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "rivning"
+   ],
+   "byggdelar": [
+    "etablering",
+    "stomme"
+   ],
+   "indikatorer": [
+    "transportväg",
+    "hiss",
+    "bygghiss",
+    "transportöppning",
+    "rivningsmassor"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Ingen planerad transportväg."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Transportleder samordnade med komponenter."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Projekteringsledare / BAS-P",
+     "atgard": "Kontrollera att byggelement och utrustning kan transporteras och passas in; planera tillfälliga öppningar; hiss eller lyftanordning för materialtransport."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Rullande hantering, bygghiss, fria transportvägar."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "transportleder-byggtid.1",
+     "fraga": "Har transportvägarna granskats mot komponenternas storlek och vikt?",
+     "skede": "projektering",
+     "underlag": [
+      "etableringsplan",
+      "arkitektritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Transportleder på byggarbetsplatsen."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.1.12, 9.1.13, 0.3.01",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
    ]
   },
   {
@@ -3352,6 +8251,409 @@
     {
      "ref": "AFS 2023:10 Risker i arbetsmiljön",
      "text": "Belastningsergonomi."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.05",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "schaktkant-laster",
+   "titel": "Upplag, maskiner och trafik vid schaktkant",
+   "status": "bas",
+   "ingress": "Schaktmassor, materialupplag, packningsmaskiner och tunga fordon nära schaktkanten ökar lasten och vibrationerna och därmed rasrisken. Maskiner kan glida ned i schakten.",
+   "riskomrade": "ras",
+   "sarskildRisk": [
+    2
+   ],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "anlaggning",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "mark",
+    "etablering"
+   ],
+   "indikatorer": [
+    "schaktmassor",
+    "upplag",
+    "packning",
+    "transportväg",
+    "grävmaskin",
+    "schaktkant"
+   ],
+   "relevans": {
+    "profil": {
+     "schakt": [
+      "ja"
+     ]
+    }
+   },
+   "vadArRisken": [
+    "Lösa underlag och för små ytor intill schakten är vanliga orsaker till att massor läggs för nära kanten."
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Ont om plats intill schakt."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Ytor för upplag och trafik planerade på säkert avstånd."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P / Markprojektör",
+     "atgard": "Redovisa ytor för massupplag och transportvägar på säkert avstånd från schaktkant i etableringsplanen; hårdgjort underlag där tunga fordon går."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Inga upplag eller tunga maskiner nära släntkrön; maskinförare kontrollerar underlagets bärighet; synkontakt med markpersonal."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "schaktkant-laster.1",
+     "fraga": "Finns ytor för massupplag och trafik redovisade på säkert avstånd från schakter?",
+     "skede": "projektering",
+     "underlag": [
+      "etableringsplan",
+      "markritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Schaktning och skydd mot ras."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.22, 1.2.23, 1.2.30–1.2.32",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "tekniska-utrymmen",
+   "titel": "Utformning av tekniska utrymmen och driftrum",
+   "status": "bas",
+   "ingress": "Fläktrum, undercentraler och elrum som är för små, för låga eller saknar vatten, el, belysning och transportöppningar ger olycks- och belastningsrisker vid all service.",
+   "riskomrade": "atkomst",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "rum",
+    "vent",
+    "vs",
+    "el"
+   ],
+   "indikatorer": [
+    "fläktrum",
+    "undercentral",
+    "elrum",
+    "driftrum",
+    "teknikrum"
+   ],
+   "vadArRisken": [
+    "BAS-P-arket anger som riktvärde minst 2,1 m ståhöjd och en arbetsyta på 0,6 × 0,9 m framför det som ska skötas."
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Trånga tekniska utrymmen."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Tillräckliga mått och utrustning."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt / Installationsprojektörer",
+     "atgard": "Säkerställ ståhöjd, arbetsytor, säkerhetsavstånd, belysning, el-uttag, kall- och varmvatten, golvbrunn, utslagsback, dörrar och transportöppningar för utbyte av utrustning, samt släckutrustning."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "tekniska-utrymmen.1",
+     "fraga": "Har tekniska utrymmen tillräcklig höjd, arbetsytor och transportöppningar för service och byte?",
+     "skede": "projektering",
+     "underlag": [
+      "arkitektritningar",
+      "installationsritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:12 Utformning av arbetsplatser",
+     "text": "Arbetsplatsens utformning."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 20.1.10–20.1.14",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ],
+   "relevans": {
+    "projekttyper": [
+     "nybyggnad",
+     "ombyggnad"
+    ],
+    "profil": {
+     "arbetslokaler": [
+      "ja"
+     ]
+    },
+    "motivering": "Byggnaden ska innehålla arbetslokaler."
+   }
+  },
+  {
+   "id": "utvandigt-underhall",
+   "titel": "Utvändigt underhåll – belysning, snö och tak",
+   "status": "bas",
+   "ingress": "Snöskottning av tak, rensning av ventilationshuvar, byte av fasadbelysning och skötsel av planteringar kan innebära fall och tunga moment om de inte planeras.",
+   "riskomrade": "atkomst",
+   "sarskildRisk": [
+    1
+   ],
+   "skeden": [
+    "projektering",
+    "drift"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "tak",
+    "fasad",
+    "mark"
+   ],
+   "indikatorer": [
+    "snöskottning",
+    "fasadbelysning",
+    "takavvattning",
+    "snörasskydd",
+    "planteringar"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Takarbete vintertid."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Snörasskydd, förankringspunkter, åtkomlig belysning."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Arkitekt",
+     "atgard": "Snörasskydd, takskyddsanordningar och infästningar för fallskydd; ytor för maskinell snöröjning och snöupplag."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "Elprojektör",
+     "atgard": "Utvändig belysning placerad så att den kan servas utan risk."
+    },
+    {
+     "skede": "projektering",
+     "ansvar": "Markprojektör",
+     "atgard": "Planteringsytor med tillträde för skötsel."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "utvandigt-underhall.1",
+     "fraga": "Kan tak, fasadbelysning och utemiljö underhållas säkert?",
+     "skede": "projektering",
+     "underlag": [
+      "arkitektritningar",
+      "markritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:12 Utformning av arbetsplatser",
+     "text": "Arbetsplatsens utformning."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 20.2.01–20.2.05",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "vind-stora-element",
+   "titel": "Vind vid hantering av stora skivor och lätta element",
+   "status": "bas",
+   "ingress": "Stora lätta element som takplåt, fasadskivor och isolerskivor fångar vinden och kan slita sig, välta montörer eller blåsa ned från ställning.",
+   "riskomrade": "lyft",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+   ],
+   "byggdelar": [
+    "fasad",
+    "tak"
+   ],
+   "indikatorer": [
+    "takplåt",
+    "fasadskivor",
+    "stora format",
+    "sandwichelement"
+   ],
+   "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Långa lätta element."
+   },
+   "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Begränsade längder och säker lagring."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "Konstruktör / Arkitekt",
+     "atgard": "Begränsa storleken på lätta byggelement (t.ex. längder över 4 m) med hänsyn till vindkänslighet; dela skivor större än ca 0,9 × 3 m."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Säker lagring på ställning, styrlinor, stopp vid hård vind."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "vind-stora-element.1",
+     "fraga": "Föreskrivs lätta element eller skivor i stora format som är vindkänsliga?",
+     "skede": "projektering",
+     "underlag": [
+      "beskrivning",
+      "fasadritningar"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Montering av byggelement."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 4.1.01, 5.3.01, 5.3.04",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+   ]
+  },
+  {
+   "id": "vader",
+   "titel": "Väder – kyla, värme, vind och åska",
+   "status": "bas",
+   "ingress": "Arbete utomhus i kyla, värme, hård vind, isbildning eller åska ger risk för ohälsa och olyckor. Ouppvärmda byggnader ger kalla arbetsplatser.",
+   "riskomrade": "klimat",
+   "sarskildRisk": [],
+   "skeden": [
+    "projektering",
+    "produktion"
+   ],
+   "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "underhall"
+   ],
+   "byggdelar": [
+    "etablering"
+   ],
+   "indikatorer": [
+    "vinterarbete",
+    "väderskydd",
+    "byggvärme",
+    "takarbete"
+   ],
+   "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Utomhusarbete vintertid."
+   },
+   "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Väderskydd och byggvärme planerade."
+   },
+   "atgarder": [
+    {
+     "skede": "projektering",
+     "ansvar": "BAS-P",
+     "atgard": "Lägg väderkänsliga moment (tak, fasad, lyft) med hänsyn till årstid i tidplanen; väderskydd och byggvärme i förfrågningsunderlaget."
+    },
+    {
+     "skede": "produktion",
+     "ansvar": "Entreprenör",
+     "atgard": "Väderskydd, uppvärmda personalutrymmen, rutin för att avbryta arbete vid hård vind eller åska, vätska och pauser i värme."
+    }
+   ],
+   "granskning": [
+    {
+     "id": "vader.1",
+     "fraga": "Är väderkänsliga moment planerade med hänsyn till årstid, och krävs väderskydd?",
+     "skede": "projektering",
+     "underlag": [
+      "tidplan",
+      "AF"
+     ]
+    }
+   ],
+   "regler": [
+    {
+     "ref": "AFS 2023:12 Utformning av arbetsplatser",
+     "text": "Klimat."
+    },
+    {
+     "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+     "text": "Byggarbetsplatsen."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.10",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
     }
    ]
   },
@@ -3446,6 +8748,12 @@
     {
      "ref": "AFS 2023:12 Utformning av arbetsplatser",
      "text": "Arbetsplatsens utformning."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 8.0.01, 20.1.10",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
     }
    ]
   },
@@ -3548,6 +8856,12 @@
     {
      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
      "text": "Skydd mot fall – öppningar."
+    }
+   ],
+   "kallor": [
+    {
+     "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 3.6.01, 3.6.02, 3.9.01",
+     "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
     }
    ]
   }

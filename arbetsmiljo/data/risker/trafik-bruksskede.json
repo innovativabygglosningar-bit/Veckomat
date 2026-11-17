@@ -1,0 +1,78 @@
+{
+  "id": "trafik-bruksskede",
+  "titel": "Gång- och fordonstrafik vid färdig byggnad",
+  "status": "bas",
+  "ingress": "Varumottag, lastkajer och trucktrafik där gående rör sig ger påkörningsrisk i hela byggnadens livslängd.",
+  "riskomrade": "trafik",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "drift"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "mark",
+    "rum"
+  ],
+  "indikatorer": [
+    "varumottag",
+    "lastkaj",
+    "trucktrafik",
+    "angöring"
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Blandad trafik vid varumottag."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Separerade gång- och fordonsvägar."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Arkitekt / Markprojektör",
+      "atgard": "Separera gående och fordon; planera varumottag för förare och egen personal; skyltning och markering."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "trafik-bruksskede.1",
+      "fraga": "Är gång- och fordonstrafik separerad vid varumottag och lastkajer?",
+      "skede": "projektering",
+      "underlag": [
+        "situationsplan",
+        "markritningar"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:12 Utformning av arbetsplatser",
+      "text": "Trafikleder."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 20.3.01",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ],
+  "relevans": {
+    "projekttyper": [
+      "nybyggnad",
+      "ombyggnad"
+    ],
+    "profil": {
+      "arbetslokaler": [
+        "ja"
+      ]
+    },
+    "motivering": "Byggnaden ska innehålla arbetslokaler."
+  }
+}

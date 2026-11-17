@@ -1,0 +1,69 @@
+{
+  "id": "skivmontage",
+  "titel": "Montage av skivor i väggar och tak",
+  "status": "bas",
+  "ingress": "Gips- och byggskivor i stora format är tunga och otympliga, särskilt i tak.",
+  "riskomrade": "ergonomi",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "invandigt"
+  ],
+  "indikatorer": [
+    "gipsskiva",
+    "undertak",
+    "innervägg",
+    "regelavstånd"
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Stora skivor monteras för hand."
+  },
+  "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "900 mm skivor och skivlyft."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Arkitekt",
+      "atgard": "Anpassa regelavstånd för 900 mm skivor; välj låga vikter och format."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Skivlyft för tak, skivvagnar, leverans nära arbetsplatsen."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "skivmontage.1",
+      "fraga": "Är regelavstånd och skivformat anpassade för manuell hantering?",
+      "skede": "projektering",
+      "underlag": [
+        "beskrivning"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Belastningsergonomi."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 5.3.01, 6.3.02",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

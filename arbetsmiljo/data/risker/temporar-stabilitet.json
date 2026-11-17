@@ -1,0 +1,76 @@
+{
+  "id": "temporar-stabilitet",
+  "titel": "Stabilitet under uppförandet och tillfälliga laster",
+  "status": "bas",
+  "ingress": "Väggar, pelare, murade väggar och bjälklag kan välta eller rasa innan stommen är färdig och stabiliserad. Upplag av material på bjälklag kan överbelasta.",
+  "riskomrade": "lyft",
+  "sarskildRisk": [
+    11
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "stomme"
+  ],
+  "indikatorer": [
+    "provisorisk stagning",
+    "stämpning",
+    "montageordning",
+    "upplag på bjälklag",
+    "fribärande"
+  ],
+  "vadArRisken": [
+    "Konstruktioner dimensioneras för färdigt läge. Byggskedet med ofullständig stomme, vind och tillfälliga laster måste utredas särskilt."
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Stabilitet under byggskedet inte utredd."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Tillfälliga stöd och tillåtna laster redovisade."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Konstruktör",
+      "atgard": "Projektera tillfälliga stöd och stagning, ange montageordning och tillåtna laster på bjälklag under byggskedet."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Montageplan med stagning, stämpning och förankring; sprid laster på bjälklag; stoppa arbete vid kraftig vind."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "temporar-stabilitet.1",
+      "fraga": "Redovisar konstruktören stabilitet under uppförandet och tillåtna byggskedeslaster?",
+      "skede": "projektering",
+      "underlag": [
+        "konstruktionsritningar",
+        "montageanvisning"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Montering av byggelement och stabilitet."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 3.1.01, 3.5.01, 3.5.26, 5.3.11, 6.0.02",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

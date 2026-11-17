@@ -1,0 +1,65 @@
+{
+  "id": "klam-skarskador",
+  "titel": "Klämskador samt stick- och skärskador",
+  "status": "bas",
+  "ingress": "Klämskador vid hantering av material och element, samt stick- och skärskador från spik, armering och verktyg, är vanliga i alla byggprojekt.",
+  "riskomrade": "organisation",
+  "sarskildRisk": [],
+  "skeden": [
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "underhall"
+  ],
+  "byggdelar": [
+    "etablering"
+  ],
+  "indikatorer": [
+    "materialhantering",
+    "rivning",
+    "armering"
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Vanligt i alla projekt."
+  },
+  "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Rätt verktyg och skyddsutrustning."
+  },
+  "atgarder": [
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Skyddshandskar, skyddsskor, skyddsglasögon, rätt verktyg, ta bort spik ur löst virke, god kommunikation vid lyft."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "klam-skarskador.1",
+      "fraga": "Finns krav på personlig skyddsutrustning i arbetsmiljöplanen?",
+      "skede": "produktion",
+      "underlag": [
+        "arbetsmiljöplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+      "text": "Personlig skyddsutrustning."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.31, 9.9.10",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ],
+  "allman": true
+}

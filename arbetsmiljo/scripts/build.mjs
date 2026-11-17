@@ -33,6 +33,7 @@ for (const f of filer) {
   if (r.id && f !== `${r.id}.json`) F(`filnamnet ska vara ${r.id}.json`);
   if (r.id && !/^[a-z0-9-]+$/.test(r.id)) F('id får bara innehålla a–z, 0–9 och bindestreck');
   if (r.status && !tillatna.status.has(r.status)) F(`okänd status "${r.status}"`);
+  if (r.allman !== undefined && typeof r.allman !== 'boolean') F('allman ska vara true eller false');
   if (r.riskomrade && !tillatna.riskomraden.has(r.riskomrade)) F(`okänt riskomrade "${r.riskomrade}"`);
   for (const [falt, mangd] of [['skeden', 'skeden'], ['projekttyper', 'projekttyper'], ['byggdelar', 'byggdelar']])
     for (const v of r[falt] || []) if (!tillatna[mangd].has(v)) F(`okänt värde "${v}" i ${falt}`);

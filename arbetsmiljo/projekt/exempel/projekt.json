@@ -4,12 +4,16 @@
   "basP": "",
   "datum": "2026-11-17",
   "profil": {
-    "projekttyp": ["ombyggnad"],
+    "projekttyp": [
+      "ombyggnad"
+    ],
     "byggar": 1968,
     "inventering": "nej",
     "verksamhet": "ja",
+    "arbetslokaler": "ja",
     "hojd": "ja",
     "prefab": "nej",
+    "platsgjutning": "nej",
     "schakt": "nej",
     "ledningar": "vet ej",
     "forurenad": "nej",

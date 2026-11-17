@@ -22,7 +22,7 @@ if (process.argv.includes('--json')) {
     projekt: projekt.namn,
     obesvarade: obesvaradeFragor(db, profil).map(q => q.id),
     risker: rader.map(({ risk, rel, varningar, rFore, rEfter }) => ({
-      id: risk.id, titel: risk.titel, relevans: rel, sarskildRisk: risk.sarskildRisk || [],
+      id: risk.id, titel: risk.titel, relevans: rel, allman: risk.allman === true, sarskildRisk: risk.sarskildRisk || [],
       riskFore: rFore, riskEfter: rEfter, varningar: varningar.map(v => v.text),
       indikatorer: risk.indikatorer || [], granskning: risk.granskning
     }))
@@ -42,8 +42,9 @@ ut.push('## Projektprofil', ...svar, '');
 const obesv = obesvaradeFragor(db, profil);
 if (obesv.length) ut.push('> Obesvarade profilfrågor som påverkar urvalet: ' + obesv.map(q => `\`${q.id}\``).join(', ') + '. Försök besvara dem ur handlingarna.', '');
 
+const allmanna = rader.filter(x => x.allman && x.rel !== 'nej');
 for (const grupp of ['ja', 'mojlig', 'nej']) {
-  const g = rader.filter(x => x.rel === grupp);
+  const g = rader.filter(x => x.rel === grupp && !(x.allman && grupp !== 'nej'));
   if (!g.length) continue;
   ut.push(`## ${relevansText[grupp]} (${g.length})`, '');
   if (grupp === 'nej') { ut.push(g.map(x => `- ${x.risk.titel} (\`${x.risk.id}\`)`).join('\n'), ''); continue; }
@@ -56,6 +57,11 @@ for (const grupp of ['ja', 'mojlig', 'nej']) {
     for (const q of risk.granskning) ut.push(`- [ ] \`${q.id}\` ${q.fraga}${q.underlag ? ` _(${q.underlag.join(', ')})_` : ''}`);
     ut.push('');
   }
+}
+if (allmanna.length) {
+  ut.push(`## Allmänna risker (${allmanna.length})`, '', `> ${db.allmanText}`, '');
+  for (const { risk } of allmanna) ut.push(`- [ ] ${risk.titel} (\`${risk.id}\`) – ${risk.granskning.map(q => `\`${q.id}\``).join(', ')}`);
+  ut.push('');
 }
 ut.push('## Arbeten med särskild risk – kontrollera alltid', '');
 const tackta = new Set(rader.filter(x => x.rel !== 'nej').flatMap(x => x.risk.sarskildRisk || []));

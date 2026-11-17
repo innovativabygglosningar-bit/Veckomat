@@ -1,0 +1,81 @@
+{
+  "id": "vard-kok-utrymmen",
+  "titel": "Arbetsutrymme i vårdlokaler och storkök",
+  "status": "bas",
+  "ingress": "Trånga vårdrum, hygienrum och kök ger belastningsskador vid förflyttning av patienter och vid hantering av varor och kärl.",
+  "riskomrade": "utformning",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "drift"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "rum"
+  ],
+  "indikatorer": [
+    "vårdrum",
+    "hygienrum",
+    "patientlyft",
+    "storkök",
+    "tillagningskök"
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Trånga vårdrum."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Utrymme för hjälpmedel och rullande hantering."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Arkitekt",
+      "atgard": "Utrymme för lyfthjälpmedel och assistans i vårdrum och hygienrum (dörrbredder, trösklar); kök dimensionerade för antal portioner med plats för mottagning, förvaring och avfall."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "vard-kok-utrymmen.1",
+      "fraga": "Finns utrymme för lyfthjälpmedel och assistans i vård- och hygienrum?",
+      "skede": "projektering",
+      "underlag": [
+        "arkitektritningar"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:12 Utformning av arbetsplatser",
+      "text": "Arbetslokaler."
+    },
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Belastningsergonomi."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 20.1.10",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ],
+  "relevans": {
+    "projekttyper": [
+      "nybyggnad",
+      "ombyggnad"
+    ],
+    "profil": {
+      "arbetslokaler": [
+        "ja"
+      ]
+    },
+    "motivering": "Byggnaden ska innehålla arbetslokaler."
+  }
+}

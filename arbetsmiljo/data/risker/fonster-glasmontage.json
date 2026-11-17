@@ -1,0 +1,71 @@
+{
+  "id": "fonster-glasmontage",
+  "titel": "Montage av fönster, glaspartier, dörrar och portar",
+  "status": "bas",
+  "ingress": "Fönster, glaspartier och portar är tunga och otympliga. Montage sker ofta vid öppningar på höjd, med risk för klämskador och glasbrott.",
+  "riskomrade": "lyft",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "fasad"
+  ],
+  "indikatorer": [
+    "fönster",
+    "glasparti",
+    "fönsterbyte",
+    "port",
+    "entrépartier"
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Stora glas och partier utan hjälpmedel."
+  },
+  "riskEfter": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Vakuumlyftare och planerad transport."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Arkitekt",
+      "atgard": "Ange glasstorlekar, vikter och monteringsmetod; se till att det finns plats för lyfthjälpmedel."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Vakuumlyftare, dörrlyft, kran för stora partier, säker kant vid öppningen."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "fonster-glasmontage.1",
+      "fraga": "Är vikt och storlek på glaspartier redovisade och möjliga att montera med hjälpmedel?",
+      "skede": "projektering",
+      "underlag": [
+        "fönsterförteckning",
+        "fasadritningar"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Belastningsergonomi."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 5.5.01–5.5.04",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

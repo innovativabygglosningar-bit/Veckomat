@@ -280,6 +280,7 @@ function renderLista(){
         ${(r.sarskildRisk||[]).map(n => `<span class="pill sr" title="${esc(DB.kategorier.sarskildRisk.find(x=>x.nr===n).text)}">Särskild risk ${n}</span>`).join('')}
         ${r.skeden.map(s => `<span class="pill">${esc(namn('skeden', s))}</span>`).join('')}
         ${r.status === 'bas' ? '<span class="pill draft">Grundblad</span>' : ''}
+        ${r.allman ? '<span class="pill" title="Finns på alla byggarbetsplatser – kontrolleras mot arbetsmiljöplanen">Allmän risk</span>' : ''}
         ${profilVarningar(r).some(v => v.niva==='hog') && rel!=='nej' ? '<span class="rel ja">⚠ Åtgärd i profil</span>' : ''}
       </div>
     </a>`).join('') || '<p class="muted">Inga risker matchar filtret.</p>'}</div>`;
@@ -330,6 +331,7 @@ function renderRisk(id){
         ${r.skeden.map(s => `<span class="pill">${skFor(s)}</span>`).join('')}
         ${r.projekttyper.map(p => `<span class="pill">${esc(namn('projekttyper', p))}</span>`).join('')}
         ${r.status === 'bas' ? '<span class="pill draft">Grundblad – kan fördjupas</span>' : ''}
+        ${r.allman ? `<span class="pill">Allmän risk – ${esc(DB.allmanText || '')}</span>` : ''}
       </div>
       <p class="ingress">${esc(r.ingress)}</p>
       ${varn.map(v => `<div class="alert ${v.niva==='medel'?'medel':''}"><b>Utifrån projektprofilen</b>${esc(v.text)}</div>`).join('')}

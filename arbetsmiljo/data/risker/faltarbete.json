@@ -1,0 +1,68 @@
+{
+  "id": "faltarbete",
+  "titel": "Fältarbete i skog och mark",
+  "status": "bas",
+  "ingress": "Inventering, mätning och undersökningar i skog och mark innebär risk för fästingburen smitta (TBE, borrelia), skador i terräng och ensamarbete utan täckning.",
+  "riskomrade": "organisation",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "anlaggning"
+  ],
+  "byggdelar": [
+    "mark"
+  ],
+  "indikatorer": [
+    "fältarbete",
+    "inmätning",
+    "geoteknisk undersökning",
+    "terräng"
+  ],
+  "relevans": {
+    "projekttyper": [
+      "anlaggning"
+    ]
+  },
+  "riskFore": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Fältarbete i fästingområde."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 2,
+    "motivering": "Vaccination, rutiner och kommunikation."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Uppdragsledare",
+      "atgard": "Kläder för fältarbete, erbjudande om TBE-vaccination, rapportera var man befinner sig, kommunikation där mobiltäckning saknas."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "faltarbete.1",
+      "fraga": "Finns rutin för ensamarbete och kommunikation vid fältarbete?",
+      "skede": "projektering",
+      "underlag": [
+        "arbetsmiljöplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Biologiska riskkällor."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.32",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

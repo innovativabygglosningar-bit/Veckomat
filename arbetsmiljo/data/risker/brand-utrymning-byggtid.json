@@ -1,0 +1,81 @@
+{
+  "id": "brand-utrymning-byggtid",
+  "titel": "Brandskydd och utrymning under byggtiden",
+  "status": "bas",
+  "ingress": "Under byggtiden kan utrymningsvägar blockeras, brandcellsgränser brytas av håltagningar och brännbart avfall och gasflaskor öka brandrisken.",
+  "riskomrade": "brand",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+  ],
+  "byggdelar": [
+    "etablering",
+    "rum"
+  ],
+  "indikatorer": [
+    "utrymningsväg",
+    "brandcellsgräns",
+    "brandtätning",
+    "container",
+    "gasflaskor",
+    "brandskyddsbeskrivning"
+  ],
+  "vadArRisken": [
+    "Vid ombyggnad med pågående verksamhet berörs även brukare och boende."
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Ombyggnad med verksamhet kvar."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Brandskydd under byggtiden planerat."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "BAS-P / Brandkonsult",
+      "atgard": "Brandskydd och utrymning för byggskedet: alternativa utrymningsvägar, tillfällig brandtätning, larm och nödbelysning."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Fria utrymningsvägar, märkt tillfällig brandtätning med godkänt material, containrar med brännbart avfall minst 6 m från byggnad, gasflaskor i låst förvaring nattetid."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "brand-utrymning-byggtid.1",
+      "fraga": "Finns plan för brandskydd och utrymning under byggtiden?",
+      "skede": "projektering",
+      "underlag": [
+        "brandskyddsbeskrivning",
+        "etableringsplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "Lag (2003:778) om skydd mot olyckor",
+      "text": "Brandskydd."
+    },
+    {
+      "ref": "Lag (2010:1011) om brandfarliga och explosiva varor",
+      "text": "Gasflaskor."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.6.01–9.6.04",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

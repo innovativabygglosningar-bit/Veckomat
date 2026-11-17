@@ -1,0 +1,67 @@
+{
+  "id": "forsta-hjalpen",
+  "titel": "Första hjälpen och krisstöd",
+  "status": "bas",
+  "ingress": "Vid olycka måste första hjälpen, larmvägar och krisstöd vara planerade och kända av alla på arbetsplatsen.",
+  "riskomrade": "organisation",
+  "sarskildRisk": [],
+  "skeden": [
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "rivning",
+    "underhall"
+  ],
+  "byggdelar": [
+    "etablering"
+  ],
+  "indikatorer": [
+    "första hjälpen",
+    "hjärtstartare",
+    "olycka",
+    "räddningstjänst"
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Oklara rutiner."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Rutiner och utrustning på plats."
+  },
+  "atgarder": [
+    {
+      "skede": "produktion",
+      "ansvar": "BAS-U",
+      "atgard": "Första hjälpen-utrustning, utbildad personal, adress och angöring för räddningstjänst i arbetsmiljöplanen, rutin för krisstöd."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "forsta-hjalpen.1",
+      "fraga": "Beskriver arbetsmiljöplanen första hjälpen och larmrutiner?",
+      "skede": "produktion",
+      "underlag": [
+        "arbetsmiljöplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:2 Planering och organisering av arbetsmiljöarbete",
+      "text": "Första hjälpen och krisstöd."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.33",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ],
+  "allman": true
+}

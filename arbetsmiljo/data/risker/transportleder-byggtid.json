@@ -1,0 +1,73 @@
+{
+  "id": "transportleder-byggtid",
+  "titel": "Transport- och tillträdesleder under byggtiden",
+  "status": "bas",
+  "ingress": "Om byggelement, aggregat och rivningsmassor inte kan transporteras in och ut på ett enkelt sätt blir det tunga manuella lyft, bärande i trappor och provisoriska håltagningar.",
+  "riskomrade": "ergonomi",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "rivning"
+  ],
+  "byggdelar": [
+    "etablering",
+    "stomme"
+  ],
+  "indikatorer": [
+    "transportväg",
+    "hiss",
+    "bygghiss",
+    "transportöppning",
+    "rivningsmassor"
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Ingen planerad transportväg."
+  },
+  "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Transportleder samordnade med komponenter."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Projekteringsledare / BAS-P",
+      "atgard": "Kontrollera att byggelement och utrustning kan transporteras och passas in; planera tillfälliga öppningar; hiss eller lyftanordning för materialtransport."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Rullande hantering, bygghiss, fria transportvägar."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "transportleder-byggtid.1",
+      "fraga": "Har transportvägarna granskats mot komponenternas storlek och vikt?",
+      "skede": "projektering",
+      "underlag": [
+        "etableringsplan",
+        "arkitektritningar"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Transportleder på byggarbetsplatsen."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.1.12, 9.1.13, 0.3.01",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

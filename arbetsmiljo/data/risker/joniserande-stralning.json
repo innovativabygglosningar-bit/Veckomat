@@ -1,0 +1,77 @@
+{
+  "id": "joniserande-stralning",
+  "titel": "Joniserande strålning i befintlig verksamhet",
+  "status": "bas",
+  "ingress": "Ombyggnad i sjukhus, laboratorier och industrier kan innebära arbete nära strålkällor eller i kontaminerade utrymmen.",
+  "riskomrade": "halsofarligt",
+  "sarskildRisk": [
+    4
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "ombyggnad",
+    "underhall"
+  ],
+  "byggdelar": [
+    "rum"
+  ],
+  "indikatorer": [
+    "röntgen",
+    "strålkälla",
+    "laboratorium",
+    "nivåmätare",
+    "sjukhus",
+    "industri"
+  ],
+  "riskFore": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Arbete nära strålkälla utan avstämning."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Samordning med anläggningsägaren."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Byggherre / BAS-P",
+      "atgard": "Kontakta anläggningsägaren och strålskyddsansvarig; kartlägg strålkällor och kontaminerade ytor."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Följ anläggningens strålskyddsregler och tillträdesrutiner."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "joniserande-stralning.1",
+      "fraga": "Finns strålkällor i eller nära de utrymmen som berörs?",
+      "skede": "projektering",
+      "underlag": [
+        "verksamhetsbeskrivning"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "Strålskyddslagen (2018:396) och SSMFS",
+      "text": "Strålskydd."
+    },
+    {
+      "ref": "AFS 2023:3 Projektering och byggarbetsmiljösamordning",
+      "text": "Arbete med särskild risk."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.31",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

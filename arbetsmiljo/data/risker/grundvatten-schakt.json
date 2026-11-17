@@ -1,0 +1,90 @@
+{
+  "id": "grundvatten-schakt",
+  "titel": "Grundvatten och bottenupptryckning i schakt",
+  "status": "bas",
+  "ingress": "När grundvattnet ligger över schaktbotten kan schaktslänter rasa, botten tryckas upp och schakten vattenfyllas. Länshållning och grundvattensänkning måste planeras.",
+  "riskomrade": "ras",
+  "sarskildRisk": [
+    2
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "anlaggning",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "mark"
+  ],
+  "indikatorer": [
+    "grundvattennivå",
+    "länshållning",
+    "grundvattensänkning",
+    "spont",
+    "källare",
+    "pumpgrop"
+  ],
+  "relevans": {
+    "profil": {
+      "schakt": [
+        "ja"
+      ]
+    }
+  },
+  "vadArRisken": [
+    "Bottenupptryckning och ras sker snabbt och utan förvarning. Pumpar som stannar kan ge vattenfylld schakt med personer i."
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Djup schakt under grundvattenytan utan utredd länshållning."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Högsta tillåtna grundvattennivå och länshållning anges i arbetshandling."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Geotekniker",
+      "atgard": "Utred grundvattennivå och risk för bottenupptryckning; ange högsta tillåtna grundvattennivå i arbetshandling."
+    },
+    {
+      "skede": "projektering",
+      "ansvar": "Markprojektör",
+      "atgard": "Ange pumpars placering, förväntat uttag och hur schaktbotten ska utföras för avrinning. Ange att schakt inte får påbörjas innan avsänkning nåtts."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Beredskap för länshållning, reservpump, kontroll av grundvattennivå."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "grundvatten-schakt.1",
+      "fraga": "Anges högsta tillåtna grundvattennivå och krav på avsänkning i arbetshandlingen?",
+      "skede": "projektering",
+      "underlag": [
+        "geoteknisk PM",
+        "markritningar"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Schaktning och skydd mot ras."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.2.02",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

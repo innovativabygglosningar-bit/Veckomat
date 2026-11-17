@@ -78,6 +78,7 @@ export function urval(db, profil = {}) {
     .map(risk => ({
       risk,
       rel: relevans(risk, profil),
+      allman: risk.allman === true,
       varningar: profilVarningar(risk, profil),
       rFore: risk.riskFore.s * risk.riskFore.k,
       rEfter: risk.riskEfter.s * risk.riskEfter.k

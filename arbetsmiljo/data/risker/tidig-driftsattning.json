@@ -1,0 +1,66 @@
+{
+  "id": "tidig-driftsattning",
+  "titel": "Tidig driftsättning av hiss, värme och el",
+  "status": "bas",
+  "ingress": "Utan permanent hiss bärs material i trappor. Utan värme och belysning blir arbetsmiljön kall och mörk. Att driftsätta permanenta installationer tidigt minskar bärandet och ger bättre klimat.",
+  "riskomrade": "organisation",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "el",
+    "vs"
+  ],
+  "indikatorer": [
+    "hiss",
+    "byggvärme",
+    "permanent belysning",
+    "tidplan"
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Sen driftsättning."
+  },
+  "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Hiss och värme tidigt i tidplanen."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Byggherre / BAS-P",
+      "atgard": "Planera in tidig driftsättning av hiss, värme och belysning i tidplanen och förfrågningsunderlaget."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "tidig-driftsattning.1",
+      "fraga": "Är tidig driftsättning av hiss, värme och belysning planerad?",
+      "skede": "projektering",
+      "underlag": [
+        "tidplan",
+        "AF"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Byggarbetsplatsens utformning."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 8.6.02, 8.6.03",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

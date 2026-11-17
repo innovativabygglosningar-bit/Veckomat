@@ -1,0 +1,71 @@
+{
+  "id": "vind-stora-element",
+  "titel": "Vind vid hantering av stora skivor och lätta element",
+  "status": "bas",
+  "ingress": "Stora lätta element som takplåt, fasadskivor och isolerskivor fångar vinden och kan slita sig, välta montörer eller blåsa ned från ställning.",
+  "riskomrade": "lyft",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "fasad",
+    "tak"
+  ],
+  "indikatorer": [
+    "takplåt",
+    "fasadskivor",
+    "stora format",
+    "sandwichelement"
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Långa lätta element."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Begränsade längder och säker lagring."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Konstruktör / Arkitekt",
+      "atgard": "Begränsa storleken på lätta byggelement (t.ex. längder över 4 m) med hänsyn till vindkänslighet; dela skivor större än ca 0,9 × 3 m."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Säker lagring på ställning, styrlinor, stopp vid hård vind."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "vind-stora-element.1",
+      "fraga": "Föreskrivs lätta element eller skivor i stora format som är vindkänsliga?",
+      "skede": "projektering",
+      "underlag": [
+        "beskrivning",
+        "fasadritningar"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Montering av byggelement."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 4.1.01, 5.3.01, 5.3.04",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

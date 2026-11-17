@@ -1,0 +1,70 @@
+{
+  "id": "lastbilsflak",
+  "titel": "Fall från lastbilsflak vid lossning",
+  "status": "bas",
+  "ingress": "Vid koppling av last på flak riskerar montörer att falla, bli påkörda vid lastbilen eller klämmas mellan element.",
+  "riskomrade": "fall",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning"
+  ],
+  "byggdelar": [
+    "etablering"
+  ],
+  "indikatorer": [
+    "leveranser",
+    "lossning",
+    "prefab",
+    "avlastningsyta"
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Koppling på flak utan skydd."
+  },
+  "riskEfter": {
+    "s": 2,
+    "k": 3,
+    "motivering": "Säker tillträdesled och avlastningsyta."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "BAS-P",
+      "atgard": "Avlastningsytor i etableringsplanen med plats runt fordonet."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Fast stege eller trappa till flak, fallskydd på flak, varselkläder, avstängning."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "lastbilsflak.1",
+      "fraga": "Finns avlastningsytor med plats runt fordon i etableringsplanen?",
+      "skede": "projektering",
+      "underlag": [
+        "etableringsplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Skydd mot fall."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 3.5.10, 3.5.11, 9.1.14",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": "marksten",
+  "titel": "Läggning av marksten och kantsten",
+  "status": "bas",
+  "ingress": "Läggning av marksten, plattor och kantsten innebär upprepade tunga lyft och arbete på knä.",
+  "riskomrade": "ergonomi",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "anlaggning",
+    "nybyggnad"
+  ],
+  "byggdelar": [
+    "mark"
+  ],
+  "indikatorer": [
+    "marksten",
+    "betongplattor",
+    "kantsten",
+    "natursten",
+    "stenläggning"
+  ],
+  "vadArRisken": [
+    "Stenformat och vikt bestäms i projekteringen."
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 2,
+    "motivering": "Tunga stenar som läggs för hand."
+  },
+  "riskEfter": {
+    "s": 2,
+    "k": 2,
+    "motivering": "Format för maskinläggning eller lyfthjälpmedel."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Markprojektör / Landskapsarkitekt",
+      "atgard": "Välj format och vikter som kan läggas med maskin eller lyfthjälpmedel."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Lyfthjälpmedel, god läggningsteknik, knäskydd, arbetsrotation."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "marksten.1",
+      "fraga": "Föreskrivs stenformat som kräver lyfthjälpmedel, och är det angivet?",
+      "skede": "projektering",
+      "underlag": [
+        "markbeskrivning"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:10 Risker i arbetsmiljön",
+      "text": "Belastningsergonomi."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 1.7.01",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ],
+  "relevans": {
+    "profil": {
+      "schakt": [
+        "ja"
+      ]
+    },
+    "motivering": "Mark- och anläggningsarbeten förekommer."
+  }
+}

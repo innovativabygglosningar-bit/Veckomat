@@ -1,0 +1,72 @@
+{
+  "id": "stegar-tilltrade",
+  "titel": "Stegar och tillträdesleder",
+  "status": "bas",
+  "ingress": "Lösa stegar som glider, välter eller används för arbete i stället för tillträde är en vanlig orsak till fallolyckor.",
+  "riskomrade": "fall",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+  ],
+  "byggdelar": [
+    "etablering",
+    "stomme"
+  ],
+  "indikatorer": [
+    "stege",
+    "trapptorn",
+    "tillträde",
+    "arbetsbock"
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Lösa stegar som huvudsakligt tillträde."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Trapptorn och tidiga permanenta trappor."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Konstruktör / Arkitekt",
+      "atgard": "Montera permanenta trappor tidigt så att de kan användas som tillträdesled."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Trapptorn i stället för stegar; stegar bara för kortvarigt arbete, förankrade och kontrollerade."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "stegar-tilltrade.1",
+      "fraga": "Finns säkra tillträdesleder till alla plan under byggtiden?",
+      "skede": "projektering",
+      "underlag": [
+        "etableringsplan",
+        "tidplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+      "text": "Stegar och arbetsbockar."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 3.1.08, 3.5.23, 9.9.61",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

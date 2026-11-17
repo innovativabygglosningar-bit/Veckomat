@@ -1,0 +1,65 @@
+{
+  "id": "alkohol-droger",
+  "titel": "Alkohol och droger",
+  "status": "bas",
+  "ingress": "Påverkan av alkohol eller droger ökar risken för olyckor, särskilt vid maskinarbete och arbete på höjd.",
+  "riskomrade": "organisation",
+  "sarskildRisk": [],
+  "skeden": [
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "rivning",
+    "underhall"
+  ],
+  "byggdelar": [
+    "etablering"
+  ],
+  "indikatorer": [
+    "ordningsregler",
+    "drogpolicy"
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Ingen policy."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Ordningsregler och rutin."
+  },
+  "atgarder": [
+    {
+      "skede": "produktion",
+      "ansvar": "BAS-U",
+      "atgard": "Ordningsregler om alkohol och droger i arbetsmiljöplanen, rutin vid misstanke."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "alkohol-droger.1",
+      "fraga": "Finns ordningsregler om alkohol och droger i arbetsmiljöplanen?",
+      "skede": "produktion",
+      "underlag": [
+        "arbetsmiljöplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:1 Systematiskt arbetsmiljöarbete",
+      "text": "Rutiner."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.0.33",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ],
+  "allman": true
+}

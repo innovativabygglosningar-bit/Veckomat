@@ -1,0 +1,84 @@
+{
+  "id": "liftar-plattformar",
+  "titel": "Liftar, klätterplattformar och arbetsplattformar",
+  "status": "bas",
+  "ingress": "Saxliftar, bomliftar och mastklätterplattformar kan välta, klämma föraren mot tak och balkar eller köras av kanter.",
+  "riskomrade": "fall",
+  "sarskildRisk": [
+    1
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "underhall"
+  ],
+  "byggdelar": [
+    "fasad",
+    "etablering"
+  ],
+  "indikatorer": [
+    "saxlift",
+    "bomlift",
+    "klätterplattform",
+    "mastklätterplattform",
+    "lift"
+  ],
+  "relevans": {
+    "profil": {
+      "hojd": [
+        "ja"
+      ]
+    }
+  },
+  "vadArRisken": [
+    "Plattformar ska vara kontrollerade av behörig person och användas enligt tillverkarens anvisningar, inom vindgränsen och med jämnt fördelad last."
+  ],
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Ojämn mark, vind."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Plan uppställningsyta, utbildade förare."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "BAS-P",
+      "atgard": "Redovisa uppställningsytor för lift och plattform i etableringsplanen."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Förarutbildning, daglig kontroll, fallskydd i bomlift, stopp vid hård vind."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "liftar-plattformar.1",
+      "fraga": "Finns plana uppställningsytor för liftar längs fasader som ska bearbetas?",
+      "skede": "projektering",
+      "underlag": [
+        "etableringsplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+      "text": "Mobila arbetsplattformar."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 5.3.01–5.3.03, 9.1.23",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

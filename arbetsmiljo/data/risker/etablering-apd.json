@@ -1,0 +1,89 @@
+{
+  "id": "etablering-apd",
+  "titel": "Etablering och arbetsplatsdisposition",
+  "status": "bas",
+  "ingress": "Etableringsplanen (APD) avgör var kran, upplag, bodar, avfall, transportvägar, gångvägar och parkering hamnar. En trång eller ogenomtänkt etablering ger risker under hela byggtiden.",
+  "riskomrade": "organisation",
+  "sarskildRisk": [],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning",
+    "rivning"
+  ],
+  "byggdelar": [
+    "etablering"
+  ],
+  "indikatorer": [
+    "etableringsplan",
+    "APD",
+    "bodar",
+    "upplag",
+    "kranplacering",
+    "parkering"
+  ],
+  "vadArRisken": [
+    "BAS-P ska se till att etableringen fungerar under hela produktionstiden, även när ställningar, schakter och upplag ändras."
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Trångt och oplanerat."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Genomarbetad etableringsplan."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "BAS-P",
+      "atgard": "Ta fram preliminär etableringsplan: avgränsning, parkering, transport- och gångvägar, bodar, kran och svängradie, upplag, avfall, entreprenadgränser, ledningar i mark."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "BAS-U",
+      "atgard": "Uppdatera etableringsplanen när arbetsplatsen förändras."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "etablering-apd.1",
+      "fraga": "Finns en etableringsplan som fungerar under hela produktionstiden?",
+      "skede": "projektering",
+      "underlag": [
+        "etableringsplan"
+      ]
+    },
+    {
+      "id": "etablering-apd.2",
+      "fraga": "Redovisar etableringsplanen ledningar i mark och tillåtet marktryck?",
+      "skede": "projektering",
+      "underlag": [
+        "etableringsplan",
+        "ledningsplan"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:3 Projektering och byggarbetsmiljösamordning",
+      "text": "Samordning och arbetsmiljöplan."
+    },
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Byggarbetsplatsen."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.1.11, Granskning APD",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

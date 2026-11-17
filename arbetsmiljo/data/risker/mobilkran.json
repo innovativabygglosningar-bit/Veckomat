@@ -1,0 +1,81 @@
+{
+  "id": "mobilkran",
+  "titel": "Mobilkran – uppställning och markbärighet",
+  "status": "bas",
+  "ingress": "En mobilkran kan välta om marken under stödbenen inte bär, till exempel över ledningar, källare eller nyfylld mark.",
+  "riskomrade": "lyft",
+  "sarskildRisk": [
+    11
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad",
+    "anlaggning"
+  ],
+  "byggdelar": [
+    "etablering",
+    "mark"
+  ],
+  "indikatorer": [
+    "mobilkran",
+    "stödben",
+    "uppställningsyta",
+    "marktryck"
+  ],
+  "relevans": {
+    "profil": {
+      "prefab": [
+        "ja"
+      ]
+    }
+  },
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Okänd markbärighet."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Uppställningsplats utredd och redovisad."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Geotekniker / Konstruktör",
+      "atgard": "Kontrollberäkna markens bärighet för stödbenstryck; redovisa tillåtna uppställningsplatser och laster på arbetshandling eller etableringsplan."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Stödbensplattor, kontroll av mark och underliggande ledningar före uppställning."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "mobilkran.1",
+      "fraga": "Är uppställningsplatser för mobilkran redovisade med kontrollerad bärighet?",
+      "skede": "projektering",
+      "underlag": [
+        "etableringsplan",
+        "geoteknisk PM"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:11 Arbetsutrustning och personlig skyddsutrustning",
+      "text": "Lyftanordningar."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.9.51",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

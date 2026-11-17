@@ -1,0 +1,81 @@
+{
+  "id": "infastningar-skydd",
+  "titel": "Infästningar för skyddsräcken, nät och ställning",
+  "status": "bas",
+  "ingress": "Den som monterar skyddsräcken är själv oskyddad. Saknas förberedda infästningar blir monteringen riskfylld och skydden sämre förankrade.",
+  "riskomrade": "fall",
+  "sarskildRisk": [
+    1
+  ],
+  "skeden": [
+    "projektering",
+    "produktion"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "stomme",
+    "tak",
+    "fasad"
+  ],
+  "indikatorer": [
+    "skyddsräcke",
+    "skyddsnät",
+    "ställningsförankring",
+    "valvkant",
+    "takfotstass"
+  ],
+  "relevans": {
+    "profil": {
+      "hojd": [
+        "ja"
+      ]
+    }
+  },
+  "riskFore": {
+    "s": 2,
+    "k": 4,
+    "motivering": "Räcken monteras utan förberedda infästningar."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 4,
+    "motivering": "Infästningar projekterade och räcken monteras från säker position."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Konstruktör",
+      "atgard": "Projektera infästningar för tillfälliga räcken, nät, ställningar och väderskydd vid valvkanter, trapplöp, schakt och takfot. Välj fästdon som är beständiga och kan tas isär."
+    },
+    {
+      "skede": "produktion",
+      "ansvar": "Entreprenör",
+      "atgard": "Montera räcken från säker position eller med sele; spärra av under montage."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "infastningar-skydd.1",
+      "fraga": "Är infästningar för tillfälliga skydd redovisade?",
+      "skede": "projektering",
+      "underlag": [
+        "konstruktionsritningar"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:13 Risker vid vissa typer av arbete",
+      "text": "Skydd mot fall."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 9.6.10, 9.6.11",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}

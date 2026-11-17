@@ -29,9 +29,10 @@ Föreskriftshänvisningar ska följa AFS 2023:1–15. Hänvisa inte till upphäv
    - **Åtgärd:** vad som ska göras, av vem (byggherre, arkitekt, konstruktör, VVS-, el-, mark-projektör, BAS-P), helst med en formulering de kan använda direkt.
 5. **Bedöm risknivå** för projektet. Utgå från riskbladets `riskFore`/`riskEfter`, men justera efter vad handlingarna visar och motivera avvikelsen.
 6. **Möjliga risker** (`mojlig`): avgör om de förekommer utifrån handlingarna. Uppdatera i så fall `projekt.json` och kör urvalet igen.
-7. **Särskild risk:** gå igenom alla 13 arbetena med särskild risk, även de som inget riskblad täcker.
-8. **Risker utanför banken:** notera risker du hittar i handlingarna som banken saknar. Föreslå dem som nya riskblad i en egen sektion. Lägg inte in dem i banken utan att användaren godkänt det.
-9. **Skriv rapporten** till `projekt/<namn>/granskning-ÅÅÅÅ-MM-DD.md` enligt `mallar/granskningsrapport.md`. Sammanfatta de viktigaste bristerna först.
+7. **Allmänna risker** (`allman: true`, en egen sektion i urvalet) finns på alla byggarbetsplatser. Kontrollera bara att arbetsmiljöplanen hanterar dem. Besvara inte deras frågor en och en.
+8. **Särskild risk:** gå igenom alla 13 arbetena med särskild risk, även de som inget riskblad täcker.
+9. **Risker utanför banken:** notera risker du hittar i handlingarna som banken saknar. Föreslå dem som nya riskblad i en egen sektion. Lägg inte in dem i banken utan att användaren godkänt det.
+10. **Skriv rapporten** till `projekt/<namn>/granskning-ÅÅÅÅ-MM-DD.md` enligt `mallar/granskningsrapport.md`. Sammanfatta de viktigaste bristerna först.
 
 Vid en uppföljande granskning: läs den förra rapporten och redovisa vilka punkter som har åtgärdats.
 
@@ -49,6 +50,7 @@ Vid en uppföljande granskning: läs den förra rapporten och redovisa vilka pun
 |---|---|---|
 | `id`, `titel`, `status`, `ingress` | ja | Grunddata. `status`: `klar` eller `bas` |
 | `riskomrade`, `skeden`, `projekttyper`, `byggdelar`, `sarskildRisk` | ja (sarskildRisk kan vara tom) | Kategorisering |
+| `allman` | nej | `true` för risker som finns på alla byggarbetsplatser och främst hanteras av entreprenören |
 | `sokord`, `indikatorer` | nej | Sökord för webbsidan; ord att leta efter i handlingarna |
 | `relevans`, `profilvarningar` | nej | Urvalslogik och varningar utifrån profilen |
 | `vadArRisken`, `forekomst` | nej | Beskrivning; var risken förekommer (`plats`, `exempel`) |
@@ -57,7 +59,7 @@ Vid en uppföljande granskning: läs den förra rapporten och redovisa vilka pun
 | `atgarder` | ja | `{skede, ansvar, atgard}` |
 | `granskning` | ja | `{id, fraga, skede, underlag[]}` |
 | `textArbetsmiljoplan`, `textHandlingar` | nej | Färdiga textmallar |
-| `regler`, `kallor` | ja / nej | `{ref, text}`; `{titel, url}` |
+| `regler`, `kallor` | ja / nej | `{ref, text}`; `{titel, url}`. Ange källan i materialet, t.ex. punkt i BAS-P-arket. |
 
 ## Bakgrundsmaterial
 

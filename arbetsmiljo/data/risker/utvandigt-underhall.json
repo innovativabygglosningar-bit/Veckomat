@@ -1,0 +1,80 @@
+{
+  "id": "utvandigt-underhall",
+  "titel": "Utvändigt underhåll – belysning, snö och tak",
+  "status": "bas",
+  "ingress": "Snöskottning av tak, rensning av ventilationshuvar, byte av fasadbelysning och skötsel av planteringar kan innebära fall och tunga moment om de inte planeras.",
+  "riskomrade": "atkomst",
+  "sarskildRisk": [
+    1
+  ],
+  "skeden": [
+    "projektering",
+    "drift"
+  ],
+  "projekttyper": [
+    "nybyggnad",
+    "ombyggnad"
+  ],
+  "byggdelar": [
+    "tak",
+    "fasad",
+    "mark"
+  ],
+  "indikatorer": [
+    "snöskottning",
+    "fasadbelysning",
+    "takavvattning",
+    "snörasskydd",
+    "planteringar"
+  ],
+  "riskFore": {
+    "s": 3,
+    "k": 3,
+    "motivering": "Takarbete vintertid."
+  },
+  "riskEfter": {
+    "s": 1,
+    "k": 3,
+    "motivering": "Snörasskydd, förankringspunkter, åtkomlig belysning."
+  },
+  "atgarder": [
+    {
+      "skede": "projektering",
+      "ansvar": "Arkitekt",
+      "atgard": "Snörasskydd, takskyddsanordningar och infästningar för fallskydd; ytor för maskinell snöröjning och snöupplag."
+    },
+    {
+      "skede": "projektering",
+      "ansvar": "Elprojektör",
+      "atgard": "Utvändig belysning placerad så att den kan servas utan risk."
+    },
+    {
+      "skede": "projektering",
+      "ansvar": "Markprojektör",
+      "atgard": "Planteringsytor med tillträde för skötsel."
+    }
+  ],
+  "granskning": [
+    {
+      "id": "utvandigt-underhall.1",
+      "fraga": "Kan tak, fasadbelysning och utemiljö underhållas säkert?",
+      "skede": "projektering",
+      "underlag": [
+        "arkitektritningar",
+        "markritningar"
+      ]
+    }
+  ],
+  "regler": [
+    {
+      "ref": "AFS 2023:12 Utformning av arbetsplatser",
+      "text": "Arbetsplatsens utformning."
+    }
+  ],
+  "kallor": [
+    {
+      "titel": "Arbetsmiljö-BAS-P-Gällande.xlsx (driven), punkt 20.2.01–20.2.05",
+      "url": "https://drive.google.com/file/d/13zYHOK2ubRPC3yhxBcnAM1kWM3-C8iFm/view"
+    }
+  ]
+}
